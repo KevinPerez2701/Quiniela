@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiniela Mundial 2026</title>
+  <style>
+    :root {
+      --navy:   #1a2e5a;
+      --gold:   #f5c518;
+      --gold2:  #e0a800;
+      --green:  #006d3b;
+      --light:  #f0f4ff;
+      --stripe: #dce7ff;
+      --border: #b0bfd8;
+      --text:   #1a1a2e;
+      --muted:  #6b7a99;
+      --white:  #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6e 50%, #0d1b3e 100%);
+      min-height: 100vh;
+      padding: 24px 12px;
+      color: var(--text);
+    }
+
+    .wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .header h1 {
+      color: var(--gold);
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .header .subtitle {
+      color: #a0b8e8;
+      font-size: 0.85rem;
+      margin-top: 6px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+    }
+
+    /* ── Table ── */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    /* Max-value row */
+    thead tr.maxrow th {
+      background: #e8edf8;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      white-space: nowrap;
+    }
+    thead tr.maxrow th.left { text-align: left; }
+
+    /* Column header row */
+    thead tr.colrow th {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      padding: 10px 8px;
+      white-space: nowrap;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.75rem;
+    }
+    thead tr.colrow th.left { text-align: left; }
+    thead tr.colrow th.pos-col { width: 42px; }
+    thead tr.colrow th.name-col { min-width: 140px; text-align: left; }
+    thead tr.colrow th.pts-col {
+      background: var(--green);
+      min-width: 80px;
+    }
+
+    /* Data rows */
+    tbody tr {
+      transition: background 0.15s;
+    }
+    tbody tr:nth-child(odd)  { background: var(--white); }
+    tbody tr:nth-child(even) { background: var(--stripe); }
+    tbody tr:hover           { background: #c8d8ff; }
+
+    tbody td {
+      padding: 9px 8px;
+      border-bottom: 1px solid #e2e8f4;
+      border-right: 1px solid #e2e8f4;
+      text-align: center;
+      color: var(--text);
+    }
+    tbody td.left { text-align: left; }
+
+    /* Position badge */
+    .pos-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+    .pos-1 { background: var(--gold);  color: #333; }
+    .pos-2 { background: #c0c0c0;      color: #333; }
+    .pos-3 { background: #cd7f32;      color: #fff; }
+    .pos-other { background: #e2e8f4;  color: var(--text); }
+
+    /* Player name */
+    .player-name {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* Total points cell */
+    td.pts-cell {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--green);
+    }
+
+    /* Progress mini-bar */
+    .bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .bar-outer {
+      flex: 1;
+      height: 6px;
+      background: #dde4f0;
+      border-radius: 3px;
+      min-width: 40px;
+    }
+    .bar-inner {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #3a7bd5, #00c6ff);
+      transition: width 0.4s;
+    }
+    .bar-val {
+      min-width: 18px;
+      text-align: right;
+      font-size: 0.78rem;
+      color: var(--text);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: #7090c0;
+      font-size: 0.72rem;
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      background: #f7f9ff;
+    }
+
+    /* Loading / error state */
+    #status {
+      text-align: center;
+      padding: 60px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <h1 id="page-title">Quiniela Mundial 2026</h1>
+    <p class="subtitle" id="updated-at"></p>
+  </div>
+
+  <div class="card">
+    <div id="status">Cargando datos...</div>
+    <div class="table-wrap" id="table-container" style="display:none">
+      <table id="clas-table">
+        <thead>
+          <tr class="maxrow" id="max-row"></tr>
+          <tr class="colrow" id="col-row"></tr>
+        </thead>
+        <tbody id="body"></tbody>
+      </table>
+    </div>
+    <div class="footer" id="footer"></div>
+  </div>
+</div>
+
+<script>
+const SCORE_COLS = [
+  "f_grupos","pos_grupos","eq_16","pt_16","eq_8","pt_8",
+  "eq_4","pt_4","eq_2","pt_2","eq_34","eq_final","pt_34","pt_final","honor"
+];
+
+async function load() {
+  try {
+    const res = await fetch("data.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    render(data);
+  } catch (e) {
+    document.getElementById("status").textContent = "Error al cargar datos: " + e.message;
+  }
+}
+
+function posBadge(pos) {
+  const cls = pos === 1 ? "pos-1" : pos === 2 ? "pos-2" : pos === 3 ? "pos-3" : "pos-other";
+  return `<span class="pos-badge ${cls}">${pos}</span>`;
+}
+
+function barCell(val, max) {
+  if (!max) return `<span>${val}</span>`;
+  const pct = Math.min(100, Math.round((val / max) * 100));
+  return `<div class="bar-wrap">
+    <div class="bar-outer"><div class="bar-inner" style="width:${pct}%"></div></div>
+    <span class="bar-val">${val}</span>
+  </div>`;
+}
+
+function render(data) {
+  document.getElementById("page-title").textContent = data.title || "Quiniela Mundial 2026";
+  document.getElementById("updated-at").textContent = "Actualizado: " + (data.updated_at || "");
+
+  const maxValues = data.max_values || {};
+  const cols = data.columns || [];
+
+  // Build max row
+  const maxRow = document.getElementById("max-row");
+  cols.forEach(([key, label]) => {
+    const th = document.createElement("th");
+    if (key === "pos") { th.className = "left"; th.textContent = ""; }
+    else if (key === "jugador") { th.className = "left"; th.textContent = ""; }
+    else if (key === "puntos") { th.textContent = ""; }
+    else { th.textContent = maxValues[key] ? "Max: " + maxValues[key] : ""; }
+    maxRow.appendChild(th);
+  });
+
+  // Build column header row
+  const colRow = document.getElementById("col-row");
+  cols.forEach(([key, label]) => {
+    const th = document.createElement("th");
+    th.textContent = label;
+    if (key === "pos")    { th.className = "left pos-col"; }
+    if (key === "jugador"){ th.className = "left name-col"; }
+    if (key === "puntos") { th.className = "pts-col"; }
+    colRow.appendChild(th);
+  });
+
+  // Build body
+  const tbody = document.getElementById("body");
+  data.players.forEach(p => {
+    const tr = document.createElement("tr");
+    cols.forEach(([key]) => {
+      const td = document.createElement("td");
+      if (key === "pos") {
+        td.innerHTML = posBadge(p.pos);
+      } else if (key === "jugador") {
+        td.className = "left";
+        td.innerHTML = `<span class="player-name">${p.jugador}</span>`;
+      } else if (key === "puntos") {
+        td.className = "pts-cell";
+        td.textContent = p.puntos;
+      } else if (SCORE_COLS.includes(key)) {
+        td.innerHTML = barCell(p[key] || 0, maxValues[key] || 0);
+      } else {
+        td.textContent = p[key] ?? 0;
+      }
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById("status").style.display = "none";
+  document.getElementById("table-container").style.display = "block";
+  document.getElementById("footer").textContent =
+    `${data.players.length} participantes · ${data.updated_at}`;
+}
+
+load();
+</script>
+</body>
+</html>
