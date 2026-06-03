@@ -1,6 +1,490 @@
 {
-  "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
-  "updated_at": "2026-06-03 14:08 UTC",
+  "updated_at": "03/06/2026 10:26 (hora Venezuela)",
+  "clas": {
+    "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
+    "players": [
+      {
+        "pos": 1,
+        "jugador": "Kevin Perez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Andres Fermin",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Jorge Rojas",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Jaidali Fonseca",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Dixon Torrealba",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Eduardo Gonzalez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Eduardo Pinto",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Edward Carrero",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Luis Pinto",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Rafael Aguilar",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Ricardo Defendini",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Ricardo Ortega",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Samuel Montes",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Simon Melendez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Willy Freitez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Ylich Rodriguez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Ricardo Rodriguez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Alvaro Urdaneta",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Juan Dorante",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Carlos Gimenez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Freddy Parra",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Edicxon Mendoza",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Maria Delgado",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      },
+      {
+        "pos": 1,
+        "jugador": "Luis Marquez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0
+      }
+    ]
+  },
   "max_values": {
     "f_grupos": 432,
     "pos_grupos": 156,
@@ -92,486 +576,1727 @@
       "Cuadro de Honor"
     ]
   ],
-  "players": [
+  "fixture": [
     {
-      "pos": 1,
-      "jugador": "Kevin Perez",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 1,
+      "date": "2026-06-11 15:00",
+      "matchday": "J1",
+      "group": "Grupo A",
+      "home": "México",
+      "away": "Sudáfrica",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Andres Fermin",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 2,
+      "date": "2026-06-11 22:00",
+      "matchday": "J1",
+      "group": "Grupo A",
+      "home": "Corea del Sur",
+      "away": "República Checa",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Jorge Rojas",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 3,
+      "date": "2026-06-12 15:00",
+      "matchday": "J1",
+      "group": "Grupo B",
+      "home": "Canadá",
+      "away": "Bosnia y Herzegovina",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Jaidali Fonseca",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 4,
+      "date": "2026-06-12 21:00",
+      "matchday": "J1",
+      "group": "Grupo D",
+      "home": "Estados Unidos",
+      "away": "Paraguay",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Dixon Torrealba",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 8,
+      "date": "2026-06-13 15:00",
+      "matchday": "J1",
+      "group": "Grupo B",
+      "home": "Catar",
+      "away": "Suiza",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Eduardo Gonzalez",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 7,
+      "date": "2026-06-13 18:00",
+      "matchday": "J1",
+      "group": "Grupo C",
+      "home": "Brasil",
+      "away": "Marruecos",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Eduardo Pinto",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 5,
+      "date": "2026-06-13 21:00",
+      "matchday": "J1",
+      "group": "Grupo C",
+      "home": "Haití",
+      "away": "Escocia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Edward Carrero",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 6,
+      "date": "2026-06-14 00:00",
+      "matchday": "J1",
+      "group": "Grupo D",
+      "home": "Australia",
+      "away": "Turquía",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Luis Pinto",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 10,
+      "date": "2026-06-14 13:00",
+      "matchday": "J1",
+      "group": "Grupo E",
+      "home": "Alemania",
+      "away": "Curazao",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Rafael Aguilar",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 11,
+      "date": "2026-06-14 16:00",
+      "matchday": "J1",
+      "group": "Grupo F",
+      "home": "Países Bajos",
+      "away": "Japón",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Ricardo Defendini",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 9,
+      "date": "2026-06-14 19:00",
+      "matchday": "J1",
+      "group": "Grupo E",
+      "home": "Costa de Marfil",
+      "away": "Ecuador",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Ricardo Ortega",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 12,
+      "date": "2026-06-14 22:00",
+      "matchday": "J1",
+      "group": "Grupo F",
+      "home": "Suecia",
+      "away": "Túnez",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Samuel Montes",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 14,
+      "date": "2026-06-15 12:00",
+      "matchday": "J1",
+      "group": "Grupo H",
+      "home": "España",
+      "away": "Cabo Verde",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Simon Melendez",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 16,
+      "date": "2026-06-15 15:00",
+      "matchday": "J1",
+      "group": "Grupo G",
+      "home": "Bélgica",
+      "away": "Egipto",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Willy Freitez",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 13,
+      "date": "2026-06-15 18:00",
+      "matchday": "J1",
+      "group": "Grupo H",
+      "home": "Arabia Saudita",
+      "away": "Uruguay",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Ylich Rodriguez",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 15,
+      "date": "2026-06-15 21:00",
+      "matchday": "J1",
+      "group": "Grupo G",
+      "home": "Irán",
+      "away": "Nueva Zelanda",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Ricardo Rodriguez",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 17,
+      "date": "2026-06-16 15:00",
+      "matchday": "J1",
+      "group": "Grupo I",
+      "home": "Francia",
+      "away": "Senegal",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Alvaro Urdaneta",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 18,
+      "date": "2026-06-16 18:00",
+      "matchday": "J1",
+      "group": "Grupo I",
+      "home": "Irak",
+      "away": "Noruega",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Juan Dorante",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 19,
+      "date": "2026-06-16 21:00",
+      "matchday": "J1",
+      "group": "Grupo J",
+      "home": "Argentina",
+      "away": "Argelia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Carlos Gimenez",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 20,
+      "date": "2026-06-17 00:00",
+      "matchday": "J1",
+      "group": "Grupo J",
+      "home": "Austria",
+      "away": "Jordania",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Freddy Parra",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 23,
+      "date": "2026-06-17 13:00",
+      "matchday": "J1",
+      "group": "Grupo K",
+      "home": "Portugal",
+      "away": "RD Congo",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Edicxon Mendoza",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 22,
+      "date": "2026-06-17 16:00",
+      "matchday": "J1",
+      "group": "Grupo L",
+      "home": "Inglaterra",
+      "away": "Croacia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Maria Delgado",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 21,
+      "date": "2026-06-17 19:00",
+      "matchday": "J1",
+      "group": "Grupo L",
+      "home": "Ghana",
+      "away": "Panamá",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
     },
     {
-      "pos": 1,
-      "jugador": "Luis Marquez",
-      "puntos": 0,
-      "f_grupos": 0,
-      "pos_grupos": 0,
-      "eq_16": 0,
-      "pt_16": 0,
-      "eq_8": 0,
-      "pt_8": 0,
-      "eq_4": 0,
-      "pt_4": 0,
-      "eq_2": 0,
-      "pt_2": 0,
-      "eq_34": 0,
-      "eq_final": 0,
-      "pt_34": 0,
-      "pt_final": 0,
-      "honor": 0
+      "num": 24,
+      "date": "2026-06-17 22:00",
+      "matchday": "J1",
+      "group": "Grupo K",
+      "home": "Uzbekistán",
+      "away": "Colombia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 25,
+      "date": "2026-06-18 12:00",
+      "matchday": "J2",
+      "group": "Grupo A",
+      "home": "República Checa",
+      "away": "Sudáfrica",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 26,
+      "date": "2026-06-18 15:00",
+      "matchday": "J2",
+      "group": "Grupo B",
+      "home": "Suiza",
+      "away": "Bosnia y Herzegovina",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 27,
+      "date": "2026-06-18 18:00",
+      "matchday": "J2",
+      "group": "Grupo B",
+      "home": "Canadá",
+      "away": "Catar",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 28,
+      "date": "2026-06-18 21:00",
+      "matchday": "J2",
+      "group": "Grupo A",
+      "home": "México",
+      "away": "Corea del Sur",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 32,
+      "date": "2026-06-19 15:00",
+      "matchday": "J2",
+      "group": "Grupo D",
+      "home": "Estados Unidos",
+      "away": "Australia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 30,
+      "date": "2026-06-19 18:00",
+      "matchday": "J2",
+      "group": "Grupo C",
+      "home": "Escocia",
+      "away": "Marruecos",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 29,
+      "date": "2026-06-19 20:30",
+      "matchday": "J2",
+      "group": "Grupo C",
+      "home": "Brasil",
+      "away": "Haití",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 31,
+      "date": "2026-06-19 23:00",
+      "matchday": "J2",
+      "group": "Grupo D",
+      "home": "Turquía",
+      "away": "Paraguay",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 35,
+      "date": "2026-06-20 13:00",
+      "matchday": "J2",
+      "group": "Grupo F",
+      "home": "Países Bajos",
+      "away": "Suecia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 33,
+      "date": "2026-06-20 16:00",
+      "matchday": "J2",
+      "group": "Grupo E",
+      "home": "Alemania",
+      "away": "Costa de Marfil",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 34,
+      "date": "2026-06-20 20:00",
+      "matchday": "J2",
+      "group": "Grupo E",
+      "home": "Ecuador",
+      "away": "Curazao",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 36,
+      "date": "2026-06-21 00:00",
+      "matchday": "J2",
+      "group": "Grupo F",
+      "home": "Túnez",
+      "away": "Japón",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 38,
+      "date": "2026-06-21 12:00",
+      "matchday": "J2",
+      "group": "Grupo H",
+      "home": "España",
+      "away": "Arabia Saudita",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 39,
+      "date": "2026-06-21 15:00",
+      "matchday": "J2",
+      "group": "Grupo G",
+      "home": "Bélgica",
+      "away": "Irán",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 37,
+      "date": "2026-06-21 18:00",
+      "matchday": "J2",
+      "group": "Grupo H",
+      "home": "Uruguay",
+      "away": "Cabo Verde",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 40,
+      "date": "2026-06-21 21:00",
+      "matchday": "J2",
+      "group": "Grupo G",
+      "home": "Nueva Zelanda",
+      "away": "Egipto",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 43,
+      "date": "2026-06-22 13:00",
+      "matchday": "J2",
+      "group": "Grupo J",
+      "home": "Argentina",
+      "away": "Austria",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 42,
+      "date": "2026-06-22 17:00",
+      "matchday": "J2",
+      "group": "Grupo I",
+      "home": "Francia",
+      "away": "Irak",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 41,
+      "date": "2026-06-22 20:00",
+      "matchday": "J2",
+      "group": "Grupo I",
+      "home": "Noruega",
+      "away": "Senegal",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 44,
+      "date": "2026-06-22 23:00",
+      "matchday": "J2",
+      "group": "Grupo J",
+      "home": "Jordania",
+      "away": "Argelia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 47,
+      "date": "2026-06-23 13:00",
+      "matchday": "J2",
+      "group": "Grupo K",
+      "home": "Portugal",
+      "away": "Uzbekistán",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 45,
+      "date": "2026-06-23 16:00",
+      "matchday": "J2",
+      "group": "Grupo L",
+      "home": "Inglaterra",
+      "away": "Ghana",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 46,
+      "date": "2026-06-23 19:00",
+      "matchday": "J2",
+      "group": "Grupo L",
+      "home": "Panamá",
+      "away": "Croacia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 48,
+      "date": "2026-06-23 22:00",
+      "matchday": "J2",
+      "group": "Grupo K",
+      "home": "Colombia",
+      "away": "RD Congo",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 51,
+      "date": "2026-06-24 15:00",
+      "matchday": "J3",
+      "group": "Grupo B",
+      "home": "Suiza",
+      "away": "Canadá",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 52,
+      "date": "2026-06-24 15:00",
+      "matchday": "J3",
+      "group": "Grupo B",
+      "home": "Bosnia y Herzegovina",
+      "away": "Catar",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 49,
+      "date": "2026-06-24 18:00",
+      "matchday": "J3",
+      "group": "Grupo C",
+      "home": "Escocia",
+      "away": "Brasil",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 50,
+      "date": "2026-06-24 18:00",
+      "matchday": "J3",
+      "group": "Grupo C",
+      "home": "Marruecos",
+      "away": "Haití",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 53,
+      "date": "2026-06-24 21:00",
+      "matchday": "J3",
+      "group": "Grupo A",
+      "home": "República Checa",
+      "away": "México",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 54,
+      "date": "2026-06-24 21:00",
+      "matchday": "J3",
+      "group": "Grupo A",
+      "home": "Sudáfrica",
+      "away": "Corea del Sur",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 55,
+      "date": "2026-06-25 16:00",
+      "matchday": "J3",
+      "group": "Grupo E",
+      "home": "Curazao",
+      "away": "Costa de Marfil",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 56,
+      "date": "2026-06-25 16:00",
+      "matchday": "J3",
+      "group": "Grupo E",
+      "home": "Ecuador",
+      "away": "Alemania",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 57,
+      "date": "2026-06-25 19:00",
+      "matchday": "J3",
+      "group": "Grupo F",
+      "home": "Japón",
+      "away": "Suecia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 58,
+      "date": "2026-06-25 19:00",
+      "matchday": "J3",
+      "group": "Grupo F",
+      "home": "Túnez",
+      "away": "Países Bajos",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 59,
+      "date": "2026-06-25 22:00",
+      "matchday": "J3",
+      "group": "Grupo D",
+      "home": "Turquía",
+      "away": "Estados Unidos",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 60,
+      "date": "2026-06-25 22:00",
+      "matchday": "J3",
+      "group": "Grupo D",
+      "home": "Paraguay",
+      "away": "Australia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 61,
+      "date": "2026-06-26 15:00",
+      "matchday": "J3",
+      "group": "Grupo I",
+      "home": "Noruega",
+      "away": "Francia",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 62,
+      "date": "2026-06-26 15:00",
+      "matchday": "J3",
+      "group": "Grupo I",
+      "home": "Senegal",
+      "away": "Irak",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 65,
+      "date": "2026-06-26 20:00",
+      "matchday": "J3",
+      "group": "Grupo H",
+      "home": "Cabo Verde",
+      "away": "Arabia Saudita",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 66,
+      "date": "2026-06-26 20:00",
+      "matchday": "J3",
+      "group": "Grupo H",
+      "home": "Uruguay",
+      "away": "España",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 63,
+      "date": "2026-06-26 23:00",
+      "matchday": "J3",
+      "group": "Grupo G",
+      "home": "Egipto",
+      "away": "Irán",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 64,
+      "date": "2026-06-26 23:00",
+      "matchday": "J3",
+      "group": "Grupo G",
+      "home": "Nueva Zelanda",
+      "away": "Bélgica",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 67,
+      "date": "2026-06-27 17:00",
+      "matchday": "J3",
+      "group": "Grupo L",
+      "home": "Panamá",
+      "away": "Inglaterra",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 68,
+      "date": "2026-06-27 17:00",
+      "matchday": "J3",
+      "group": "Grupo L",
+      "home": "Croacia",
+      "away": "Ghana",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 71,
+      "date": "2026-06-27 19:30",
+      "matchday": "J3",
+      "group": "Grupo K",
+      "home": "Colombia",
+      "away": "Portugal",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 72,
+      "date": "2026-06-27 19:30",
+      "matchday": "J3",
+      "group": "Grupo K",
+      "home": "RD Congo",
+      "away": "Uzbekistán",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 69,
+      "date": "2026-06-27 22:00",
+      "matchday": "J3",
+      "group": "Grupo J",
+      "home": "Argelia",
+      "away": "Austria",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 70,
+      "date": "2026-06-27 22:00",
+      "matchday": "J3",
+      "group": "Grupo J",
+      "home": "Jordania",
+      "away": "Argentina",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "grupos",
+      "phase_label": "Fase de Grupos"
+    },
+    {
+      "num": 73,
+      "date": "2026-06-28 15:00",
+      "matchday": "73",
+      "group": null,
+      "home": "2A",
+      "away": "2B",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 76,
+      "date": "2026-06-29 13:00",
+      "matchday": "76",
+      "group": null,
+      "home": "1C",
+      "away": "2F",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 74,
+      "date": "2026-06-29 16:30",
+      "matchday": "74",
+      "group": null,
+      "home": "1E",
+      "away": "3ABCDF",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 75,
+      "date": "2026-06-29 21:00",
+      "matchday": "75",
+      "group": null,
+      "home": "1F",
+      "away": "2C",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 78,
+      "date": "2026-06-30 13:00",
+      "matchday": "78",
+      "group": null,
+      "home": "2E",
+      "away": "2I",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 77,
+      "date": "2026-06-30 17:00",
+      "matchday": "77",
+      "group": null,
+      "home": "1I",
+      "away": "3CDFGH",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 79,
+      "date": "2026-06-30 21:00",
+      "matchday": "79",
+      "group": null,
+      "home": "1A",
+      "away": "3CEFHI",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 80,
+      "date": "2026-07-01 12:00",
+      "matchday": "80",
+      "group": null,
+      "home": "1L",
+      "away": "3EHIJK",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 82,
+      "date": "2026-07-01 16:00",
+      "matchday": "82",
+      "group": null,
+      "home": "1G",
+      "away": "3AEHIJ",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 81,
+      "date": "2026-07-01 20:00",
+      "matchday": "81",
+      "group": null,
+      "home": "1D",
+      "away": "3BEFIJ",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 84,
+      "date": "2026-07-02 15:00",
+      "matchday": "84",
+      "group": null,
+      "home": "1H",
+      "away": "2J",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 83,
+      "date": "2026-07-02 19:00",
+      "matchday": "83",
+      "group": null,
+      "home": "2K",
+      "away": "2L",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 85,
+      "date": "2026-07-02 23:00",
+      "matchday": "85",
+      "group": null,
+      "home": "1B",
+      "away": "3EFGIJ",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 88,
+      "date": "2026-07-03 14:00",
+      "matchday": "88",
+      "group": null,
+      "home": "2D",
+      "away": "2G",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 86,
+      "date": "2026-07-03 18:00",
+      "matchday": "86",
+      "group": null,
+      "home": "1J",
+      "away": "2H",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 87,
+      "date": "2026-07-03 21:30",
+      "matchday": "87",
+      "group": null,
+      "home": "1K",
+      "away": "3DEIJL",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "dieciseisavos",
+      "phase_label": "1/16 de Final"
+    },
+    {
+      "num": 90,
+      "date": "2026-07-04 13:00",
+      "matchday": "90",
+      "group": null,
+      "home": "W73",
+      "away": "W75",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "octavos",
+      "phase_label": "1/8 de Final (Cuartos)"
+    },
+    {
+      "num": 89,
+      "date": "2026-07-04 17:00",
+      "matchday": "89",
+      "group": null,
+      "home": "W74",
+      "away": "W77",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "octavos",
+      "phase_label": "1/8 de Final (Cuartos)"
+    },
+    {
+      "num": 91,
+      "date": "2026-07-05 16:00",
+      "matchday": "91",
+      "group": null,
+      "home": "W76",
+      "away": "W78",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "octavos",
+      "phase_label": "1/8 de Final (Cuartos)"
+    },
+    {
+      "num": 92,
+      "date": "2026-07-05 20:00",
+      "matchday": "92",
+      "group": null,
+      "home": "W79",
+      "away": "W80",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "octavos",
+      "phase_label": "1/8 de Final (Cuartos)"
+    },
+    {
+      "num": 93,
+      "date": "2026-07-06 15:00",
+      "matchday": "93",
+      "group": null,
+      "home": "W83",
+      "away": "W84",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "octavos",
+      "phase_label": "1/8 de Final (Cuartos)"
+    },
+    {
+      "num": 94,
+      "date": "2026-07-06 20:00",
+      "matchday": "94",
+      "group": null,
+      "home": "W81",
+      "away": "W82",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "octavos",
+      "phase_label": "1/8 de Final (Cuartos)"
+    },
+    {
+      "num": 95,
+      "date": "2026-07-07 12:00",
+      "matchday": "95",
+      "group": null,
+      "home": "W86",
+      "away": "W88",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "octavos",
+      "phase_label": "1/8 de Final (Cuartos)"
+    },
+    {
+      "num": 96,
+      "date": "2026-07-07 16:00",
+      "matchday": "96",
+      "group": null,
+      "home": "W85",
+      "away": "W87",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "octavos",
+      "phase_label": "1/8 de Final (Cuartos)"
+    },
+    {
+      "num": 97,
+      "date": "2026-07-09 16:00",
+      "matchday": "97",
+      "group": null,
+      "home": "W89",
+      "away": "W90",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "cuartos",
+      "phase_label": "Cuartos de Final"
+    },
+    {
+      "num": 98,
+      "date": "2026-07-10 15:00",
+      "matchday": "98",
+      "group": null,
+      "home": "W93",
+      "away": "W94",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "cuartos",
+      "phase_label": "Cuartos de Final"
+    },
+    {
+      "num": 99,
+      "date": "2026-07-11 17:00",
+      "matchday": "99",
+      "group": null,
+      "home": "W91",
+      "away": "W92",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "cuartos",
+      "phase_label": "Cuartos de Final"
+    },
+    {
+      "num": 100,
+      "date": "2026-07-11 21:00",
+      "matchday": "100",
+      "group": null,
+      "home": "W95",
+      "away": "W96",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "cuartos",
+      "phase_label": "Cuartos de Final"
+    },
+    {
+      "num": 101,
+      "date": "2026-07-14 15:00",
+      "matchday": "101",
+      "group": null,
+      "home": "W97",
+      "away": "W98",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "semis",
+      "phase_label": "Semifinales"
+    },
+    {
+      "num": 102,
+      "date": "2026-07-15 15:00",
+      "matchday": "102",
+      "group": null,
+      "home": "W99",
+      "away": "W100",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "semis",
+      "phase_label": "Semifinales"
+    },
+    {
+      "num": 103,
+      "date": "2026-07-18 17:00",
+      "matchday": "103",
+      "group": null,
+      "home": "L101",
+      "away": "L102",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "tercero",
+      "phase_label": "Tercer Puesto"
+    },
+    {
+      "num": 104,
+      "date": "2026-07-19 15:00",
+      "matchday": "104",
+      "group": null,
+      "home": "W101",
+      "away": "W102",
+      "goal_home": null,
+      "goal_away": null,
+      "phase": "final",
+      "phase_label": "Final"
     }
-  ]
+  ],
+  "daily_pred": {
+    "fecha": "2026-06-11",
+    "partidos": [
+      "México-Sudáfrica",
+      "Corea del Sur-República Checa"
+    ],
+    "jugadores": [
+      {
+        "jugador": "Kevin Perez",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Andres Fermin",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Jorge Rojas",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Jaidali Fonseca",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Dixon Torrealba",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Eduardo Gonzalez",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Eduardo Pinto",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Edward Carrero",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Luis Pinto",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Rafael Aguilar",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Ricardo Defendini",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Ricardo Ortega",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Samuel Montes",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Simon Melendez",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Willy Freitez",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Ylich Rodriguez",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Ricardo Rodriguez",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Alvaro Urdaneta",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Juan Dorante",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Carlos Gimenez",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Freddy Parra",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Edicxon Mendoza",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Maria Delgado",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "Luis Marquez",
+        "predicciones": [
+          "0",
+          null
+        ]
+      },
+      {
+        "jugador": "-",
+        "predicciones": [
+          null,
+          null
+        ]
+      }
+    ]
+  },
+  "daily_clas": {
+    "fecha": "2026-06-11",
+    "partidos": [
+      "México-Sudáfrica",
+      "Corea del Sur-República Checa"
+    ],
+    "jugadores": [
+      {
+        "pos": 1,
+        "jugador": "Kevin Perez",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Andres Fermin",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Jorge Rojas",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Jaidali Fonseca",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Dixon Torrealba",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Eduardo Gonzalez",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Eduardo Pinto",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Edward Carrero",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Luis Pinto",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Rafael Aguilar",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Ricardo Defendini",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Ricardo Ortega",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Samuel Montes",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Simon Melendez",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Willy Freitez",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Ylich Rodriguez",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Ricardo Rodriguez",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Alvaro Urdaneta",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Juan Dorante",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Carlos Gimenez",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Freddy Parra",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Edicxon Mendoza",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Maria Delgado",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 1,
+        "jugador": "Luis Marquez",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          0,
+          0
+        ]
+      },
+      {
+        "pos": 0,
+        "jugador": "-",
+        "puntos_dia": 0,
+        "puntos_partidos": [
+          null,
+          null
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "fecha": "2026-06-11",
+    "stats": [
+      {
+        "label": "Puntos en juego 11/06/26 (Individual)",
+        "value": 12,
+        "pct": 0.9
+      },
+      {
+        "label": "Máximo de puntos hasta 11/06/aa (Individual)",
+        "value": 0,
+        "pct": 0
+      },
+      {
+        "label": "Máximo de puntos incluido 11/06/aa (Individual)",
+        "value": 12,
+        "pct": 0.9
+      },
+      {
+        "label": "Quedan por repartir:  (Individual)",
+        "value": 1280,
+        "pct": 99.1
+      },
+      {
+        "label": "Puntos máximos totales a repartir hoy (Global):",
+        "value": 288,
+        "pct": 0.9
+      },
+      {
+        "label": "Puntos repartidos hoy (Global)",
+        "value": 0,
+        "pct": 0
+      },
+      {
+        "label": "¿Cúantos han acertado el máximo de puntos 11/06/aa?",
+        "value": 0,
+        "pct": 0
+      },
+      {
+        "label": "¿Cúantos se han llevado algún punto 11/06/aa?",
+        "value": 0,
+        "pct": 0
+      },
+      {
+        "label": "¿Cúantos no han acertado nada 11/06/aa?",
+        "value": 24,
+        "pct": 0
+      },
+      {
+        "label": "Media de puntos sumados 11/06/aa?",
+        "value": 0,
+        "pct": 0
+      }
+    ]
+  }
 }
