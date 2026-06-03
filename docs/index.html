@@ -151,7 +151,7 @@
     .score-cell { font-weight: 800; font-size: .95rem; color: var(--green); }
     .score-cell.pending { color: var(--muted); font-weight: 400; font-size: .8rem; }
 
-    /* ── DAILY PREDICTION ── */
+    /* ── DAILY PREDICTION / DAILY CLAS shared ── */
     .daily-header {
       padding: 14px 18px;
       background: var(--navy);
@@ -159,15 +159,34 @@
       font-size: .88rem;
     }
     .daily-header strong { color: var(--gold); }
+
+    /* Scrollable table wrapper with sticky first columns */
+    .daily-scroll-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .daily-scroll-wrap table { min-width: 100%; }
+
+    /* Sticky name column (and pos column for daily-clas) */
+    .sticky-col {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: inherit;
+    }
+    tbody tr:nth-child(odd)  .sticky-col { background: var(--white); }
+    tbody tr:nth-child(even) .sticky-col { background: var(--stripe); }
+    tbody tr:hover           .sticky-col { background: #c8d8ff; }
+
     .daily-table th {
       background: var(--navy);
       color: var(--white);
       font-size: .73rem;
-      padding: 8px;
+      padding: 8px 10px;
       white-space: nowrap;
       text-align: center;
     }
-    .daily-table th.left { text-align: left; }
+    .daily-table th.sticky-col { left: 0; z-index: 3; background: var(--navy); }
     .pred-cell { font-size: .82rem; }
     .pred-null { color: #bbb; font-size: .75rem; }
 
@@ -176,31 +195,22 @@
       background: var(--green);
       color: var(--white);
       font-size: .73rem;
-      padding: 8px;
+      padding: 8px 10px;
       white-space: nowrap;
       text-align: center;
     }
-    .daily-clas-table th.left { text-align: left; }
+    .daily-clas-table th.sticky-col { left: 0; z-index: 3; background: var(--green); }
+    .daily-clas-table th.sticky-col-2 { left: 42px; z-index: 3; background: var(--green); }
+    .sticky-col-2 {
+      position: sticky;
+      left: 42px;
+      z-index: 2;
+      background: inherit;
+    }
+    tbody tr:nth-child(odd)  .sticky-col-2 { background: var(--white); }
+    tbody tr:nth-child(even) .sticky-col-2 { background: var(--stripe); }
+    tbody tr:hover           .sticky-col-2 { background: #c8d8ff; }
     .pts-day { font-weight: 800; color: var(--green); }
-
-    /* ── STATS ── */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 14px;
-      padding: 20px;
-    }
-    .stat-card {
-      background: var(--light);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-    }
-    .stat-card .s-label { font-size: .75rem; color: var(--muted); margin-bottom: 5px; }
-    .stat-card .s-val   { font-size: 1.6rem; font-weight: 800; color: var(--navy); }
-    .stat-card .s-pct   { font-size: .75rem; color: var(--green); margin-top: 3px; }
-    .stat-pbar { height: 5px; background: #dde4f0; border-radius: 3px; margin-top: 8px; }
-    .stat-pbar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg,#3a7bd5,#00c6ff); }
 
     /* ── Footer ── */
     .footer {
@@ -223,7 +233,6 @@
     <button class="tab-btn" data-tab="fixture">📅 Fixture</button>
     <button class="tab-btn" data-tab="daily-pred">⚽ Predicción del Día</button>
     <button class="tab-btn" data-tab="daily-clas">📊 Clas. del Día</button>
-    <button class="tab-btn" data-tab="stats">📈 Estadísticas</button>
   </div>
 
   <div class="card">
@@ -255,11 +264,6 @@
     <!-- DAILY CLAS -->
     <div class="tab-panel" id="tab-daily-clas">
       <div id="daily-clas-content"></div>
-    </div>
-
-    <!-- STATS -->
-    <div class="tab-panel" id="tab-stats">
-      <div id="stats-content"></div>
     </div>
 
     <div class="footer" id="footer"></div>
@@ -432,11 +436,14 @@ function renderDailyPred(dp) {
   }
 
   const wrap = document.createElement('div');
-  wrap.className = 'table-wrap';
+  wrap.className = 'daily-scroll-wrap';
   const t = document.createElement('table');
   t.className = 'daily-table';
-  const headerCells = partidos.map(p => `<th title="${h(p)}">${h(p.length > 20 ? p.slice(0,18)+'…' : p)}</th>`).join('');
-  t.innerHTML = `<thead><tr><th class="left">Jugador</th>${headerCells}</tr></thead>`;
+  const headerCells = partidos.map(p => `<th>${h(p)}</th>`).join('');
+  t.innerHTML = `<thead><tr>
+    <th class="sticky-col" style="text-align:left;min-width:140px">Jugador</th>
+    ${headerCells}
+  </tr></thead>`;
   const tbody = document.createElement('tbody');
   jugadores.forEach(j => {
     const cells = j.predicciones.map(v =>
@@ -445,7 +452,9 @@ function renderDailyPred(dp) {
         : `<td class="pred-cell">${h(v)}</td>`
     ).join('');
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td class="left"><span class="player-name">${h(j.jugador)}</span></td>${cells}`;
+    tr.innerHTML = `
+      <td class="left sticky-col"><span class="player-name">${h(j.jugador)}</span></td>
+      ${cells}`;
     tbody.appendChild(tr);
   });
   t.appendChild(tbody);
@@ -471,12 +480,15 @@ function renderDailyClas(dc) {
   }
 
   const wrap = document.createElement('div');
-  wrap.className = 'table-wrap';
+  wrap.className = 'daily-scroll-wrap';
   const t = document.createElement('table');
   t.className = 'daily-clas-table';
-  const matchCols = partidos.map(p => `<th title="${h(p)}">${h(p.length > 20 ? p.slice(0,18)+'…' : p)}</th>`).join('');
+  const matchCols = partidos.map(p => `<th style="min-width:130px">${h(p)}</th>`).join('');
   t.innerHTML = `<thead><tr>
-    <th>Pos</th><th class="left">Jugador</th><th>Pts día</th>${matchCols}
+    <th class="sticky-col" style="min-width:42px">Pos</th>
+    <th class="sticky-col-2" style="text-align:left;min-width:140px">Jugador</th>
+    <th style="min-width:76px">Pts día</th>
+    ${matchCols}
   </tr></thead>`;
   const tbody = document.createElement('tbody');
   jugadores.forEach(j => {
@@ -485,8 +497,8 @@ function renderDailyClas(dc) {
     ).join('');
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td>${posBadge(j.pos)}</td>
-      <td class="left"><span class="player-name">${h(j.jugador)}</span></td>
+      <td class="sticky-col">${posBadge(j.pos)}</td>
+      <td class="left sticky-col-2"><span class="player-name">${h(j.jugador)}</span></td>
       <td class="pts-day">${j.puntos_dia}</td>
       ${cells}
     `;
@@ -495,33 +507,6 @@ function renderDailyClas(dc) {
   t.appendChild(tbody);
   wrap.appendChild(t);
   el.appendChild(wrap);
-}
-
-// ── STATS ─────────────────────────────────────────────────────────────────────
-function renderStats(stats) {
-  const el = document.getElementById('stats-content');
-  const fecha = stats.fecha || '—';
-  el.innerHTML = `<div class="daily-header">
-    Estadísticas del día: <strong>${h(fecha)}</strong>
-  </div>`;
-
-  const grid = document.createElement('div');
-  grid.className = 'stats-grid';
-
-  (stats.stats || []).forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'stat-card';
-    const pct = typeof s.pct === 'number' ? s.pct : 0;
-    card.innerHTML = `
-      <div class="s-label">${h(s.label)}</div>
-      <div class="s-val">${typeof s.value === 'number' ? s.value.toLocaleString('es') : h(String(s.value))}</div>
-      ${pct > 0 ? `<div class="s-pct">${pct}% del total</div>` : ''}
-      <div class="stat-pbar"><div class="stat-pbar-fill" style="width:${Math.min(pct,100)}%"></div></div>
-    `;
-    grid.appendChild(card);
-  });
-
-  el.appendChild(grid);
 }
 
 // ── Load & render ─────────────────────────────────────────────────────────────
@@ -539,7 +524,6 @@ async function load() {
     renderFixture(data.fixture || []);
     renderDailyPred(data.daily_pred || {});
     renderDailyClas(data.daily_clas || {});
-    renderStats(data.stats || {});
 
     const n = (data.clas?.players || []).length;
     document.getElementById('footer').textContent =
