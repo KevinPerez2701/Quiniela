@@ -4,7 +4,7 @@
 import json
 import os
 import warnings
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 # Suppress openpyxl extension warnings
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -104,9 +104,12 @@ def main():
         }
         players.append(player)
 
+    vet = timezone(timedelta(hours=-4))
+    now_vet = datetime.now(vet)
+
     output = {
         "title":      title,
-        "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+        "updated_at": now_vet.strftime("%d/%m/%Y %H:%M (hora Venezuela)"),
         "max_values": MAX_VALUES,
         "columns":    COLUMNS,
         "players":    players,
