@@ -327,7 +327,7 @@ function renderClas(data) {
   });
 
   const tbody = document.getElementById('clas-body');
-  (data.clas?.players || data.players || []).forEach(p => {
+  (data.clas.players || []).forEach(p => {
     const tr = document.createElement('tr');
     cols.forEach(([key]) => {
       const td = document.createElement('td');
