@@ -21,9 +21,6 @@ import openpyxl
 REPO_ROOT   = os.path.join(os.path.dirname(__file__), "..")
 OUTPUT_PATH = os.path.join(REPO_ROOT, "docs", "data.json")
 
-# Primary file — used for Fixture, DailyPrediction and DailyClas match data
-PRIMARY_FILE = os.path.join(REPO_ROOT, "ADMINExcelMundial2026.xlsx")
-
 MAX_VALUES = {
     "f_grupos":   432,
     "pos_grupos": 156,
@@ -251,13 +248,16 @@ def main():
     if not excel_files:
         raise FileNotFoundError(f"No Excel files found matching {pattern}")
 
+    # First file alphabetically is the primary (provides Fixture + match columns)
+    primary_file = excel_files[0]
     print(f"Found {len(excel_files)} Excel file(s): {[os.path.basename(f) for f in excel_files]}")
+    print(f"Primary file: {os.path.basename(primary_file)}")
 
     vet     = timezone(timedelta(hours=-4))
     now_vet = datetime.now(vet)
 
     # ── Merge CLAS, DailyPrediction and DailyClas from all files ─────────────
-    all_clas_players      = []
+    all_clas_players       = []
     all_daily_pred_players = []
     all_daily_clas_players = []
     title = "CLASIFICACIÓN MUNDIAL 2026"
@@ -266,7 +266,7 @@ def main():
 
     for path in excel_files:
         wb = openpyxl.load_workbook(path, data_only=True)
-        is_primary = (os.path.abspath(path) == os.path.abspath(PRIMARY_FILE))
+        is_primary = (os.path.abspath(path) == os.path.abspath(primary_file))
 
         t, players = extract_clas_players(wb["CLAS"])
         if is_primary:
