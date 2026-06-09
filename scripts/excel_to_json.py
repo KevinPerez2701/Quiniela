@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
 """
-Reads CLAS, Fixture, DailyPrediction and DailyClas from all Excel files
-matching ADMINExcelMundial2026*.xlsx and writes a merged docs/data.json.
+Reads CLAS, Fixture and the full per-day predictions/standings from all Excel
+files matching ADMINExcelMundial2026*.xlsx and writes a merged docs/data.json.
+
+The daily data covers EVERY day of the tournament (not just the one selected in
+the DailyPrediction dropdown): it is read from the ADMIN master table, which
+holds every match for every day plus each player's prediction and points. The
+web page then offers a day selector to browse any date.
 
 To support more than 25 players, simply add a second file named e.g.
   ADMINExcelMundial2026_2.xlsx
 The script will discover it automatically, merge all players, and
-re-rank the combined standings.
+re-rank the combined standings (overall and per day).
 """
 
 import glob
 import json
 import os
 import warnings
+from collections import OrderedDict
 from datetime import datetime, timezone, timedelta
 
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -187,55 +193,93 @@ def extract_fixture(ws):
     return matches
 
 
-# ── DAILY PREDICTION ──────────────────────────────────────────────────────────
+# ── DAILY (ALL DAYS, from the ADMIN master table) ─────────────────────────────
+#
+# The DailyPrediction / DailyClas worksheets only show ONE day (driven by a
+# dropdown), so reading them with data_only=True yields a single day. The ADMIN
+# sheet instead holds the full master table: every match for every day, plus
+# each player's prediction and points. We read that to expose ALL days online.
+#
+# Layout of the ADMIN sheet:
+#   row index 4 (5th row) is the header; player names live at columns
+#     18, 21, 24, ...  (stride 3). For player at column C, that player's
+#     prediction is at column C and the awarded points at column C+1.
+#   match rows start at index 5; for each:
+#     col 6  = "Ref fecha"  (integer day group, same value = same day)
+#     col 7  = "Fecha"      (a datetime for calendar days, or a phase label
+#                            string such as "Octavos de final" / "3-4 & Final")
+#     col 10 = match name   (e.g. "México-Sudáfrica")
 
-def extract_daily_prediction_players(ws):
-    """Return (fecha, matches, [players]) from a DailyPrediction worksheet."""
-    rows   = list(ws.iter_rows(values_only=True))
-    day_raw = rows[0][7]
-    day_str = fmt_date(day_raw).split(" ")[0] if day_raw else None
-    matches = [str(v).strip().replace("\n", "") for v in rows[1] if v and str(v).strip()]
-    players = []
-    for row in rows[3:]:
-        name = row[5]
-        if not (name and isinstance(name, str)):
+DAILY_PLAYER_START = 18    # first player column
+DAILY_PLAYER_STRIDE = 3    # columns between players
+DAILY_HEADER_ROW = 4       # 0-based index of the player-name header row
+DAILY_FIRST_MATCH_ROW = 5
+DAILY_REF_COL = 6
+DAILY_DATE_COL = 7
+DAILY_MATCH_COL = 10
+
+
+def extract_daily_all(ws):
+    """Return an ordered list of day dicts from an ADMIN worksheet.
+
+    Each day dict: {ref, label, date, matches, predictions, clas}
+      - label   : human label ("11/06/2026" or a phase name)
+      - date    : ISO date string ("2026-06-11") or None for phase groups
+      - matches : [match name, ...]
+      - predictions : [{jugador, preds:[str|None, ...]}, ...]
+      - clas        : [{jugador, puntos_dia, pts:[int, ...]}, ...]
+    """
+    rows = list(ws.iter_rows(values_only=True))
+    header = rows[DAILY_HEADER_ROW]
+
+    player_cols = []
+    c = DAILY_PLAYER_START
+    while c < len(header):
+        name = header[c]
+        if isinstance(name, str) and name.strip():
+            player_cols.append((c, name.strip()))
+        c += DAILY_PLAYER_STRIDE
+
+    # Group match rows by their "Ref fecha" while preserving sheet order.
+    days = OrderedDict()
+    for row in rows[DAILY_FIRST_MATCH_ROW:]:
+        name = row[DAILY_MATCH_COL]
+        date = row[DAILY_DATE_COL]
+        ref = row[DAILY_REF_COL]
+        if not (isinstance(name, str) and name.strip() and date is not None and ref is not None):
             continue
-        preds = []
-        for v in row[7:7 + len(matches)]:
-            preds.append(None if (v is None or v == "-") else str(v).strip())
-        players.append({"jugador": name, "predicciones": preds})
-    return day_str, matches, players
-
-
-# ── DAILY CLAS ────────────────────────────────────────────────────────────────
-
-def extract_daily_clas_players(ws):
-    """Return (fecha, matches, [players]) from a DailyClas worksheet."""
-    rows    = list(ws.iter_rows(values_only=True))
-    day_raw = rows[0][8]
-    day_str = fmt_date(day_raw).split(" ")[0] if day_raw else None
-    matches = [str(v).strip().replace("\n", "") for v in rows[1] if v and str(v).strip()]
-    players = []
-    for row in rows[3:]:
-        name = row[5]
-        if not (name and isinstance(name, str)):
-            continue
-        total = row[6]
-        pts_partidos = []
-        for v in row[7:7 + len(matches)]:
-            if v is None or v == "-":
-                pts_partidos.append(None)
+        if ref not in days:
+            if hasattr(date, "strftime"):
+                label = date.strftime("%d/%m/%Y")
+                iso = date.strftime("%Y-%m-%d")
             else:
-                try:
-                    pts_partidos.append(int(v))
-                except (ValueError, TypeError):
-                    pts_partidos.append(0)
-        players.append({
-            "jugador":         name,
-            "puntos_dia":      to_num(total),
-            "puntos_partidos": pts_partidos,
+                label = str(date).strip()
+                iso = None
+            days[ref] = {"ref": ref, "label": label, "date": iso, "rows": []}
+        days[ref]["rows"].append((str(name).strip(), row))
+
+    result = []
+    for ref, d in days.items():
+        matches = [m[0] for m in d["rows"]]
+        predictions, clas = [], []
+        for col, pname in player_cols:
+            preds, pts = [], []
+            for _, row in d["rows"]:
+                pred = row[col] if col < len(row) else None
+                point = row[col + 1] if col + 1 < len(row) else None
+                preds.append(None if (pred is None or pred == "-") else str(pred).strip())
+                pts.append(to_num(point))
+            predictions.append({"jugador": pname, "preds": preds})
+            clas.append({"jugador": pname, "puntos_dia": sum(pts), "pts": pts})
+        result.append({
+            "ref": ref,
+            "label": d["label"],
+            "date": d["date"],
+            "matches": matches,
+            "predictions": predictions,
+            "clas": clas,
         })
-    return day_str, matches, players
+    return result
 
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
@@ -256,13 +300,13 @@ def main():
     vet     = timezone(timedelta(hours=-4))
     now_vet = datetime.now(vet)
 
-    # ── Merge CLAS, DailyPrediction and DailyClas from all files ─────────────
-    all_clas_players       = []
-    all_daily_pred_players = []
-    all_daily_clas_players = []
+    # ── Merge CLAS and the full per-day daily data from all files ────────────
+    all_clas_players = []
     title = "CLASIFICACIÓN MUNDIAL 2026"
-    fecha_pred = fecha_clas = None
-    partidos_pred = partidos_clas = []
+    fixture = []
+    # Per-day merge keyed by day "ref"; the primary file defines the day order,
+    # labels and match list, and every file appends its own players.
+    merged_days = OrderedDict()
 
     for path in excel_files:
         wb = openpyxl.load_workbook(path, data_only=True)
@@ -273,25 +317,31 @@ def main():
             title = t
         all_clas_players.extend(players)
 
-        fp, mp, pp = extract_daily_prediction_players(wb["DailyPrediction"])
-        if is_primary or not fecha_pred:
-            fecha_pred   = fp
-            partidos_pred = mp
-        all_daily_pred_players.extend(pp)
+        for day in extract_daily_all(wb["ADMIN"]):
+            ref = day["ref"]
+            if ref not in merged_days:
+                merged_days[ref] = {
+                    "ref": ref,
+                    "label": day["label"],
+                    "date": day["date"],
+                    "matches": day["matches"],
+                    "predictions": [],
+                    "clas": [],
+                }
+            merged_days[ref]["predictions"].extend(day["predictions"])
+            merged_days[ref]["clas"].extend(day["clas"])
 
-        fc, mc, pc = extract_daily_clas_players(wb["DailyClas"])
-        if is_primary or not fecha_clas:
-            fecha_clas   = fc
-            partidos_clas = mc
-        all_daily_clas_players.extend(pc)
-
-        # Fixture only from primary
+        # Fixture only from the primary file
         if is_primary:
             fixture = extract_fixture(wb["WORLDCUP"])
 
-    # ── Re-rank merged standings ──────────────────────────────────────────────
-    clas_players      = assign_positions(all_clas_players, "puntos")
-    daily_clas_players = assign_positions(all_daily_clas_players, "puntos_dia")
+    # ── Re-rank merged standings (overall + per day) ──────────────────────────
+    clas_players = assign_positions(all_clas_players, "puntos")
+
+    daily = []
+    for day in merged_days.values():
+        assign_positions(day["clas"], "puntos_dia")
+        daily.append(day)
 
     output = {
         "updated_at": now_vet.strftime("%d/%m/%Y %H:%M (hora Venezuela)"),
@@ -299,8 +349,7 @@ def main():
         "max_values":  MAX_VALUES,
         "columns":     COLUMNS,
         "fixture":     fixture,
-        "daily_pred":  {"fecha": fecha_pred, "partidos": partidos_pred, "jugadores": all_daily_pred_players},
-        "daily_clas":  {"fecha": fecha_clas, "partidos": partidos_clas, "jugadores": daily_clas_players},
+        "daily":       daily,
     }
 
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
