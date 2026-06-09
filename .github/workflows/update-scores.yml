@@ -1,0 +1,58 @@
+name: Update Scores
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scores.json"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install openpyxl
+
+      - name: Install LibreOffice Calc
+        run: sudo apt-get install -y --no-install-recommends libreoffice-calc
+
+      - name: Write scores into Excel
+        run: python scripts/update_scores.py
+
+      - name: Recalculate formulas via LibreOffice
+        run: |
+          for FILE in ADMINExcelMundial2026*.xlsx; do
+            echo "Recalculating $FILE …"
+            libreoffice --headless --norestore --convert-to xlsx --outdir /tmp "$FILE"
+            mv "/tmp/$FILE" "$FILE"
+            echo "Done."
+          done
+
+      - name: Convert Excel to JSON
+        run: python scripts/excel_to_json.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json ADMINExcelMundial2026*.xlsx
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: apply scores and regenerate dashboard [skip ci]"
+            git push
+          fi

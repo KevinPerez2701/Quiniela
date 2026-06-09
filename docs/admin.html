@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Quiniela Mundial 2026</title>
+  <style>
+    :root {
+      --navy:  #0d1b2a;
+      --navy2: #1b2e45;
+      --gold:  #f0a500;
+      --gold2: #ffc844;
+      --green: #1a6b3c;
+      --red:   #c0392b;
+      --white: #f5f7fa;
+      --muted: #8a9ab0;
+      --card:  #162032;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: var(--navy); color: var(--white); min-height: 100vh; }
+
+    header {
+      background: linear-gradient(135deg, var(--navy2), #0a1220);
+      padding: 18px 24px;
+      border-bottom: 2px solid var(--gold);
+      display: flex; align-items: center; gap: 16px;
+    }
+    header h1 { font-size: 1.2rem; color: var(--gold); }
+    header span { font-size: .8rem; color: var(--muted); }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px 16px; }
+
+    /* ── AUTH ── */
+    .auth-card {
+      background: var(--card);
+      border: 1px solid var(--navy2);
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 520px;
+      margin: 60px auto;
+    }
+    .auth-card h2 { color: var(--gold); margin-bottom: 8px; }
+    .auth-card p  { color: var(--muted); font-size: .88rem; margin-bottom: 20px; line-height: 1.5; }
+    .auth-card a  { color: var(--gold2); }
+
+    label { display: block; font-size: .82rem; color: var(--muted); margin-bottom: 5px; margin-top: 14px; }
+    input[type=password], input[type=number], select {
+      width: 100%;
+      background: var(--navy2);
+      border: 1px solid #2c3e55;
+      border-radius: 8px;
+      color: var(--white);
+      padding: 10px 14px;
+      font-size: .95rem;
+      outline: none;
+    }
+    input[type=number] { width: 62px; text-align: center; padding: 6px 4px; }
+    input[type=password]:focus, select:focus { border-color: var(--gold); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--navy);
+      border: none; border-radius: 8px;
+      padding: 10px 22px; font-size: .95rem; font-weight: 700;
+      cursor: pointer; transition: background .15s;
+    }
+    .btn:hover { background: var(--gold2); }
+    .btn:disabled { background: #555; color: #999; cursor: default; }
+    .btn-sm { padding: 6px 14px; font-size: .82rem; }
+    .btn-danger { background: var(--red); color: var(--white); }
+    .btn-danger:hover { background: #e74c3c; }
+
+    /* ── STATUS BAR ── */
+    #status-bar {
+      border-radius: 8px; padding: 10px 16px;
+      font-size: .88rem; margin: 12px 0;
+      display: none;
+    }
+    #status-bar.ok  { background: #1a3d2b; color: #4caf50; border: 1px solid #2e7d52; display: block; }
+    #status-bar.err { background: #3d1a1a; color: #f44336; border: 1px solid #7d2e2e; display: block; }
+    #status-bar.info { background: var(--navy2); color: var(--muted); border: 1px solid #2c3e55; display: block; }
+
+    /* ── TOOLBAR ── */
+    .toolbar {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .toolbar select { width: auto; min-width: 200px; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; background: var(--card); }
+    thead tr { background: var(--navy2); }
+    th { padding: 10px 12px; font-size: .78rem; color: var(--gold); text-align: left; white-space: nowrap; }
+    td { padding: 8px 10px; font-size: .88rem; border-bottom: 1px solid #1e2e42; vertical-align: middle; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #1b2e45; }
+
+    .match-num { color: var(--muted); font-size: .78rem; width: 38px; }
+    .team-name { font-weight: 600; }
+    .team-home { text-align: right; min-width: 130px; }
+    .team-away { text-align: left;  min-width: 130px; }
+    .score-sep { text-align: center; color: var(--muted); padding: 0 4px; font-weight: 700; }
+    .score-cell { text-align: center; }
+    .phase-badge {
+      display: inline-block; font-size: .7rem; padding: 2px 8px;
+      border-radius: 12px; background: var(--navy2); color: var(--gold);
+      white-space: nowrap;
+    }
+    .date-col { color: var(--muted); font-size: .78rem; white-space: nowrap; }
+    .changed td { background: #1a2f1f !important; }
+
+    .footer-bar {
+      position: sticky; bottom: 0;
+      background: var(--navy2);
+      border-top: 2px solid var(--gold);
+      padding: 14px 24px;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    #save-count { color: var(--muted); font-size: .88rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>⚙️ Admin – Quiniela Mundial 2026</h1>
+    <span>Edita los resultados de partidos · Los cambios se aplican automáticamente vía GitHub Actions</span>
+  </div>
+  <div style="margin-left:auto">
+    <a href="index.html" style="color:var(--muted);font-size:.82rem;text-decoration:none">← Volver al dashboard</a>
+  </div>
+</header>
+
+<!-- AUTH -->
+<div class="container" id="auth-section">
+  <div class="auth-card">
+    <h2>🔑 Conectar con GitHub</h2>
+    <p>
+      Para guardar cambios necesitas un
+      <a href="https://github.com/settings/tokens/new?scopes=repo&description=Quiniela+Admin" target="_blank">
+        Personal Access Token
+      </a>
+      de GitHub con permiso <strong>Contents: write</strong>
+      (o scope <code>repo</code> en tokens clásicos).<br><br>
+      El token solo se usa en tu navegador para llamar a la API de GitHub — nunca se envía a ningún servidor externo.
+    </p>
+    <label for="pat-input">GitHub Personal Access Token</label>
+    <input type="password" id="pat-input" placeholder="github_pat_…  o  ghp_…" autocomplete="off" />
+    <div style="margin-top:20px">
+      <button class="btn" onclick="connect()">Conectar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main-section" style="display:none">
+  <div class="container">
+    <div id="status-bar"></div>
+
+    <div class="toolbar">
+      <label style="margin:0;font-size:.85rem;color:var(--muted)">Filtrar fase:</label>
+      <select id="phase-filter" onchange="applyFilter()">
+        <option value="">Todas las fases</option>
+      </select>
+      <button class="btn btn-sm" onclick="clearScores()" style="margin-left:auto;background:var(--navy2);color:var(--muted);border:1px solid #2c3e55">
+        🔄 Recargar desde Excel
+      </button>
+    </div>
+
+    <div class="table-wrap">
+      <table id="fixture-table">
+        <thead>
+          <tr>
+            <th class="match-num">#</th>
+            <th>Fase</th>
+            <th class="date-col">Fecha</th>
+            <th style="text-align:right">Local</th>
+            <th colspan="3" style="text-align:center">Resultado</th>
+            <th>Visitante</th>
+          </tr>
+        </thead>
+        <tbody id="fixture-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <button class="btn" id="save-btn" onclick="saveScores()">💾 Guardar cambios</button>
+    <span id="save-count"></span>
+  </div>
+</div>
+
+<script>
+const OWNER  = 'KevinPerez2701';
+const REPO   = 'Quiniela';
+const BRANCH = 'main';
+
+let PAT = '';
+let fixtureData = [];   // from data.json
+let originalScores = {};  // from scores.json on GitHub
+let scoresSha = '';        // sha of scores.json on GitHub
+
+// ── AUTH ──────────────────────────────────────────────────────────────────────
+async function connect() {
+  PAT = document.getElementById('pat-input').value.trim();
+  if (!PAT) { showStatus('Ingresa tu GitHub PAT.', 'err'); return; }
+  showStatus('Conectando…', 'info');
+  try {
+    const me = await ghGet('/user');
+    showStatus(`Conectado como ${me.login} ✓`, 'ok');
+    await loadData();
+    document.getElementById('auth-section').style.display = 'none';
+    document.getElementById('main-section').style.display = '';
+  } catch (e) {
+    showStatus('Token inválido o sin permisos: ' + e.message, 'err');
+  }
+}
+
+// ── GITHUB API HELPERS ────────────────────────────────────────────────────────
+async function ghGet(path) {
+  const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}${path}`, {
+    headers: { Authorization: `token ${PAT}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+  return r.json();
+}
+
+async function ghGetUser(path) {
+  const r = await fetch(`https://api.github.com${path}`, {
+    headers: { Authorization: `token ${PAT}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+  return r.json();
+}
+
+async function ghPut(path, body) {
+  const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}${path}`, {
+    method: 'PUT',
+    headers: { Authorization: `token ${PAT}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) {
+    const err = await r.json().catch(() => ({}));
+    throw new Error(`${r.status}: ${err.message || r.statusText}`);
+  }
+  return r.json();
+}
+
+// ── LOAD DATA ─────────────────────────────────────────────────────────────────
+async function loadData() {
+  // Load fixture from data.json (public, no auth needed)
+  const dj = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' }).then(r => r.json());
+  fixtureData = (dj.fixture || []).filter(m => m.num);
+
+  // Populate phase filter
+  const phases = [...new Set(fixtureData.map(m => m.phase_label))];
+  const sel = document.getElementById('phase-filter');
+  sel.innerHTML = '<option value="">Todas las fases</option>';
+  phases.forEach(p => {
+    const o = document.createElement('option');
+    o.value = p; o.textContent = p;
+    sel.appendChild(o);
+  });
+
+  // Load scores.json from GitHub (to get current sha)
+  try {
+    const sf = await ghGet('/contents/scores.json?ref=' + BRANCH);
+    scoresSha = sf.sha;
+    originalScores = JSON.parse(atob(sf.content.replace(/\s/g, '')));
+  } catch (e) {
+    originalScores = {};
+    scoresSha = '';
+  }
+
+  renderTable(fixtureData);
+  updateSaveCount();
+}
+
+// ── RENDER TABLE ──────────────────────────────────────────────────────────────
+function renderTable(matches) {
+  const tbody = document.getElementById('fixture-body');
+  tbody.innerHTML = '';
+
+  matches.forEach(m => {
+    const key = String(m.num);
+    const saved = originalScores[key] || {};
+    // Prefer the originally-saved score; fall back to what's in Excel (data.json)
+    const gh = saved.goal_home !== undefined ? saved.goal_home : m.goal_home;
+    const ga = saved.goal_away !== undefined ? saved.goal_away : m.goal_away;
+
+    const dateStr = m.date ? m.date.split(' ')[0] : '—';
+
+    const tr = document.createElement('tr');
+    tr.dataset.num = key;
+    tr.innerHTML = `
+      <td class="match-num">${m.num}</td>
+      <td><span class="phase-badge">${h(m.phase_label)}</span></td>
+      <td class="date-col">${h(dateStr)}</td>
+      <td class="team-home team-name">${h(m.home)}</td>
+      <td class="score-cell">
+        <input type="number" min="0" max="99" value="${gh !== null && gh !== undefined ? gh : ''}"
+               oninput="markChanged(this)" data-side="h" data-num="${key}" />
+      </td>
+      <td class="score-sep">–</td>
+      <td class="score-cell">
+        <input type="number" min="0" max="99" value="${ga !== null && ga !== undefined ? ga : ''}"
+               oninput="markChanged(this)" data-side="a" data-num="${key}" />
+      </td>
+      <td class="team-away team-name">${h(m.away)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function applyFilter() {
+  const phase = document.getElementById('phase-filter').value;
+  const filtered = phase ? fixtureData.filter(m => m.phase_label === phase) : fixtureData;
+  renderTable(filtered);
+  updateSaveCount();
+}
+
+function markChanged(input) {
+  input.closest('tr').classList.add('changed');
+  updateSaveCount();
+}
+
+function updateSaveCount() {
+  const changed = document.querySelectorAll('#fixture-body tr.changed').length;
+  document.getElementById('save-count').textContent =
+    changed ? `${changed} fila(s) modificada(s) sin guardar` : '';
+}
+
+// ── SAVE ─────────────────────────────────────────────────────────────────────
+async function saveScores() {
+  const btn = document.getElementById('save-btn');
+  btn.disabled = true;
+  showStatus('Guardando…', 'info');
+
+  // Build complete scores object from ALL visible inputs + original scores
+  const scores = { ...originalScores };
+
+  document.querySelectorAll('#fixture-body input[type=number]').forEach(inp => {
+    const key = inp.dataset.num;
+    const side = inp.dataset.side;
+    if (!scores[key]) scores[key] = { goal_home: null, goal_away: null };
+    const v = inp.value.trim();
+    scores[key][side === 'h' ? 'goal_home' : 'goal_away'] = v === '' ? null : parseInt(v, 10);
+  });
+
+  // Remove entries where both goals are null
+  Object.keys(scores).forEach(k => {
+    if (scores[k].goal_home === null && scores[k].goal_away === null) delete scores[k];
+  });
+
+  try {
+    const body = {
+      message: 'chore: update match scores via admin panel',
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(scores, null, 2)))),
+      branch: BRANCH,
+    };
+    if (scoresSha) body.sha = scoresSha;
+
+    const result = await ghPut('/contents/scores.json', body);
+    scoresSha = result.content.sha;
+    originalScores = scores;
+
+    document.querySelectorAll('#fixture-body tr.changed').forEach(tr => tr.classList.remove('changed'));
+    updateSaveCount();
+    showStatus('✅ scores.json guardado. GitHub Actions está recalculando los valores y actualizando la página…', 'ok');
+  } catch (e) {
+    showStatus('Error al guardar: ' + e.message, 'err');
+  }
+
+  btn.disabled = false;
+}
+
+async function clearScores() {
+  showStatus('Recargando datos desde Excel…', 'info');
+  await loadData();
+  showStatus('Datos recargados.', 'ok');
+}
+
+// ── UTILS ─────────────────────────────────────────────────────────────────────
+function h(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showStatus(msg, type) {
+  const el = document.getElementById('status-bar');
+  el.textContent = msg;
+  el.className = type;
+}
+
+// Allow pressing Enter in the PAT field
+document.getElementById('pat-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') connect();
+});
+</script>
+</body>
+</html>
