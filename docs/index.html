@@ -157,8 +157,23 @@
       background: var(--navy);
       color: var(--white);
       font-size: .88rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .daily-header strong { color: var(--gold); }
+    .day-select {
+      font-size: .9rem;
+      padding: 7px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--gold);
+      background: var(--white);
+      color: var(--navy);
+      font-weight: 600;
+      cursor: pointer;
+      max-width: 100%;
+    }
 
     /* Scrollable table wrapper with sticky first columns */
     .daily-scroll-wrap {
@@ -418,18 +433,43 @@ function buildMatchTable(matches) {
   return wrap;
 }
 
-// ── DAILY PREDICTION ─────────────────────────────────────────────────────────
-function renderDailyPred(dp) {
+// ── DAILY (all days, with a day selector) ─────────────────────────────────────
+let DAILY_DAYS = [];          // full list of day objects from data.json
+let dailyPredIdx = 0;         // selected day index for the prediction view
+let dailyClasIdx = 0;         // selected day index for the clas view
+
+function daySelector(id, selectedIdx, onChange) {
+  const sel = document.createElement('select');
+  sel.id = id;
+  sel.className = 'day-select';
+  DAILY_DAYS.forEach((day, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `${day.label} · ${day.matches.length} partido(s)`;
+    if (i === selectedIdx) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener('change', e => onChange(parseInt(e.target.value, 10)));
+  return sel;
+}
+
+function renderDailyPred() {
   const el = document.getElementById('daily-pred-content');
-  const fecha = dp.fecha || '—';
-  const partidos = dp.partidos || [];
-  const jugadores = dp.jugadores || [];
+  el.innerHTML = '';
+  if (!DAILY_DAYS.length) {
+    el.innerHTML = '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
+    return;
+  }
+  const day = DAILY_DAYS[dailyPredIdx] || DAILY_DAYS[0];
 
-  el.innerHTML = `<div class="daily-header">
-    Predicciones del día: <strong>${h(fecha)}</strong>
-    &nbsp;·&nbsp; ${partidos.length} partido(s)
-  </div>`;
+  const header = document.createElement('div');
+  header.className = 'daily-header';
+  header.innerHTML = `Selecciona día:&nbsp;`;
+  header.appendChild(daySelector('sel-pred', dailyPredIdx, i => { dailyPredIdx = i; renderDailyPred(); }));
+  el.appendChild(header);
 
+  const partidos = day.matches || [];
+  const jugadores = day.predictions || [];
   if (!partidos.length) {
     el.innerHTML += '<p style="padding:20px;color:var(--muted)">Sin partidos para este día.</p>';
     return;
@@ -446,7 +486,7 @@ function renderDailyPred(dp) {
   </tr></thead>`;
   const tbody = document.createElement('tbody');
   jugadores.forEach(j => {
-    const cells = j.predicciones.map(v =>
+    const cells = (j.preds || []).map(v =>
       v === null
         ? `<td class="pred-null">—</td>`
         : `<td class="pred-cell">${h(v)}</td>`
@@ -462,18 +502,23 @@ function renderDailyPred(dp) {
   el.appendChild(wrap);
 }
 
-// ── DAILY CLAS ────────────────────────────────────────────────────────────────
-function renderDailyClas(dc) {
+function renderDailyClas() {
   const el = document.getElementById('daily-clas-content');
-  const fecha = dc.fecha || '—';
-  const partidos = dc.partidos || [];
-  const jugadores = dc.jugadores || [];
+  el.innerHTML = '';
+  if (!DAILY_DAYS.length) {
+    el.innerHTML = '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
+    return;
+  }
+  const day = DAILY_DAYS[dailyClasIdx] || DAILY_DAYS[0];
 
-  el.innerHTML = `<div class="daily-header">
-    Clasificación del día: <strong>${h(fecha)}</strong>
-    &nbsp;·&nbsp; ${partidos.length} partido(s)
-  </div>`;
+  const header = document.createElement('div');
+  header.className = 'daily-header';
+  header.innerHTML = `Selecciona día:&nbsp;`;
+  header.appendChild(daySelector('sel-clas', dailyClasIdx, i => { dailyClasIdx = i; renderDailyClas(); }));
+  el.appendChild(header);
 
+  const partidos = day.matches || [];
+  const jugadores = day.clas || [];
   if (!jugadores.length) {
     el.innerHTML += '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
     return;
@@ -492,7 +537,7 @@ function renderDailyClas(dc) {
   </tr></thead>`;
   const tbody = document.createElement('tbody');
   jugadores.forEach(j => {
-    const cells = (j.puntos_partidos || []).map(v =>
+    const cells = (j.pts || []).map(v =>
       v === null ? `<td class="pred-null">—</td>` : `<td>${v}</td>`
     ).join('');
     const tr = document.createElement('tr');
@@ -512,7 +557,7 @@ function renderDailyClas(dc) {
 // ── Load & render ─────────────────────────────────────────────────────────────
 async function load() {
   try {
-    const res = await fetch('data.json');
+    const res = await fetch('data.json?v=' + Date.now(), { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
 
@@ -520,10 +565,16 @@ async function load() {
     document.getElementById('updated-at').textContent = 'Actualizado: ' + (data.updated_at || '');
     document.getElementById('loading').style.display = 'none';
 
+    DAILY_DAYS = data.daily || [];
+    // Default the selectors to today's day if it exists, else the first day.
+    const todayIso = new Date().toISOString().slice(0, 10);
+    const todayIdx = DAILY_DAYS.findIndex(d => d.date === todayIso);
+    dailyPredIdx = dailyClasIdx = (todayIdx >= 0 ? todayIdx : 0);
+
     renderClas(data);
     renderFixture(data.fixture || []);
-    renderDailyPred(data.daily_pred || {});
-    renderDailyClas(data.daily_clas || {});
+    renderDailyPred();
+    renderDailyClas();
 
     const n = (data.clas?.players || []).length;
     document.getElementById('footer').textContent =
