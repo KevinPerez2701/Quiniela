@@ -28,7 +28,9 @@ jobs:
         run: pip install openpyxl
 
       - name: Install LibreOffice Calc
-        run: sudo apt-get install -y --no-install-recommends libreoffice-calc
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libreoffice-calc
 
       - name: Write scores into Excel
         run: python scripts/update_scores.py
