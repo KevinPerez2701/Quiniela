@@ -147,7 +147,8 @@
     </p>
     <label for="pat-input">GitHub Personal Access Token</label>
     <input type="password" id="pat-input" placeholder="github_pat_…  o  ghp_…" autocomplete="off" />
-    <div style="margin-top:20px">
+    <div id="auth-status" style="margin-top:12px;font-size:.88rem;display:none;padding:10px 14px;border-radius:8px;"></div>
+    <div style="margin-top:16px">
       <button class="btn" onclick="connect()">Conectar</button>
     </div>
   </div>
@@ -202,18 +203,31 @@ let originalScores = {};  // from scores.json on GitHub
 let scoresSha = '';        // sha of scores.json on GitHub
 
 // ── AUTH ──────────────────────────────────────────────────────────────────────
+function showAuthStatus(msg, ok) {
+  const el = document.getElementById('auth-status');
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.style.background  = ok ? '#1a3d2b' : '#3d1a1a';
+  el.style.color       = ok ? '#4caf50' : '#f44336';
+  el.style.border      = ok ? '1px solid #2e7d52' : '1px solid #7d2e2e';
+}
+
 async function connect() {
   PAT = document.getElementById('pat-input').value.trim();
-  if (!PAT) { showStatus('Ingresa tu GitHub PAT.', 'err'); return; }
-  showStatus('Conectando…', 'info');
+  if (!PAT) { showAuthStatus('Ingresa tu GitHub PAT.', false); return; }
+  showAuthStatus('Conectando…', true);
   try {
-    const me = await ghGet('/user');
-    showStatus(`Conectado como ${me.login} ✓`, 'ok');
+    const r = await fetch('https://api.github.com/user', {
+      headers: { Authorization: `token ${PAT}`, Accept: 'application/vnd.github.v3+json' }
+    });
+    if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+    const me = await r.json();
+    showAuthStatus(`Conectado como ${me.login} ✓`, true);
     await loadData();
     document.getElementById('auth-section').style.display = 'none';
     document.getElementById('main-section').style.display = '';
   } catch (e) {
-    showStatus('Token inválido o sin permisos: ' + e.message, 'err');
+    showAuthStatus('Token inválido o sin permisos: ' + e.message, false);
   }
 }
 
