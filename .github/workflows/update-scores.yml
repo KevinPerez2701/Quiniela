@@ -32,20 +32,28 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends libreoffice-calc
 
-      - name: Write scores into Excel
+      # Surgically patches only the goal cells' XML inside the xlsx and sets
+      # fullCalcOnLoad, so the committed file stays pristine — identical to a
+      # human typing the scores in Excel and saving.
+      - name: Write scores into Excel (surgical XML patch)
         run: python scripts/update_scores.py
 
-      - name: Recalculate formulas via LibreOffice
+      # Recalculate formulas on TEMPORARY COPIES only. The recalculated files
+      # are used to extract fresh values and are never committed, so the repo
+      # Excel is never touched by LibreOffice.
+      - name: Recalculate formulas on temp copies
         run: |
-          for FILE in ADMINExcelMundial2026*.xlsx; do
-            echo "Recalculating $FILE …"
-            libreoffice --headless --norestore --convert-to xlsx --outdir /tmp "$FILE"
-            mv "/tmp/$FILE" "$FILE"
-            echo "Done."
+          mkdir -p /tmp/recalc
+          cp ADMINExcelMundial2026*.xlsx /tmp/recalc/
+          for FILE in /tmp/recalc/*.xlsx; do
+            echo "Recalculating $(basename "$FILE") …"
+            libreoffice --headless --norestore --convert-to xlsx --outdir /tmp/recalc/out "$FILE"
           done
 
-      - name: Convert Excel to JSON
+      - name: Convert Excel to JSON (from recalculated copies)
         run: python scripts/excel_to_json.py
+        env:
+          EXCEL_DIR: /tmp/recalc/out
 
       - name: Commit updated data
         run: |
