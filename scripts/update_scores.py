@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Writes the scores from scores.json into the WORLDCUP sheet of the primary
-Excel file by surgically patching the sheet XML inside the xlsx (a zip).
+Writes the scores from scores.json into the WORLDCUP sheet of every
+ADMINExcelMundial2026*.xlsx file by surgically patching the sheet XML
+inside the xlsx (a zip). All files get the scores because each one
+computes its own players' points from its own WORLDCUP sheet.
 
 Unlike openpyxl's save (which rewrites the whole workbook and corrupts
 charts/dropdowns/formula caches), this only edits the goal cells' XML and
@@ -116,23 +118,28 @@ def main():
     excel_files = sorted(glob.glob(pattern))
     if not excel_files:
         raise FileNotFoundError(f"No Excel files found matching {pattern}")
-    primary = excel_files[0]
-    print(f"Patching {os.path.basename(primary)} …")
 
-    with zipfile.ZipFile(primary) as z:
-        sheet_path = find_worldcup_sheet_path(z)
-        sheet_xml = z.read(sheet_path).decode("utf-8")
-        wb_xml = z.read("xl/workbook.xml").decode("utf-8")
+    # Every file carries its own WORLDCUP sheet and computes its own players'
+    # points from it, so the scores must be written into ALL of them.
+    for path in excel_files:
+        print(f"Patching {os.path.basename(path)} …")
 
-    sheet_xml, updated = patch_sheet_xml(sheet_xml, scores)
-    wb_xml = set_full_calc_on_load(wb_xml)
+        with zipfile.ZipFile(path) as z:
+            sheet_path = find_worldcup_sheet_path(z)
+            sheet_xml = z.read(sheet_path).decode("utf-8")
+            wb_xml = z.read("xl/workbook.xml").decode("utf-8")
 
-    rewrite_zip(primary, {
-        sheet_path: sheet_xml.encode("utf-8"),
-        "xl/workbook.xml": wb_xml.encode("utf-8"),
-    })
-    print(f"Updated {updated} match(es); fullCalcOnLoad set — formulas will "
-          f"recalculate when the file is opened.")
+        sheet_xml, updated = patch_sheet_xml(sheet_xml, scores)
+        wb_xml = set_full_calc_on_load(wb_xml)
+
+        rewrite_zip(path, {
+            sheet_path: sheet_xml.encode("utf-8"),
+            "xl/workbook.xml": wb_xml.encode("utf-8"),
+        })
+        print(f"  Updated {updated} match(es); fullCalcOnLoad set.")
+
+    print(f"Done — {len(excel_files)} file(s) patched; formulas will "
+          f"recalculate when each file is opened.")
 
 
 if __name__ == "__main__":
