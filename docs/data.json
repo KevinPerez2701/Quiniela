@@ -1,5 +1,5 @@
 {
-  "updated_at": "10/06/2026 13:58 (hora Venezuela)",
+  "updated_at": "10/06/2026 14:06 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 NombreGrupo",
     "players": [
@@ -324,7 +324,7 @@
         "pos": 1
       },
       {
-        "jugador": "Pegar Valores Nombre J17",
+        "jugador": "Andres Fermin",
         "puntos": 0,
         "f_grupos": 0,
         "pos_grupos": 0,
@@ -464,7 +464,7 @@
         "pos": 1
       },
       {
-        "jugador": "Pegar Valores Nombre J24",
+        "jugador": "Juan Dorante",
         "puntos": 0,
         "f_grupos": 0,
         "pos_grupos": 0,
@@ -1952,9 +1952,9 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            "Pegar Valores (J1)"
+            "1|1-0"
           ]
         },
         {
@@ -1994,9 +1994,9 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            "Pegar Valores (J1)"
+            "1|1-0"
           ]
         },
         {
@@ -2136,7 +2136,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0
@@ -2192,7 +2192,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0
@@ -2331,10 +2331,10 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null
+            "1|2-1",
+            "1|2-0"
           ]
         },
         {
@@ -2380,10 +2380,10 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null
+            "X|1-1",
+            "X|1-1"
           ]
         },
         {
@@ -2540,7 +2540,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -2603,7 +2603,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -2744,10 +2744,10 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null
+            "X|1-1",
+            "1|1-0"
           ]
         },
         {
@@ -2793,10 +2793,10 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null
+            "2|0-2",
+            "1|2-1"
           ]
         },
         {
@@ -2953,7 +2953,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -3016,7 +3016,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -3191,12 +3191,12 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null
+            "1|2-1",
+            "2|0-1",
+            "1|2-1",
+            "1|5-0"
           ]
         },
         {
@@ -3254,12 +3254,12 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null
+            "1|2-1",
+            "X|1-1",
+            "2|1-2",
+            "1|4-0"
           ]
         },
         {
@@ -3450,7 +3450,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -3527,7 +3527,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -3723,13 +3723,13 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null
+            "X|2-2",
+            "1|2-1",
+            "1|2-0",
+            "X|1-1",
+            "1|3-0"
           ]
         },
         {
@@ -3793,13 +3793,13 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null
+            "2|0-2",
+            "1|2-1",
+            "1|2-1",
+            "1|2-0",
+            "1|3-0"
           ]
         },
         {
@@ -4007,7 +4007,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4091,7 +4091,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4255,11 +4255,11 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null
+            "1|2-0",
+            "X|1-1",
+            "1|3-1"
           ]
         },
         {
@@ -4311,11 +4311,11 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null
+            "1|2-0",
+            "X|1-1",
+            "1|1-0"
           ]
         },
         {
@@ -4489,7 +4489,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4559,7 +4559,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4736,12 +4736,12 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null
+            "2|0-2",
+            "1|2-0",
+            "1|1-0",
+            "1|2-0"
           ]
         },
         {
@@ -4799,12 +4799,12 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null
+            "2|1-3",
+            "1|3-0",
+            "1|2-0",
+            "1|3-0"
           ]
         },
         {
@@ -4995,7 +4995,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5072,7 +5072,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5268,13 +5268,13 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            "Pegar Valores (J2)",
-            null
+            "2|0-1",
+            "X|1-1",
+            "1|2-0",
+            "X|0-0",
+            "1|3-0"
           ]
         },
         {
@@ -5338,13 +5338,13 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            "Pegar Valores (J2)",
-            null
+            "2|1-3",
+            "1|2-1",
+            "X|1-1",
+            "1|1-0",
+            "1|2-0"
           ]
         },
         {
@@ -5552,7 +5552,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5636,7 +5636,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5800,11 +5800,11 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null
+            "2|1-2",
+            "1|2-1",
+            "2|0-1"
           ]
         },
         {
@@ -5856,11 +5856,11 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null
+            "1|2-1",
+            "1|1-0",
+            "1|2-1"
           ]
         },
         {
@@ -6034,7 +6034,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6104,7 +6104,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6281,12 +6281,12 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null
+            "2|0-2",
+            "1|3-0",
+            "X|1-1",
+            "1|2-0"
           ]
         },
         {
@@ -6344,12 +6344,12 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null
+            "2|0-1",
+            "1|3-0",
+            "X|0-0",
+            "1|2-1"
           ]
         },
         {
@@ -6540,7 +6540,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6617,7 +6617,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6813,13 +6813,13 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null
+            "1|2-0",
+            "1|3-0",
+            "2|0-2",
+            "1|3-1",
+            "1|3-0"
           ]
         },
         {
@@ -6883,13 +6883,13 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null
+            "1|2-0",
+            "1|3-1",
+            "2|0-2",
+            "1|2-0",
+            "1|3-0"
           ]
         },
         {
@@ -7097,7 +7097,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -7181,7 +7181,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -7345,11 +7345,11 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null
+            "2|0-2",
+            "1|1-0",
+            "1|2-1"
           ]
         },
         {
@@ -7401,11 +7401,11 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null
+            "X|0-0",
+            "1|3-1",
+            "1|2-1"
           ]
         },
         {
@@ -7579,7 +7579,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -7649,7 +7649,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -7826,12 +7826,12 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null
+            "1|4-0",
+            "X|1-1",
+            "X|0-0",
+            "1|3-0"
           ]
         },
         {
@@ -7889,12 +7889,12 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null
+            "1|3-0",
+            "X|2-2",
+            "2|0-1",
+            "1|3-0"
           ]
         },
         {
@@ -8085,7 +8085,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -8162,7 +8162,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -8426,17 +8426,17 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "1|2-1",
+            "1|2-1",
+            "2|0-3",
+            "X|1-1",
+            "2|0-1",
+            "Canadá",
+            "Suiza",
+            "Catar",
+            "Bosnia y Herzegovina"
           ]
         },
         {
@@ -8524,17 +8524,17 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "1|2-0",
+            "1|2-0",
+            "2|1-2",
+            "1|2-1",
+            "1|2-0",
+            "Suiza",
+            "Canadá",
+            "Bosnia y Herzegovina",
+            "Catar"
           ]
         },
         {
@@ -8810,7 +8810,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -8922,7 +8922,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -9247,20 +9247,20 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            "Pegar Valores (J3)",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "X|1-1",
+            "2|0-1",
+            "2|1-2",
+            "1|3-0",
+            "Corea del Sur",
+            "México",
+            "República Checa",
+            "Sudáfrica",
+            "Brasil",
+            "Marruecos",
+            "Escocia",
+            "Haití"
           ]
         },
         {
@@ -9366,20 +9366,20 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            "Pegar Valores (J3)",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "2|0-2",
+            "X|1-1",
+            "2|1-3",
+            "1|2-0",
+            "México",
+            "República Checa",
+            "Corea del Sur",
+            "Sudáfrica",
+            "Brasil",
+            "Marruecos",
+            "Escocia",
+            "Haití"
           ]
         },
         {
@@ -9706,7 +9706,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -9839,7 +9839,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -10374,32 +10374,32 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "2|0-2",
+            "X|0-0",
+            "2|0-2",
+            "2|2-3",
+            "1|2-1",
+            "2|0-2",
+            "2|1-3",
+            "1|2-0",
+            "Australia",
+            "Estados Unidos",
+            "Paraguay",
+            "Turquía",
+            "Alemania",
+            "Ecuador",
+            "Costa de Marfil",
+            "Curazao",
+            "Países Bajos",
+            "Japón",
+            "Suecia",
+            "Túnez",
+            "Francia",
+            "Senegal",
+            "Noruega",
+            "Irak"
           ]
         },
         {
@@ -10577,32 +10577,32 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "X|2-2",
+            "2|0-2",
+            "2|1-2",
+            "2|1-2",
+            "X|2-2",
+            "2|1-3",
+            "X|1-1",
+            "1|2-0",
+            "Estados Unidos",
+            "Turquía",
+            "Australia",
+            "Paraguay",
+            "Alemania",
+            "Ecuador",
+            "Costa de Marfil",
+            "Curazao",
+            "Países Bajos",
+            "Japón",
+            "Suecia",
+            "Túnez",
+            "Francia",
+            "Noruega",
+            "Senegal",
+            "Irak"
           ]
         },
         {
@@ -11133,7 +11133,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -11350,7 +11350,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -11705,20 +11705,20 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "1|1-0",
+            "2|0-2",
+            "X|0-0",
+            "2|1-2",
+            "Bélgica",
+            "Egipto",
+            "Irán",
+            "Nueva Zelanda",
+            "España",
+            "Uruguay",
+            "Arabia Saudita",
+            "Cabo Verde"
           ]
         },
         {
@@ -11824,20 +11824,20 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "X|1-1",
+            "2|0-2",
+            "2|1-2",
+            "2|0-2",
+            "Bélgica",
+            "Irán",
+            "Egipto",
+            "Nueva Zelanda",
+            "España",
+            "Uruguay",
+            "Arabia Saudita",
+            "Cabo Verde"
           ]
         },
         {
@@ -12164,7 +12164,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -12297,7 +12297,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -12730,26 +12730,26 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "2|0-1",
+            "2|0-3",
+            "2|1-2",
+            "1|1-0",
+            "2|0-4",
+            "1|1-0",
+            "Argentina",
+            "Austria",
+            "Argelia",
+            "Jordania",
+            "Portugal",
+            "Colombia",
+            "RD Congo",
+            "Uzbekistán",
+            "Inglaterra",
+            "Croacia",
+            "Ghana",
+            "Panamá"
           ]
         },
         {
@@ -12891,26 +12891,26 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "2|1-2",
+            "2|0-3",
+            "2|2-3",
+            "X|0-0",
+            "2|1-2",
+            "1|1-0",
+            "Argentina",
+            "Austria",
+            "Argelia",
+            "Jordania",
+            "Portugal",
+            "Colombia",
+            "Uzbekistán",
+            "RD Congo",
+            "Inglaterra",
+            "Croacia",
+            "Panamá",
+            "Ghana"
           ]
         },
         {
@@ -13339,7 +13339,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -13514,7 +13514,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -14197,40 +14197,40 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "México",
+            "Brasil",
+            "Alemania",
+            "Países Bajos",
+            "Ecuador",
+            "Francia",
+            "Corea del Sur",
+            "Inglaterra",
+            "Bélgica",
+            "Australia",
+            "España",
+            "Colombia",
+            "Canadá",
+            "Estados Unidos",
+            "Argentina",
+            "Portugal",
+            "Suiza",
+            "Japón",
+            "Escocia",
+            "Marruecos",
+            "Senegal",
+            "Suecia",
+            "Costa de Marfil",
+            "RD Congo",
+            "Noruega",
+            "Catar",
+            "Austria",
+            "Croacia",
+            "Irán",
+            "Egipto",
+            "Uruguay",
+            "Ghana"
           ]
         },
         {
@@ -14456,40 +14456,40 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "República Checa",
+            "Brasil",
+            "Alemania",
+            "Países Bajos",
+            "Ecuador",
+            "Francia",
+            "México",
+            "Inglaterra",
+            "Bélgica",
+            "Estados Unidos",
+            "España",
+            "Colombia",
+            "Suiza",
+            "Turquía",
+            "Argentina",
+            "Portugal",
+            "Canadá",
+            "Japón",
+            "Australia",
+            "Marruecos",
+            "Noruega",
+            "Suecia",
+            "Arabia Saudita",
+            "Senegal",
+            "Corea del Sur",
+            "Bosnia y Herzegovina",
+            "Austria",
+            "Croacia",
+            "Argelia",
+            "Irán",
+            "Uruguay",
+            "Costa de Marfil"
           ]
         },
         {
@@ -15156,7 +15156,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -15429,7 +15429,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -16140,40 +16140,40 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            "Pegar Valores Dieciseisavos",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "México-Suiza·2|0-1",
+            "Brasil-Japón·1|2-1",
+            "Alemania-Escocia·1|2-0",
+            "Países Bajos-Marruecos·1|2-1",
+            "Ecuador-Senegal·2|1-2",
+            "Francia-Suecia·1|2-1",
+            "Corea del Sur-Costa de Marfil·1|1-0",
+            "Inglaterra-RD Congo·1|2-0",
+            "Bélgica-Noruega·2|0-1",
+            "Australia-Catar·1|1-0",
+            "España-Austria·1|2-0",
+            "Colombia-Croacia·2|0-1",
+            "Canadá-Irán·1|1-0",
+            "Estados Unidos-Egipto·2|0-1",
+            "Argentina-Uruguay·1|2-0",
+            "Portugal-Ghana·1|2-0",
+            "Suiza",
+            "Alemania",
+            "Brasil",
+            "Corea del Sur",
+            "Croacia",
+            "Australia",
+            "Argentina",
+            "Canadá",
+            "Países Bajos",
+            "Francia",
+            "Senegal",
+            "Inglaterra",
+            "España",
+            "Noruega",
+            "Egipto",
+            "Portugal"
           ]
         },
         {
@@ -16399,40 +16399,40 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            "Pegar Valores Dieciseisavos",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "República Checa-Canadá·1|2-1",
+            "Brasil-Japón·1|2-0",
+            "Alemania-Australia·1|3-1",
+            "Países Bajos-Marruecos·1|3-1",
+            "Ecuador-Noruega·2|1-2",
+            "Francia-Suecia·1|2-0",
+            "México-Arabia Saudita·1|2-0",
+            "Inglaterra-Senegal·1|2-0",
+            "Bélgica-Corea del Sur·1|2-0",
+            "Estados Unidos-Bosnia y Herzegovina·1|3-2",
+            "España-Austria·1|3-1",
+            "Colombia-Croacia·1|2-1",
+            "Suiza-Argelia·1|3-1",
+            "Turquía-Irán·1|1-0",
+            "Argentina-Uruguay·1|2-1",
+            "Portugal-Costa de Marfil·1|2-0",
+            "República Checa",
+            "Alemania",
+            "Brasil",
+            "México",
+            "Colombia",
+            "Estados Unidos",
+            "Argentina",
+            "Suiza",
+            "Países Bajos",
+            "Francia",
+            "Noruega",
+            "Inglaterra",
+            "España",
+            "Bélgica",
+            "Turquía",
+            "Portugal"
           ]
         },
         {
@@ -17099,7 +17099,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -17372,7 +17372,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -17811,24 +17811,24 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            "Pegar Valores Octavos",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "Suiza-Países Bajos·2|0-2",
+            "Alemania-Francia·2|1-2",
+            "Brasil-Senegal·1|1-0",
+            "Corea del Sur-Inglaterra·2|0-2",
+            "Croacia-España·2|1-2",
+            "Australia-Noruega·2|0-1",
+            "Argentina-Egipto·1|2-1",
+            "Canadá-Portugal·2|0-2",
+            "Francia",
+            "España",
+            "Brasil",
+            "Argentina",
+            "Países Bajos",
+            "Noruega",
+            "Inglaterra",
+            "Portugal"
           ]
         },
         {
@@ -17958,24 +17958,24 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            "Pegar Valores Octavos",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "República Checa-Países Bajos·2|1-3",
+            "Alemania-Francia·2|1-3",
+            "Brasil-Noruega·1|3-0",
+            "México-Inglaterra·2|1-3",
+            "Colombia-España·2|1-3",
+            "Estados Unidos-Bélgica·1|2-0",
+            "Argentina-Turquía·1|3-0",
+            "Suiza-Portugal·2|1-3",
+            "Francia",
+            "España",
+            "Brasil",
+            "Argentina",
+            "Países Bajos",
+            "Estados Unidos",
+            "Inglaterra",
+            "Portugal"
           ]
         },
         {
@@ -18370,7 +18370,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -18531,7 +18531,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -18802,16 +18802,16 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            "Pegar valores Cuartos",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "Francia-Países Bajos·1|2-1",
+            "España-Noruega·1|2-1",
+            "Brasil-Inglaterra·2|0-1",
+            "Argentina-Portugal·2|1-2",
+            "Francia",
+            "Inglaterra",
+            "España",
+            "Portugal"
           ]
         },
         {
@@ -18893,16 +18893,16 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            "Pegar valores Cuartos",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+            "Francia-Países Bajos·2|1-3",
+            "España-Estados Unidos·1|3-1",
+            "Brasil-Inglaterra·1|3-2",
+            "Argentina-Portugal·1|3-2",
+            "Países Bajos",
+            "Brasil",
+            "España",
+            "Argentina"
           ]
         },
         {
@@ -19161,7 +19161,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -19266,7 +19266,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -19487,14 +19487,14 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            "Pegar valores Semifinales",
-            null,
-            null,
-            null,
-            null,
-            null
+            "Francia-España·1|2-1",
+            "Inglaterra-Portugal·2|1-2",
+            "España",
+            "Inglaterra",
+            "Francia",
+            "Portugal"
           ]
         },
         {
@@ -19564,14 +19564,14 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            "Pegar valores Semifinales",
-            null,
-            null,
-            null,
-            null,
-            null
+            "Países Bajos-España·1|3-1",
+            "Brasil-Argentina·2|2-3",
+            "España",
+            "Brasil",
+            "Países Bajos",
+            "Argentina"
           ]
         },
         {
@@ -19796,7 +19796,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -19887,7 +19887,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -20189,19 +20189,19 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "preds": [
-            "Pegar valores 3º-4º puesto y Final",
-            null,
-            null,
-            null,
-            null,
-            "Pegar Valores Cuadro de Honor",
-            null,
-            null,
-            null,
-            null,
-            null
+            "España-Inglaterra·1|2-0",
+            "Francia-Portugal·1|2-0",
+            "Francia",
+            "Portugal",
+            "España",
+            "Kylian Mbappé",
+            "Lionel Messi",
+            "Harry Kane",
+            "Ousmane Dembélé",
+            "Lionel Messi",
+            "Kylian Mbappé"
           ]
         },
         {
@@ -20301,19 +20301,19 @@
           ]
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "preds": [
-            "Pegar valores 3º-4º puesto y Final",
-            null,
-            null,
-            null,
-            null,
-            "Pegar Valores Cuadro de Honor",
-            null,
-            null,
-            null,
-            null,
-            null
+            "España-Brasil·2|1-3",
+            "Países Bajos-Argentina·1|4-3",
+            "Países Bajos",
+            "Argentina",
+            "Brasil",
+            "Mbappé",
+            "Kane",
+            "Lamine Yamal",
+            "Lamine Yamal",
+            "Kylian Mbappé",
+            "Messi"
           ]
         },
         {
@@ -20623,7 +20623,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J17",
+          "jugador": "Andres Fermin",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -20749,7 +20749,7 @@
           "pos": 1
         },
         {
-          "jugador": "Pegar Valores Nombre J24",
+          "jugador": "Juan Dorante",
           "puntos_dia": 0,
           "pts": [
             0,
