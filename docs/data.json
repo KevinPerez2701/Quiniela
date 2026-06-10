@@ -1,5 +1,5 @@
 {
-  "updated_at": "10/06/2026 15:59 (hora Venezuela)",
+  "updated_at": "10/06/2026 16:04 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -599,7 +599,7 @@
   "fixture": [
     {
       "num": 1,
-      "date": "2026-06-11 09:00",
+      "date": "2026-06-11 15:00",
       "matchday": "J1",
       "group": "Grupo A",
       "home": "México",
@@ -611,7 +611,7 @@
     },
     {
       "num": 2,
-      "date": "2026-06-11 16:00",
+      "date": "2026-06-11 22:00",
       "matchday": "J1",
       "group": "Grupo A",
       "home": "Corea del Sur",
@@ -623,7 +623,7 @@
     },
     {
       "num": 3,
-      "date": "2026-06-12 09:00",
+      "date": "2026-06-12 15:00",
       "matchday": "J1",
       "group": "Grupo B",
       "home": "Canadá",
@@ -635,7 +635,7 @@
     },
     {
       "num": 4,
-      "date": "2026-06-12 15:00",
+      "date": "2026-06-12 21:00",
       "matchday": "J1",
       "group": "Grupo D",
       "home": "Estados Unidos",
@@ -647,7 +647,7 @@
     },
     {
       "num": 8,
-      "date": "2026-06-13 09:00",
+      "date": "2026-06-13 15:00",
       "matchday": "J1",
       "group": "Grupo B",
       "home": "Catar",
@@ -659,7 +659,7 @@
     },
     {
       "num": 7,
-      "date": "2026-06-13 12:00",
+      "date": "2026-06-13 18:00",
       "matchday": "J1",
       "group": "Grupo C",
       "home": "Brasil",
@@ -671,7 +671,7 @@
     },
     {
       "num": 5,
-      "date": "2026-06-13 15:00",
+      "date": "2026-06-13 21:00",
       "matchday": "J1",
       "group": "Grupo C",
       "home": "Haití",
@@ -683,7 +683,7 @@
     },
     {
       "num": 6,
-      "date": "2026-06-13 18:00",
+      "date": "2026-06-14 00:00",
       "matchday": "J1",
       "group": "Grupo D",
       "home": "Australia",
@@ -695,7 +695,7 @@
     },
     {
       "num": 10,
-      "date": "2026-06-14 07:00",
+      "date": "2026-06-14 13:00",
       "matchday": "J1",
       "group": "Grupo E",
       "home": "Alemania",
@@ -707,7 +707,7 @@
     },
     {
       "num": 11,
-      "date": "2026-06-14 10:00",
+      "date": "2026-06-14 16:00",
       "matchday": "J1",
       "group": "Grupo F",
       "home": "Países Bajos",
@@ -719,7 +719,7 @@
     },
     {
       "num": 9,
-      "date": "2026-06-14 13:00",
+      "date": "2026-06-14 19:00",
       "matchday": "J1",
       "group": "Grupo E",
       "home": "Costa de Marfil",
@@ -731,7 +731,7 @@
     },
     {
       "num": 12,
-      "date": "2026-06-14 16:00",
+      "date": "2026-06-14 22:00",
       "matchday": "J1",
       "group": "Grupo F",
       "home": "Suecia",
@@ -743,7 +743,7 @@
     },
     {
       "num": 14,
-      "date": "2026-06-15 06:00",
+      "date": "2026-06-15 12:00",
       "matchday": "J1",
       "group": "Grupo H",
       "home": "España",
@@ -755,7 +755,7 @@
     },
     {
       "num": 16,
-      "date": "2026-06-15 09:00",
+      "date": "2026-06-15 15:00",
       "matchday": "J1",
       "group": "Grupo G",
       "home": "Bélgica",
@@ -767,7 +767,7 @@
     },
     {
       "num": 13,
-      "date": "2026-06-15 12:00",
+      "date": "2026-06-15 18:00",
       "matchday": "J1",
       "group": "Grupo H",
       "home": "Arabia Saudita",
@@ -779,7 +779,7 @@
     },
     {
       "num": 15,
-      "date": "2026-06-15 15:00",
+      "date": "2026-06-15 21:00",
       "matchday": "J1",
       "group": "Grupo G",
       "home": "Irán",
@@ -791,7 +791,7 @@
     },
     {
       "num": 17,
-      "date": "2026-06-16 09:00",
+      "date": "2026-06-16 15:00",
       "matchday": "J1",
       "group": "Grupo I",
       "home": "Francia",
@@ -803,7 +803,7 @@
     },
     {
       "num": 18,
-      "date": "2026-06-16 12:00",
+      "date": "2026-06-16 18:00",
       "matchday": "J1",
       "group": "Grupo I",
       "home": "Irak",
@@ -815,7 +815,7 @@
     },
     {
       "num": 19,
-      "date": "2026-06-16 15:00",
+      "date": "2026-06-16 21:00",
       "matchday": "J1",
       "group": "Grupo J",
       "home": "Argentina",
@@ -827,7 +827,7 @@
     },
     {
       "num": 20,
-      "date": "2026-06-16 18:00",
+      "date": "2026-06-17 00:00",
       "matchday": "J1",
       "group": "Grupo J",
       "home": "Austria",
@@ -839,7 +839,7 @@
     },
     {
       "num": 23,
-      "date": "2026-06-17 07:00",
+      "date": "2026-06-17 13:00",
       "matchday": "J1",
       "group": "Grupo K",
       "home": "Portugal",
@@ -851,7 +851,7 @@
     },
     {
       "num": 22,
-      "date": "2026-06-17 10:00",
+      "date": "2026-06-17 16:00",
       "matchday": "J1",
       "group": "Grupo L",
       "home": "Inglaterra",
@@ -863,7 +863,7 @@
     },
     {
       "num": 21,
-      "date": "2026-06-17 13:00",
+      "date": "2026-06-17 19:00",
       "matchday": "J1",
       "group": "Grupo L",
       "home": "Ghana",
@@ -875,7 +875,7 @@
     },
     {
       "num": 24,
-      "date": "2026-06-17 16:00",
+      "date": "2026-06-17 22:00",
       "matchday": "J1",
       "group": "Grupo K",
       "home": "Uzbekistán",
@@ -887,7 +887,7 @@
     },
     {
       "num": 25,
-      "date": "2026-06-18 06:00",
+      "date": "2026-06-18 12:00",
       "matchday": "J2",
       "group": "Grupo A",
       "home": "República Checa",
@@ -899,7 +899,7 @@
     },
     {
       "num": 26,
-      "date": "2026-06-18 09:00",
+      "date": "2026-06-18 15:00",
       "matchday": "J2",
       "group": "Grupo B",
       "home": "Suiza",
@@ -911,7 +911,7 @@
     },
     {
       "num": 27,
-      "date": "2026-06-18 12:00",
+      "date": "2026-06-18 18:00",
       "matchday": "J2",
       "group": "Grupo B",
       "home": "Canadá",
@@ -923,7 +923,7 @@
     },
     {
       "num": 28,
-      "date": "2026-06-18 15:00",
+      "date": "2026-06-18 21:00",
       "matchday": "J2",
       "group": "Grupo A",
       "home": "México",
@@ -935,7 +935,7 @@
     },
     {
       "num": 32,
-      "date": "2026-06-19 09:00",
+      "date": "2026-06-19 15:00",
       "matchday": "J2",
       "group": "Grupo D",
       "home": "Estados Unidos",
@@ -947,7 +947,7 @@
     },
     {
       "num": 30,
-      "date": "2026-06-19 12:00",
+      "date": "2026-06-19 18:00",
       "matchday": "J2",
       "group": "Grupo C",
       "home": "Escocia",
@@ -959,7 +959,7 @@
     },
     {
       "num": 29,
-      "date": "2026-06-19 14:30",
+      "date": "2026-06-19 20:30",
       "matchday": "J2",
       "group": "Grupo C",
       "home": "Brasil",
@@ -971,7 +971,7 @@
     },
     {
       "num": 31,
-      "date": "2026-06-19 17:00",
+      "date": "2026-06-19 23:00",
       "matchday": "J2",
       "group": "Grupo D",
       "home": "Turquía",
@@ -983,7 +983,7 @@
     },
     {
       "num": 35,
-      "date": "2026-06-20 07:00",
+      "date": "2026-06-20 13:00",
       "matchday": "J2",
       "group": "Grupo F",
       "home": "Países Bajos",
@@ -995,7 +995,7 @@
     },
     {
       "num": 33,
-      "date": "2026-06-20 10:00",
+      "date": "2026-06-20 16:00",
       "matchday": "J2",
       "group": "Grupo E",
       "home": "Alemania",
@@ -1007,7 +1007,7 @@
     },
     {
       "num": 34,
-      "date": "2026-06-20 14:00",
+      "date": "2026-06-20 20:00",
       "matchday": "J2",
       "group": "Grupo E",
       "home": "Ecuador",
@@ -1019,7 +1019,7 @@
     },
     {
       "num": 36,
-      "date": "2026-06-20 18:00",
+      "date": "2026-06-21 00:00",
       "matchday": "J2",
       "group": "Grupo F",
       "home": "Túnez",
@@ -1031,7 +1031,7 @@
     },
     {
       "num": 38,
-      "date": "2026-06-21 06:00",
+      "date": "2026-06-21 12:00",
       "matchday": "J2",
       "group": "Grupo H",
       "home": "España",
@@ -1043,7 +1043,7 @@
     },
     {
       "num": 39,
-      "date": "2026-06-21 09:00",
+      "date": "2026-06-21 15:00",
       "matchday": "J2",
       "group": "Grupo G",
       "home": "Bélgica",
@@ -1055,7 +1055,7 @@
     },
     {
       "num": 37,
-      "date": "2026-06-21 12:00",
+      "date": "2026-06-21 18:00",
       "matchday": "J2",
       "group": "Grupo H",
       "home": "Uruguay",
@@ -1067,7 +1067,7 @@
     },
     {
       "num": 40,
-      "date": "2026-06-21 15:00",
+      "date": "2026-06-21 21:00",
       "matchday": "J2",
       "group": "Grupo G",
       "home": "Nueva Zelanda",
@@ -1079,7 +1079,7 @@
     },
     {
       "num": 43,
-      "date": "2026-06-22 07:00",
+      "date": "2026-06-22 13:00",
       "matchday": "J2",
       "group": "Grupo J",
       "home": "Argentina",
@@ -1091,7 +1091,7 @@
     },
     {
       "num": 42,
-      "date": "2026-06-22 11:00",
+      "date": "2026-06-22 17:00",
       "matchday": "J2",
       "group": "Grupo I",
       "home": "Francia",
@@ -1103,7 +1103,7 @@
     },
     {
       "num": 41,
-      "date": "2026-06-22 14:00",
+      "date": "2026-06-22 20:00",
       "matchday": "J2",
       "group": "Grupo I",
       "home": "Noruega",
@@ -1115,7 +1115,7 @@
     },
     {
       "num": 44,
-      "date": "2026-06-22 17:00",
+      "date": "2026-06-22 23:00",
       "matchday": "J2",
       "group": "Grupo J",
       "home": "Jordania",
@@ -1127,7 +1127,7 @@
     },
     {
       "num": 47,
-      "date": "2026-06-23 07:00",
+      "date": "2026-06-23 13:00",
       "matchday": "J2",
       "group": "Grupo K",
       "home": "Portugal",
@@ -1139,7 +1139,7 @@
     },
     {
       "num": 45,
-      "date": "2026-06-23 10:00",
+      "date": "2026-06-23 16:00",
       "matchday": "J2",
       "group": "Grupo L",
       "home": "Inglaterra",
@@ -1151,7 +1151,7 @@
     },
     {
       "num": 46,
-      "date": "2026-06-23 13:00",
+      "date": "2026-06-23 19:00",
       "matchday": "J2",
       "group": "Grupo L",
       "home": "Panamá",
@@ -1163,7 +1163,7 @@
     },
     {
       "num": 48,
-      "date": "2026-06-23 16:00",
+      "date": "2026-06-23 22:00",
       "matchday": "J2",
       "group": "Grupo K",
       "home": "Colombia",
@@ -1175,7 +1175,7 @@
     },
     {
       "num": 51,
-      "date": "2026-06-24 09:00",
+      "date": "2026-06-24 15:00",
       "matchday": "J3",
       "group": "Grupo B",
       "home": "Suiza",
@@ -1187,7 +1187,7 @@
     },
     {
       "num": 52,
-      "date": "2026-06-24 09:00",
+      "date": "2026-06-24 15:00",
       "matchday": "J3",
       "group": "Grupo B",
       "home": "Bosnia y Herzegovina",
@@ -1199,7 +1199,7 @@
     },
     {
       "num": 49,
-      "date": "2026-06-24 12:00",
+      "date": "2026-06-24 18:00",
       "matchday": "J3",
       "group": "Grupo C",
       "home": "Escocia",
@@ -1211,7 +1211,7 @@
     },
     {
       "num": 50,
-      "date": "2026-06-24 12:00",
+      "date": "2026-06-24 18:00",
       "matchday": "J3",
       "group": "Grupo C",
       "home": "Marruecos",
@@ -1223,7 +1223,7 @@
     },
     {
       "num": 53,
-      "date": "2026-06-24 15:00",
+      "date": "2026-06-24 21:00",
       "matchday": "J3",
       "group": "Grupo A",
       "home": "República Checa",
@@ -1235,7 +1235,7 @@
     },
     {
       "num": 54,
-      "date": "2026-06-24 15:00",
+      "date": "2026-06-24 21:00",
       "matchday": "J3",
       "group": "Grupo A",
       "home": "Sudáfrica",
@@ -1247,7 +1247,7 @@
     },
     {
       "num": 55,
-      "date": "2026-06-25 10:00",
+      "date": "2026-06-25 16:00",
       "matchday": "J3",
       "group": "Grupo E",
       "home": "Curazao",
@@ -1259,7 +1259,7 @@
     },
     {
       "num": 56,
-      "date": "2026-06-25 10:00",
+      "date": "2026-06-25 16:00",
       "matchday": "J3",
       "group": "Grupo E",
       "home": "Ecuador",
@@ -1271,7 +1271,7 @@
     },
     {
       "num": 57,
-      "date": "2026-06-25 13:00",
+      "date": "2026-06-25 19:00",
       "matchday": "J3",
       "group": "Grupo F",
       "home": "Japón",
@@ -1283,7 +1283,7 @@
     },
     {
       "num": 58,
-      "date": "2026-06-25 13:00",
+      "date": "2026-06-25 19:00",
       "matchday": "J3",
       "group": "Grupo F",
       "home": "Túnez",
@@ -1295,7 +1295,7 @@
     },
     {
       "num": 59,
-      "date": "2026-06-25 16:00",
+      "date": "2026-06-25 22:00",
       "matchday": "J3",
       "group": "Grupo D",
       "home": "Turquía",
@@ -1307,7 +1307,7 @@
     },
     {
       "num": 60,
-      "date": "2026-06-25 16:00",
+      "date": "2026-06-25 22:00",
       "matchday": "J3",
       "group": "Grupo D",
       "home": "Paraguay",
@@ -1319,7 +1319,7 @@
     },
     {
       "num": 61,
-      "date": "2026-06-26 09:00",
+      "date": "2026-06-26 15:00",
       "matchday": "J3",
       "group": "Grupo I",
       "home": "Noruega",
@@ -1331,7 +1331,7 @@
     },
     {
       "num": 62,
-      "date": "2026-06-26 09:00",
+      "date": "2026-06-26 15:00",
       "matchday": "J3",
       "group": "Grupo I",
       "home": "Senegal",
@@ -1343,7 +1343,7 @@
     },
     {
       "num": 65,
-      "date": "2026-06-26 14:00",
+      "date": "2026-06-26 20:00",
       "matchday": "J3",
       "group": "Grupo H",
       "home": "Cabo Verde",
@@ -1355,7 +1355,7 @@
     },
     {
       "num": 66,
-      "date": "2026-06-26 14:00",
+      "date": "2026-06-26 20:00",
       "matchday": "J3",
       "group": "Grupo H",
       "home": "Uruguay",
@@ -1367,7 +1367,7 @@
     },
     {
       "num": 63,
-      "date": "2026-06-26 17:00",
+      "date": "2026-06-26 23:00",
       "matchday": "J3",
       "group": "Grupo G",
       "home": "Egipto",
@@ -1379,7 +1379,7 @@
     },
     {
       "num": 64,
-      "date": "2026-06-26 17:00",
+      "date": "2026-06-26 23:00",
       "matchday": "J3",
       "group": "Grupo G",
       "home": "Nueva Zelanda",
@@ -1391,7 +1391,7 @@
     },
     {
       "num": 67,
-      "date": "2026-06-27 11:00",
+      "date": "2026-06-27 17:00",
       "matchday": "J3",
       "group": "Grupo L",
       "home": "Panamá",
@@ -1403,7 +1403,7 @@
     },
     {
       "num": 68,
-      "date": "2026-06-27 11:00",
+      "date": "2026-06-27 17:00",
       "matchday": "J3",
       "group": "Grupo L",
       "home": "Croacia",
@@ -1415,7 +1415,7 @@
     },
     {
       "num": 71,
-      "date": "2026-06-27 13:30",
+      "date": "2026-06-27 19:30",
       "matchday": "J3",
       "group": "Grupo K",
       "home": "Colombia",
@@ -1427,7 +1427,7 @@
     },
     {
       "num": 72,
-      "date": "2026-06-27 13:30",
+      "date": "2026-06-27 19:30",
       "matchday": "J3",
       "group": "Grupo K",
       "home": "RD Congo",
@@ -1439,7 +1439,7 @@
     },
     {
       "num": 69,
-      "date": "2026-06-27 16:00",
+      "date": "2026-06-27 22:00",
       "matchday": "J3",
       "group": "Grupo J",
       "home": "Argelia",
@@ -1451,7 +1451,7 @@
     },
     {
       "num": 70,
-      "date": "2026-06-27 16:00",
+      "date": "2026-06-27 22:00",
       "matchday": "J3",
       "group": "Grupo J",
       "home": "Jordania",
@@ -1463,7 +1463,7 @@
     },
     {
       "num": 73,
-      "date": "2026-06-28 09:00",
+      "date": "2026-06-28 15:00",
       "matchday": "73",
       "group": null,
       "home": "2A",
@@ -1475,7 +1475,7 @@
     },
     {
       "num": 76,
-      "date": "2026-06-29 07:00",
+      "date": "2026-06-29 13:00",
       "matchday": "76",
       "group": null,
       "home": "1C",
@@ -1487,7 +1487,7 @@
     },
     {
       "num": 74,
-      "date": "2026-06-29 10:30",
+      "date": "2026-06-29 16:30",
       "matchday": "74",
       "group": null,
       "home": "1E",
@@ -1499,7 +1499,7 @@
     },
     {
       "num": 75,
-      "date": "2026-06-29 15:00",
+      "date": "2026-06-29 21:00",
       "matchday": "75",
       "group": null,
       "home": "1F",
@@ -1511,7 +1511,7 @@
     },
     {
       "num": 78,
-      "date": "2026-06-30 07:00",
+      "date": "2026-06-30 13:00",
       "matchday": "78",
       "group": null,
       "home": "2E",
@@ -1523,7 +1523,7 @@
     },
     {
       "num": 77,
-      "date": "2026-06-30 11:00",
+      "date": "2026-06-30 17:00",
       "matchday": "77",
       "group": null,
       "home": "1I",
@@ -1535,7 +1535,7 @@
     },
     {
       "num": 79,
-      "date": "2026-06-30 15:00",
+      "date": "2026-06-30 21:00",
       "matchday": "79",
       "group": null,
       "home": "1A",
@@ -1547,7 +1547,7 @@
     },
     {
       "num": 80,
-      "date": "2026-07-01 06:00",
+      "date": "2026-07-01 12:00",
       "matchday": "80",
       "group": null,
       "home": "1L",
@@ -1559,7 +1559,7 @@
     },
     {
       "num": 82,
-      "date": "2026-07-01 10:00",
+      "date": "2026-07-01 16:00",
       "matchday": "82",
       "group": null,
       "home": "1G",
@@ -1571,7 +1571,7 @@
     },
     {
       "num": 81,
-      "date": "2026-07-01 14:00",
+      "date": "2026-07-01 20:00",
       "matchday": "81",
       "group": null,
       "home": "1D",
@@ -1583,7 +1583,7 @@
     },
     {
       "num": 84,
-      "date": "2026-07-02 09:00",
+      "date": "2026-07-02 15:00",
       "matchday": "84",
       "group": null,
       "home": "1H",
@@ -1595,7 +1595,7 @@
     },
     {
       "num": 83,
-      "date": "2026-07-02 13:00",
+      "date": "2026-07-02 19:00",
       "matchday": "83",
       "group": null,
       "home": "2K",
@@ -1607,7 +1607,7 @@
     },
     {
       "num": 85,
-      "date": "2026-07-02 17:00",
+      "date": "2026-07-02 23:00",
       "matchday": "85",
       "group": null,
       "home": "1B",
@@ -1619,7 +1619,7 @@
     },
     {
       "num": 88,
-      "date": "2026-07-03 08:00",
+      "date": "2026-07-03 14:00",
       "matchday": "88",
       "group": null,
       "home": "2D",
@@ -1631,7 +1631,7 @@
     },
     {
       "num": 86,
-      "date": "2026-07-03 12:00",
+      "date": "2026-07-03 18:00",
       "matchday": "86",
       "group": null,
       "home": "1J",
@@ -1643,7 +1643,7 @@
     },
     {
       "num": 87,
-      "date": "2026-07-03 15:30",
+      "date": "2026-07-03 21:30",
       "matchday": "87",
       "group": null,
       "home": "1K",
@@ -1655,7 +1655,7 @@
     },
     {
       "num": 90,
-      "date": "2026-07-04 07:00",
+      "date": "2026-07-04 13:00",
       "matchday": "90",
       "group": null,
       "home": "W73",
@@ -1667,7 +1667,7 @@
     },
     {
       "num": 89,
-      "date": "2026-07-04 11:00",
+      "date": "2026-07-04 17:00",
       "matchday": "89",
       "group": null,
       "home": "W74",
@@ -1679,7 +1679,7 @@
     },
     {
       "num": 91,
-      "date": "2026-07-05 10:00",
+      "date": "2026-07-05 16:00",
       "matchday": "91",
       "group": null,
       "home": "W76",
@@ -1691,7 +1691,7 @@
     },
     {
       "num": 92,
-      "date": "2026-07-05 14:00",
+      "date": "2026-07-05 20:00",
       "matchday": "92",
       "group": null,
       "home": "W79",
@@ -1703,7 +1703,7 @@
     },
     {
       "num": 93,
-      "date": "2026-07-06 09:00",
+      "date": "2026-07-06 15:00",
       "matchday": "93",
       "group": null,
       "home": "W83",
@@ -1715,7 +1715,7 @@
     },
     {
       "num": 94,
-      "date": "2026-07-06 14:00",
+      "date": "2026-07-06 20:00",
       "matchday": "94",
       "group": null,
       "home": "W81",
@@ -1727,7 +1727,7 @@
     },
     {
       "num": 95,
-      "date": "2026-07-07 06:00",
+      "date": "2026-07-07 12:00",
       "matchday": "95",
       "group": null,
       "home": "W86",
@@ -1739,7 +1739,7 @@
     },
     {
       "num": 96,
-      "date": "2026-07-07 10:00",
+      "date": "2026-07-07 16:00",
       "matchday": "96",
       "group": null,
       "home": "W85",
@@ -1751,7 +1751,7 @@
     },
     {
       "num": 97,
-      "date": "2026-07-09 10:00",
+      "date": "2026-07-09 16:00",
       "matchday": "97",
       "group": null,
       "home": "W89",
@@ -1763,7 +1763,7 @@
     },
     {
       "num": 98,
-      "date": "2026-07-10 09:00",
+      "date": "2026-07-10 15:00",
       "matchday": "98",
       "group": null,
       "home": "W93",
@@ -1775,7 +1775,7 @@
     },
     {
       "num": 99,
-      "date": "2026-07-11 11:00",
+      "date": "2026-07-11 17:00",
       "matchday": "99",
       "group": null,
       "home": "W91",
@@ -1787,7 +1787,7 @@
     },
     {
       "num": 100,
-      "date": "2026-07-11 15:00",
+      "date": "2026-07-11 21:00",
       "matchday": "100",
       "group": null,
       "home": "W95",
@@ -1799,7 +1799,7 @@
     },
     {
       "num": 101,
-      "date": "2026-07-14 09:00",
+      "date": "2026-07-14 15:00",
       "matchday": "101",
       "group": null,
       "home": "W97",
@@ -1811,7 +1811,7 @@
     },
     {
       "num": 102,
-      "date": "2026-07-15 09:00",
+      "date": "2026-07-15 15:00",
       "matchday": "102",
       "group": null,
       "home": "W99",
@@ -1823,7 +1823,7 @@
     },
     {
       "num": 103,
-      "date": "2026-07-18 11:00",
+      "date": "2026-07-18 17:00",
       "matchday": "103",
       "group": null,
       "home": "L101",
@@ -1835,7 +1835,7 @@
     },
     {
       "num": 104,
-      "date": "2026-07-19 09:00",
+      "date": "2026-07-19 15:00",
       "matchday": "104",
       "group": null,
       "home": "W101",
