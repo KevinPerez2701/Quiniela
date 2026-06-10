@@ -1,5 +1,5 @@
 {
-  "updated_at": "09/06/2026 14:46 (hora Venezuela)",
+  "updated_at": "09/06/2026 21:10 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -1868,6 +1868,13 @@
             "1|2-1",
             "X|2-2"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|2-0",
+            "X|1-1"
+          ]
         }
       ],
       "clas": [
@@ -2035,6 +2042,15 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -2185,6 +2201,13 @@
             "1|2-0",
             "X|2-2"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|2-0",
+            "X|2-2"
+          ]
         }
       ],
       "clas": [
@@ -2352,6 +2375,15 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -2542,6 +2574,15 @@
             "2|0-3",
             "1|2-1"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "X|1-1",
+            "1|3-0",
+            "2|1-2",
+            "1|2-0"
+          ]
         }
       ],
       "clas": [
@@ -2745,6 +2786,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -2925,7 +2977,7 @@
           "preds": [
             "1|4-0",
             "2|1-2",
-            "1|2-0",
+            "1|3-1",
             "1|2-1"
           ]
         },
@@ -2936,6 +2988,15 @@
             "X|2-2",
             "1|3-2",
             "1|3-1"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|5-0",
+            "2|1-3",
+            "1|3-1",
+            "1|3-0"
           ]
         }
       ],
@@ -3140,6 +3201,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -3332,6 +3404,15 @@
             "1|5-0",
             "2|0-3"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|3-1",
+            "2|2-3",
+            "1|5-0",
+            "2|1-3"
+          ]
         }
       ],
       "clas": [
@@ -3535,6 +3616,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -3727,6 +3819,15 @@
             "1|3-1",
             "1|2-0"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|5-0",
+            "2|2-3",
+            "1|5-0",
+            "1|3-0"
+          ]
         }
       ],
       "clas": [
@@ -3930,6 +4031,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4111,7 +4223,7 @@
             "1|3-0",
             "2|1-3",
             "1|2-0",
-            "1|1-0"
+            "1|2-1"
           ]
         },
         {
@@ -4121,6 +4233,15 @@
             "2|0-3",
             "X|2-2",
             "1|3-1"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|4-0",
+            "2|0-3",
+            "1|4-0",
+            "2|0-1"
           ]
         }
       ],
@@ -4325,6 +4446,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4504,7 +4636,7 @@
           "jugador": "Alvaro Urdaneta",
           "preds": [
             "1|2-1",
-            "1|1-0",
+            "1|2-1",
             "1|2-1",
             "1|1-0"
           ]
@@ -4516,6 +4648,15 @@
             "X|2-2",
             "1|2-0",
             "1|2-0"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|2-0",
+            "1|2-0",
+            "1|2-0",
+            "1|4-0"
           ]
         }
       ],
@@ -4720,6 +4861,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4899,7 +5051,7 @@
           "jugador": "Alvaro Urdaneta",
           "preds": [
             "2|1-2",
-            "1|4-0",
+            "1|3-0",
             "1|2-1",
             "1|2-1"
           ]
@@ -4911,6 +5063,15 @@
             "1|4-0",
             "1|2-1",
             "1|2-1"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|2-1",
+            "1|4-0",
+            "1|3-0",
+            "2|1-2"
           ]
         }
       ],
@@ -5115,6 +5276,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5307,6 +5479,15 @@
             "1|2-1",
             "2|0-2"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|5-0",
+            "1|3-0",
+            "1|3-2",
+            "2|1-2"
+          ]
         }
       ],
       "clas": [
@@ -5510,6 +5691,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5702,6 +5894,15 @@
             "1|4-1",
             "1|3-0"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|4-2",
+            "1|2-0",
+            "1|5-0",
+            "1|5-0"
+          ]
         }
       ],
       "clas": [
@@ -5905,6 +6106,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6083,9 +6295,9 @@
         {
           "jugador": "Alvaro Urdaneta",
           "preds": [
-            "1|3-0",
+            "1|4-0",
             "2|2-3",
-            "1|2-1",
+            "1|3-1",
             "2|1-2"
           ]
         },
@@ -6096,6 +6308,15 @@
             "1|3-2",
             "1|2-1",
             "X|1-1"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|3-0",
+            "1|2-1",
+            "1|3-1",
+            "1|2-1"
           ]
         }
       ],
@@ -6300,6 +6521,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6480,8 +6712,8 @@
           "preds": [
             "1|3-0",
             "1|2-0",
-            "1|3-0",
-            "2|1-3"
+            "1|4-1",
+            "2|0-2"
           ]
         },
         {
@@ -6491,6 +6723,15 @@
             "1|4-0",
             "1|2-1",
             "2|0-3"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|4-0",
+            "1|3-0",
+            "1|4-0",
+            "2|1-3"
           ]
         }
       ],
@@ -6695,6 +6936,17 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -7167,6 +7419,29 @@
             "Marruecos",
             "Haití"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "2|0-1",
+            "1|2-0",
+            "X|2-2",
+            "2|0-1",
+            "1|2-0",
+            "X|1-1",
+            "México",
+            "República Checa",
+            "Sudáfrica",
+            "Corea del Sur",
+            "Canadá",
+            "Suiza",
+            "Catar",
+            "Bosnia y Herzegovina",
+            "Escocia",
+            "Brasil",
+            "Marruecos",
+            "Haití"
+          ]
         }
       ],
       "clas": [
@@ -7622,6 +7897,31 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -8069,7 +8369,7 @@
             "1|1-0",
             "1|2-0",
             "2|0-3",
-            "X|1-1",
+            "2|1-2",
             "X|1-1",
             "2|0-2",
             "Turquía",
@@ -8106,6 +8406,29 @@
             "Países Bajos",
             "Japón",
             "Suecia",
+            "Túnez"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "2|0-3",
+            "1|2-0",
+            "X|1-1",
+            "X|2-2",
+            "X|2-2",
+            "2|0-3",
+            "Estados Unidos",
+            "Paraguay",
+            "Australia",
+            "Turquía",
+            "Alemania",
+            "Ecuador",
+            "Costa de Marfil",
+            "Curazao",
+            "Países Bajos",
+            "Suecia",
+            "Japón",
             "Túnez"
           ]
         }
@@ -8563,6 +8886,31 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -9009,10 +9357,10 @@
           "preds": [
             "1|2-1",
             "2|0-2",
-            "X|1-1",
+            "X|2-2",
             "2|0-2",
             "2|2-3",
-            "1|2-0",
+            "1|3-1",
             "Bélgica",
             "Egipto",
             "Irán",
@@ -9040,6 +9388,29 @@
             "Egipto",
             "Irán",
             "Nueva Zelanda",
+            "España",
+            "Uruguay",
+            "Arabia Saudita",
+            "Cabo Verde",
+            "Francia",
+            "Noruega",
+            "Senegal",
+            "Irak"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "X|2-2",
+            "2|1-2",
+            "2|1-2",
+            "2|2-3",
+            "2|2-4",
+            "1|1-0",
+            "Bélgica",
+            "Nueva Zelanda",
+            "Irán",
+            "Egipto",
             "España",
             "Uruguay",
             "Arabia Saudita",
@@ -9504,6 +9875,31 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -9950,8 +10346,8 @@
           "preds": [
             "2|0-1",
             "2|0-2",
-            "2|1-2",
-            "X|2-2",
+            "2|1-3",
+            "X|1-1",
             "2|0-2",
             "1|2-1",
             "Argentina",
@@ -9989,6 +10385,29 @@
             "Croacia",
             "Ghana",
             "Panamá"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "2|1-3",
+            "1|4-0",
+            "1|1-0",
+            "X|0-0",
+            "2|1-4",
+            "1|3-0",
+            "Austria",
+            "Jordania",
+            "Argentina",
+            "Argelia",
+            "Colombia",
+            "Portugal",
+            "RD Congo",
+            "Uzbekistán",
+            "Inglaterra",
+            "Croacia",
+            "Panamá",
+            "Ghana"
           ]
         }
       ],
@@ -10445,6 +10864,31 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -11211,6 +11655,43 @@
             "Uruguay",
             "Ghana"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "República Checa",
+            "Escocia",
+            "Alemania",
+            "Países Bajos",
+            "Ecuador",
+            "Francia",
+            "México",
+            "Inglaterra",
+            "Bélgica",
+            "Estados Unidos",
+            "España",
+            "Portugal",
+            "Canadá",
+            "Paraguay",
+            "Austria",
+            "Colombia",
+            "Suiza",
+            "Suecia",
+            "Australia",
+            "Brasil",
+            "Noruega",
+            "Japón",
+            "Arabia Saudita",
+            "Senegal",
+            "Sudáfrica",
+            "Catar",
+            "Jordania",
+            "Croacia",
+            "Argentina",
+            "Nueva Zelanda",
+            "Uruguay",
+            "Panamá"
+          ]
         }
       ],
       "clas": [
@@ -11918,6 +12399,45 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -12634,10 +13154,10 @@
             "Países Bajos-Marruecos·1|3-1",
             "Ecuador-Senegal·1|2-1",
             "Francia-Suecia·1|3-0",
-            "México-Escocia·X|1-1",
+            "México-Escocia·1|2-1",
             "Inglaterra-Noruega·1|3-2",
             "Bélgica-Corea del Sur·1|2-0",
-            "Turquía-Canadá·1|3-2",
+            "Turquía-Canadá·1|3-1",
             "España-Austria·1|2-0",
             "Colombia-Croacia·1|2-1",
             "Suiza-Irán·1|3-0",
@@ -12697,6 +13217,43 @@
             "Bélgica",
             "Turquía",
             "Portugal"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "República Checa-Suiza·1|2-1",
+            "Escocia-Suecia·2|1-2",
+            "Alemania-Australia·1|3-1",
+            "Países Bajos-Brasil·1|2-1",
+            "Ecuador-Noruega·1|2-0",
+            "Francia-Japón·1|3-0",
+            "México-Arabia Saudita·1|4-0",
+            "Inglaterra-Senegal·1|5-0",
+            "Bélgica-Sudáfrica·2|1-2",
+            "Estados Unidos-Catar·1|3-1",
+            "España-Jordania·1|5-0",
+            "Portugal-Croacia·1|3-0",
+            "Canadá-Argentina·1|2-1",
+            "Paraguay-Nueva Zelanda·1|2-0",
+            "Austria-Uruguay·2|0-1",
+            "Colombia-Panamá·1|3-1",
+            "República Checa",
+            "Alemania",
+            "Suecia",
+            "México",
+            "Portugal",
+            "Estados Unidos",
+            "Uruguay",
+            "Canadá",
+            "Países Bajos",
+            "Francia",
+            "Ecuador",
+            "Inglaterra",
+            "España",
+            "Sudáfrica",
+            "Paraguay",
+            "Colombia"
           ]
         }
       ],
@@ -13405,6 +13962,45 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -13865,6 +14461,27 @@
             "Inglaterra",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "República Checa-Países Bajos·2|1-3",
+            "Alemania-Francia·1|2-1",
+            "Suecia-Ecuador·2|1-3",
+            "México-Inglaterra·2|1-2",
+            "Portugal-España·2|2-3",
+            "Estados Unidos-Sudáfrica·2|1-2",
+            "Uruguay-Paraguay·1|1-0",
+            "Canadá-Colombia·2|2-3",
+            "Alemania",
+            "España",
+            "Ecuador",
+            "Uruguay",
+            "Países Bajos",
+            "Sudáfrica",
+            "Inglaterra",
+            "Colombia"
+          ]
         }
       ],
       "clas": [
@@ -14284,6 +14901,29 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -14546,7 +15186,7 @@
         {
           "jugador": "Alvaro Urdaneta",
           "preds": [
-            "Francia-Países Bajos·1|4-2",
+            "Francia-Países Bajos·1|3-1",
             "España-Bélgica·1|3-1",
             "Brasil-Inglaterra·1|2-1",
             "Argentina-Portugal·2|1-2",
@@ -14567,6 +15207,19 @@
             "Brasil",
             "España",
             "Portugal"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "Alemania-Países Bajos·1|2-1",
+            "España-Sudáfrica·1|4-1",
+            "Ecuador-Inglaterra·2|1-3",
+            "Uruguay-Colombia·2|0-1",
+            "Alemania",
+            "Inglaterra",
+            "España",
+            "Colombia"
           ]
         }
       ],
@@ -14843,6 +15496,21 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -15062,7 +15730,7 @@
           "jugador": "Alvaro Urdaneta",
           "preds": [
             "Francia-España·2|2-3",
-            "Brasil-Portugal·2|2-3",
+            "Brasil-Portugal·2|1-3",
             "Francia",
             "Brasil",
             "España",
@@ -15078,6 +15746,17 @@
             "Brasil",
             "Francia",
             "Portugal"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "Alemania-España·1|2-1",
+            "Inglaterra-Colombia·1|3-1",
+            "España",
+            "Colombia",
+            "Alemania",
+            "Inglaterra"
           ]
         }
       ],
@@ -15318,6 +15997,19 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -15631,7 +16323,7 @@
             "Francia",
             "Mbappe",
             "Ronaldo",
-            "Kane",
+            "Oyarzabal",
             "Bruno Fernandes",
             "Pedri",
             "Mbappe"
@@ -15651,6 +16343,22 @@
             "Mbappe",
             "Pedri",
             "Vitinha"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "España-Colombia·1|1-0",
+            "Alemania-Inglaterra·1|3-1",
+            "Alemania",
+            "Inglaterra",
+            "España",
+            "Erling Haaland",
+            "Luis Suarez",
+            "Dion Drena",
+            "Kylian Mbappé",
+            "Lamine Yamal",
+            "Harry Kane"
           ]
         }
       ],
@@ -15981,6 +16689,24 @@
         },
         {
           "jugador": "Jessika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
           "puntos_dia": 0,
           "pts": [
             0,
