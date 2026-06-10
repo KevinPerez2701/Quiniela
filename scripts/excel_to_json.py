@@ -26,6 +26,9 @@ import openpyxl
 
 REPO_ROOT   = os.path.join(os.path.dirname(__file__), "..")
 OUTPUT_PATH = os.path.join(REPO_ROOT, "docs", "data.json")
+# Where to look for the Excel files; CI overrides this to point at
+# LibreOffice-recalculated temp copies that never get committed.
+EXCEL_DIR   = os.environ.get("EXCEL_DIR", REPO_ROOT)
 
 MAX_VALUES = {
     "f_grupos":   432,
@@ -286,7 +289,7 @@ def extract_daily_all(ws):
 
 def main():
     # Discover all Excel files (sorted so primary always comes first)
-    pattern = os.path.join(REPO_ROOT, "ADMINExcelMundial2026*.xlsx")
+    pattern = os.path.join(EXCEL_DIR, "ADMINExcelMundial2026*.xlsx")
     excel_files = sorted(glob.glob(pattern))
 
     if not excel_files:
