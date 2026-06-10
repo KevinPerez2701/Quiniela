@@ -176,12 +176,16 @@ def extract_fixture(ws):
         if not (date and hasattr(date, "strftime") and home and away):
             continue
 
+        # The WORLDCUP sheet stores datetimes as UTC+2 (template author's TZ).
+        # Subtract 6 hours to display in Venezuela time (UTC-4).
+        date_vet = date - timedelta(hours=6)
+
         phase  = get_phase(num)
         goal_h = row[28]
         goal_a = row[29]
         matches.append({
             "num":         num,
-            "date":        fmt_date(date),
+            "date":        fmt_date(date_vet),
             "matchday":    str(row[25]) if row[25] else None,
             "group":       current_group if phase == "grupos" else None,
             "home":        str(home),
