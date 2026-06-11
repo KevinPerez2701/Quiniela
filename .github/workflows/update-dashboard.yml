@@ -27,8 +27,24 @@ jobs:
       - name: Install dependencies
         run: pip install openpyxl
 
+      - name: Install LibreOffice Calc
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libreoffice-calc
+
+      - name: Recalculate formulas on temp copies
+        run: |
+          mkdir -p /tmp/recalc/out
+          cp ADMINExcelMundial2026*.xlsx /tmp/recalc/
+          for FILE in /tmp/recalc/*.xlsx; do
+            echo "Recalculating $(basename "$FILE") …"
+            libreoffice --headless --norestore --convert-to xlsx --outdir /tmp/recalc/out "$FILE"
+          done
+
       - name: Convert Excel to JSON
         run: python scripts/excel_to_json.py
+        env:
+          EXCEL_DIR: /tmp/recalc/out
 
       - name: Commit updated data
         run: |

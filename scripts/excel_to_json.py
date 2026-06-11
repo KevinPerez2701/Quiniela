@@ -89,6 +89,13 @@ PHASE_LABELS = {
     "final":         "Final",
 }
 
+# Names that identify unfilled template placeholder rows in a second file.
+PLACEHOLDER_PREFIXES = ("pegar valores", "pegar nombre", "jugador ")
+
+
+def is_placeholder(name):
+    return isinstance(name, str) and name.lower().strip().startswith(PLACEHOLDER_PREFIXES)
+
 
 def to_num(val):
     if val is None or val == "-":
@@ -135,7 +142,7 @@ def extract_clas_players(ws):
     title = rows[0][1] or "CLASIFICACIÓN MUNDIAL 2026"
     players = []
     for row in rows[4:]:
-        if not isinstance(row[2], str) or row[2] == "-":
+        if not isinstance(row[2], str) or row[2] == "-" or is_placeholder(row[2]):
             continue
         players.append({
             "jugador":    row[2],
@@ -239,7 +246,7 @@ def extract_daily_all(ws):
     c = DAILY_PLAYER_START
     while c < len(header):
         name = header[c]
-        if isinstance(name, str) and name.strip():
+        if isinstance(name, str) and name.strip() and not is_placeholder(name):
             player_cols.append((c, name.strip()))
         c += DAILY_PLAYER_STRIDE
 
