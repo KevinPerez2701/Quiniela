@@ -1,5 +1,5 @@
 {
-  "updated_at": "11/06/2026 12:07 (hora Venezuela)",
+  "updated_at": "11/06/2026 13:30 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -505,6 +505,26 @@
       },
       {
         "jugador": "Andres Alvarez",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 1
+      },
+      {
+        "jugador": "Erika",
         "puntos": 0,
         "f_grupos": 0,
         "pos_grupos": 0,
@@ -2056,6 +2076,12 @@
           "preds": [
             "1|2-1"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "1|3-2"
+          ]
         }
       ],
       "clas": [
@@ -2286,6 +2312,14 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0
@@ -2484,6 +2518,13 @@
             "2|1-2",
             "X|1-1"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "X|1-1",
+            "1|2-1"
+          ]
         }
       ],
       "clas": [
@@ -2714,6 +2755,15 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -2965,6 +3015,13 @@
             "2|0-2",
             "1|3-2"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "2|0-2",
+            "2|1-2"
+          ]
         }
       ],
       "clas": [
@@ -3251,6 +3308,15 @@
             0
           ],
           "pos": 1
+        },
+        {
+          "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0
+          ],
+          "pos": 1
         }
       ]
     },
@@ -3495,6 +3561,15 @@
           "preds": [
             "1|2-1",
             "2|0-2",
+            "2|1-2",
+            "1|4-0"
+          ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "X|2-2",
+            "2|0-1",
             "2|1-2",
             "1|4-0"
           ]
@@ -3778,6 +3853,17 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4034,6 +4120,16 @@
             "1|3-0",
             "1|3-0"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "2|1-2",
+            "1|3-1",
+            "1|2-1",
+            "1|2-1",
+            "1|4-0"
+          ]
         }
       ],
       "clas": [
@@ -4314,6 +4410,18 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4569,6 +4677,14 @@
             "2|0-2",
             "1|3-2"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "1|1-0",
+            "2|1-2",
+            "1|2-1"
+          ]
         }
       ],
       "clas": [
@@ -4849,6 +4965,16 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5103,6 +5229,15 @@
             "1|2-0",
             "1|3-0"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "2|0-4",
+            "1|3-1",
+            "1|2-0",
+            "1|3-0"
+          ]
         }
       ],
       "clas": [
@@ -5383,6 +5518,17 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5639,6 +5785,16 @@
             "1|2-0",
             "1|2-1"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "2|0-2",
+            "X|1-1",
+            "1|2-1",
+            "1|2-1",
+            "X|2-2"
+          ]
         }
       ],
       "clas": [
@@ -5919,6 +6075,18 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6174,6 +6342,14 @@
             "1|1-0",
             "1|2-0"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "2|1-2",
+            "1|2-0",
+            "X|1-1"
+          ]
         }
       ],
       "clas": [
@@ -6454,6 +6630,16 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6708,6 +6894,15 @@
             "2|1-2",
             "1|3-1"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "2|0-2",
+            "1|3-0",
+            "X|2-2",
+            "1|2-1"
+          ]
         }
       ],
       "clas": [
@@ -6988,6 +7183,17 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -7244,539 +7450,14 @@
             "1|2-0",
             "1|3-0"
           ]
-        }
-      ],
-      "clas": [
-        {
-          "jugador": "Kevin Perez",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
         },
         {
-          "jugador": "Ylich",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "RICARDO RIVERO",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Simon Melendez",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "EDUARDO PINTO",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Edicxon Mendoza",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "RICARDO DEFENDINI",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Rafael Aguilar",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Luis Pinto",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Dixon Torrealba",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "jaidali",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Jorge Rojas",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Freddy Parra (1)",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Freddy Parra (2)",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Mariana Suarez (Samuel 2)",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Samuel Montes",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Andres Fermin",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Luis Márquez",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Alvaro Urdaneta",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Fernando (Jessika)",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Ricardo Ortega",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Xavier (Kevin 2)",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Jared Oropeza",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Juan Dorante",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Carlos Gimenez",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Andres Alvarez",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        }
-      ]
-    },
-    {
-      "ref": 12,
-      "label": "22/06/2026",
-      "date": "2026-06-22",
-      "matches": [
-        "Francia-Irak",
-        "Noruega-Senegal",
-        "Argentina-Austria",
-        "Jordania-Argelia"
-      ],
-      "predictions": [
-        {
-          "jugador": "Kevin Perez",
+          "jugador": "Erika",
           "preds": [
-            "1|2-0",
-            "1|1-0",
-            "1|2-0",
-            "X|1-1"
-          ]
-        },
-        {
-          "jugador": "Ylich",
-          "preds": [
-            "1|3-1",
-            "1|1-0",
-            "1|3-1",
-            "2|1-2"
-          ]
-        },
-        {
-          "jugador": "RICARDO RIVERO",
-          "preds": [
-            "1|2-0",
+            "1|2-1",
+            "1|3-0",
+            "2|1-3",
             "X|2-2",
-            "1|3-1",
-            "2|0-2"
-          ]
-        },
-        {
-          "jugador": "Simon Melendez",
-          "preds": [
-            "1|1-0",
-            "1|5-2",
-            "1|3-0",
-            "2|1-2"
-          ]
-        },
-        {
-          "jugador": "EDUARDO PINTO",
-          "preds": [
-            "1|3-0",
-            "X|1-1",
-            "X|2-2",
-            "2|1-2"
-          ]
-        },
-        {
-          "jugador": "Edicxon Mendoza",
-          "preds": [
-            "1|3-0",
-            "1|2-0",
-            "1|2-1",
-            "2|0-1"
-          ]
-        },
-        {
-          "jugador": "RICARDO DEFENDINI",
-          "preds": [
-            "1|3-1",
-            "X|2-2",
-            "1|2-0",
-            "2|1-2"
-          ]
-        },
-        {
-          "jugador": "Rafael Aguilar",
-          "preds": [
-            "1|3-0",
-            "1|2-1",
-            "1|2-1",
-            "2|0-1"
-          ]
-        },
-        {
-          "jugador": "Luis Pinto",
-          "preds": [
-            "1|3-1",
-            "X|1-1",
-            "1|1-0",
-            "2|0-2"
-          ]
-        },
-        {
-          "jugador": "Dixon Torrealba",
-          "preds": [
-            "1|4-0",
-            "X|2-2",
-            "1|3-0",
-            "2|0-1"
-          ]
-        },
-        {
-          "jugador": "jaidali",
-          "preds": [
-            "X|2-2",
-            "X|1-1",
-            "1|2-1",
-            "2|0-2"
-          ]
-        },
-        {
-          "jugador": "Jorge Rojas",
-          "preds": [
-            "1|3-0",
-            "X|1-1",
-            "1|2-0",
-            "X|1-1"
-          ]
-        },
-        {
-          "jugador": "Freddy Parra (1)",
-          "preds": [
-            "1|2-1",
-            "X|1-1",
-            "1|2-1",
-            "X|1-1"
-          ]
-        },
-        {
-          "jugador": "Freddy Parra (2)",
-          "preds": [
-            "1|4-0",
-            "1|2-0",
-            "X|2-2",
-            "2|1-2"
-          ]
-        },
-        {
-          "jugador": "Mariana Suarez (Samuel 2)",
-          "preds": [
-            "1|4-0",
-            "1|1-0",
-            "1|2-0",
-            "2|1-2"
-          ]
-        },
-        {
-          "jugador": "Samuel Montes",
-          "preds": [
-            "1|2-1",
-            "X|1-1",
-            "1|2-0",
-            "2|0-2"
-          ]
-        },
-        {
-          "jugador": "Andres Fermin",
-          "preds": [
-            "1|4-0",
-            "X|1-1",
-            "1|2-1",
-            "X|0-0"
-          ]
-        },
-        {
-          "jugador": "Luis Márquez",
-          "preds": [
-            "1|4-0",
-            "1|2-1",
-            "1|1-0",
-            "2|0-1"
-          ]
-        },
-        {
-          "jugador": "Alvaro Urdaneta",
-          "preds": [
-            "1|4-0",
-            "2|2-3",
-            "1|3-1",
-            "2|1-2"
-          ]
-        },
-        {
-          "jugador": "Fernando (Jessika)",
-          "preds": [
-            "1|5-0",
-            "1|3-2",
-            "1|2-1",
-            "X|1-1"
-          ]
-        },
-        {
-          "jugador": "Ricardo Ortega",
-          "preds": [
-            "1|3-0",
-            "1|2-1",
-            "1|3-1",
-            "1|2-1"
-          ]
-        },
-        {
-          "jugador": "Xavier (Kevin 2)",
-          "preds": [
-            "1|2-0",
-            "X|2-2",
-            "1|3-1",
-            "2|1-2"
-          ]
-        },
-        {
-          "jugador": "Jared Oropeza",
-          "preds": [
-            "1|3-0",
-            "1|3-2",
-            "1|2-1",
-            "2|0-1"
-          ]
-        },
-        {
-          "jugador": "Juan Dorante",
-          "preds": [
-            "1|3-0",
-            "X|2-2",
-            "1|2-1",
-            "2|0-1"
-          ]
-        },
-        {
-          "jugador": "Carlos Gimenez",
-          "preds": [
-            "1|4-0",
-            "1|2-1",
-            "1|2-1",
-            "2|0-2"
-          ]
-        },
-        {
-          "jugador": "Andres Alvarez",
-          "preds": [
-            "1|2-1",
-            "1|2-0",
             "1|3-1"
           ]
         }
@@ -8063,6 +7744,571 @@
           "pts": [
             0,
             0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        }
+      ]
+    },
+    {
+      "ref": 12,
+      "label": "22/06/2026",
+      "date": "2026-06-22",
+      "matches": [
+        "Francia-Irak",
+        "Noruega-Senegal",
+        "Argentina-Austria",
+        "Jordania-Argelia"
+      ],
+      "predictions": [
+        {
+          "jugador": "Kevin Perez",
+          "preds": [
+            "1|2-0",
+            "1|1-0",
+            "1|2-0",
+            "X|1-1"
+          ]
+        },
+        {
+          "jugador": "Ylich",
+          "preds": [
+            "1|3-1",
+            "1|1-0",
+            "1|3-1",
+            "2|1-2"
+          ]
+        },
+        {
+          "jugador": "RICARDO RIVERO",
+          "preds": [
+            "1|2-0",
+            "X|2-2",
+            "1|3-1",
+            "2|0-2"
+          ]
+        },
+        {
+          "jugador": "Simon Melendez",
+          "preds": [
+            "1|1-0",
+            "1|5-2",
+            "1|3-0",
+            "2|1-2"
+          ]
+        },
+        {
+          "jugador": "EDUARDO PINTO",
+          "preds": [
+            "1|3-0",
+            "X|1-1",
+            "X|2-2",
+            "2|1-2"
+          ]
+        },
+        {
+          "jugador": "Edicxon Mendoza",
+          "preds": [
+            "1|3-0",
+            "1|2-0",
+            "1|2-1",
+            "2|0-1"
+          ]
+        },
+        {
+          "jugador": "RICARDO DEFENDINI",
+          "preds": [
+            "1|3-1",
+            "X|2-2",
+            "1|2-0",
+            "2|1-2"
+          ]
+        },
+        {
+          "jugador": "Rafael Aguilar",
+          "preds": [
+            "1|3-0",
+            "1|2-1",
+            "1|2-1",
+            "2|0-1"
+          ]
+        },
+        {
+          "jugador": "Luis Pinto",
+          "preds": [
+            "1|3-1",
+            "X|1-1",
+            "1|1-0",
+            "2|0-2"
+          ]
+        },
+        {
+          "jugador": "Dixon Torrealba",
+          "preds": [
+            "1|4-0",
+            "X|2-2",
+            "1|3-0",
+            "2|0-1"
+          ]
+        },
+        {
+          "jugador": "jaidali",
+          "preds": [
+            "X|2-2",
+            "X|1-1",
+            "1|2-1",
+            "2|0-2"
+          ]
+        },
+        {
+          "jugador": "Jorge Rojas",
+          "preds": [
+            "1|3-0",
+            "X|1-1",
+            "1|2-0",
+            "X|1-1"
+          ]
+        },
+        {
+          "jugador": "Freddy Parra (1)",
+          "preds": [
+            "1|2-1",
+            "X|1-1",
+            "1|2-1",
+            "X|1-1"
+          ]
+        },
+        {
+          "jugador": "Freddy Parra (2)",
+          "preds": [
+            "1|4-0",
+            "1|2-0",
+            "X|2-2",
+            "2|1-2"
+          ]
+        },
+        {
+          "jugador": "Mariana Suarez (Samuel 2)",
+          "preds": [
+            "1|4-0",
+            "1|1-0",
+            "1|2-0",
+            "2|1-2"
+          ]
+        },
+        {
+          "jugador": "Samuel Montes",
+          "preds": [
+            "1|2-1",
+            "X|1-1",
+            "1|2-0",
+            "2|0-2"
+          ]
+        },
+        {
+          "jugador": "Andres Fermin",
+          "preds": [
+            "1|4-0",
+            "X|1-1",
+            "1|2-1",
+            "X|0-0"
+          ]
+        },
+        {
+          "jugador": "Luis Márquez",
+          "preds": [
+            "1|4-0",
+            "1|2-1",
+            "1|1-0",
+            "2|0-1"
+          ]
+        },
+        {
+          "jugador": "Alvaro Urdaneta",
+          "preds": [
+            "1|4-0",
+            "2|2-3",
+            "1|3-1",
+            "2|1-2"
+          ]
+        },
+        {
+          "jugador": "Fernando (Jessika)",
+          "preds": [
+            "1|5-0",
+            "1|3-2",
+            "1|2-1",
+            "X|1-1"
+          ]
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "preds": [
+            "1|3-0",
+            "1|2-1",
+            "1|3-1",
+            "1|2-1"
+          ]
+        },
+        {
+          "jugador": "Xavier (Kevin 2)",
+          "preds": [
+            "1|2-0",
+            "X|2-2",
+            "1|3-1",
+            "2|1-2"
+          ]
+        },
+        {
+          "jugador": "Jared Oropeza",
+          "preds": [
+            "1|3-0",
+            "1|3-2",
+            "1|2-1",
+            "2|0-1"
+          ]
+        },
+        {
+          "jugador": "Juan Dorante",
+          "preds": [
+            "1|3-0",
+            "X|2-2",
+            "1|2-1",
+            "2|0-1"
+          ]
+        },
+        {
+          "jugador": "Carlos Gimenez",
+          "preds": [
+            "1|4-0",
+            "1|2-1",
+            "1|2-1",
+            "2|0-2"
+          ]
+        },
+        {
+          "jugador": "Andres Alvarez",
+          "preds": [
+            "1|2-1",
+            "1|2-0",
+            "1|3-1"
+          ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "X|1-1",
+            "1|3-1",
+            "1|2-1"
+          ]
+        }
+      ],
+      "clas": [
+        {
+          "jugador": "Kevin Perez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ylich",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "RICARDO RIVERO",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Simon Melendez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "EDUARDO PINTO",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Edicxon Mendoza",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "RICARDO DEFENDINI",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Rafael Aguilar",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Luis Pinto",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Dixon Torrealba",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "jaidali",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Jorge Rojas",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Freddy Parra (1)",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Freddy Parra (2)",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Mariana Suarez (Samuel 2)",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Samuel Montes",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Andres Fermin",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Luis Márquez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Alvaro Urdaneta",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Fernando (Jessika)",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Ricardo Ortega",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Xavier (Kevin 2)",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Jared Oropeza",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Juan Dorante",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Carlos Gimenez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
             0
           ],
           "pos": 1
@@ -8311,6 +8557,15 @@
             "1|3-0",
             "X|2-2",
             "2|1-2",
+            "1|2-0"
+          ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "1|3-0",
+            "1|2-1",
+            "2|0-2",
             "1|2-0"
           ]
         }
@@ -8593,6 +8848,17 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -9215,6 +9481,20 @@
             "Suiza",
             "Bosnia y Herzegovina",
             "Canadá",
+            "Catar"
+          ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "1|3-0",
+            "1|1-0",
+            "2|1-2",
+            "1|3-2",
+            "1|2-0",
+            "Suiza",
+            "Canadá",
+            "Bosnia y Herzegovina",
             "Catar"
           ]
         }
@@ -9860,6 +10140,22 @@
             0
           ],
           "pos": 1
+        },
+        {
+          "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
         }
       ]
     },
@@ -10473,6 +10769,23 @@
             "México",
             "República Checa",
             "Corea del Sur",
+            "Sudáfrica",
+            "Brasil",
+            "Marruecos",
+            "Escocia",
+            "Haití"
+          ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "X|1-1",
+            "2|1-2",
+            "2|1-3",
+            "1|2-0",
+            "Corea del Sur",
+            "República Checa",
+            "México",
             "Sudáfrica",
             "Brasil",
             "Marruecos",
@@ -11109,6 +11422,25 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -11756,6 +12088,35 @@
             "Noruega",
             "Irak"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "1|2-1",
+            "1|2-1",
+            "2|0-3",
+            "X|2-2",
+            "1|2-0",
+            "2|0-3",
+            "1|2-1",
+            "1|2-0",
+            "Paraguay",
+            "Turquía",
+            "Estados Unidos",
+            "Australia",
+            "Alemania",
+            "Ecuador",
+            "Costa de Marfil",
+            "Curazao",
+            "Países Bajos",
+            "Japón",
+            "Suecia",
+            "Túnez",
+            "Noruega",
+            "Francia",
+            "Senegal",
+            "Irak"
+          ]
         }
       ],
       "clas": [
@@ -12386,6 +12747,37 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -13033,6 +13425,23 @@
             "Cabo Verde",
             "Arabia Saudita"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "1|3-2",
+            "2|0-2",
+            "2|1-3",
+            "2|1-2",
+            "Bélgica",
+            "Egipto",
+            "Irán",
+            "Nueva Zelanda",
+            "España",
+            "Uruguay",
+            "Arabia Saudita",
+            "Cabo Verde"
+          ]
         }
       ],
       "clas": [
@@ -13663,6 +14072,25 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -14682,6 +15110,43 @@
             "Uruguay",
             "Costa de Marfil"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "República Checa",
+            "Brasil",
+            "Alemania",
+            "Países Bajos",
+            "Ecuador",
+            "Noruega",
+            "Corea del Sur",
+            "Inglaterra",
+            "Bélgica",
+            "Paraguay",
+            "España",
+            "Colombia",
+            "Suiza",
+            "Turquía",
+            "Argentina",
+            "Portugal",
+            "Canadá",
+            "Japón",
+            "México",
+            "Marruecos",
+            "Francia",
+            "Irán",
+            "Costa de Marfil",
+            "Senegal",
+            "Arabia Saudita",
+            "Bosnia y Herzegovina",
+            "Austria",
+            "Croacia",
+            "Argelia",
+            "Egipto",
+            "Uruguay",
+            "Ghana"
+          ]
         }
       ],
       "clas": [
@@ -15662,6 +16127,45 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -16701,6 +17205,43 @@
             "Paraguay",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "República Checa-Canadá·1|2-1",
+            "Brasil-Japón·1|3-1",
+            "Alemania-México·1|3-1",
+            "Países Bajos-Marruecos·1|2-1",
+            "Ecuador-Francia·1|2-1",
+            "Noruega-Irán·1|3-0",
+            "Corea del Sur-Costa de Marfil·2|1-2",
+            "Inglaterra-Senegal·1|2-1",
+            "Bélgica-Arabia Saudita·1|2-1",
+            "Paraguay-Bosnia y Herzegovina·1|1-0",
+            "España-Austria·1|2-0",
+            "Colombia-Croacia·1|2-0",
+            "Suiza-Argelia·1|3-2",
+            "Turquía-Egipto·1|3-2",
+            "Argentina-Uruguay·1|2-0",
+            "Portugal-Ghana·1|3-0",
+            "República Checa",
+            "Alemania",
+            "Brasil",
+            "Costa de Marfil",
+            "Colombia",
+            "Paraguay",
+            "Argentina",
+            "Suiza",
+            "Países Bajos",
+            "Noruega",
+            "Ecuador",
+            "Inglaterra",
+            "España",
+            "Bélgica",
+            "Turquía",
+            "Portugal"
+          ]
         }
       ],
       "clas": [
@@ -17681,6 +18222,45 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -18288,6 +18868,27 @@
             "Inglaterra",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "República Checa-Países Bajos·2|0-2",
+            "Alemania-Noruega·2|0-1",
+            "Brasil-Ecuador·2|1-2",
+            "Costa de Marfil-Inglaterra·2|1-2",
+            "Colombia-España·2|1-2",
+            "Paraguay-Bélgica·1|1-0",
+            "Argentina-Turquía·1|2-1",
+            "Suiza-Portugal·2|1-3",
+            "Noruega",
+            "España",
+            "Ecuador",
+            "Argentina",
+            "Países Bajos",
+            "Paraguay",
+            "Inglaterra",
+            "Portugal"
+          ]
         }
       ],
       "clas": [
@@ -18868,6 +19469,29 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -19243,6 +19867,19 @@
             "España",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "Noruega-Países Bajos·2|2-3",
+            "España-Paraguay·1|2-1",
+            "Ecuador-Inglaterra·1|3-2",
+            "Argentina-Portugal·2|1-2",
+            "Países Bajos",
+            "Ecuador",
+            "España",
+            "Portugal"
+          ]
         }
       ],
       "clas": [
@@ -19623,6 +20260,21 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -19936,6 +20588,17 @@
             "Francia",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "Países Bajos-España·2|1-2",
+            "Ecuador-Portugal·2|1-3",
+            "Países Bajos",
+            "Ecuador",
+            "España",
+            "Portugal"
+          ]
         }
       ],
       "clas": [
@@ -20266,6 +20929,19 @@
         },
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -20712,6 +21388,22 @@
             "Kylian Mbappe",
             "Cristiano Ronaldo"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "Países Bajos-Ecuador·2|1-2",
+            "España-Portugal·2|1-2",
+            "Portugal",
+            "España",
+            "Ecuador",
+            "Escribe un jugador",
+            "Escribe un jugador",
+            "Escribe un jugador",
+            "Escribe un jugador",
+            "Escribe un jugador",
+            "Escribe un jugador"
+          ]
         }
       ],
       "clas": [
@@ -21182,6 +21874,24 @@
             0
           ],
           "pos": 1
+        },
+        {
+          "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
         }
       ]
     },
@@ -21232,11 +21942,59 @@
             "Ghana",
             "Panamá"
           ]
+        },
+        {
+          "jugador": "Erika",
+          "preds": [
+            "X|2-2",
+            "2|0-3",
+            "X|1-1",
+            "2|1-2",
+            "2|1-2",
+            "1|1-0",
+            "Argentina",
+            "Austria",
+            "Argelia",
+            "Jordania",
+            "Portugal",
+            "Colombia",
+            "Uzbekistán",
+            "RD Congo",
+            "Inglaterra",
+            "Croacia",
+            "Ghana",
+            "Panamá"
+          ]
         }
       ],
       "clas": [
         {
           "jugador": "Andres Alvarez",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
             0,
