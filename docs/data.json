@@ -1,5 +1,5 @@
 {
-  "updated_at": "11/06/2026 13:30 (hora Venezuela)",
+  "updated_at": "11/06/2026 14:22 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -2074,13 +2074,15 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "1|2-1"
+            "1|2-1",
+            "2|1-2"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "1|3-2"
+            "1|3-2",
+            "X|1-1"
           ]
         }
       ],
@@ -2314,6 +2316,7 @@
           "jugador": "Andres Alvarez",
           "puntos_dia": 0,
           "pts": [
+            0,
             0
           ],
           "pos": 1
@@ -2322,6 +2325,7 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
+            0,
             0
           ],
           "pos": 1
@@ -2515,15 +2519,15 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "2|1-2",
-            "X|1-1"
+            "X|1-1",
+            "1|3-2"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "X|1-1",
-            "1|2-1"
+            "1|2-1",
+            "2|1-2"
           ]
         }
       ],
@@ -3013,13 +3017,17 @@
           "jugador": "Andres Alvarez",
           "preds": [
             "2|0-2",
-            "1|3-2"
+            "1|2-1",
+            "2|0-2",
+            "2|1-2"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
             "2|0-2",
+            "X|2-2",
+            "2|0-1",
             "2|1-2"
           ]
         }
@@ -3305,6 +3313,8 @@
           "puntos_dia": 0,
           "pts": [
             0,
+            0,
+            0,
             0
           ],
           "pos": 1
@@ -3313,6 +3323,8 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
+            0,
+            0,
             0,
             0
           ],
@@ -3559,19 +3571,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "1|2-1",
-            "2|0-2",
+            "1|4-0",
             "2|1-2",
-            "1|4-0"
+            "X|2-2",
+            "1|2-1"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "X|2-2",
-            "2|0-1",
+            "1|4-0",
             "2|1-2",
-            "1|4-0"
+            "1|3-1",
+            "1|2-1"
           ]
         }
       ],
@@ -4114,21 +4126,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "2|1-2",
-            "X|2-2",
-            "1|2-1",
             "1|3-0",
-            "1|3-0"
+            "2|1-2",
+            "1|3-0",
+            "2|0-2"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "2|1-2",
-            "1|3-1",
             "1|2-1",
-            "1|2-1",
-            "1|4-0"
+            "1|1-0",
+            "1|4-0",
+            "2|1-2"
           ]
         }
       ],
@@ -4415,7 +4425,6 @@
             0,
             0,
             0,
-            0,
             0
           ],
           "pos": 1
@@ -4424,7 +4433,6 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
-            0,
             0,
             0,
             0,
@@ -4673,17 +4681,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
+            "1|3-2",
             "2|1-2",
-            "2|0-2",
-            "1|3-2"
+            "1|3-1",
+            "1|2-0"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "1|1-0",
-            "2|1-2",
-            "1|2-1"
+            "1|2-1",
+            "2|0-4",
+            "1|3-1",
+            "1|2-0"
           ]
         }
       ],
@@ -4969,6 +4979,7 @@
           "pts": [
             0,
             0,
+            0,
             0
           ],
           "pos": 1
@@ -4977,6 +4988,7 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
+            0,
             0,
             0,
             0
@@ -5224,19 +5236,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "2|1-2",
-            "1|3-1",
-            "1|2-0",
-            "1|3-0"
+            "1|3-0",
+            "2|0-2",
+            "1|2-1",
+            "1|2-0"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "2|0-4",
-            "1|3-1",
-            "1|2-0",
-            "1|3-0"
+            "1|3-0",
+            "2|0-2",
+            "X|1-1",
+            "1|2-1"
           ]
         }
       ],
@@ -5779,21 +5791,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "2|0-2",
+            "1|2-0",
+            "1|2-0",
             "1|2-1",
-            "1|2-0",
-            "1|2-0",
-            "1|2-1"
+            "1|1-0"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "2|0-2",
-            "X|1-1",
             "1|2-1",
-            "1|2-1",
-            "X|2-2"
+            "2|1-2",
+            "X|2-2",
+            "1|2-0"
           ]
         }
       ],
@@ -6080,7 +6090,6 @@
             0,
             0,
             0,
-            0,
             0
           ],
           "pos": 1
@@ -6089,7 +6098,6 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
-            0,
             0,
             0,
             0,
@@ -6338,17 +6346,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
+            "2|1-2",
+            "1|3-0",
             "1|2-0",
-            "1|1-0",
-            "1|2-0"
+            "2|1-2"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "2|1-2",
-            "1|2-0",
-            "X|1-1"
+            "2|0-2",
+            "1|3-0",
+            "X|1-1",
+            "X|2-2"
           ]
         }
       ],
@@ -6634,6 +6644,7 @@
           "pts": [
             0,
             0,
+            0,
             0
           ],
           "pos": 1
@@ -6642,6 +6653,7 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
+            0,
             0,
             0,
             0
@@ -6889,19 +6901,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "2|1-2",
-            "1|3-0",
-            "2|1-2",
-            "1|3-1"
+            "1|3-1",
+            "1|3-1",
+            "1|3-1",
+            "2|0-2"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "2|0-2",
+            "1|2-1",
             "1|3-0",
-            "X|2-2",
-            "1|2-1"
+            "1|2-1",
+            "2|1-3"
           ]
         }
       ],
@@ -7444,20 +7456,18 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "1|3-1",
-            "1|3-1",
-            "2|0-2",
             "1|2-0",
-            "1|3-0"
+            "1|2-1",
+            "1|3-0",
+            "1|2-0"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "1|2-1",
-            "1|3-0",
-            "2|1-3",
             "X|2-2",
+            "X|1-1",
+            "1|3-1",
             "1|3-1"
           ]
         }
@@ -7745,7 +7755,6 @@
             0,
             0,
             0,
-            0,
             0
           ],
           "pos": 1
@@ -7754,7 +7763,6 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
-            0,
             0,
             0,
             0,
@@ -8003,17 +8011,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "1|2-1",
-            "1|2-0",
-            "1|3-1"
+            "1|3-0",
+            "X|2-2",
+            "1|3-1",
+            "2|1-2"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "X|1-1",
-            "1|3-1",
-            "1|2-1"
+            "1|3-0",
+            "1|2-1",
+            "1|2-1",
+            "2|0-2"
           ]
         }
       ],
@@ -8299,6 +8309,7 @@
           "pts": [
             0,
             0,
+            0,
             0
           ],
           "pos": 1
@@ -8307,6 +8318,7 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
+            0,
             0,
             0,
             0
@@ -8554,19 +8566,19 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
+            "1|2-0",
             "1|3-0",
-            "X|2-2",
-            "2|1-2",
-            "1|2-0"
+            "1|3-1",
+            "2|1-2"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
+            "1|2-0",
             "1|3-0",
-            "1|2-1",
-            "2|0-2",
-            "1|2-0"
+            "1|1-0",
+            "2|1-2"
           ]
         }
       ],
@@ -9473,29 +9485,47 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "1|3-0",
-            "1|3-1",
-            "2|1-2",
+            "X|1-1",
+            "2|0-1",
             "1|2-1",
             "1|2-0",
+            "2|0-3",
+            "1|2-1",
+            "México",
+            "República Checa",
+            "Corea del Sur",
+            "Sudáfrica",
             "Suiza",
             "Bosnia y Herzegovina",
             "Canadá",
-            "Catar"
+            "Catar",
+            "Brasil",
+            "Marruecos",
+            "Escocia",
+            "Haití"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "1|3-0",
-            "1|1-0",
+            "X|1-1",
             "2|1-2",
             "1|3-2",
             "1|2-0",
+            "2|1-3",
+            "1|2-0",
+            "Corea del Sur",
+            "República Checa",
+            "México",
+            "Sudáfrica",
             "Suiza",
             "Canadá",
             "Bosnia y Herzegovina",
-            "Catar"
+            "Catar",
+            "Brasil",
+            "Marruecos",
+            "Escocia",
+            "Haití"
           ]
         }
       ],
@@ -10137,6 +10167,15 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "pos": 1
@@ -10145,6 +10184,15 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -10762,35 +10810,47 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "X|1-1",
-            "2|0-1",
-            "2|0-3",
-            "1|2-1",
-            "México",
-            "República Checa",
-            "Corea del Sur",
-            "Sudáfrica",
-            "Brasil",
-            "Marruecos",
-            "Escocia",
-            "Haití"
+            "2|1-3",
+            "1|3-2",
+            "2|1-2",
+            "2|1-2",
+            "1|1-0",
+            "2|1-3",
+            "Estados Unidos",
+            "Paraguay",
+            "Turquía",
+            "Australia",
+            "Alemania",
+            "Ecuador",
+            "Costa de Marfil",
+            "Curazao",
+            "Países Bajos",
+            "Japón",
+            "Suecia",
+            "Túnez"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "X|1-1",
-            "2|1-2",
-            "2|1-3",
+            "1|2-1",
+            "1|2-1",
+            "2|0-3",
+            "X|2-2",
             "1|2-0",
-            "Corea del Sur",
-            "República Checa",
-            "México",
-            "Sudáfrica",
-            "Brasil",
-            "Marruecos",
-            "Escocia",
-            "Haití"
+            "2|0-3",
+            "Paraguay",
+            "Turquía",
+            "Estados Unidos",
+            "Australia",
+            "Alemania",
+            "Ecuador",
+            "Costa de Marfil",
+            "Curazao",
+            "Países Bajos",
+            "Japón",
+            "Suecia",
+            "Túnez"
           ]
         }
       ],
@@ -11435,6 +11495,12 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "pos": 1
@@ -11443,6 +11509,12 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -12063,26 +12135,20 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
+            "X|2-2",
             "2|1-3",
-            "1|3-2",
-            "2|1-2",
-            "2|1-2",
-            "1|1-0",
-            "2|1-3",
+            "X|1-1",
+            "X|2-2",
             "2|2-3",
             "1|2-0",
-            "Estados Unidos",
-            "Paraguay",
-            "Turquía",
-            "Australia",
-            "Alemania",
-            "Ecuador",
-            "Costa de Marfil",
-            "Curazao",
-            "Países Bajos",
-            "Japón",
-            "Suecia",
-            "Túnez",
+            "Bélgica",
+            "Nueva Zelanda",
+            "Irán",
+            "Egipto",
+            "España",
+            "Uruguay",
+            "Cabo Verde",
+            "Arabia Saudita",
             "Francia",
             "Senegal",
             "Noruega",
@@ -12092,26 +12158,20 @@
         {
           "jugador": "Erika",
           "preds": [
-            "1|2-1",
-            "1|2-1",
-            "2|0-3",
-            "X|2-2",
-            "1|2-0",
-            "2|0-3",
+            "1|3-2",
+            "2|0-2",
+            "2|1-3",
+            "2|1-2",
             "1|2-1",
             "1|2-0",
-            "Paraguay",
-            "Turquía",
-            "Estados Unidos",
-            "Australia",
-            "Alemania",
-            "Ecuador",
-            "Costa de Marfil",
-            "Curazao",
-            "Países Bajos",
-            "Japón",
-            "Suecia",
-            "Túnez",
+            "Bélgica",
+            "Egipto",
+            "Irán",
+            "Nueva Zelanda",
+            "España",
+            "Uruguay",
+            "Arabia Saudita",
+            "Cabo Verde",
             "Noruega",
             "Francia",
             "Senegal",
@@ -12766,12 +12826,6 @@
             0,
             0,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
             0
           ],
           "pos": 1
@@ -12780,12 +12834,6 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
             0,
             0,
             0,
@@ -13412,35 +13460,47 @@
         {
           "jugador": "Andres Alvarez",
           "preds": [
-            "X|2-2",
+            "X|1-1",
             "2|1-3",
             "X|1-1",
-            "X|2-2",
-            "Bélgica",
-            "Nueva Zelanda",
-            "Irán",
-            "Egipto",
-            "España",
-            "Uruguay",
-            "Cabo Verde",
-            "Arabia Saudita"
+            "X|0-0",
+            "2|0-3",
+            "1|3-0",
+            "Argentina",
+            "Austria",
+            "Argelia",
+            "Jordania",
+            "Portugal",
+            "Colombia",
+            "Uzbekistán",
+            "RD Congo",
+            "Inglaterra",
+            "Croacia",
+            "Ghana",
+            "Panamá"
           ]
         },
         {
           "jugador": "Erika",
           "preds": [
-            "1|3-2",
-            "2|0-2",
-            "2|1-3",
+            "X|2-2",
+            "2|0-3",
+            "X|1-1",
             "2|1-2",
-            "Bélgica",
-            "Egipto",
-            "Irán",
-            "Nueva Zelanda",
-            "España",
-            "Uruguay",
-            "Arabia Saudita",
-            "Cabo Verde"
+            "2|1-2",
+            "1|1-0",
+            "Argentina",
+            "Austria",
+            "Argelia",
+            "Jordania",
+            "Portugal",
+            "Colombia",
+            "Uzbekistán",
+            "RD Congo",
+            "Inglaterra",
+            "Croacia",
+            "Ghana",
+            "Panamá"
           ]
         }
       ],
@@ -14085,6 +14145,12 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "pos": 1
@@ -14093,6 +14159,12 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -21397,12 +21469,12 @@
             "Portugal",
             "España",
             "Ecuador",
-            "Escribe un jugador",
-            "Escribe un jugador",
-            "Escribe un jugador",
-            "Escribe un jugador",
-            "Escribe un jugador",
-            "Escribe un jugador"
+            "Erling Haaland",
+            "Harry Kane",
+            "Luis Diaz",
+            "Lamine Yamal",
+            "Harry Kane",
+            "Luis Diaz"
           ]
         }
       ],
@@ -21879,131 +21951,6 @@
           "jugador": "Erika",
           "puntos_dia": 0,
           "pts": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        }
-      ]
-    },
-    {
-      "ref": 18,
-      "label": "28/06/2026",
-      "date": "2026-06-28",
-      "matches": [
-        "Argelia-Austria",
-        "Jordania-Argentina",
-        "Colombia-Portugal",
-        "RD Congo-Uzbekistán",
-        "Panamá-Inglaterra",
-        "Croacia-Ghana",
-        "1º GRUPO J",
-        "2º GRUPO J",
-        "3º GRUPO J",
-        "4º GRUPO J",
-        "1º GRUPO K",
-        "2º GRUPO K",
-        "3º GRUPO K",
-        "4º GRUPO K",
-        "1º GRUPO L",
-        "2º GRUPO L",
-        "3º GRUPO L",
-        "4º GRUPO L"
-      ],
-      "predictions": [
-        {
-          "jugador": "Andres Alvarez",
-          "preds": [
-            "X|1-1",
-            "2|1-3",
-            "X|1-1",
-            "X|0-0",
-            "2|0-3",
-            "1|3-0",
-            "Argentina",
-            "Austria",
-            "Argelia",
-            "Jordania",
-            "Portugal",
-            "Colombia",
-            "Uzbekistán",
-            "RD Congo",
-            "Inglaterra",
-            "Croacia",
-            "Ghana",
-            "Panamá"
-          ]
-        },
-        {
-          "jugador": "Erika",
-          "preds": [
-            "X|2-2",
-            "2|0-3",
-            "X|1-1",
-            "2|1-2",
-            "2|1-2",
-            "1|1-0",
-            "Argentina",
-            "Austria",
-            "Argelia",
-            "Jordania",
-            "Portugal",
-            "Colombia",
-            "Uzbekistán",
-            "RD Congo",
-            "Inglaterra",
-            "Croacia",
-            "Ghana",
-            "Panamá"
-          ]
-        }
-      ],
-      "clas": [
-        {
-          "jugador": "Andres Alvarez",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Erika",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
             0,
             0,
             0,
