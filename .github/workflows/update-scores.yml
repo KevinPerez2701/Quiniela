@@ -41,13 +41,26 @@ jobs:
       # Recalculate formulas on TEMPORARY COPIES only. The recalculated files
       # are used to extract fresh values and are never committed, so the repo
       # Excel is never touched by LibreOffice.
+      #
+      # OOXMLRecalcMode=0 forces a FULL recalculation on load — without it,
+      # headless LibreOffice only partially recalculates xlsx files, leaving
+      # some point cells with stale cached values. This makes the output
+      # identical to opening the file in Excel and enabling editing.
       - name: Recalculate formulas on temp copies
         run: |
-          mkdir -p /tmp/recalc
+          mkdir -p /tmp/recalc/out /tmp/louser/user
+          cat > /tmp/louser/user/registrymodifications.xcu <<'XCU'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <oor:items xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+           <item oor:path="/org.openoffice.Office.Calc/Formula/Load"><prop oor:name="OOXMLRecalcMode" oor:op="fuse"><value>0</value></prop></item>
+           <item oor:path="/org.openoffice.Office.Calc/Formula/Load"><prop oor:name="ODFRecalcMode" oor:op="fuse"><value>0</value></prop></item>
+          </oor:items>
+          XCU
           cp ADMINExcelMundial2026*.xlsx /tmp/recalc/
           for FILE in /tmp/recalc/*.xlsx; do
             echo "Recalculating $(basename "$FILE") …"
-            libreoffice --headless --norestore --convert-to xlsx --outdir /tmp/recalc/out "$FILE"
+            libreoffice --headless --norestore -env:UserInstallation=file:///tmp/louser \
+              --convert-to xlsx --outdir /tmp/recalc/out "$FILE"
           done
 
       - name: Convert Excel to JSON (from recalculated copies)
