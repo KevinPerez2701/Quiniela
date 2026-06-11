@@ -277,13 +277,20 @@ async function loadData() {
     sel.appendChild(o);
   });
 
-  // Load scores.json from GitHub (to get current sha)
+  // Build scores from Excel (data.json) — "Recargar desde Excel" means
+  // Excel is the source of truth. If Excel is empty, inputs show empty.
+  originalScores = {};
+  fixtureData.forEach(m => {
+    if (m.goal_home !== null && m.goal_away !== null) {
+      originalScores[String(m.num)] = { goal_home: m.goal_home, goal_away: m.goal_away };
+    }
+  });
+
+  // Fetch scores.json only for its SHA (required for the PUT save)
   try {
     const sf = await ghGet('/contents/scores.json?ref=' + BRANCH);
     scoresSha = sf.sha;
-    originalScores = JSON.parse(atob(sf.content.replace(/\s/g, '')));
   } catch (e) {
-    originalScores = {};
     scoresSha = '';
   }
 
@@ -299,9 +306,8 @@ function renderTable(matches) {
   matches.forEach(m => {
     const key = String(m.num);
     const saved = originalScores[key] || {};
-    // Prefer the originally-saved score; fall back to what's in Excel (data.json)
-    const gh = saved.goal_home !== undefined ? saved.goal_home : m.goal_home;
-    const ga = saved.goal_away !== undefined ? saved.goal_away : m.goal_away;
+    const gh = saved.goal_home !== undefined ? saved.goal_home : null;
+    const ga = saved.goal_away !== undefined ? saved.goal_away : null;
 
     const dateStr = m.date ? m.date.split(' ')[0] : '—';
 
