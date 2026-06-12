@@ -1,5 +1,5 @@
 {
-  "updated_at": "11/06/2026 23:57 (hora Venezuela)",
+  "updated_at": "12/06/2026 08:18 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -525,6 +525,26 @@
       },
       {
         "jugador": "jaidali ",
+        "puntos": 0,
+        "f_grupos": 0,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 26
+      },
+      {
+        "jugador": "Maria Delgado",
         "puntos": 0,
         "f_grupos": 0,
         "pos_grupos": 0,
@@ -2084,6 +2104,13 @@
             "1|3-2",
             "X|1-1"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "X|2-2",
+            "2|1-3"
+          ]
         }
       ],
       "clas": [
@@ -2323,6 +2350,15 @@
         },
         {
           "jugador": "jaidali",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0
+          ],
+          "pos": 26
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -2529,6 +2565,13 @@
             "1|2-1",
             "2|1-2"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "X|1-1",
+            "X|1-1"
+          ]
         }
       ],
       "clas": [
@@ -2768,6 +2811,15 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -3030,6 +3082,15 @@
             "2|0-1",
             "2|1-2"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "2|0-2",
+            "1|3-2",
+            "2|1-2",
+            "2|1-2"
+          ]
         }
       ],
       "clas": [
@@ -3321,6 +3382,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -3585,6 +3657,15 @@
             "1|3-1",
             "1|2-1"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|4-1",
+            "X|1-1",
+            "1|2-0",
+            "X|1-1"
+          ]
         }
       ],
       "clas": [
@@ -3876,6 +3957,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4140,6 +4232,15 @@
             "1|4-0",
             "2|1-2"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|2-1",
+            "1|3-0",
+            "1|4-0",
+            "X|1-1"
+          ]
         }
       ],
       "clas": [
@@ -4431,6 +4532,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -4695,6 +4807,15 @@
             "1|3-1",
             "1|2-0"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "X|2-2",
+            "2|1-3",
+            "1|2-1",
+            "1|3-0"
+          ]
         }
       ],
       "clas": [
@@ -4986,6 +5107,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5250,6 +5382,15 @@
             "X|1-1",
             "1|2-1"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|4-0",
+            "2|0-2",
+            "1|1-0",
+            "1|2-1"
+          ]
         }
       ],
       "clas": [
@@ -5541,6 +5682,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -5805,6 +5957,15 @@
             "X|2-2",
             "1|2-0"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|1-0",
+            "1|2-1",
+            "1|1-0",
+            "1|2-0"
+          ]
         }
       ],
       "clas": [
@@ -6096,6 +6257,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6360,6 +6532,15 @@
             "X|1-1",
             "X|2-2"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "X|1-1",
+            "1|4-0",
+            "1|2-0",
+            "X|2-2"
+          ]
         }
       ],
       "clas": [
@@ -6651,6 +6832,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -6915,6 +7107,15 @@
             "1|2-1",
             "2|1-3"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|2-1",
+            "1|3-1",
+            "X|2-2",
+            "2|1-3"
+          ]
         }
       ],
       "clas": [
@@ -7206,6 +7407,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -7470,6 +7682,15 @@
             "1|3-1",
             "1|3-1"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|1-0",
+            "2|1-2",
+            "1|2-0",
+            "1|3-1"
+          ]
         }
       ],
       "clas": [
@@ -7761,6 +7982,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -8025,6 +8257,15 @@
             "1|2-1",
             "2|0-2"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|3-0",
+            "X|2-2",
+            "X|1-1",
+            "2|1-3"
+          ]
         }
       ],
       "clas": [
@@ -8316,6 +8557,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -8580,6 +8832,15 @@
             "1|1-0",
             "2|1-2"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|3-1",
+            "1|1-0",
+            "1|3-1",
+            "2|0-2"
+          ]
         }
       ],
       "clas": [
@@ -8871,6 +9132,17 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -9527,6 +9799,29 @@
             "Escocia",
             "Haití"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "2|0-2",
+            "2|1-2",
+            "1|2-1",
+            "1|3-0",
+            "X|1-1",
+            "1|3-0",
+            "México",
+            "República Checa",
+            "Corea del Sur",
+            "Sudáfrica",
+            "Suiza",
+            "Bosnia y Herzegovina",
+            "Canadá",
+            "Catar",
+            "Brasil",
+            "Escocia",
+            "Marruecos",
+            "Haití"
+          ]
         }
       ],
       "clas": [
@@ -10182,6 +10477,31 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -10852,6 +11172,29 @@
             "Suecia",
             "Túnez"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "1|1-0",
+            "1|3-1",
+            "X|0-0",
+            "2|1-2",
+            "X|1-1",
+            "2|0-2",
+            "Turquía",
+            "Paraguay",
+            "Estados Unidos",
+            "Australia",
+            "Alemania",
+            "Ecuador",
+            "Costa de Marfil",
+            "Curazao",
+            "Países Bajos",
+            "Japón",
+            "Suecia",
+            "Túnez"
+          ]
         }
       ],
       "clas": [
@@ -11507,6 +11850,31 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -12177,6 +12545,29 @@
             "Senegal",
             "Irak"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "X|1-1",
+            "2|0-4",
+            "X|1-1",
+            "X|2-2",
+            "2|1-2",
+            "1|2-1",
+            "Bélgica",
+            "Irán",
+            "Egipto",
+            "Nueva Zelanda",
+            "España",
+            "Uruguay",
+            "Arabia Saudita",
+            "Cabo Verde",
+            "Francia",
+            "Senegal",
+            "Noruega",
+            "Irak"
+          ]
         }
       ],
       "clas": [
@@ -12832,6 +13223,31 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -13502,6 +13918,29 @@
             "Ghana",
             "Panamá"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "X|2-2",
+            "2|0-4",
+            "X|2-2",
+            "1|2-1",
+            "2|0-4",
+            "X|1-1",
+            "Argentina",
+            "Austria",
+            "Argelia",
+            "Jordania",
+            "Portugal",
+            "Colombia",
+            "RD Congo",
+            "Uzbekistán",
+            "Inglaterra",
+            "Croacia",
+            "Ghana",
+            "Panamá"
+          ]
         }
       ],
       "clas": [
@@ -14157,6 +14596,31 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -15219,6 +15683,43 @@
             "Uruguay",
             "Ghana"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "República Checa",
+            "Brasil",
+            "Alemania",
+            "Países Bajos",
+            "Ecuador",
+            "Francia",
+            "México",
+            "Inglaterra",
+            "Bélgica",
+            "Turquía",
+            "España",
+            "Colombia",
+            "Suiza",
+            "Paraguay",
+            "Argentina",
+            "Portugal",
+            "Bosnia y Herzegovina",
+            "Japón",
+            "Estados Unidos",
+            "Escocia",
+            "Senegal",
+            "Suecia",
+            "Marruecos",
+            "Noruega",
+            "Argelia",
+            "Canadá",
+            "Austria",
+            "Croacia",
+            "Egipto",
+            "Irán",
+            "Uruguay",
+            "Ghana"
+          ]
         }
       ],
       "clas": [
@@ -16238,6 +16739,45 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -17314,6 +17854,43 @@
             "Turquía",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "República Checa-Bosnia y Herzegovina·1|2-1",
+            "Brasil-Japón·1|3-1",
+            "Alemania-Estados Unidos·1|2-0",
+            "Países Bajos-Escocia·1|3-2",
+            "Ecuador-Senegal·1|1-0",
+            "Francia-Suecia·1|3-1",
+            "México-Marruecos·2|1-2",
+            "Inglaterra-Noruega·X|2-2",
+            "Bélgica-Argelia·1|1-0",
+            "Turquía-Canadá·1|2-0",
+            "España-Austria·1|3-1",
+            "Colombia-Croacia·1|2-1",
+            "Suiza-Egipto·X|1-1",
+            "Paraguay-Irán·1|2-1",
+            "Argentina-Uruguay·1|3-2",
+            "Portugal-Ghana·1|2-0",
+            "República Checa",
+            "Alemania",
+            "Brasil",
+            "Marruecos",
+            "Colombia",
+            "Turquía",
+            "Argentina",
+            "Suiza",
+            "Países Bajos",
+            "Francia",
+            "Ecuador",
+            "Inglaterra",
+            "España",
+            "Bélgica",
+            "Paraguay",
+            "Portugal"
+          ]
         }
       ],
       "clas": [
@@ -18333,6 +18910,45 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -18961,6 +19577,27 @@
             "Inglaterra",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "República Checa-Países Bajos·2|1-3",
+            "Alemania-Francia·2|1-2",
+            "Brasil-Ecuador·1|2-0",
+            "Marruecos-Inglaterra·2|1-3",
+            "Colombia-España·2|0-2",
+            "Turquía-Bélgica·2|1-2",
+            "Argentina-Paraguay·1|2-1",
+            "Suiza-Portugal·2|0-3",
+            "Francia",
+            "España",
+            "Brasil",
+            "Argentina",
+            "Países Bajos",
+            "Bélgica",
+            "Inglaterra",
+            "Portugal"
+          ]
         }
       ],
       "clas": [
@@ -19564,6 +20201,29 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -19952,6 +20612,19 @@
             "España",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "Francia-Países Bajos·1|2-0",
+            "España-Bélgica·1|2-1",
+            "Brasil-Inglaterra·X|1-1",
+            "Argentina-Portugal·X|1-1",
+            "Francia",
+            "Inglaterra",
+            "España",
+            "Portugal"
+          ]
         }
       ],
       "clas": [
@@ -20347,6 +21020,21 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -20671,6 +21359,17 @@
             "España",
             "Portugal"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "Francia-España·X|2-2",
+            "Inglaterra-Portugal·2|1-2",
+            "Francia",
+            "Inglaterra",
+            "España",
+            "Portugal"
+          ]
         }
       ],
       "clas": [
@@ -21014,6 +21713,19 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
@@ -21476,6 +22188,22 @@
             "Harry Kane",
             "Luis Diaz"
           ]
+        },
+        {
+          "jugador": "Maria Delgado",
+          "preds": [
+            "Francia-Inglaterra·1|3-1",
+            "España-Portugal·2|1-2",
+            "Portugal",
+            "España",
+            "Francia",
+            "Harry kane",
+            "Mbappe",
+            "Julián Alvarez",
+            "Vitinhaa",
+            "Lamine yamal",
+            "Mbappe"
+          ]
         }
       ],
       "clas": [
@@ -21949,6 +22677,24 @@
         },
         {
           "jugador": "Erika",
+          "puntos_dia": 0,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Maria Delgado",
           "puntos_dia": 0,
           "pts": [
             0,
