@@ -2,5 +2,9 @@
   "1": {
     "goal_home": 2,
     "goal_away": 0
+  },
+  "2": {
+    "goal_home": 2,
+    "goal_away": 1
   }
 }
