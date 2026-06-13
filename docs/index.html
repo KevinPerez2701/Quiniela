@@ -246,6 +246,7 @@
   <div class="tabs">
     <button class="tab-btn active" data-tab="clas">🏆 Clasificación</button>
     <button class="tab-btn" data-tab="fixture">📅 Fixture</button>
+    <button class="tab-btn" data-tab="partidos-dia">🗓️ Partidos del Día</button>
     <button class="tab-btn" data-tab="daily-pred">⚽ Predicción del Día</button>
     <button class="tab-btn" data-tab="daily-clas">📊 Clas. del Día</button>
   </div>
@@ -269,6 +270,11 @@
     <!-- FIXTURE -->
     <div class="tab-panel" id="tab-fixture">
       <div id="fixture-content"></div>
+    </div>
+
+    <!-- PARTIDOS DEL DÍA -->
+    <div class="tab-panel" id="tab-partidos-dia">
+      <div id="partidos-dia-content"></div>
     </div>
 
     <!-- DAILY PREDICTION -->
@@ -433,6 +439,95 @@ function buildMatchTable(matches) {
   return wrap;
 }
 
+// ── PARTIDOS DEL DÍA (fixture grouped by calendar day, with times) ────────────
+let FIXTURE_DAYS = [];        // [{ iso, label, matches:[...] }, ...]
+let partidosDiaIdx = 0;
+
+const WEEKDAYS = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
+function fmtTime(str) {
+  if (!str) return '';
+  const t = str.split(' ')[1];
+  return t || '';
+}
+
+function dayLabel(iso) {
+  // iso like "2026-06-11" — build label without timezone drift
+  const [y, m, d] = iso.split('-').map(Number);
+  const wd = WEEKDAYS[new Date(y, m - 1, d).getDay()];
+  return `${wd} ${String(d).padStart(2,'0')}/${String(m).padStart(2,'0')}/${y}`;
+}
+
+function buildFixtureDays(matches) {
+  const byDay = {};
+  matches.forEach(m => {
+    if (!m.date) return;
+    const iso = m.date.split(' ')[0];
+    (byDay[iso] = byDay[iso] || []).push(m);
+  });
+  return Object.keys(byDay).sort().map(iso => {
+    const list = byDay[iso].slice().sort((a, b) =>
+      (a.date || '').localeCompare(b.date || '') || (a.num || 0) - (b.num || 0)
+    );
+    return { iso, label: dayLabel(iso), matches: list };
+  });
+}
+
+function renderPartidosDia() {
+  const el = document.getElementById('partidos-dia-content');
+  el.innerHTML = '';
+  if (!FIXTURE_DAYS.length) {
+    el.innerHTML = '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
+    return;
+  }
+  const day = FIXTURE_DAYS[partidosDiaIdx] || FIXTURE_DAYS[0];
+
+  const header = document.createElement('div');
+  header.className = 'daily-header';
+  header.innerHTML = `Selecciona día:&nbsp;`;
+  const sel = document.createElement('select');
+  sel.className = 'day-select';
+  FIXTURE_DAYS.forEach((d, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `${d.label} · ${d.matches.length} partido(s)`;
+    if (i === partidosDiaIdx) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener('change', e => { partidosDiaIdx = parseInt(e.target.value, 10); renderPartidosDia(); });
+  header.appendChild(sel);
+  el.appendChild(header);
+
+  const wrap = document.createElement('div');
+  wrap.className = 'table-wrap';
+  const t = document.createElement('table');
+  t.className = 'fixture-table';
+  t.innerHTML = `<thead><tr>
+    <th>Hora (UTC-4)</th><th>Fase</th>
+    <th class="left">Local</th><th>Resultado</th><th class="left">Visitante</th>
+  </tr></thead>`;
+  const tbody = document.createElement('tbody');
+  day.matches.forEach(m => {
+    const played = m.goal_home !== null && m.goal_away !== null;
+    const score = played
+      ? `<span class="score-cell">${m.goal_home} - ${m.goal_away}</span>`
+      : `<span class="score-cell pending">vs</span>`;
+    const fase = m.group ? `${h(m.phase_label)} · ${h(m.group)}` : h(m.phase_label);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="white-space:nowrap;font-weight:700;color:var(--navy)">${fmtTime(m.date) || '—'}</td>
+      <td style="font-size:.72rem;color:var(--muted)">${fase}</td>
+      <td class="team left">${h(m.home)}</td>
+      <td>${score}</td>
+      <td class="team left">${h(m.away)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+  wrap.appendChild(t);
+  el.appendChild(wrap);
+}
+
 // ── DAILY (all days, with a day selector) ─────────────────────────────────────
 let DAILY_DAYS = [];          // full list of day objects from data.json
 let dailyPredIdx = 0;         // selected day index for the prediction view
@@ -566,13 +661,17 @@ async function load() {
     document.getElementById('loading').style.display = 'none';
 
     DAILY_DAYS = data.daily || [];
+    FIXTURE_DAYS = buildFixtureDays(data.fixture || []);
     // Default the selectors to today's day if it exists, else the first day.
     const todayIso = new Date().toISOString().slice(0, 10);
     const todayIdx = DAILY_DAYS.findIndex(d => d.date === todayIso);
     dailyPredIdx = dailyClasIdx = (todayIdx >= 0 ? todayIdx : 0);
+    const todayFixIdx = FIXTURE_DAYS.findIndex(d => d.iso === todayIso);
+    partidosDiaIdx = (todayFixIdx >= 0 ? todayFixIdx : 0);
 
     renderClas(data);
     renderFixture(data.fixture || []);
+    renderPartidosDia();
     renderDailyPred();
     renderDailyClas();
 
