@@ -1,5 +1,5 @@
 {
-  "updated_at": "12/06/2026 16:56 (hora Venezuela)",
+  "updated_at": "12/06/2026 23:03 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -64,29 +64,9 @@
         "pos": 2
       },
       {
-        "jugador": "Rafael Aguilar",
-        "puntos": 8,
-        "f_grupos": 8,
-        "pos_grupos": 0,
-        "eq_16": 0,
-        "pt_16": 0,
-        "eq_8": 0,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 4
-      },
-      {
         "jugador": "Samuel Montes",
-        "puntos": 8,
-        "f_grupos": 8,
+        "puntos": 10,
+        "f_grupos": 10,
         "pos_grupos": 0,
         "eq_16": 0,
         "pt_16": 0,
@@ -105,6 +85,66 @@
       },
       {
         "jugador": "Andres Fermin",
+        "puntos": 10,
+        "f_grupos": 10,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 4
+      },
+      {
+        "jugador": "Juan Dorante",
+        "puntos": 10,
+        "f_grupos": 10,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 4
+      },
+      {
+        "jugador": "Andres Alvarez",
+        "puntos": 10,
+        "f_grupos": 10,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 4
+      },
+      {
+        "jugador": "Rafael Aguilar",
         "puntos": 8,
         "f_grupos": 8,
         "pos_grupos": 0,
@@ -121,7 +161,47 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 4
+        "pos": 8
+      },
+      {
+        "jugador": "Dixon Torrealba",
+        "puntos": 8,
+        "f_grupos": 8,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 8
+      },
+      {
+        "jugador": "Freddy Parra (1)",
+        "puntos": 8,
+        "f_grupos": 8,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 8
       },
       {
         "jugador": "Xavier (Kevin 2)",
@@ -141,10 +221,10 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 4
+        "pos": 8
       },
       {
-        "jugador": "Juan Dorante",
+        "jugador": "Carlos Gimenez",
         "puntos": 8,
         "f_grupos": 8,
         "pos_grupos": 0,
@@ -161,27 +241,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 4
-      },
-      {
-        "jugador": "Andres Alvarez",
-        "puntos": 8,
-        "f_grupos": 8,
-        "pos_grupos": 0,
-        "eq_16": 0,
-        "pt_16": 0,
-        "eq_8": 0,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 4
+        "pos": 8
       },
       {
         "jugador": "Kevin Perez",
@@ -201,7 +261,27 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 10
+        "pos": 13
+      },
+      {
+        "jugador": "RICARDO RIVERO",
+        "puntos": 6,
+        "f_grupos": 6,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 13
       },
       {
         "jugador": "RICARDO DEFENDINI",
@@ -221,10 +301,10 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 10
+        "pos": 13
       },
       {
-        "jugador": "Dixon Torrealba",
+        "jugador": "Jorge Rojas",
         "puntos": 6,
         "f_grupos": 6,
         "pos_grupos": 0,
@@ -241,10 +321,10 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 10
+        "pos": 13
       },
       {
-        "jugador": "Freddy Parra (1)",
+        "jugador": "Freddy Parra (2)",
         "puntos": 6,
         "f_grupos": 6,
         "pos_grupos": 0,
@@ -261,7 +341,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 10
+        "pos": 13
       },
       {
         "jugador": "Luis Márquez",
@@ -281,7 +361,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 10
+        "pos": 13
       },
       {
         "jugador": "Ricardo Ortega",
@@ -301,10 +381,10 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 10
+        "pos": 13
       },
       {
-        "jugador": "Carlos Gimenez",
+        "jugador": "Jared Oropeza",
         "puntos": 6,
         "f_grupos": 6,
         "pos_grupos": 0,
@@ -321,7 +401,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 10
+        "pos": 13
       },
       {
         "jugador": "Maria Delgado",
@@ -341,87 +421,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 10
-      },
-      {
-        "jugador": "RICARDO RIVERO",
-        "puntos": 4,
-        "f_grupos": 4,
-        "pos_grupos": 0,
-        "eq_16": 0,
-        "pt_16": 0,
-        "eq_8": 0,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 18
-      },
-      {
-        "jugador": "Jorge Rojas",
-        "puntos": 4,
-        "f_grupos": 4,
-        "pos_grupos": 0,
-        "eq_16": 0,
-        "pt_16": 0,
-        "eq_8": 0,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 18
-      },
-      {
-        "jugador": "Freddy Parra (2)",
-        "puntos": 4,
-        "f_grupos": 4,
-        "pos_grupos": 0,
-        "eq_16": 0,
-        "pt_16": 0,
-        "eq_8": 0,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 18
-      },
-      {
-        "jugador": "Jared Oropeza",
-        "puntos": 4,
-        "f_grupos": 4,
-        "pos_grupos": 0,
-        "eq_16": 0,
-        "pt_16": 0,
-        "eq_8": 0,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 18
+        "pos": 13
       },
       {
         "jugador": "Ylich",
@@ -465,6 +465,26 @@
       },
       {
         "jugador": "Edicxon Mendoza",
+        "puntos": 2,
+        "f_grupos": 2,
+        "pos_grupos": 0,
+        "eq_16": 0,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 22
+      },
+      {
+        "jugador": "jaidali ",
         "puntos": 2,
         "f_grupos": 2,
         "pos_grupos": 0,
@@ -541,27 +561,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 27
-      },
-      {
-        "jugador": "jaidali ",
-        "puntos": 0,
-        "f_grupos": 0,
-        "pos_grupos": 0,
-        "eq_16": 0,
-        "pt_16": 0,
-        "eq_8": 0,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 27
+        "pos": 28
       }
     ]
   },
@@ -700,8 +700,8 @@
       "group": "Grupo D",
       "home": "Estados Unidos",
       "away": "Paraguay",
-      "goal_home": null,
-      "goal_away": null,
+      "goal_home": 4,
+      "goal_away": 1,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -2576,13 +2576,40 @@
       ],
       "clas": [
         {
+          "jugador": "Samuel Montes",
+          "puntos_dia": 8,
+          "pts": [
+            6,
+            2
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Juan Dorante",
+          "puntos_dia": 8,
+          "pts": [
+            6,
+            2
+          ],
+          "pos": 1
+        },
+        {
+          "jugador": "Andres Alvarez",
+          "puntos_dia": 8,
+          "pts": [
+            6,
+            2
+          ],
+          "pos": 1
+        },
+        {
           "jugador": "Luis Pinto",
           "puntos_dia": 6,
           "pts": [
             6,
             0
           ],
-          "pos": 1
+          "pos": 4
         },
         {
           "jugador": "Mariana Suarez (Samuel 2)",
@@ -2591,16 +2618,7 @@
             6,
             0
           ],
-          "pos": 1
-        },
-        {
-          "jugador": "Samuel Montes",
-          "puntos_dia": 6,
-          "pts": [
-            6,
-            0
-          ],
-          "pos": 1
+          "pos": 4
         },
         {
           "jugador": "Alvaro Urdaneta",
@@ -2609,7 +2627,7 @@
             6,
             0
           ],
-          "pos": 1
+          "pos": 4
         },
         {
           "jugador": "Xavier (Kevin 2)",
@@ -2618,25 +2636,7 @@
             6,
             0
           ],
-          "pos": 1
-        },
-        {
-          "jugador": "Juan Dorante",
-          "puntos_dia": 6,
-          "pts": [
-            6,
-            0
-          ],
-          "pos": 1
-        },
-        {
-          "jugador": "Andres Alvarez",
-          "puntos_dia": 6,
-          "pts": [
-            6,
-            0
-          ],
-          "pos": 1
+          "pos": 4
         },
         {
           "jugador": "Maria Delgado",
@@ -2645,7 +2645,88 @@
             6,
             0
           ],
-          "pos": 1
+          "pos": 4
+        },
+        {
+          "jugador": "RICARDO RIVERO",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "Dixon Torrealba",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "jaidali",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "Jorge Rojas",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "Freddy Parra (1)",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "Freddy Parra (2)",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "Andres Fermin",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "Jared Oropeza",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "Carlos Gimenez",
+          "puntos_dia": 2,
+          "pts": [
+            0,
+            2
+          ],
+          "pos": 9
         },
         {
           "jugador": "Kevin Perez",
@@ -2654,7 +2735,7 @@
             0,
             0
           ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "Ylich",
@@ -2663,16 +2744,7 @@
             0,
             0
           ],
-          "pos": 9
-        },
-        {
-          "jugador": "RICARDO RIVERO",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "Simon Melendez",
@@ -2681,7 +2753,7 @@
             0,
             0
           ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "EDUARDO PINTO",
@@ -2690,7 +2762,7 @@
             0,
             0
           ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "Edicxon Mendoza",
@@ -2699,7 +2771,7 @@
             0,
             0
           ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "RICARDO DEFENDINI",
@@ -2708,7 +2780,7 @@
             0,
             0
           ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "Rafael Aguilar",
@@ -2717,61 +2789,7 @@
             0,
             0
           ],
-          "pos": 9
-        },
-        {
-          "jugador": "Dixon Torrealba",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
-        },
-        {
-          "jugador": "jaidali",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
-        },
-        {
-          "jugador": "Jorge Rojas",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
-        },
-        {
-          "jugador": "Freddy Parra (1)",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
-        },
-        {
-          "jugador": "Freddy Parra (2)",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
-        },
-        {
-          "jugador": "Andres Fermin",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "Luis Márquez",
@@ -2780,7 +2798,7 @@
             0,
             0
           ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "Fernando (Jessika)",
@@ -2789,7 +2807,7 @@
             0,
             0
           ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "Ricardo Ortega",
@@ -2798,25 +2816,7 @@
             0,
             0
           ],
-          "pos": 9
-        },
-        {
-          "jugador": "Jared Oropeza",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
-        },
-        {
-          "jugador": "Carlos Gimenez",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0
-          ],
-          "pos": 9
+          "pos": 18
         },
         {
           "jugador": "Erika",
@@ -2825,7 +2825,7 @@
             0,
             0
           ],
-          "pos": 9
+          "pos": 18
         }
       ]
     },
