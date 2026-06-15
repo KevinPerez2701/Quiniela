@@ -3,10 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Pedir al navegador que no cachee el HTML (los datos ya van cache-busted) -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <title>Quiniela Mundial 2026</title>
   <style>
     :root {
@@ -22,7 +18,6 @@
       --text:   #1a1a2e;
       --muted:  #6b7a99;
       --white:  #ffffff;
-      --tabbar-h: 46px;   /* alto aproximado de la barra de pestañas fija */
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -51,20 +46,11 @@
     /* ── Tabs ── */
     .tabs {
       display: flex;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       gap: 4px;
       margin-bottom: 0;
-      padding: 8px 4px 0;
-      /* Barra fija arriba + scroll horizontal en pantallas chicas */
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      background: linear-gradient(180deg, #0d1b3e 60%, rgba(13,27,62,0));
+      padding: 0 4px;
     }
-    .tabs::-webkit-scrollbar { display: none; }
     .tab-btn {
       padding: 9px 16px;
       border: none;
@@ -301,66 +287,6 @@
     .res-count { font-weight: 800; color: var(--navy); min-width: 22px; text-align: right; }
     .pred-empty { padding: 16px; text-align: center; color: var(--muted); font-size: .8rem; }
 
-    /* ── Podio (resalta top-3 en la Clasificación) ── */
-    #clas-body tr.podium-1 td:first-child { box-shadow: inset 4px 0 0 var(--gold); }
-    #clas-body tr.podium-2 td:first-child { box-shadow: inset 4px 0 0 #c0c0c0; }
-    #clas-body tr.podium-3 td:first-child { box-shadow: inset 4px 0 0 #cd7f32; }
-    #clas-body tr.podium-1 { background: linear-gradient(90deg, rgba(245,197,24,.12), transparent 40%); }
-
-    /* ── Toolbar + buscador de jugador ── */
-    .panel-toolbar {
-      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-      padding: 12px 14px; background: #f7f9ff; border-bottom: 1px solid var(--border);
-    }
-    .search-wrap {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 8px; padding: 5px 10px; min-width: 220px; max-width: 100%;
-      transition: border-color .15s, box-shadow .15s;
-    }
-    .search-wrap:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(245,197,24,.25); }
-    .search-ico { font-size: .9rem; opacity: .6; }
-    .player-search {
-      border: none; outline: none; background: transparent;
-      font-size: .85rem; color: var(--text); flex: 1; min-width: 120px;
-    }
-    .search-count { font-size: .72rem; color: var(--muted); white-space: nowrap; }
-
-    /* ── Estado vacío unificado ── */
-    .empty-state {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      padding: 40px 20px; color: var(--muted); text-align: center;
-    }
-    .empty-state .ico { font-size: 1.8rem; opacity: .5; }
-    .empty-state .msg { font-size: .85rem; }
-
-    /* ── Spinner de carga ── */
-    .spinner {
-      width: 34px; height: 34px; margin: 0 auto 14px;
-      border: 3px solid rgba(255,255,255,.15);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── Pill "Actualizado" en el header ── */
-    .header .subtitle {
-      display: inline-block;
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(245,197,24,.35);
-      color: #d8e4ff;
-      padding: 4px 12px; border-radius: 999px;
-    }
-
-    /* ── Ajustes táctiles / móvil ── */
-    @media (max-width: 640px) {
-      th, td { padding: 8px 7px; }
-      .tab-btn { padding: 10px 14px; }
-      .search-wrap { min-width: 100%; }
-      .panel-toolbar { padding: 10px; }
-    }
-
     /* ── Footer ── */
     .footer {
       text-align: center; color: #7090c0; font-size: .7rem;
@@ -387,17 +313,10 @@
   </div>
 
   <div class="card">
-    <div id="loading"><div class="spinner"></div>Cargando datos…</div>
+    <div id="loading">Cargando datos…</div>
 
     <!-- CLASIFICACIÓN -->
     <div class="tab-panel active" id="tab-clas">
-      <div class="panel-toolbar">
-        <span class="search-wrap">
-          <span class="search-ico">🔎</span>
-          <input type="search" id="clas-search" class="player-search" placeholder="Buscar jugador…" autocomplete="off">
-        </span>
-        <span class="search-count" id="clas-search-count"></span>
-      </div>
       <div class="table-wrap">
         <table id="clas-table">
           <thead>
@@ -452,40 +371,6 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const h = s => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
 
-// Estado vacío reutilizable
-function emptyState(msg, ico = '📭') {
-  return `<div class="empty-state"><div class="ico">${ico}</div><div class="msg">${h(msg)}</div></div>`;
-}
-
-// Filtra filas de una tabla por nombre de jugador (.player-name). Devuelve nº visibles.
-function filterPlayerRows(tbody, query) {
-  const q = (query || '').trim().toLowerCase();
-  let shown = 0;
-  tbody.querySelectorAll('tr').forEach(tr => {
-    const name = (tr.querySelector('.player-name')?.textContent || '').toLowerCase();
-    const match = !q || name.includes(q);
-    tr.style.display = match ? '' : 'none';
-    if (match) shown++;
-  });
-  return shown;
-}
-
-// Construye un buscador "🔎 [input]" reutilizable para las pestañas diarias
-function buildSearchBox(initial, placeholder, onInput) {
-  const wrap = document.createElement('span');
-  wrap.className = 'search-wrap';
-  wrap.innerHTML = `<span class="search-ico">🔎</span>`;
-  const inp = document.createElement('input');
-  inp.type = 'search';
-  inp.className = 'player-search';
-  inp.placeholder = placeholder;
-  inp.autocomplete = 'off';
-  inp.value = initial || '';
-  inp.addEventListener('input', () => onInput(inp.value));
-  wrap.appendChild(inp);
-  return wrap;
-}
-
 function posBadge(pos) {
   const cls = pos === 1 ? 'pos-1' : pos === 2 ? 'pos-2' : pos === 3 ? 'pos-3' : 'pos-other';
   return `<span class="pos-badge ${cls}">${pos}</span>`;
@@ -535,7 +420,6 @@ function renderClas(data) {
   const tbody = document.getElementById('clas-body');
   (data.clas?.players || data.players || []).forEach(p => {
     const tr = document.createElement('tr');
-    if (p.pos >= 1 && p.pos <= 3) tr.classList.add('podium-' + p.pos);
     cols.forEach(([key]) => {
       const td = document.createElement('td');
       if (key === 'pos') {
@@ -555,23 +439,6 @@ function renderClas(data) {
     });
     tbody.appendChild(tr);
   });
-}
-
-// Buscador de jugador para la Clasificación
-function setupClasSearch() {
-  const input = document.getElementById('clas-search');
-  const counter = document.getElementById('clas-search-count');
-  const tbody = document.getElementById('clas-body');
-  if (!input || !tbody) return;
-  const total = tbody.querySelectorAll('tr').length;
-  const apply = () => {
-    const shown = filterPlayerRows(tbody, input.value);
-    counter.textContent = input.value.trim()
-      ? `${shown} de ${total} jugadores`
-      : `${total} jugadores`;
-  };
-  input.addEventListener('input', apply);
-  apply();
 }
 
 // ── FIXTURE ───────────────────────────────────────────────────────────────────
@@ -676,7 +543,7 @@ function renderPartidosDia() {
   const el = document.getElementById('partidos-dia-content');
   el.innerHTML = '';
   if (!FIXTURE_DAYS.length) {
-    el.innerHTML = emptyState('Sin datos disponibles.');
+    el.innerHTML = '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
     return;
   }
   const day = FIXTURE_DAYS[partidosDiaIdx] || FIXTURE_DAYS[0];
@@ -732,32 +599,15 @@ let DAILY_DAYS = [];          // full list of day objects from data.json
 let dailyPredIdx = 0;         // selected day index for the prediction view
 let dailyClasIdx = 0;         // selected day index for the clas view
 let predResIdx = 0;           // selected day index for the result-count view
-let dailyPredFilter = '';     // texto del buscador en Predicción del Día
-let dailyClasFilter = '';     // texto del buscador en Clas. del Día
 
-// En la última jornada de grupos (24–27/06/2026) cada día trae 18 "partidos":
-// los 6 primeros son juegos reales con marcador y los 12 restantes son
-// pronósticos de posición de grupo (nombres de equipo). En "Predicción
-// Resultados" solo mostramos los 6 juegos reales de esos días.
-const PRED_RES_LIMIT_DATES = ['2026-06-24', '2026-06-25', '2026-06-26', '2026-06-27'];
-const PRED_RES_LIMIT_COUNT = 6;
-
-// Nº de partidos a mostrar en "Predicción Resultados" para un día dado
-function predResCount(day) {
-  const total = (day.matches || []).length;
-  return PRED_RES_LIMIT_DATES.includes(day.date) ? Math.min(PRED_RES_LIMIT_COUNT, total) : total;
-}
-
-function daySelector(id, selectedIdx, onChange, countFn, filterFn) {
+function daySelector(id, selectedIdx, onChange) {
   const sel = document.createElement('select');
   sel.id = id;
   sel.className = 'day-select';
   DAILY_DAYS.forEach((day, i) => {
-    if (filterFn && !filterFn(day)) return;   // omitir días que no apliquen
     const opt = document.createElement('option');
     opt.value = i;
-    const count = countFn ? countFn(day) : day.matches.length;
-    opt.textContent = `${day.label} · ${count} partido(s)`;
+    opt.textContent = `${day.label} · ${day.matches.length} partido(s)`;
     if (i === selectedIdx) opt.selected = true;
     sel.appendChild(opt);
   });
@@ -769,7 +619,7 @@ function renderDailyPred() {
   const el = document.getElementById('daily-pred-content');
   el.innerHTML = '';
   if (!DAILY_DAYS.length) {
-    el.innerHTML = emptyState('Sin datos disponibles.');
+    el.innerHTML = '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
     return;
   }
   const day = DAILY_DAYS[dailyPredIdx] || DAILY_DAYS[0];
@@ -778,17 +628,12 @@ function renderDailyPred() {
   header.className = 'daily-header';
   header.innerHTML = `Selecciona día:&nbsp;`;
   header.appendChild(daySelector('sel-pred', dailyPredIdx, i => { dailyPredIdx = i; renderDailyPred(); }));
-  header.appendChild(buildSearchBox(dailyPredFilter, 'Buscar jugador…', v => {
-    dailyPredFilter = v;
-    const tb = el.querySelector('.daily-table tbody');
-    if (tb) filterPlayerRows(tb, v);
-  }));
   el.appendChild(header);
 
   const partidos = day.matches || [];
   const jugadores = day.predictions || [];
   if (!partidos.length) {
-    el.insertAdjacentHTML('beforeend', emptyState('Sin partidos para este día.', '🗓️'));
+    el.innerHTML += '<p style="padding:20px;color:var(--muted)">Sin partidos para este día.</p>';
     return;
   }
 
@@ -817,7 +662,6 @@ function renderDailyPred() {
   t.appendChild(tbody);
   wrap.appendChild(t);
   el.appendChild(wrap);
-  if (dailyPredFilter) filterPlayerRows(tbody, dailyPredFilter);
 }
 
 // ── PREDICCIÓN RESULTADOS (cuántas veces eligieron cada resultado por partido) ──
@@ -825,7 +669,7 @@ function renderPredResultados() {
   const el = document.getElementById('pred-res-content');
   el.innerHTML = '';
   if (!DAILY_DAYS.length) {
-    el.innerHTML = emptyState('Sin datos disponibles.');
+    el.innerHTML = '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
     return;
   }
   const day = DAILY_DAYS[predResIdx] || DAILY_DAYS[0];
@@ -833,16 +677,13 @@ function renderPredResultados() {
   const header = document.createElement('div');
   header.className = 'daily-header';
   header.innerHTML = `Selecciona día:&nbsp;`;
-  // Solo días con fecha de calendario (hasta el 27/06); se omiten las fases (CLASIFICADOS, Dieciseisavos, etc.)
-  header.appendChild(daySelector('sel-predres', predResIdx, i => { predResIdx = i; renderPredResultados(); }, predResCount, d => !!d.date));
+  header.appendChild(daySelector('sel-predres', predResIdx, i => { predResIdx = i; renderPredResultados(); }));
   el.appendChild(header);
 
-  const allPartidos = day.matches || [];
-  // En 24–27/06 limitar a los 6 juegos reales (ocultar pronósticos de posición de grupo)
-  const partidos = allPartidos.slice(0, predResCount(day));
+  const partidos = day.matches || [];
   const jugadores = day.predictions || [];
   if (!partidos.length) {
-    el.insertAdjacentHTML('beforeend', emptyState('Sin partidos para este día.', '🗓️'));
+    el.innerHTML += '<p style="padding:20px;color:var(--muted)">Sin partidos para este día.</p>';
     return;
   }
 
@@ -893,7 +734,7 @@ function renderDailyClas() {
   const el = document.getElementById('daily-clas-content');
   el.innerHTML = '';
   if (!DAILY_DAYS.length) {
-    el.innerHTML = emptyState('Sin datos disponibles.');
+    el.innerHTML = '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
     return;
   }
   const day = DAILY_DAYS[dailyClasIdx] || DAILY_DAYS[0];
@@ -902,17 +743,12 @@ function renderDailyClas() {
   header.className = 'daily-header';
   header.innerHTML = `Selecciona día:&nbsp;`;
   header.appendChild(daySelector('sel-clas', dailyClasIdx, i => { dailyClasIdx = i; renderDailyClas(); }));
-  header.appendChild(buildSearchBox(dailyClasFilter, 'Buscar jugador…', v => {
-    dailyClasFilter = v;
-    const tb = el.querySelector('.daily-clas-table tbody');
-    if (tb) filterPlayerRows(tb, v);
-  }));
   el.appendChild(header);
 
   const partidos = day.matches || [];
   const jugadores = day.clas || [];
   if (!jugadores.length) {
-    el.insertAdjacentHTML('beforeend', emptyState('Sin datos para este día.'));
+    el.innerHTML += '<p style="padding:20px;color:var(--muted)">Sin datos.</p>';
     return;
   }
 
@@ -944,7 +780,6 @@ function renderDailyClas() {
   t.appendChild(tbody);
   wrap.appendChild(t);
   el.appendChild(wrap);
-  if (dailyClasFilter) filterPlayerRows(tbody, dailyClasFilter);
 }
 
 // ── Load & render ─────────────────────────────────────────────────────────────
@@ -968,7 +803,6 @@ async function load() {
     partidosDiaIdx = (todayFixIdx >= 0 ? todayFixIdx : 0);
 
     renderClas(data);
-    setupClasSearch();
     renderFixture(data.fixture || []);
     renderPartidosDia();
     renderDailyPred();
