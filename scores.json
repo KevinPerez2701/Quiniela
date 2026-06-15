@@ -31,6 +31,10 @@
     "goal_home": 1,
     "goal_away": 1
   },
+  "9": {
+    "goal_home": 1,
+    "goal_away": 0
+  },
   "10": {
     "goal_home": 7,
     "goal_away": 1
