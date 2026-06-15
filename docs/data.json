@@ -1,5 +1,5 @@
 {
-  "updated_at": "14/06/2026 23:57 (hora Venezuela)",
+  "updated_at": "15/06/2026 13:58 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -808,8 +808,8 @@
       "group": "Grupo H",
       "home": "España",
       "away": "Cabo Verde",
-      "goal_home": null,
-      "goal_away": null,
+      "goal_home": 0,
+      "goal_away": 0,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
