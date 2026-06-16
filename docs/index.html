@@ -452,6 +452,20 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const h = s => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
 
+// Fecha de "hoy" en horario de Venezuela (America/Caracas, UTC-4), sin importar
+// la zona horaria del navegador del visitante. Devuelve 'YYYY-MM-DD'.
+function venezuelaTodayIso() {
+  try {
+    return new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/Caracas',
+      year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(new Date());
+  } catch (e) {
+    // Respaldo: aplicar el desfase fijo de -4h manualmente
+    return new Date(Date.now() - 4 * 3600 * 1000).toISOString().slice(0, 10);
+  }
+}
+
 // Estado vacío reutilizable
 function emptyState(msg, ico = '📭') {
   return `<div class="empty-state"><div class="ico">${ico}</div><div class="msg">${h(msg)}</div></div>`;
@@ -961,7 +975,7 @@ async function load() {
     DAILY_DAYS = data.daily || [];
     FIXTURE_DAYS = buildFixtureDays(data.fixture || []);
     // Default the selectors to today's day if it exists, else the first day.
-    const todayIso = new Date().toISOString().slice(0, 10);
+    const todayIso = venezuelaTodayIso();
     const todayIdx = DAILY_DAYS.findIndex(d => d.date === todayIso);
     dailyPredIdx = dailyClasIdx = predResIdx = (todayIdx >= 0 ? todayIdx : 0);
     const todayFixIdx = FIXTURE_DAYS.findIndex(d => d.iso === todayIso);
