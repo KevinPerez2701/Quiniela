@@ -1,5 +1,5 @@
 {
-  "updated_at": "17/06/2026 07:22 (hora Venezuela)",
+  "updated_at": "17/06/2026 15:00 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -904,8 +904,8 @@
       "group": "Grupo K",
       "home": "Portugal",
       "away": "RD Congo",
-      "goal_home": null,
-      "goal_away": null,
+      "goal_home": 1,
+      "goal_away": 1,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
