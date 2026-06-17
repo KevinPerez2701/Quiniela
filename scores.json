@@ -74,5 +74,9 @@
   "19": {
     "goal_home": 3,
     "goal_away": 0
+  },
+  "20": {
+    "goal_home": 3,
+    "goal_away": 1
   }
 }
