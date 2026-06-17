@@ -298,8 +298,26 @@
     .sign-1 { background: var(--green); }
     .sign-X { background: #6b7a99; }
     .sign-2 { background: #1565c0; }
-    .res-count { font-weight: 800; color: var(--navy); min-width: 22px; text-align: right; }
+    .res-count { font-weight: 800; color: var(--navy); min-width: 22px; text-align: right;
+      display: inline-flex; align-items: center; justify-content: flex-end; gap: 5px; }
     .pred-empty { padding: 16px; text-align: center; color: var(--muted); font-size: .8rem; }
+
+    /* ── Desplegable: jugadores que eligieron un resultado ── */
+    .pred-row.clickable { cursor: pointer; transition: background .12s; }
+    .pred-row.clickable:hover { background: #eef4ff; }
+    .pred-row.open { background: #e8f0ff; }
+    .pred-chev { font-size: .58rem; color: var(--muted); transition: transform .15s; }
+    .pred-row.open .pred-chev { transform: rotate(180deg); color: var(--navy); }
+    .pred-names {
+      padding: 9px 12px 12px; background: #f7faff; border-bottom: 1px solid #eef2fa;
+      display: flex; flex-wrap: wrap; gap: 6px; animation: predDrop .18s ease;
+    }
+    @keyframes predDrop { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+    .pred-name-chip {
+      background: var(--white); border: 1px solid var(--border); border-radius: 99px;
+      padding: 3px 10px; font-size: .74rem; color: var(--navy); font-weight: 600;
+    }
+    .pred-names-empty { font-size: .74rem; color: var(--muted); }
 
     /* ── Podio (resalta top-3 en la Clasificación) ── */
     #clas-body tr.podium-1 td:first-child { box-shadow: inset 4px 0 0 var(--gold); }
@@ -889,10 +907,10 @@ function renderPredResultados() {
         const score = parts.length > 1 ? parts[1] : '';
         const signCls = sign === '1' ? 'sign-1' : sign === 'X' ? 'sign-X' : 'sign-2';
         const pct = max ? Math.round((cnt / max) * 100) : 0;
-        return `<div class="pred-row${i === 0 ? ' top' : ''}">
+        return `<div class="pred-row clickable${i === 0 ? ' top' : ''}" data-mi="${idx}" data-res="${h(res)}" title="Ver quién eligió ${h(score)}">
           <span class="res-badge"><span class="res-sign ${signCls}">${h(sign)}</span>${h(score)}</span>
           <div class="bar-outer"><div class="bar-inner" style="width:${pct}%"></div></div>
-          <span class="res-count">${cnt}</span>
+          <span class="res-count">${cnt}<span class="pred-chev">▾</span></span>
         </div>`;
       }).join('');
     }
@@ -901,6 +919,27 @@ function renderPredResultados() {
   });
 
   el.appendChild(grid);
+
+  // Al tocar un resultado, desplegar los jugadores que lo eligieron (acordeón por tarjeta)
+  grid.addEventListener('click', e => {
+    const row = e.target.closest('.pred-row.clickable');
+    if (!row || !grid.contains(row)) return;
+    const card = row.parentElement;
+    const wasOpen = row.classList.contains('open');
+    card.querySelectorAll('.pred-row.open').forEach(r => r.classList.remove('open'));
+    card.querySelectorAll('.pred-names').forEach(n => n.remove());
+    if (wasOpen) return;               // volver a tocar cierra el desplegable
+    const mi = parseInt(row.dataset.mi, 10);
+    const res = row.dataset.res;
+    const names = jugadores.filter(j => (j.preds || [])[mi] === res).map(j => j.jugador);
+    const panel = document.createElement('div');
+    panel.className = 'pred-names';
+    panel.innerHTML = names.length
+      ? names.map(n => `<span class="pred-name-chip">${h(n)}</span>`).join('')
+      : `<span class="pred-names-empty">Sin jugadores</span>`;
+    row.classList.add('open');
+    row.after(panel);
+  });
 }
 
 function renderDailyClas() {

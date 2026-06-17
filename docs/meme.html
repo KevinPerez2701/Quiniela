@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiniela Mundial 2026 · Resultados 🏆</title>
+<meta property="og:title" content="Quiniela Mundial 2026 🏆">
+<meta property="og:description" content="Toca para ver los resultados del día y la clasificación 👀">
+<style>
+  :root{ --bg1:#0b1020; --bg2:#131a35; --gold:#ffd24a; --hot:#ff4d6d; --cool:#3dd6c4; --green:#3ddc84; }
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+  html,body{height:100%; background:#05060c; font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;}
+
+  .phone{position:relative; height:min(100vh,900px); aspect-ratio:9/16; max-width:100vw;
+    overflow:hidden; background:linear-gradient(160deg,var(--bg1),var(--bg2)); color:#fff; user-select:none;}
+  @media(min-width:520px){ .phone{border-radius:28px; box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 8px #0c0f1a,0 0 0 9px #1d2440;} }
+  .phone::before{content:""; position:absolute; inset:0; background:
+    radial-gradient(120% 60% at 50% -10%, rgba(61,214,196,.18), transparent 60%),
+    radial-gradient(90% 50% at 50% 110%, rgba(255,77,109,.18), transparent 60%); pointer-events:none;}
+
+  /* selector de vista (general / día) */
+  .picker{position:absolute; top:26px; left:0; right:0; display:flex; justify-content:center; z-index:8;}
+  .picker.hide{display:none;}
+  .picker select{font:inherit; font-weight:700; font-size:14px; color:#fff; background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25); border-radius:99px; padding:9px 16px; cursor:pointer; backdrop-filter:blur(6px);}
+  .picker select option{color:#0b1020;}
+
+  .progress{position:absolute; top:14px; left:14px; right:14px; display:flex; gap:5px; z-index:6;}
+  .progress.hide{opacity:0;}
+  .progress span{flex:1; height:4px; background:rgba(255,255,255,.25); border-radius:99px; overflow:hidden;}
+  .progress span i{display:block; height:100%; width:0; background:#fff; border-radius:99px;}
+  .progress span.done i{width:100%;}
+  .progress span.active i{animation:fill var(--dur,3.6s) linear forwards;}
+  @keyframes fill{to{width:100%;}}
+
+  .slide{position:absolute; inset:0; display:none; flex-direction:column; align-items:center;
+    justify-content:center; text-align:center; padding:64px 26px 86px;}
+  .slide.show{display:flex;}
+  .slide.show .pop{animation:pop .55s cubic-bezier(.2,1.3,.4,1) both;}
+  .slide.show .rise{animation:rise .6s ease both; animation-delay:.12s;}
+  .slide.show .fade{animation:fade .7s ease both; animation-delay:.25s;}
+  @keyframes pop{from{transform:scale(.5); opacity:0;} to{transform:scale(1); opacity:1;}}
+  @keyframes rise{from{transform:translateY(28px); opacity:0;} to{transform:none; opacity:1;}}
+  @keyframes fade{from{opacity:0;} to{opacity:1;}}
+
+  .meme{width:180px; height:180px; border-radius:50%; display:grid; place-items:center;
+    font-size:100px; line-height:1; background:rgba(255,255,255,.06);
+    border:3px solid rgba(255,255,255,.18); box-shadow:0 18px 50px rgba(0,0,0,.45);}
+  .badge{margin-top:26px; font-weight:800; font-size:15px; letter-spacing:2px; padding:7px 16px;
+    border-radius:99px; background:rgba(255,255,255,.1);}
+  .name{margin-top:14px; font-size:28px; font-weight:800; line-height:1.12; max-width:300px;}
+  .pts{margin-top:6px; font-size:70px; font-weight:900; line-height:1; text-shadow:0 4px 30px rgba(255,210,74,.35);}
+  .pts small{font-size:21px; font-weight:700; opacity:.7;}
+  .brk{margin-top:8px; font-size:16px; font-weight:700; opacity:.8; letter-spacing:1px;}
+  .caption{margin-top:12px; font-size:19px; font-weight:700; max-width:290px; line-height:1.25;}
+
+  .cup{font-size:110px; filter:drop-shadow(0 12px 30px rgba(255,210,74,.4));}
+  .ttl{font-size:38px; font-weight:900; line-height:1.05; letter-spacing:.5px;}
+  .sub{margin-top:10px; font-size:16px; opacity:.85; font-weight:600;}
+  .tap{margin-top:30px; font-size:16px; font-weight:800; letter-spacing:1px; padding:15px 30px; border-radius:99px;
+    color:#0b1020; background:linear-gradient(120deg,var(--gold),#ffb020); cursor:pointer;
+    box-shadow:0 14px 40px rgba(255,176,32,.45); animation:beat 1.4s ease-in-out infinite;}
+  @keyframes beat{50%{transform:scale(1.06);}}
+  .share{margin-top:20px; font-size:15px; font-weight:800; padding:13px 24px; border:none; border-radius:99px;
+    cursor:pointer; background:#25D366; color:#053b1e; box-shadow:0 10px 30px rgba(37,211,102,.4);}
+
+  /* marcadores del día */
+  .scores{width:100%; max-width:330px; display:flex; flex-direction:column; gap:10px; margin-top:8px;
+    max-height:60vh; overflow:auto;}
+  .match{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px;
+    background:rgba(255,255,255,.06); border-radius:14px; padding:12px 12px;}
+  .match .t{font-size:15px; font-weight:700;}
+  .match .t.h{text-align:right;} .match .t.a{text-align:left;}
+  .match .sc{font-size:20px; font-weight:900; padding:3px 10px; border-radius:8px; background:rgba(255,255,255,.1); white-space:nowrap;}
+  .match .t.win{color:var(--gold);}
+
+  /* tabla completa del día */
+  .table{width:100%; max-width:340px; max-height:62vh; overflow:auto; margin-top:6px;
+    border-radius:14px; background:rgba(255,255,255,.04);}
+  .row{display:grid; grid-template-columns:30px 1fr auto; align-items:center; gap:8px; padding:7px 12px;
+    border-bottom:1px solid rgba(255,255,255,.06); font-size:14px;}
+  .row .p{font-weight:800; opacity:.7; text-align:center;}
+  .row .nm{font-weight:600; text-align:left; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .row .pt{font-weight:900; color:var(--green);}
+  .row.r1{background:rgba(255,210,74,.16);} .row.r1 .p{opacity:1}
+  .row.r2{background:rgba(255,255,255,.10);} .row.r3{background:rgba(255,160,80,.12);}
+
+  .hint{position:absolute; bottom:20px; left:0; right:0; text-align:center; font-size:12px; opacity:.45; z-index:6;}
+  .nav{position:absolute; top:0; bottom:0; width:34%; z-index:5; cursor:pointer;}
+  .nav.left{left:0;} .nav.right{right:0;}
+
+  .confetti{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+  .confetti i{position:absolute; top:-10px; width:9px; height:14px; opacity:.9; animation:drop linear forwards;}
+  @keyframes drop{to{transform:translateY(950px) rotate(540deg);}}
+
+  .replay{position:absolute; inset:0; display:none; flex-direction:column; align-items:center; justify-content:center;
+    gap:16px; background:rgba(5,6,12,.6); backdrop-filter:blur(3px); z-index:7;}
+  .replay.show{display:flex;}
+  .replay button{font:inherit; font-weight:800; font-size:16px; padding:14px 26px; border:none; border-radius:99px;
+    cursor:pointer; background:#fff; color:#0b1020;}
+  .loading{position:absolute; inset:0; display:grid; place-items:center; z-index:9; font-weight:700; opacity:.7;}
+</style>
+</head>
+<body>
+<div class="phone" id="phone">
+  <div class="picker" id="picker"><select id="viewSel" onchange="pick(this.value)"></select></div>
+  <div class="progress" id="bars"></div>
+  <div id="stage"></div>
+  <div class="nav left"  onclick="prev()"></div>
+  <div class="nav right" onclick="next()"></div>
+  <div class="replay" id="rep">
+    <div style="font-size:50px">🔁</div>
+    <button onclick="restart()">Ver de nuevo</button>
+    <button onclick="share()" style="background:#25D366;color:#053b1e">Compartir 💬</button>
+  </div>
+  <div class="hint" id="hint">elige arriba · toca ▶ para empezar · toca los lados para mover</div>
+  <div class="loading" id="load">cargando…</div>
+</div>
+
+<script>
+// ===== Snapshot de respaldo (para abrir el archivo localmente sin servidor) =====
+const FALLBACK = {"updated_at":"17/06/2026 07:22 (hora Venezuela)","clas":{"title":"CLASIFICACIÓN MUNDIAL 2026 Inter","players":[{"jugador":"Andres Fermin","puntos":52,"pos":1},{"jugador":"Mariana Suarez (Samuel 2)","puntos":40,"pos":2},{"jugador":"Jorge Rojas","puntos":36,"pos":3},{"jugador":"Freddy Parra (1)","puntos":32,"pos":4},{"jugador":"Ricardo Ortega","puntos":32,"pos":4},{"jugador":"Jared Oropeza","puntos":32,"pos":4},{"jugador":"jaidali ","puntos":14,"pos":28}]},"daily":[{"ref":6,"label":"16/06/2026","date":"2026-06-16","matches":["Francia-Senegal","Irak-Noruega","Argentina-Argelia","Austria-Jordania"],"clas":[{"jugador":"Jared Oropeza","puntos_dia":20,"pts":[6,6,6,2],"pos":1},{"jugador":"Edicxon Mendoza","puntos_dia":16,"pts":[6,2,6,2],"pos":2},{"jugador":"Xavier (Kevin 2)","puntos_dia":16,"pts":[6,6,2,2],"pos":2},{"jugador":"Jorge Rojas","puntos_dia":14,"pts":[6,2,6,0],"pos":4},{"jugador":"Rafael Aguilar","puntos_dia":12,"pts":[6,2,2,2],"pos":5},{"jugador":"Dixon Torrealba","puntos_dia":12,"pts":[6,2,2,2],"pos":5},{"jugador":"Freddy Parra (1)","puntos_dia":12,"pts":[2,2,6,2],"pos":5},{"jugador":"Mariana Suarez (Samuel 2)","puntos_dia":12,"pts":[2,2,6,2],"pos":5},{"jugador":"Andres Fermin","puntos_dia":12,"pts":[6,2,2,2],"pos":5},{"jugador":"Luis Márquez","puntos_dia":12,"pts":[6,2,2,2],"pos":5},{"jugador":"Fernando (Jessika)","puntos_dia":12,"pts":[6,2,2,2],"pos":5},{"jugador":"Juan Dorante","puntos_dia":12,"pts":[2,2,6,2],"pos":5},{"jugador":"Kevin Perez","puntos_dia":8,"pts":[6,0,2,0],"pos":13},{"jugador":"RICARDO RIVERO","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Simon Melendez","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"RICARDO DEFENDINI","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Luis Pinto","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Freddy Parra (2)","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Samuel Montes","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Alvaro Urdaneta","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Ricardo Ortega","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Carlos Gimenez","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Andres Alvarez","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Erika","puntos_dia":8,"pts":[2,2,2,2],"pos":13},{"jugador":"Ylich","puntos_dia":6,"pts":[2,2,0,2],"pos":25},{"jugador":"EDUARDO PINTO","puntos_dia":6,"pts":[2,2,0,2],"pos":25},{"jugador":"jaidali","puntos_dia":6,"pts":[2,0,2,2],"pos":25},{"jugador":"Maria Delgado","puntos_dia":6,"pts":[0,2,2,2],"pos":25}]}],"fixture":[{"home":"Francia","away":"Senegal","goal_home":3,"goal_away":1},{"home":"Irak","away":"Noruega","goal_home":1,"goal_away":4},{"home":"Argentina","away":"Argelia","goal_home":3,"goal_away":0},{"home":"Austria","away":"Jordania","goal_home":3,"goal_away":1}]};
+
+let DATA=null, scoreMap={}, views=[], view=null, slides=[], i=0, timer=null, started=false, segs=[];
+const stage=byId('stage'), bars=byId('bars'), rep=byId('rep'), hint=byId('hint'),
+      picker=byId('picker'), sel=byId('viewSel'), prog=byId('bars');
+function byId(x){return document.getElementById(x);}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+// ===== estilo meme automático por puesto (modo General) =====
+function metaFor(pos,isLast){
+  if(pos===1) return {emoji:"👑",badge:"🏆 LÍDER ABSOLUTO",style:"background:linear-gradient(120deg,var(--gold),#ffb020);color:#0b1020",
+    cap:"¡Mandando en la quiniela! Nadie lo alcanza 😤👑",ptsColor:"var(--gold)",win:true,
+    memeStyle:"font-size:120px;border-color:var(--gold);box-shadow:0 0 60px rgba(255,210,74,.5)"};
+  if(pos===2) return {emoji:"🔥",badge:"PUESTO #2 🥈",cap:"Pisándole los talones al líder 👟💨"};
+  if(pos===3) return {emoji:"😎",badge:"PUESTO #3 🥉",cap:"Ahí va, calladito en el podio 🤫"};
+  if(isLast)  return {emoji:"🥲",badge:"PUESTO #"+pos,cap:"🔴 El farolillo rojo… ¡pagando la cena! 🍕",badgeBg:"background:rgba(255,77,109,.22)"};
+  return {emoji:"⚽",badge:"PUESTO #"+pos,cap:""};
+}
+
+// ===== construir vistas seleccionables =====
+function buildViews(){
+  views=[{id:"general",kind:"general",label:"🏆 General"}];
+  DATA.daily.forEach(d=>{
+    const tot=(d.clas||[]).reduce((s,p)=>s+(p.puntos_dia||0),0);
+    if(tot>0){
+      const short=/^\d{2}\/\d{2}/.test(d.label||"")? d.label.slice(0,5) : d.label;
+      views.push({id:"day"+d.ref,kind:"day",ref:d.ref,label:"📅 "+short});
+    }
+  });
+}
+function defaultView(){
+  const q=new URLSearchParams(location.search);
+  if(q.get("view")==="general") return views[0];
+  const day=q.get("day");
+  if(day){ const v=views.find(x=>x.kind==="day"&&String(x.ref)===String(day)); if(v) return v; }
+  const daysv=views.filter(x=>x.kind==="day");
+  return daysv.length? daysv[daysv.length-1] : views[0]; // último día con resultados
+}
+function syncUrl(){
+  const u=new URL(location.href); u.search="";
+  if(view.kind==="day") u.searchParams.set("day",view.ref); else u.searchParams.set("view","general");
+  history.replaceState(null,"",u);
+}
+
+// ===== construir slides según la vista =====
+function buildSlides(){
+  if(view.kind==="general") return generalSlides();
+  return daySlides(DATA.daily.find(d=>d.ref===view.ref));
+}
+function generalSlides(){
+  const ps=[...DATA.clas.players].sort((a,b)=>a.pos-b.pos);
+  const last=ps[ps.length-1], podium=ps.slice(0,3), out=[{type:"cover-g"},{type:"intro"}];
+  [last,podium[2],podium[1],podium[0]].filter(Boolean).forEach(p=>out.push({type:"player",p,isLast:p===last}));
+  out.push({type:"outro"}); return out;
+}
+function daySlides(d){
+  const ps=[...d.clas].sort((a,b)=>a.pos-b.pos);
+  const winners=ps.filter(p=>p.pos===1);
+  return [{type:"cover-d",d},{type:"scores",d},{type:"winner",d,winners},{type:"table",d,ps},{type:"outro-d",d}];
+}
+
+// ===== render HTML de cada slide =====
+function html(s){
+  if(s.type==="cover-g") return `<section class="slide" data-dur="100000">
+    <div class="cup pop">🏆</div><div class="ttl rise">QUINIELA<br>MUNDIAL 2026</div>
+    <div class="sub fade">¿Cómo va la clasificación general? 👀</div>
+    <div class="tap" onclick="start()">TOCA PARA VER ▶</div></section>`;
+  if(s.type==="cover-d") return `<section class="slide" data-dur="100000">
+    <div class="cup pop">📅</div><div class="ttl rise">RESULTADOS<br>DEL DÍA</div>
+    <div class="sub fade">${esc(s.d.label)} · ${s.d.matches.length} partidos ⚽</div>
+    <div class="tap" onclick="start()">TOCA PARA VER ▶</div></section>`;
+  if(s.type==="intro") return `<section class="slide" data-dur="2600">
+    <div class="meme pop">🥁</div><div class="name rise" style="margin-top:30px">Empezamos por el fondo…</div>
+    <div class="caption fade" style="opacity:.8">de último a primero 🔻</div></section>`;
+  if(s.type==="player"){ const m=metaFor(s.p.pos,s.isLast); const dur=m.win?5200:3700;
+    return `<section class="slide" data-dur="${dur}">${m.win?'<div class="confetti" id="conf"></div>':''}
+      <div class="meme pop" style="${m.memeStyle||''}">${m.emoji}</div>
+      <div class="badge rise" style="${m.style||m.badgeBg||''}">${m.badge}</div>
+      <div class="name rise"${m.win?' style="font-size:32px"':''}>${esc(s.p.jugador)}</div>
+      <div class="pts rise" data-count="${s.p.puntos}"${m.ptsColor?` style="color:${m.ptsColor}"`:''}>0<small> pts</small></div>
+      <div class="caption fade">${m.cap}</div></section>`; }
+  if(s.type==="scores"){
+    const rows=s.d.matches.map(mn=>{
+      const r=scoreMap[mn]; const [h,a]=mn.split("-");
+      const hw=r&&r.gh>r.ga, aw=r&&r.ga>r.gh; const sc=r?`${r.gh} - ${r.ga}`:"vs";
+      return `<div class="match"><div class="t h${hw?' win':''}">${esc(h)}</div>
+        <div class="sc">${sc}</div><div class="t a${aw?' win':''}">${esc(a)}</div></div>`;
+    }).join("");
+    return `<section class="slide" data-dur="5200"><div class="badge pop">⚽ MARCADORES DEL DÍA</div>
+      <div class="scores rise">${rows}</div></section>`;
+  }
+  if(s.type==="winner"){ const w=s.winners; const hero=w[0];
+    const nm=w.length>1? w.map(x=>esc(x.jugador)).join(" & ") : esc(hero.jugador);
+    const brk=w.length===1? `<div class="brk rise">${hero.pts.join("  +  ")}</div>`:"";
+    return `<section class="slide" data-dur="5400"><div class="confetti" id="conf"></div>
+      <div class="meme pop" style="font-size:118px;border-color:var(--gold);box-shadow:0 0 60px rgba(255,210,74,.5)">🥇</div>
+      <div class="badge rise" style="background:linear-gradient(120deg,var(--gold),#ffb020);color:#0b1020">👑 ${w.length>1?"GANADORES":"GANADOR"} DEL DÍA</div>
+      <div class="name rise" style="font-size:${w.length>1?22:28}px">${nm}</div>
+      <div class="pts rise" data-count="${hero.puntos_dia}" style="color:var(--gold)">0<small> pts</small></div>
+      ${brk}<div class="caption fade">¡El más acertado del día! 🎯🔥</div></section>`;
+  }
+  if(s.type==="table"){
+    const rows=s.ps.map(p=>{
+      const cls=p.pos===1?"r1":p.pos===2?"r2":p.pos===3?"r3":"";
+      const medal=p.pos===1?"🥇":p.pos===2?"🥈":p.pos===3?"🥉":p.pos;
+      return `<div class="row ${cls}"><div class="p">${medal}</div><div class="nm">${esc(p.jugador)}</div><div class="pt">${p.puntos_dia}</div></div>`;
+    }).join("");
+    return `<section class="slide" data-dur="9000"><div class="badge pop">🏆 TABLA COMPLETA · ${esc(s.d.label)}</div>
+      <div class="table rise">${rows}</div>
+      <div class="caption fade" style="font-size:13px;opacity:.5;margin-top:8px">todos los puntos del día · desliza ▼</div></section>`;
+  }
+  if(s.type==="outro"||s.type==="outro-d") return `<section class="slide" data-dur="100000">
+    <div class="cup pop" style="font-size:84px">⚽</div>
+    <div class="name rise" style="margin-top:16px">${s.type==="outro-d"?"Resultados "+esc(s.d.label):"Clasificación Mundial 2026"}</div>
+    <div class="caption fade" style="opacity:.8">Actualizado ${esc(DATA.updated_at||"")}</div>
+    <button class="share fade" onclick="share()">Compartir por WhatsApp 💬</button>
+    <div class="caption fade" style="opacity:.5;font-size:13px;margin-top:12px">kevinperez2701.github.io/Quiniela</div></section>`;
+  return "";
+}
+
+// ===== motor tipo stories =====
+function init(data){
+  DATA=data; byId('load').remove();
+  scoreMap={}; (DATA.fixture||[]).forEach(f=>{ scoreMap[f.home+"-"+f.away]={gh:f.goal_home,ga:f.goal_away}; });
+  buildViews();
+  sel.innerHTML=views.map(v=>`<option value="${v.id}">${v.label}</option>`).join("");
+  view=defaultView(); sel.value=view.id; syncUrl();
+  load();
+}
+function load(){
+  slides=buildSlides();
+  stage.innerHTML=slides.map(html).join("");
+  bars.innerHTML="";
+  slides.forEach((_,k)=>{ if(k>0){const sp=document.createElement('span'); sp.innerHTML='<i></i>'; sp.dataset.k=k; bars.appendChild(sp);} });
+  segs=[...bars.children];
+  i=0; started=false; rep.classList.remove('show'); picker.classList.remove('hide'); prog.classList.add('hide'); hint.style.display='';
+  render();
+}
+function pick(id){ view=views.find(v=>v.id===id)||views[0]; syncUrl(); load(); }
+const els=()=>[...stage.querySelectorAll('.slide')];
+function render(){
+  els().forEach((s,k)=>s.classList.toggle('show',k===i));
+  segs.forEach(s=>{const k=+s.dataset.k; s.className=''; if(k<i)s.classList.add('done'); if(k===i)s.classList.add('active');});
+  const cur=els()[i];
+  const pEl=cur.querySelector('[data-count]'); if(pEl) countUp(pEl);
+  if(cur.querySelector('#conf')) confetti();
+  clearTimeout(timer);
+  const ms=+(cur.dataset.dur||3600);
+  segs.forEach(s=>{ if(+s.dataset.k===i) s.style.setProperty('--dur',ms+'ms'); });
+  if(started && i>0 && i<slides.length-1) timer=setTimeout(next,ms);
+}
+function start(){ started=true; hint.style.display='none'; picker.classList.add('hide'); prog.classList.remove('hide'); next(); }
+function next(){ if(i<slides.length-1){i++; render();} else {rep.classList.add('show'); picker.classList.remove('hide'); clearTimeout(timer);} }
+function prev(){ if(i>1){i--; render();} }
+function restart(){ rep.classList.remove('show'); started=false; i=0; picker.classList.remove('hide'); prog.classList.add('hide'); hint.style.display=''; render(); }
+function countUp(el){
+  const target=+el.dataset.count, small=el.querySelector('small').outerHTML;
+  let n=0, step=Math.max(1,Math.round(target/22)); clearInterval(el._t);
+  el._t=setInterval(()=>{ n+=step; if(n>=target){n=target; clearInterval(el._t);} el.innerHTML=n+small; },28);
+}
+function confetti(){
+  const c=byId('conf'); if(!c) return; c.innerHTML='';
+  const cols=['#ffd24a','#ff4d6d','#3dd6c4','#7aa2ff','#fff'];
+  for(let k=0;k<60;k++){const p=document.createElement('i');
+    p.style.left=(k*1.7%100)+'%'; p.style.background=cols[k%cols.length];
+    p.style.animationDuration=(2.2+(k%20)/8)+'s'; p.style.animationDelay=((k%15)/10)+'s'; c.appendChild(p);}
+}
+function share(){
+  const url=location.href;
+  const txt=view.kind==="day"
+    ? `📅 Resultados del día ${DATA.daily.find(d=>d.ref===view.ref).label} · Quiniela Mundial 2026 ⚽\nMira quién ganó el día 👀\n${url}`
+    : `🏆 Clasificación general · Quiniela Mundial 2026\nMira quién manda 👀\n${url}`;
+  window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank');
+}
+
+fetch('data.json',{cache:'no-store'}).then(r=>r.json()).then(init).catch(()=>init(FALLBACK));
+</script>
+</body>
+</html>
