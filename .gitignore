@@ -1,2 +1,11 @@
 # Local rollback snapshots (keep out of the repo)
 backups/
+
+# AI tooling scaffolding (generated locally by the Agent Skills Ninja extension)
+AGENTS.md
+.github/skills/
+
+# Meme video — borrador local, aún NO publicado en GitHub Pages
+# (quítalo de aquí cuando quieras que el link quede vivo)
+docs/meme.html
+preview-meme.html
