@@ -16,11 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -32,7 +30,7 @@ jobs:
       # En un cache-hit la instalación baja de ~10 min a segundos. El paquete y el
       # recálculo son idénticos, así que los puntos salen exactamente igual.
       - name: Cache LibreOffice packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/lo-apt-debs
           key: lo-apt-debs-${{ runner.os }}-libreoffice-calc-v1
