@@ -38,17 +38,28 @@ jobs:
           key: lo-apt-debs-${{ runner.os }}-libreoffice-calc-v1
 
       - name: Install LibreOffice Calc
+        timeout-minutes: 25
         run: |
           set -e
           mkdir -p ~/lo-apt-debs/partial
+          # El mirror de apt de Azure a veces falla/va lento (las líneas "Ign:").
+          # Reintentos + timeout corto por descarga + sin pipelining => el primer
+          # run (cache-miss) empuja hasta completar en vez de colgarse.
+          printf 'Acquire::Retries "5";\nAcquire::http::Timeout "20";\nAcquire::https::Timeout "20";\nAcquire::http::Pipeline-Depth "0";\n' \
+            | sudo tee /etc/apt/apt.conf.d/80-quiniela-retries >/dev/null
           if ls ~/lo-apt-debs/*.deb >/dev/null 2>&1; then
             echo "Cache hit — instalando LibreOffice desde .deb cacheados (sin descarga)."
             sudo dpkg -i ~/lo-apt-debs/*.deb || { sudo apt-get update -qq; sudo apt-get -f install -y; }
           else
-            echo "Cache miss — descargando paquetes de LibreOffice."
+            echo "Cache miss — descargando paquetes de LibreOffice (con reintentos)."
             sudo apt-get update -qq
-            sudo apt-get install -y --no-install-recommends \
-              -o Dir::Cache::archives="$HOME/lo-apt-debs" libreoffice-calc
+            n=0
+            until sudo apt-get install -y --no-install-recommends \
+                    -o Dir::Cache::archives="$HOME/lo-apt-debs" libreoffice-calc; do
+              n=$((n+1))
+              if [ "$n" -ge 3 ]; then echo "apt-get falló tras $n intentos"; exit 1; fi
+              echo "Reintento $n tras fallo del mirror…"; sleep 5
+            done
             sudo chown -R "$USER" ~/lo-apt-debs
             rm -rf ~/lo-apt-debs/partial ~/lo-apt-debs/lock
           fi
