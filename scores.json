@@ -94,5 +94,9 @@
   "24": {
     "goal_home": 1,
     "goal_away": 3
+  },
+  "25": {
+    "goal_home": 1,
+    "goal_away": 1
   }
 }
