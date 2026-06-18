@@ -27,10 +27,31 @@ jobs:
       - name: Install dependencies
         run: pip install openpyxl
 
+      # LibreOffice se cachea como paquetes .deb para no descargar ~94 MB en cada
+      # corrida (esa descarga desde el mirror de apt es lo que se colgaba/tardaba).
+      # En un cache-hit la instalación baja de ~10 min a segundos. El paquete y el
+      # recálculo son idénticos, así que los puntos salen exactamente igual.
+      - name: Cache LibreOffice packages
+        uses: actions/cache@v4
+        with:
+          path: ~/lo-apt-debs
+          key: lo-apt-debs-${{ runner.os }}-libreoffice-calc-v1
+
       - name: Install LibreOffice Calc
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends libreoffice-calc
+          set -e
+          mkdir -p ~/lo-apt-debs/partial
+          if ls ~/lo-apt-debs/*.deb >/dev/null 2>&1; then
+            echo "Cache hit — instalando LibreOffice desde .deb cacheados (sin descarga)."
+            sudo dpkg -i ~/lo-apt-debs/*.deb || { sudo apt-get update -qq; sudo apt-get -f install -y; }
+          else
+            echo "Cache miss — descargando paquetes de LibreOffice."
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends \
+              -o Dir::Cache::archives="$HOME/lo-apt-debs" libreoffice-calc
+            sudo chown -R "$USER" ~/lo-apt-debs
+            rm -rf ~/lo-apt-debs/partial ~/lo-apt-debs/lock
+          fi
 
       # OOXMLRecalcMode=0 forces a FULL recalculation on load — without it,
       # headless LibreOffice only partially recalculates xlsx files, leaving
