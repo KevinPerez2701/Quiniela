@@ -17,6 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-python@v6
         with:
@@ -107,5 +109,16 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "chore: apply scores and regenerate dashboard [skip ci]"
-            git push
+            # Si main avanzó mientras corría el workflow, reintegrar y reintentar
+            # (evita "push rejected / fetch first"). -X theirs conserva nuestros
+            # archivos recién regenerados si hubiera conflicto.
+            pushed=0
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:main; then pushed=1; break; fi
+              echo "main avanzó — reintegrando e intentando de nuevo (intento $i)…"
+              git fetch origin main
+              git rebase -X theirs origin/main || { git rebase --abort || true; }
+              sleep $((i * 2))
+            done
+            if [ "$pushed" != "1" ]; then echo "push falló tras varios intentos"; exit 1; fi
           fi
