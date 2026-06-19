@@ -371,6 +371,39 @@
       padding: 4px 12px; border-radius: 999px;
     }
 
+    /* ── DETALLE JUGADOR ── */
+    .pd-summary {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      padding: 12px 14px; background: #f7f9ff; border-bottom: 1px solid var(--border);
+    }
+    .pd-stat {
+      flex: 1 1 130px; min-width: 120px;
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      padding: 8px 12px; text-align: center;
+    }
+    .pd-stat .pd-stat-val { font-size: 1.25rem; font-weight: 800; color: var(--navy); line-height: 1.1; }
+    .pd-stat .pd-stat-val.green { color: var(--green); }
+    .pd-stat .pd-stat-lbl { font-size: .66rem; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; margin-top: 3px; }
+
+    .pd-table td.score { white-space: nowrap; }
+    .pd-table .score-real, .pd-table .score-pred {
+      display: inline-flex; align-items: center; gap: 6px; justify-content: center;
+      font-weight: 700; color: var(--navy);
+    }
+    .pd-table .pred-null { color: #bbb; font-size: .8rem; font-weight: 400; }
+    .pd-table td.pd-pts { font-weight: 800; font-size: .92rem; }
+    .pd-table td.pd-pts.pos  { color: var(--green); }
+    .pd-table td.pd-pts.zero { color: #c0c0c0; }
+    .pd-table tbody tr.hit { background: #eefcf3; }
+    .pd-table tbody tr.hit:nth-child(even) { background: #e3f7ec; }
+    .pd-table tbody tr.hit:hover { background: #c8efd6; }
+    .pd-table tfoot td {
+      background: var(--green); color: var(--white);
+      font-weight: 800; font-size: .9rem; padding: 11px 8px;
+      border-right: 1px solid rgba(255,255,255,.12);
+    }
+    .pd-table tfoot td.pd-total-val { font-size: 1.05rem; }
+
     /* ── Ajustes táctiles / móvil ── */
     @media (max-width: 640px) {
       th, td { padding: 8px 7px; }
@@ -397,6 +430,7 @@
 
   <div class="tabs">
     <button class="tab-btn active" data-tab="clas">🏆 Clasificación</button>
+    <button class="tab-btn" data-tab="player-detail">🔍 Detalle Jugador</button>
     <button class="tab-btn" data-tab="fixture">📅 Fixture</button>
     <button class="tab-btn" data-tab="partidos-dia">🗓️ Partidos del Día</button>
     <button class="tab-btn" data-tab="daily-pred">⚽ Predicción del Día</button>
@@ -425,6 +459,11 @@
           <tbody id="clas-body"></tbody>
         </table>
       </div>
+    </div>
+
+    <!-- DETALLE JUGADOR (comparación resultado real vs pronóstico, partido a partido) -->
+    <div class="tab-panel" id="tab-player-detail">
+      <div id="player-detail-content"></div>
     </div>
 
     <!-- FIXTURE -->
@@ -767,6 +806,14 @@ let predResIdx = 0;           // selected day index for the result-count view
 let dailyPredFilter = '';     // texto del buscador en Predicción del Día
 let dailyClasFilter = '';     // texto del buscador en Clas. del Día
 
+// ── DETALLE JUGADOR ───────────────────────────────────────────────────────────
+let FIXTURE_ALL = [];         // lista completa de partidos del fixture
+let FIXTURE_BY_NAME = {};     // "Local-Visitante" -> objeto partido del fixture
+let PLAYER_MATCH_DATA = {};   // jugador -> { "Local-Visitante": {pred, pts} }
+let CLAS_BY_NAME = {};        // jugador -> fila de clasificación (pos, puntos)
+let ALL_PLAYERS = [];         // nombres de jugadores ordenados alfabéticamente
+let playerDetailSel = '';     // jugador seleccionado en "Detalle Jugador"
+
 // En la última jornada de grupos (24–27/06/2026) cada día trae 18 "partidos":
 // los 6 primeros son juegos reales con marcador y los 12 restantes son
 // pronósticos de posición de grupo (nombres de equipo). En "Predicción
@@ -1000,6 +1047,163 @@ function renderDailyClas() {
   if (dailyClasFilter) filterPlayerRows(tbody, dailyClasFilter);
 }
 
+// ── DETALLE JUGADOR ────────────────────────────────────────────────────────────
+// Para el jugador seleccionado muestra, partido a partido (solo los que ya tienen
+// resultado cargado en data.json), el resultado real, el pronóstico del jugador y
+// los puntos que sumó, con el total acumulado "hasta el momento" al final.
+
+// Construye los índices que usa esta vista a partir de los datos cargados.
+function buildPlayerDetailIndex(data) {
+  FIXTURE_ALL = data.fixture || [];
+  FIXTURE_BY_NAME = {};
+  FIXTURE_ALL.forEach(m => { FIXTURE_BY_NAME[m.home + '-' + m.away] = m; });
+
+  CLAS_BY_NAME = {};
+  (data.clas?.players || []).forEach(p => { CLAS_BY_NAME[p.jugador] = p; });
+
+  // Para cada jugador, une su pronóstico (predictions) con sus puntos (clas) por
+  // día. predictions y clas vienen en orden distinto, así que se cruzan por nombre.
+  // Solo se guardan las entradas que corresponden a un partido real del fixture
+  // (se descartan los pronósticos de posición de grupo / equipos clasificados).
+  PLAYER_MATCH_DATA = {};
+  (data.daily || []).forEach(day => {
+    const ptsByPlayer = {};
+    (day.clas || []).forEach(c => { ptsByPlayer[c.jugador] = c.pts || []; });
+    (day.predictions || []).forEach(pr => {
+      const pts = ptsByPlayer[pr.jugador] || [];
+      const store = PLAYER_MATCH_DATA[pr.jugador] || (PLAYER_MATCH_DATA[pr.jugador] = {});
+      (day.matches || []).forEach((name, i) => {
+        if (!(name in FIXTURE_BY_NAME)) return;
+        store[name] = { pred: (pr.preds || [])[i] ?? null, pts: pts[i] || 0 };
+      });
+    });
+  });
+
+  ALL_PLAYERS = (data.clas?.players || [])
+    .map(p => p.jugador)
+    .sort((a, b) => a.localeCompare(b, 'es'));
+  // Conservar selección previa si sigue existiendo; si no, el primero.
+  if (!ALL_PLAYERS.includes(playerDetailSel)) playerDetailSel = ALL_PLAYERS[0] || '';
+}
+
+function signFromGoals(gh, ga) { return gh > ga ? '1' : gh < ga ? '2' : 'X'; }
+
+function signBadge(sign) {
+  const cls = sign === '1' ? 'sign-1' : sign === 'X' ? 'sign-X' : 'sign-2';
+  return `<span class="res-sign ${cls}">${h(sign)}</span>`;
+}
+
+function renderPlayerDetail() {
+  const el = document.getElementById('player-detail-content');
+  el.innerHTML = '';
+  if (!ALL_PLAYERS.length) { el.innerHTML = emptyState('Sin datos disponibles.'); return; }
+
+  // Cabecera con selector de jugador
+  const header = document.createElement('div');
+  header.className = 'daily-header';
+  header.innerHTML = `Selecciona jugador:&nbsp;`;
+  const sel = document.createElement('select');
+  sel.className = 'day-select';
+  ALL_PLAYERS.forEach(name => {
+    const opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    if (name === playerDetailSel) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener('change', e => { playerDetailSel = e.target.value; renderPlayerDetail(); });
+  header.appendChild(sel);
+  el.appendChild(header);
+
+  const store = PLAYER_MATCH_DATA[playerDetailSel] || {};
+
+  // Solo partidos ya jugados (resultado cargado), ordenados cronológicamente.
+  const rows = FIXTURE_ALL
+    .filter(m => m.goal_home !== null && m.goal_away !== null)
+    .slice()
+    .sort((a, b) => (a.date || '').localeCompare(b.date || '') || (a.num || 0) - (b.num || 0));
+
+  let total = 0, conPuntos = 0, exactos = 0;
+  rows.forEach(m => {
+    const d = store[m.home + '-' + m.away];
+    const pts = d ? d.pts : 0;
+    total += pts;
+    if (pts > 0) conPuntos++;
+    if (d && d.pred) {
+      const pscore = String(d.pred).split('|').slice(1).join('|') || String(d.pred);
+      if (pscore === `${m.goal_home}-${m.goal_away}`) exactos++;
+    }
+  });
+
+  const clasInfo = CLAS_BY_NAME[playerDetailSel] || {};
+
+  // Resumen de estadísticas
+  const summary = document.createElement('div');
+  summary.className = 'pd-summary';
+  summary.innerHTML = `
+    <div class="pd-stat"><div class="pd-stat-val green">${total}</div><div class="pd-stat-lbl">Puntos (partidos)</div></div>
+    <div class="pd-stat"><div class="pd-stat-val">${clasInfo.pos ? '#' + clasInfo.pos : '—'}</div><div class="pd-stat-lbl">Posición general</div></div>
+    <div class="pd-stat"><div class="pd-stat-val">${rows.length}</div><div class="pd-stat-lbl">Partidos jugados</div></div>
+    <div class="pd-stat"><div class="pd-stat-val">${conPuntos}</div><div class="pd-stat-lbl">Con puntos</div></div>
+    <div class="pd-stat"><div class="pd-stat-val">${exactos}</div><div class="pd-stat-lbl">Marcador exacto</div></div>`;
+  el.appendChild(summary);
+
+  if (!rows.length) {
+    el.insertAdjacentHTML('beforeend', emptyState('Aún no hay partidos con resultado cargado.', '🗓️'));
+    return;
+  }
+
+  const wrap = document.createElement('div');
+  wrap.className = 'table-wrap';
+  const t = document.createElement('table');
+  t.className = 'fixture-table pd-table';
+  t.innerHTML = `<thead><tr>
+    <th>Fecha (UTC-4)</th>
+    <th class="left">Partido</th>
+    <th>Resultado Real</th>
+    <th>Tu Pronóstico</th>
+    <th>Puntos</th>
+  </tr></thead>`;
+  const tbody = document.createElement('tbody');
+
+  rows.forEach(m => {
+    const d = store[m.home + '-' + m.away];
+    const pts = d ? d.pts : 0;
+    const realScore = `${m.goal_home}-${m.goal_away}`;
+    const realSign = signFromGoals(m.goal_home, m.goal_away);
+
+    let predHtml;
+    if (d && d.pred) {
+      const parts = String(d.pred).split('|');
+      const psign = parts.length > 1 ? parts[0] : '';
+      const pscore = parts.length > 1 ? parts.slice(1).join('|') : parts[0];
+      predHtml = `<span class="score-pred">${psign ? signBadge(psign) : ''}${h(pscore)}</span>`;
+    } else {
+      predHtml = `<span class="pred-null">Sin pronóstico</span>`;
+    }
+
+    const tr = document.createElement('tr');
+    if (pts > 0) tr.classList.add('hit');
+    tr.innerHTML = `
+      <td style="white-space:nowrap;font-size:.75rem">${fmtDate(m.date)}</td>
+      <td class="team left">${h(m.home)} <span style="color:var(--muted);font-weight:400">vs</span> ${h(m.away)}</td>
+      <td class="score"><span class="score-real">${signBadge(realSign)}${realScore}</span></td>
+      <td class="score">${predHtml}</td>
+      <td class="pd-pts ${pts > 0 ? 'pos' : 'zero'}">${pts}</td>`;
+    tbody.appendChild(tr);
+  });
+
+  t.appendChild(tbody);
+  const tfoot = document.createElement('tfoot');
+  tfoot.innerHTML = `<tr>
+    <td colspan="4" class="left">TOTAL hasta el momento</td>
+    <td class="pd-total-val">${total}</td>
+  </tr>`;
+  t.appendChild(tfoot);
+  wrap.appendChild(t);
+  el.appendChild(wrap);
+}
+
 // ── Load & render ─────────────────────────────────────────────────────────────
 async function load() {
   try {
@@ -1022,6 +1226,8 @@ async function load() {
 
     renderClas(data);
     setupClasSearch();
+    buildPlayerDetailIndex(data);
+    renderPlayerDetail();
     renderFixture(data.fixture || []);
     renderPartidosDia();
     renderDailyPred();
