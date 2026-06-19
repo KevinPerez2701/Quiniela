@@ -145,7 +145,10 @@ def extract_clas_players(ws):
         if not isinstance(row[2], str) or row[2] == "-" or is_placeholder(row[2]):
             continue
         players.append({
-            "jugador":    row[2],
+            # .strip() para evitar nombres con espacios sobrantes (p. ej.
+            # "jaidali ") que romperían la unión por nombre con el bloque diario,
+            # que sí viene recortado.
+            "jugador":    row[2].strip(),
             "puntos":     to_num(row[3]),
             "f_grupos":   to_num(row[4]),
             "pos_grupos": to_num(row[5]),

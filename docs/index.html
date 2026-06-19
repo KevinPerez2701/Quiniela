@@ -1054,12 +1054,17 @@ function renderDailyClas() {
 
 // Construye los índices que usa esta vista a partir de los datos cargados.
 function buildPlayerDetailIndex(data) {
+  // Normaliza el nombre del jugador para cruzarlo entre bloques: la hoja CLAS a
+  // veces trae espacios sobrantes (p. ej. "jaidali ") mientras que el bloque
+  // diario viene recortado ("jaidali"), lo que rompería la unión por nombre.
+  const norm = s => (s == null ? '' : String(s).trim());
+
   FIXTURE_ALL = data.fixture || [];
   FIXTURE_BY_NAME = {};
   FIXTURE_ALL.forEach(m => { FIXTURE_BY_NAME[m.home + '-' + m.away] = m; });
 
   CLAS_BY_NAME = {};
-  (data.clas?.players || []).forEach(p => { CLAS_BY_NAME[p.jugador] = p; });
+  (data.clas?.players || []).forEach(p => { CLAS_BY_NAME[norm(p.jugador)] = p; });
 
   // Para cada jugador, une su pronóstico (predictions) con sus puntos (clas) por
   // día. predictions y clas vienen en orden distinto, así que se cruzan por nombre.
@@ -1068,10 +1073,11 @@ function buildPlayerDetailIndex(data) {
   PLAYER_MATCH_DATA = {};
   (data.daily || []).forEach(day => {
     const ptsByPlayer = {};
-    (day.clas || []).forEach(c => { ptsByPlayer[c.jugador] = c.pts || []; });
+    (day.clas || []).forEach(c => { ptsByPlayer[norm(c.jugador)] = c.pts || []; });
     (day.predictions || []).forEach(pr => {
-      const pts = ptsByPlayer[pr.jugador] || [];
-      const store = PLAYER_MATCH_DATA[pr.jugador] || (PLAYER_MATCH_DATA[pr.jugador] = {});
+      const key = norm(pr.jugador);
+      const pts = ptsByPlayer[key] || [];
+      const store = PLAYER_MATCH_DATA[key] || (PLAYER_MATCH_DATA[key] = {});
       (day.matches || []).forEach((name, i) => {
         if (!(name in FIXTURE_BY_NAME)) return;
         store[name] = { pred: (pr.preds || [])[i] ?? null, pts: pts[i] || 0 };
@@ -1080,7 +1086,7 @@ function buildPlayerDetailIndex(data) {
   });
 
   ALL_PLAYERS = (data.clas?.players || [])
-    .map(p => p.jugador)
+    .map(p => norm(p.jugador))
     .sort((a, b) => a.localeCompare(b, 'es'));
   // Conservar selección previa si sigue existiendo; si no, el primero.
   if (!ALL_PLAYERS.includes(playerDetailSel)) playerDetailSel = ALL_PLAYERS[0] || '';
