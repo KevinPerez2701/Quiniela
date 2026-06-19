@@ -206,6 +206,50 @@ def extract_fixture(ws):
     return matches
 
 
+# ── GROUP STANDINGS (tablas de posiciones, hoja WORLDCUP) ─────────────────────
+#
+# La hoja WORLDCUP trae un bloque "display" ya ordenado por posición. Cada grupo
+# ocupa 8 filas y las columnas (0-based) son:
+#   35 Pos | 37 Selección | 38 Pts | 39 J | 40 G | 41 E | 42 P | 43 GF | 44 GC | 45 DG
+# La etiqueta "Grupo X" está en la fila idx 3+8g (col 35), el encabezado en 4+8g
+# y las 4 selecciones en 5+8g..8+8g. Ese bloque ya aplica el desempate del Excel
+# (incluyendo orden de seed y puntos penalizados), así que solo se transcribe.
+
+GS_LABEL_COL = 35
+GS_COLS = {
+    "pos": 35, "team": 37, "pts": 38, "pj": 39, "g": 40,
+    "e": 41, "p": 42, "gf": 43, "gc": 44, "dg": 45,
+}
+
+
+def extract_group_standings(ws):
+    rows = list(ws.iter_rows(values_only=True))
+    groups = []
+    g = 0
+    while True:
+        lbl_idx = 3 + 8 * g
+        if lbl_idx >= len(rows):
+            break
+        lbl_row = rows[lbl_idx]
+        label = lbl_row[GS_LABEL_COL] if len(lbl_row) > GS_LABEL_COL else None
+        if not (isinstance(label, str) and label.strip().lower().startswith("grupo")):
+            break
+        teams = []
+        for t in range(4):
+            ri = 5 + 8 * g + t
+            if ri >= len(rows):
+                break
+            row = rows[ri]
+            team = row[GS_COLS["team"]] if len(row) > GS_COLS["team"] else None
+            if not (isinstance(team, str) and team.strip()):
+                continue
+            teams.append({k: (team.strip() if k == "team" else to_num(row[col]))
+                          for k, col in GS_COLS.items()})
+        groups.append({"name": label.strip(), "teams": teams})
+        g += 1
+    return groups
+
+
 # ── DAILY (ALL DAYS, from the ADMIN master table) ─────────────────────────────
 #
 # The DailyPrediction / DailyClas worksheets only show ONE day (driven by a
@@ -317,6 +361,7 @@ def main():
     all_clas_players = []
     title = "CLASIFICACIÓN MUNDIAL 2026"
     fixture = []
+    groups = []
     # Per-day merge keyed by day "ref"; the primary file defines the day order,
     # labels and match list, and every file appends its own players.
     merged_days = OrderedDict()
@@ -344,9 +389,10 @@ def main():
             merged_days[ref]["predictions"].extend(day["predictions"])
             merged_days[ref]["clas"].extend(day["clas"])
 
-        # Fixture only from the primary file
+        # Fixture y tablas de posiciones solo desde el archivo primario
         if is_primary:
             fixture = extract_fixture(wb["WORLDCUP"])
+            groups = extract_group_standings(wb["WORLDCUP"])
 
     # ── Re-rank merged standings (overall + per day) ──────────────────────────
     clas_players = assign_positions(all_clas_players, "puntos")
@@ -362,6 +408,7 @@ def main():
         "max_values":  MAX_VALUES,
         "columns":     COLUMNS,
         "fixture":     fixture,
+        "groups":      groups,
         "daily":       daily,
     }
 

@@ -371,6 +371,25 @@
       padding: 4px 12px; border-radius: 999px;
     }
 
+    /* ── TABLA DE POSICIONES (grupos en Fixture) ── */
+    .standings-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    .standings-table th {
+      background: #243b6b; color: var(--white);
+      font-size: .68rem; font-weight: 700; padding: 6px 6px;
+      white-space: nowrap; text-align: center;
+    }
+    .standings-table th.left { text-align: left; }
+    .standings-table td { padding: 6px 6px; text-align: center; border-bottom: 1px solid #e2e8f4; }
+    .standings-table td.team { font-weight: 600; color: var(--navy); }
+    .standings-table td.st-pts { font-weight: 800; color: var(--green); }
+    .standings-table tbody tr:nth-child(even) { background: var(--stripe); }
+    .standings-table tbody tr:hover { background: #c8d8ff; }
+    /* Top 2 (clasifican directo) marcados con franja verde a la izquierda */
+    .standings-table tbody tr.qualify td:first-child { box-shadow: inset 4px 0 0 var(--green); }
+    .st-dg-pos { color: var(--green); }
+    .st-dg-neg { color: #c0392b; }
+    .standings-wrap { padding: 0 0 4px; }
+
     /* ── DETALLE JUGADOR ── */
     .pd-summary {
       display: flex; flex-wrap: wrap; gap: 10px;
@@ -645,6 +664,81 @@ function setupClasSearch() {
   apply();
 }
 
+// ── TABLAS DE POSICIONES (grupos) ──────────────────────────────────────────────
+// GROUPS_BY_NAME["Grupo A"] = [{pos, team, pts, pj, g, e, p, gf, gc, dg}, ...]
+// Fuente preferida: data.groups (transcrito del Excel, ya con el desempate oficial).
+// Si aún no está en data.json, se calculan al vuelo desde los resultados del fixture.
+let GROUPS_BY_NAME = {};
+
+function computeGroupStandings(matches) {
+  const groups = {};   // grp -> { team -> stats }
+  const seen = {};     // grp -> [team, ...] (orden de aparición, desempate final)
+  matches.forEach(m => {
+    if (m.phase !== 'grupos' || !m.group) return;
+    const g = m.group;
+    groups[g] = groups[g] || {};
+    seen[g] = seen[g] || [];
+    [m.home, m.away].forEach(team => {
+      if (!seen[g].includes(team)) seen[g].push(team);
+      groups[g][team] = groups[g][team] ||
+        { team, pts: 0, pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0 };
+    });
+    if (m.goal_home === null || m.goal_away === null) return;
+    const H = groups[g][m.home], A = groups[g][m.away];
+    H.pj++; A.pj++; H.gf += m.goal_home; H.gc += m.goal_away;
+    A.gf += m.goal_away; A.gc += m.goal_home;
+    if (m.goal_home > m.goal_away)      { H.pts += 3; H.g++; A.p++; }
+    else if (m.goal_home < m.goal_away) { A.pts += 3; A.g++; H.p++; }
+    else                                { H.pts++; A.pts++; H.e++; A.e++; }
+  });
+  const out = {};
+  Object.keys(groups).forEach(g => {
+    const idx = {};
+    seen[g].forEach((t, i) => idx[t] = i);
+    const teams = Object.values(groups[g]);
+    teams.forEach(t => t.dg = t.gf - t.gc);
+    teams.sort((a, b) =>
+      b.pts - a.pts || b.dg - a.dg || b.gf - a.gf || idx[a.team] - idx[b.team]);
+    teams.forEach((t, i) => t.pos = i + 1);
+    out[g] = teams;
+  });
+  return out;
+}
+
+function fmtDG(dg) {
+  const cls = dg > 0 ? 'st-dg-pos' : dg < 0 ? 'st-dg-neg' : '';
+  const txt = dg > 0 ? '+' + dg : String(dg);
+  return `<span class="${cls}">${txt}</span>`;
+}
+
+function buildStandingsTable(teams) {
+  const wrap = document.createElement('div');
+  wrap.className = 'table-wrap standings-wrap';
+  const t = document.createElement('table');
+  t.className = 'standings-table';
+  t.innerHTML = `<thead><tr>
+    <th>Pos</th><th class="left">Selección</th>
+    <th>Pts</th><th>J</th><th>G</th><th>E</th><th>P</th>
+    <th>GF</th><th>GC</th><th>DG</th>
+  </tr></thead>`;
+  const tbody = document.createElement('tbody');
+  teams.forEach(s => {
+    const tr = document.createElement('tr');
+    if (s.pos <= 2) tr.classList.add('qualify');   // top 2 clasifican directo
+    tr.innerHTML = `
+      <td>${posBadge(s.pos)}</td>
+      <td class="team left">${h(s.team)}</td>
+      <td class="st-pts">${s.pts}</td>
+      <td>${s.pj ?? s.j ?? 0}</td>
+      <td>${s.g}</td><td>${s.e}</td><td>${s.p}</td>
+      <td>${s.gf}</td><td>${s.gc}</td><td>${fmtDG(s.dg)}</td>`;
+    tbody.appendChild(tr);
+  });
+  t.appendChild(tbody);
+  wrap.appendChild(t);
+  return wrap;
+}
+
 // ── FIXTURE ───────────────────────────────────────────────────────────────────
 function renderFixture(matches) {
   const el = document.getElementById('fixture-content');
@@ -669,6 +763,8 @@ function renderFixture(matches) {
       list.forEach(m => (byGroup[m.group || ''] = byGroup[m.group || ''] || []).push(m));
       Object.entries(byGroup).sort(([a],[b]) => a.localeCompare(b)).forEach(([grp, ms]) => {
         phDiv.innerHTML += `<div class="group-header">${h(grp)}</div>`;
+        const standings = GROUPS_BY_NAME[grp];
+        if (standings && standings.length) phDiv.appendChild(buildStandingsTable(standings));
         phDiv.appendChild(buildMatchTable(ms));
       });
     } else {
@@ -1223,6 +1319,15 @@ async function load() {
 
     DAILY_DAYS = data.daily || [];
     FIXTURE_DAYS = buildFixtureDays(data.fixture || []);
+
+    // Tablas de posiciones: usar las del Excel (data.groups) si existen; si no,
+    // calcularlas al vuelo desde los resultados del fixture (siempre actuales).
+    GROUPS_BY_NAME = {};
+    if (Array.isArray(data.groups) && data.groups.length) {
+      data.groups.forEach(g => { GROUPS_BY_NAME[g.name] = g.teams || []; });
+    } else {
+      GROUPS_BY_NAME = computeGroupStandings(data.fixture || []);
+    }
     // Default the selectors to today's day if it exists, else the first day.
     const todayIso = venezuelaTodayIso();
     const todayIdx = DAILY_DAYS.findIndex(d => d.date === todayIso);
