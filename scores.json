@@ -111,6 +111,10 @@
     "goal_home": 1,
     "goal_away": 0
   },
+  "30": {
+    "goal_home": 0,
+    "goal_away": 1
+  },
   "32": {
     "goal_home": 2,
     "goal_away": 0
