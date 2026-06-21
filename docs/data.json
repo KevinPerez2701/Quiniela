@@ -1,5 +1,5 @@
 {
-  "updated_at": "20/06/2026 18:09 (hora Venezuela)",
+  "updated_at": "20/06/2026 21:56 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -1072,8 +1072,8 @@
       "group": "Grupo E",
       "home": "Ecuador",
       "away": "Curazao",
-      "goal_home": null,
-      "goal_away": null,
+      "goal_home": 0,
+      "goal_away": 0,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -2149,10 +2149,10 @@
         {
           "pos": 3,
           "team": "Ecuador",
-          "pts": 0,
-          "pj": 1,
+          "pts": 1,
+          "pj": 2,
           "g": 0,
-          "e": 0,
+          "e": 1,
           "p": 1,
           "gf": 0,
           "gc": 1,
@@ -2161,10 +2161,10 @@
         {
           "pos": 4,
           "team": "Curazao",
-          "pts": 0,
-          "pj": 1,
+          "pts": 1,
+          "pj": 2,
           "g": 0,
-          "e": 0,
+          "e": 1,
           "p": 1,
           "gf": 1,
           "gc": 7,
