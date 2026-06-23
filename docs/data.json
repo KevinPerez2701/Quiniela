@@ -1,12 +1,12 @@
 {
-  "updated_at": "23/06/2026 14:58 (hora Venezuela)",
+  "updated_at": "23/06/2026 18:00 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
       {
         "jugador": "Jorge Rojas",
-        "puntos": 88,
-        "f_grupos": 88,
+        "puntos": 90,
+        "f_grupos": 90,
         "pos_grupos": 0,
         "eq_16": 0,
         "pt_16": 0,
@@ -1204,8 +1204,8 @@
       "group": "Grupo L",
       "home": "Inglaterra",
       "away": "Ghana",
-      "goal_home": null,
-      "goal_away": null,
+      "goal_home": 0,
+      "goal_away": 0,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -2496,10 +2496,10 @@
         {
           "pos": 1,
           "team": "Inglaterra",
-          "pts": 3,
-          "pj": 1,
+          "pts": 4,
+          "pj": 2,
           "g": 1,
-          "e": 0,
+          "e": 1,
           "p": 0,
           "gf": 4,
           "gc": 2,
@@ -2508,10 +2508,10 @@
         {
           "pos": 2,
           "team": "Ghana",
-          "pts": 3,
-          "pj": 1,
+          "pts": 4,
+          "pj": 2,
           "g": 1,
-          "e": 0,
+          "e": 1,
           "p": 0,
           "gf": 1,
           "gc": 0,
@@ -9494,6 +9494,17 @@
           "pos": 1
         },
         {
+          "jugador": "Jorge Rojas",
+          "puntos_dia": 4,
+          "pts": [
+            2,
+            0,
+            2,
+            0
+          ],
+          "pos": 2
+        },
+        {
           "jugador": "Kevin Perez",
           "puntos_dia": 2,
           "pts": [
@@ -9502,7 +9513,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Ylich",
@@ -9513,7 +9524,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "RICARDO RIVERO",
@@ -9524,7 +9535,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Simon Melendez",
@@ -9535,7 +9546,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "EDUARDO PINTO",
@@ -9546,7 +9557,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Edicxon Mendoza",
@@ -9557,7 +9568,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "RICARDO DEFENDINI",
@@ -9568,7 +9579,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Rafael Aguilar",
@@ -9579,7 +9590,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Luis Pinto",
@@ -9590,7 +9601,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Dixon Torrealba",
@@ -9601,18 +9612,7 @@
             0,
             0
           ],
-          "pos": 2
-        },
-        {
-          "jugador": "Jorge Rojas",
-          "puntos_dia": 2,
-          "pts": [
-            2,
-            0,
-            0,
-            0
-          ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Freddy Parra (1)",
@@ -9623,7 +9623,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Freddy Parra (2)",
@@ -9634,7 +9634,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Mariana Suarez (Samuel 2)",
@@ -9645,7 +9645,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Samuel Montes",
@@ -9656,7 +9656,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Andres Fermin",
@@ -9667,7 +9667,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Luis Márquez",
@@ -9678,7 +9678,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Alvaro Urdaneta",
@@ -9689,7 +9689,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Fernando (Jessika)",
@@ -9700,7 +9700,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Ricardo Ortega",
@@ -9711,7 +9711,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Xavier (Kevin 2)",
@@ -9722,7 +9722,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Jared Oropeza",
@@ -9733,7 +9733,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Juan Dorante",
@@ -9744,7 +9744,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Carlos Gimenez",
@@ -9755,7 +9755,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Andres Alvarez",
@@ -9766,7 +9766,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Erika",
@@ -9777,7 +9777,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         },
         {
           "jugador": "Maria Delgado",
@@ -9788,7 +9788,7 @@
             0,
             0
           ],
-          "pos": 2
+          "pos": 3
         }
       ]
     },
