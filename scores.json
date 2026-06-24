@@ -191,6 +191,14 @@
     "goal_home": 1,
     "goal_away": 0
   },
+  "49": {
+    "goal_home": 0,
+    "goal_away": 3
+  },
+  "50": {
+    "goal_home": 4,
+    "goal_away": 2
+  },
   "51": {
     "goal_home": 2,
     "goal_away": 1
