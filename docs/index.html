@@ -319,6 +319,75 @@
     }
     .pred-names-empty { font-size: .74rem; color: var(--muted); }
 
+    /* ── Cruces eliminatorios (Predicción Resultados, 16avos en adelante) ── */
+    .pred-res-note {
+      padding: 12px 16px; font-size: .78rem; color: #46587e; line-height: 1.45;
+      background: #f7f9ff; border-bottom: 1px solid var(--border);
+    }
+    .pred-res-note strong { color: var(--navy); }
+    .ko-vs { color: #b9c6e6; font-weight: 600; font-size: .82em; margin: 0 2px; }
+    .ko-confirm { color: #38d27a; font-weight: 800; }
+    .ko-pending { color: var(--gold); font-weight: 800; }
+    .ko-section {
+      font-size: .62rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--muted); padding: 9px 12px 3px; background: #fbfcff; border-top: 1px solid #eef2fa;
+    }
+    .ko-static { border-bottom: 1px solid #eef2fa; }
+
+    /* ── Detalle Jugador: control segmentado de 3 vistas ── */
+    .pd-views {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      padding: 10px 14px; background: #eef3ff; border-bottom: 1px solid var(--border);
+    }
+    .pd-view-btn {
+      padding: 7px 14px; border: 1px solid var(--border); background: var(--white);
+      color: var(--navy); border-radius: 8px; font-size: .8rem; font-weight: 600;
+      cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+    }
+    .pd-view-btn:hover  { background: #dbe6ff; }
+    .pd-view-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+    /* ── Posición Grupos (cards por grupo) ── */
+    .pd-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px; padding: 16px;
+    }
+    .pos-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    .pos-table th {
+      background: #243b6b; color: #fff; font-size: .66rem; font-weight: 700;
+      padding: 5px 7px; text-align: left; white-space: nowrap;
+    }
+    .pos-table td { padding: 6px 7px; border-bottom: 1px solid #eef2fa; }
+    .pos-table td.pos-n { width: 26px; text-align: center; color: var(--muted); font-weight: 700; }
+    .pos-table td.pos-pred { font-weight: 600; color: var(--navy); }
+    .pos-table td.pos-real { color: #46587e; }
+    .pos-table td.pos-pts  { width: 30px; text-align: right; font-weight: 800; color: var(--muted); }
+    .pos-table tr.hit td.pos-pred { color: #1c7a44; }
+    .pos-table tr.hit td.pos-pts  { color: var(--green); }
+    .pos-table tr.hit { background: #eefcf3; }
+
+    /* ── Equipos Clasificados (chips por ronda) ── */
+    .qual-grid { display: flex; flex-wrap: wrap; gap: 7px; padding: 11px 13px; }
+    .qual-chip {
+      background: var(--white); border: 1px solid var(--border); border-radius: 99px;
+      padding: 3px 11px; font-size: .77rem; color: var(--navy); font-weight: 600;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .qual-chip.hit { background: #eefcf3; border-color: #9bdcb6; color: #1c7a44; }
+    .qual-chip .qp { font-size: .64rem; color: var(--green); font-weight: 800; }
+    .qual-chip.miss { opacity: .72; }
+    .qual-role {
+      display: grid; grid-template-columns: 1fr auto auto; gap: 8px; align-items: center;
+      padding: 7px 13px; border-bottom: 1px solid #eef2fa; font-size: .8rem;
+    }
+    .qual-role:last-child { border-bottom: none; }
+    .qual-role .qr-lbl  { color: var(--muted); font-size: .72rem; }
+    .qual-role .qr-team { font-weight: 600; color: var(--navy); text-align: right; }
+    .qual-role.hit .qr-team { color: #1c7a44; }
+    .qual-role .qr-pts  { font-weight: 800; color: var(--muted); min-width: 26px; text-align: right; }
+    .qual-role.hit .qr-pts { color: var(--green); }
+    .pd-note { padding: 10px 16px; font-size: .76rem; color: var(--muted); background: #f7f9ff; border-bottom: 1px solid var(--border); line-height: 1.4; }
+
     /* ── Podio (resalta top-3 en la Clasificación) ── */
     #clas-body tr.podium-1 td:first-child { box-shadow: inset 4px 0 0 var(--gold); }
     #clas-body tr.podium-2 td:first-child { box-shadow: inset 4px 0 0 #c0c0c0; }
@@ -901,6 +970,8 @@ let dailyClasIdx = 0;         // selected day index for the clas view
 let predResIdx = 0;           // selected day index for the result-count view
 let dailyPredFilter = '';     // texto del buscador en Predicción del Día
 let dailyClasFilter = '';     // texto del buscador en Clas. del Día
+let PRED_RES_DAYS = [];       // días unificados (grupos + eliminatorias) para Predicción Resultados
+let KO_PRED_BY_MATCH = {};    // "Local-Visitante" -> [{jugador, parsed}] de fases eliminatorias
 
 // ── DETALLE JUGADOR ───────────────────────────────────────────────────────────
 let FIXTURE_ALL = [];         // lista completa de partidos del fixture
@@ -909,6 +980,9 @@ let PLAYER_MATCH_DATA = {};   // jugador -> { "Local-Visitante": {pred, pts} }
 let CLAS_BY_NAME = {};        // jugador -> fila de clasificación (pos, puntos)
 let ALL_PLAYERS = [];         // nombres de jugadores ordenados alfabéticamente
 let playerDetailSel = '';     // jugador seleccionado en "Detalle Jugador"
+let playerDetailView = 'partidos';  // sub-vista activa: 'partidos' | 'posiciones' | 'clasificados'
+let PLAYER_POS_DATA = {};     // jugador -> { 'A': [{pos, predTeam, pts}, ...], ... } (posiciones de grupo)
+let PLAYER_QUAL_DATA = {};    // jugador -> { segKey: {name, order, items:[{label, predTeam, pts}]} }
 
 // En la última jornada de grupos (24–27/06/2026) cada día trae 18 "partidos":
 // los 6 primeros son juegos reales con marcador y los 12 restantes son
@@ -995,26 +1069,118 @@ function renderDailyPred() {
   if (dailyPredFilter) filterPlayerRows(tbody, dailyPredFilter);
 }
 
-// ── PREDICCIÓN RESULTADOS (cuántas veces eligieron cada resultado por partido) ──
+// ── PREDICCIÓN RESULTADOS ──────────────────────────────────────────────────────
+// Días de grupos  -> cuenta cuántos eligieron cada resultado por partido.
+// Días eliminatorios (16avos en adelante) -> valida el CRUCE: si ya está
+// confirmado (ambos equipos reales en el fixture), lista a quienes acertaron el
+// enfrentamiento y, entre ellos, desglosa por resultado; si el cruce aún no está
+// definido, muestra la distribución de cruces pronosticados. El cruce se cuenta
+// sin importar quién va de local o visitante (decidido con el usuario).
+
+// ¿"2F", "1E", "3ABCDF", "W73", "L101"… (placeholder de bracket) en vez de equipo real?
+function isPlaceholderTeam(t) {
+  return /^\d/.test(t) || /^[WL]\d/.test(t);
+}
+
+// Clave de cruce sin orden: {A,B} == {B,A}  ->  "Brasil ∧ Japón"
+function cruceKey(a, b) {
+  return [String(a).trim(), String(b).trim()]
+    .sort((x, y) => x.localeCompare(y, 'es'))
+    .join(' ∧ ');
+}
+
+// Parsea "Cruce·Signo|Marcador" (separador U+00B7) -> {home, away, sign, score, res}
+function parseKoPred(raw) {
+  if (raw == null || raw === '') return null;
+  const dot = raw.indexOf('·');
+  if (dot < 0) return null;
+  const cruce = raw.slice(0, dot).trim();
+  const rest  = raw.slice(dot + 1);                 // "Signo|Marcador"
+  const bar   = rest.indexOf('|');
+  const sign  = bar >= 0 ? rest.slice(0, bar) : rest;
+  const score = bar >= 0 ? rest.slice(bar + 1) : '';
+  const dash  = cruce.indexOf('-');                 // ningún equipo del torneo lleva guion
+  const home  = dash >= 0 ? cruce.slice(0, dash).trim() : cruce.trim();
+  const away  = dash >= 0 ? cruce.slice(dash + 1).trim() : '';
+  return { home, away, sign, score, res: sign + '|' + score };
+}
+
+function isoToLabel(iso) {
+  const [y, m, d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+// KO_PRED_BY_MATCH["Local-Visitante"] = [{jugador, parsed}, ...]
+// Se arma desde los grupos de fase del daily (sin fecha de calendario): solo las
+// columnas cuyo rótulo coincide con un partido eliminatorio del fixture (las demás
+// son columnas de "equipos que avanzan" y se ignoran).
+function buildKnockoutIndex(data) {
+  KO_PRED_BY_MATCH = {};
+  (data.daily || []).forEach(day => {
+    if (day.date) return;
+    (day.matches || []).forEach((label, col) => {
+      if (!(label in FIXTURE_BY_NAME)) return;
+      const arr = KO_PRED_BY_MATCH[label] || (KO_PRED_BY_MATCH[label] = []);
+      (day.predictions || []).forEach(pr => {
+        arr.push({ jugador: pr.jugador, parsed: parseKoPred((pr.preds || [])[col]) });
+      });
+    });
+  });
+}
+
+// Lista unificada para "Predicción Resultados": días de grupos (con fecha) + días
+// eliminatorios derivados del fixture (28/06 en adelante), ordenados por fecha.
+function buildPredResDays() {
+  PRED_RES_DAYS = [];
+  DAILY_DAYS.forEach(day => {
+    if (day.date) PRED_RES_DAYS.push({ kind: 'group', iso: day.date, label: day.label, day });
+  });
+  const byDay = {};
+  FIXTURE_ALL.forEach(m => {
+    if (m.phase === 'grupos' || !m.date) return;
+    const iso = m.date.split(' ')[0];
+    (byDay[iso] = byDay[iso] || []).push(m);
+  });
+  Object.keys(byDay).forEach(iso => {
+    const ms = byDay[iso].slice().sort((a, b) =>
+      (a.date || '').localeCompare(b.date || '') || (a.num || 0) - (b.num || 0));
+    PRED_RES_DAYS.push({ kind: 'ko', iso, label: isoToLabel(iso), phaseLabel: ms[0].phase_label, matches: ms });
+  });
+  PRED_RES_DAYS.sort((a, b) => (a.iso || '').localeCompare(b.iso || ''));
+}
+
 function renderPredResultados() {
   const el = document.getElementById('pred-res-content');
   el.innerHTML = '';
-  if (!DAILY_DAYS.length) {
-    el.innerHTML = emptyState('Sin datos disponibles.');
-    return;
-  }
-  const day = DAILY_DAYS[predResIdx] || DAILY_DAYS[0];
+  if (!PRED_RES_DAYS.length) { el.innerHTML = emptyState('Sin datos disponibles.'); return; }
+  if (predResIdx >= PRED_RES_DAYS.length) predResIdx = 0;
+  const entry = PRED_RES_DAYS[predResIdx] || PRED_RES_DAYS[0];
 
   const header = document.createElement('div');
   header.className = 'daily-header';
   header.innerHTML = `Selecciona día:&nbsp;`;
-  // Solo días con fecha de calendario (hasta el 27/06); se omiten las fases (CLASIFICADOS, Dieciseisavos, etc.)
-  header.appendChild(daySelector('sel-predres', predResIdx, i => { predResIdx = i; renderPredResultados(); }, predResCount, d => !!d.date));
+  const sel = document.createElement('select');
+  sel.className = 'day-select';
+  PRED_RES_DAYS.forEach((d, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    const cnt = d.kind === 'group' ? predResCount(d.day) : d.matches.length;
+    const extra = d.kind === 'ko' ? ` · ${d.phaseLabel}` : '';
+    opt.textContent = `${d.label} · ${cnt} partido(s)${extra}`;
+    if (i === predResIdx) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  sel.addEventListener('change', e => { predResIdx = parseInt(e.target.value, 10); renderPredResultados(); });
+  header.appendChild(sel);
   el.appendChild(header);
 
-  const allPartidos = day.matches || [];
-  // En 24–27/06 limitar a los 6 juegos reales (ocultar pronósticos de posición de grupo)
-  const partidos = allPartidos.slice(0, predResCount(day));
+  if (entry.kind === 'ko') renderPredResKo(el, entry);
+  else                     renderPredResGroup(el, entry.day);
+}
+
+// Vista clásica (grupos): conteo de resultados por partido.
+function renderPredResGroup(el, day) {
+  const partidos = (day.matches || []).slice(0, predResCount(day));
   const jugadores = day.predictions || [];
   if (!partidos.length) {
     el.insertAdjacentHTML('beforeend', emptyState('Sin partidos para este día.', '🗓️'));
@@ -1025,7 +1191,6 @@ function renderPredResultados() {
   grid.className = 'pred-res-grid';
 
   partidos.forEach((nombre, idx) => {
-    // Contar cuántas veces se eligió cada resultado para este partido
     const counts = {};
     let total = 0;
     jugadores.forEach(j => {
@@ -1083,6 +1248,120 @@ function renderPredResultados() {
     row.classList.add('open');
     row.after(panel);
   });
+}
+
+// Tarjeta eliminatoria con acordeón: cada fila (data-row) despliega sus nombres.
+function buildKoCard({ titleHtml, subHtml, chipsTitle, chips, rowsTitle, rows, emptyMsg }) {
+  const card = document.createElement('div');
+  card.className = 'pred-card';
+  let html = `<div class="pred-card-head">${titleHtml}</div>`;
+  if (subHtml) html += `<div class="pred-card-sub">${subHtml}</div>`;
+  if (chipsTitle) {
+    html += `<div class="ko-section">${h(chipsTitle)}</div>`;
+    html += (chips && chips.length)
+      ? `<div class="pred-names ko-static">${chips.map(n => `<span class="pred-name-chip">${h(n)}</span>`).join('')}</div>`
+      : `<div class="pred-names ko-static"><span class="pred-names-empty">${h(emptyMsg || 'Nadie')}</span></div>`;
+  }
+  if (rowsTitle) html += `<div class="ko-section">${h(rowsTitle)}</div>`;
+  if (!rows.length) {
+    html += `<div class="pred-empty">${h(emptyMsg || 'Sin datos')}</div>`;
+  } else {
+    const max = rows[0].count;
+    html += rows.map((r, i) => {
+      const pct = max ? Math.round((r.count / max) * 100) : 0;
+      const badge = (r.sign !== undefined) ? signBadge(r.sign) : '';
+      return `<div class="pred-row clickable${i === 0 ? ' top' : ''}" data-row="${i}">
+        <span class="res-badge">${badge}${h(r.label)}</span>
+        <div class="bar-outer"><div class="bar-inner" style="width:${pct}%"></div></div>
+        <span class="res-count">${r.count}<span class="pred-chev">▾</span></span>
+      </div>`;
+    }).join('');
+  }
+  card.innerHTML = html;
+  card.addEventListener('click', e => {
+    const row = e.target.closest('.pred-row.clickable');
+    if (!row || !card.contains(row)) return;
+    const wasOpen = row.classList.contains('open');
+    card.querySelectorAll('.pred-row.open').forEach(r => r.classList.remove('open'));
+    card.querySelectorAll('.pred-names:not(.ko-static)').forEach(n => n.remove());
+    if (wasOpen) return;
+    const names = rows[parseInt(row.dataset.row, 10)].names || [];
+    const panel = document.createElement('div');
+    panel.className = 'pred-names';
+    panel.innerHTML = names.length
+      ? names.map(n => `<span class="pred-name-chip">${h(n)}</span>`).join('')
+      : `<span class="pred-names-empty">Sin jugadores</span>`;
+    row.classList.add('open');
+    row.after(panel);
+  });
+  return card;
+}
+
+// Vista eliminatoria: validación de cruce + desglose / distribución por partido.
+function renderPredResKo(el, entry) {
+  const note = document.createElement('div');
+  note.className = 'pred-res-note';
+  note.innerHTML = `Cruces de <strong>${h(entry.phaseLabel)}</strong>. Cuando el cruce ya está
+    confirmado se listan los jugadores que <strong>acertaron el enfrentamiento</strong> y, entre ellos,
+    el desglose por resultado. Si el cruce aún no está definido, se muestra la distribución de cruces
+    pronosticados. El cruce cuenta sin importar quién va de local o visitante.`;
+  el.appendChild(note);
+
+  const grid = document.createElement('div');
+  grid.className = 'pred-res-grid';
+
+  entry.matches.forEach(m => {
+    const label = m.home + '-' + m.away;
+    const validos = (KO_PRED_BY_MATCH[label] || []).filter(p => p.parsed && p.parsed.home && p.parsed.away);
+    const total = validos.length;
+    const titleHtml = `${h(m.home)} <span class="ko-vs">vs</span> ${h(m.away)}`;
+    const confirmed = !isPlaceholderTeam(m.home) && !isPlaceholderTeam(m.away);
+    const played = m.goal_home !== null && m.goal_away !== null;
+
+    let card;
+    if (confirmed) {
+      // Quiénes acertaron el cruce (sin orden) y desglose por resultado entre ellos
+      const wantKey = cruceKey(m.home, m.away);
+      const aciertan = validos.filter(p => cruceKey(p.parsed.home, p.parsed.away) === wantKey);
+      const byRes = {};
+      aciertan.forEach(p => { (byRes[p.parsed.res] = byRes[p.parsed.res] || []).push(p.jugador); });
+      const rows = Object.entries(byRes).map(([res, names]) => {
+        const [sign, score] = res.split('|');
+        return { sign, label: score || '—', count: names.length, names };
+      }).sort((a, b) => b.count - a.count);
+      const realTxt = played ? ` · Real: ${m.goal_home}-${m.goal_away}` : '';
+      card = buildKoCard({
+        titleHtml,
+        subHtml: `<span class="ko-confirm">✓ Cruce confirmado</span> · ${aciertan.length}/${total} acertaron${realTxt}`,
+        chipsTitle: 'Acertaron el cruce',
+        chips: aciertan.map(p => p.jugador),
+        rowsTitle: 'Desglose por resultado',
+        rows,
+        emptyMsg: 'Nadie acertó el cruce',
+      });
+    } else {
+      // Cruce aún sin definir: distribución de los cruces pronosticados
+      const byCruce = {};
+      validos.forEach(p => {
+        const key = cruceKey(p.parsed.home, p.parsed.away);
+        (byCruce[key] = byCruce[key] || []).push(p.jugador);
+      });
+      const rows = Object.entries(byCruce).map(([key, names]) => ({
+        label: key.split(' ∧ ').join(' vs '),
+        count: names.length, names,
+      })).sort((a, b) => b.count - a.count);
+      card = buildKoCard({
+        titleHtml,
+        subHtml: `<span class="ko-pending">⏳ Cruce no confirmado</span> · ${total} pronóstico(s)`,
+        rowsTitle: 'Distribución de cruces pronosticados',
+        rows,
+        emptyMsg: 'Sin pronósticos',
+      });
+    }
+    grid.appendChild(card);
+  });
+
+  el.appendChild(grid);
 }
 
 function renderDailyClas() {
@@ -1148,6 +1427,23 @@ function renderDailyClas() {
 // resultado cargado en data.json), el resultado real, el pronóstico del jugador y
 // los puntos que sumó, con el total acumulado "hasta el momento" al final.
 
+// Clasifica una columna de "equipo clasificado / honor" en su ronda. El orden
+// importa: los rótulos largos ("Dieciseisavofinalista") contienen "finalista", así
+// que las pruebas específicas deben evaluarse antes que /Finalista/.
+function classifyQualCol(label) {
+  const SEGS = [
+    [/Dieciseisavofinalista/i, 'r32',    'Clasificados a 1/16 de Final',   1],
+    [/Octavofinalista/i,       'r16',    'Clasificados a Octavos de Final', 2],
+    [/Cuartofinalista/i,       'r8',     'Clasificados a Cuartos de Final', 3],
+    [/Semifinalista/i,         'r4',     'Clasificados a Semifinales',      4],
+    [/Finalista/i,             'rfinal', 'Clasificados a la Final',         5],
+    [/puesto-\d/i,             'r34',    'Clasificados a 3er/4to puesto',   6],
+    [/(Campe|Subcampe|puesto|Bota|Bal)/i, 'honor', 'Cuadro de Honor',      7],
+  ];
+  for (const [test, key, name, order] of SEGS) if (test.test(label)) return { key, name, order };
+  return null;
+}
+
 // Construye los índices que usa esta vista a partir de los datos cargados.
 function buildPlayerDetailIndex(data) {
   // Normaliza el nombre del jugador para cruzarlo entre bloques: la hoja CLAS a
@@ -1163,10 +1459,14 @@ function buildPlayerDetailIndex(data) {
   (data.clas?.players || []).forEach(p => { CLAS_BY_NAME[norm(p.jugador)] = p; });
 
   // Para cada jugador, une su pronóstico (predictions) con sus puntos (clas) por
-  // día. predictions y clas vienen en orden distinto, así que se cruzan por nombre.
-  // Solo se guardan las entradas que corresponden a un partido real del fixture
-  // (se descartan los pronósticos de posición de grupo / equipos clasificados).
+  // día, cruzando por nombre (predictions y clas vienen en orden distinto). De cada
+  // columna se deriva, según su tipo:
+  //   • PLAYER_MATCH_DATA  -> partidos reales del fixture (incluye cruces KO).
+  //   • PLAYER_POS_DATA    -> posiciones de grupo ("1° GRUPO A").
+  //   • PLAYER_QUAL_DATA   -> equipos clasificados por ronda + Cuadro de Honor.
   PLAYER_MATCH_DATA = {};
+  PLAYER_POS_DATA = {};
+  PLAYER_QUAL_DATA = {};
   (data.daily || []).forEach(day => {
     const ptsByPlayer = {};
     (day.clas || []).forEach(c => { ptsByPlayer[norm(c.jugador)] = c.pts || []; });
@@ -1174,9 +1474,41 @@ function buildPlayerDetailIndex(data) {
       const key = norm(pr.jugador);
       const pts = ptsByPlayer[key] || [];
       const store = PLAYER_MATCH_DATA[key] || (PLAYER_MATCH_DATA[key] = {});
+      let fsIdx = 0;   // contador de columnas de fase final (Finalista / 3-4 puesto) del día
       (day.matches || []).forEach((name, i) => {
-        if (!(name in FIXTURE_BY_NAME)) return;
-        store[name] = { pred: (pr.preds || [])[i] ?? null, pts: pts[i] || 0 };
+        const pred = (pr.preds || [])[i] ?? null;
+        const pt = pts[i] || 0;
+        // 1) Partido real del fixture (grupos o cruce eliminatorio)
+        if (name in FIXTURE_BY_NAME) {
+          store[name] = { pred, pts: pt };
+          return;
+        }
+        // 2) Posición de grupo: "1° GRUPO A" (solo en días con fecha 24–27/06)
+        const mPos = /^(\d+)\D*GRUPO\s+([A-L])/i.exec(name);
+        if (mPos) {
+          const grp = mPos[2].toUpperCase();
+          const byGrp = PLAYER_POS_DATA[key] || (PLAYER_POS_DATA[key] = {});
+          (byGrp[grp] = byGrp[grp] || []).push({ pos: +mPos[1], predTeam: pred, pts: pt });
+          return;
+        }
+        // 3) Equipo clasificado / Cuadro de Honor (columnas de fase sin fecha)
+        if (!day.date && pred && String(pred).indexOf('·') < 0) {
+          let seg = classifyQualCol(name);
+          if (!seg) return;
+          // La fase final viene mal rotulada en el Excel (aparece "Finalista-2" donde
+          // debería decir "3-4 puesto-2"). Las 4 columnas de fase final del día de
+          // Semifinales se reparten por posición: las 2 primeras al 3er/4to puesto y
+          // las 2 siguientes a la Final (estructura real: 2 + 2, no 3 + 1).
+          if (seg.key === 'rfinal' || seg.key === 'r34') {
+            seg = (fsIdx < 2)
+              ? { key: 'r34',    name: 'Clasificados a 3er/4to puesto', order: 6 }
+              : { key: 'rfinal', name: 'Clasificados a la Final',       order: 5 };
+            fsIdx++;
+          }
+          const bySeg = PLAYER_QUAL_DATA[key] || (PLAYER_QUAL_DATA[key] = {});
+          const bucket = bySeg[seg.key] || (bySeg[seg.key] = { name: seg.name, order: seg.order, items: [] });
+          bucket.items.push({ label: name, predTeam: pred, pts: pt });
+        }
       });
     });
   });
@@ -1217,93 +1549,299 @@ function renderPlayerDetail() {
   header.appendChild(sel);
   el.appendChild(header);
 
-  const store = PLAYER_MATCH_DATA[playerDetailSel] || {};
+  // Control segmentado: 3 vistas del jugador seleccionado
+  const views = [
+    ['partidos',     '⚽ Detalle Partidos'],
+    ['posiciones',   '📊 Posición Grupos'],
+    ['clasificados', '🏅 Equipos Clasificados'],
+    ['honor',        '🏆 Cuadro de Honor'],
+  ];
+  const seg = document.createElement('div');
+  seg.className = 'pd-views';
+  views.forEach(([key, label]) => {
+    const b = document.createElement('button');
+    b.className = 'pd-view-btn' + (playerDetailView === key ? ' active' : '');
+    b.textContent = label;
+    b.addEventListener('click', () => { playerDetailView = key; renderPlayerDetail(); });
+    seg.appendChild(b);
+  });
+  el.appendChild(seg);
 
-  // Solo partidos ya jugados (resultado cargado), ordenados cronológicamente.
-  const rows = FIXTURE_ALL
-    .filter(m => m.goal_home !== null && m.goal_away !== null)
-    .slice()
+  const body = document.createElement('div');
+  el.appendChild(body);
+  if (playerDetailView === 'posiciones')        renderPDPositions(body, playerDetailSel);
+  else if (playerDetailView === 'clasificados') renderPDQualified(body, playerDetailSel);
+  else if (playerDetailView === 'honor')        renderPDHonor(body, playerDetailSel);
+  else                                          renderPDMatches(body, playerDetailSel);
+}
+
+// Extrae {sign, score} de un pronóstico, sea de grupos ("1|2-0") o KO ("Cruce·1|2-0").
+function predSignScore(pred) {
+  if (pred == null) return null;
+  if (String(pred).indexOf('·') >= 0) {
+    const p = parseKoPred(pred);
+    return p ? { sign: p.sign, score: p.score } : null;
+  }
+  const parts = String(pred).split('|');
+  return parts.length > 1 ? { sign: parts[0], score: parts.slice(1).join('|') } : { sign: '', score: parts[0] };
+}
+
+// ¿El jugador acertó el cruce (sin orden) de un partido eliminatorio?
+function playerHasCruce(store, m) {
+  const d = store[m.home + '-' + m.away];
+  if (!d || !d.pred) return false;
+  const p = parseKoPred(d.pred);
+  return !!(p && p.home && p.away && cruceKey(p.home, p.away) === cruceKey(m.home, m.away));
+}
+
+// ── Vista 1: Detalle Partidos (grupos jugados + cruces KO confirmados) ──────────
+function renderPDMatches(el, player) {
+  const store = PLAYER_MATCH_DATA[player] || {};
+
+  // Partidos jugados: grupos siempre; eliminatorios solo si acertó el cruce.
+  const played = FIXTURE_ALL.filter(m =>
+    m.goal_home !== null && m.goal_away !== null &&
+    (m.phase === 'grupos' || playerHasCruce(store, m)))
+    .sort((a, b) => (a.date || '').localeCompare(b.date || '') || (a.num || 0) - (b.num || 0));
+
+  // Cruces eliminatorios confirmados, aún sin jugar, donde acertó el cruce.
+  const pendKo = FIXTURE_ALL.filter(m =>
+    m.phase !== 'grupos' && m.goal_home === null &&
+    !isPlaceholderTeam(m.home) && !isPlaceholderTeam(m.away) &&
+    playerHasCruce(store, m))
     .sort((a, b) => (a.date || '').localeCompare(b.date || '') || (a.num || 0) - (b.num || 0));
 
   let total = 0, conPuntos = 0, exactos = 0;
-  rows.forEach(m => {
+  played.forEach(m => {
     const d = store[m.home + '-' + m.away];
     const pts = d ? d.pts : 0;
     total += pts;
     if (pts > 0) conPuntos++;
-    if (d && d.pred) {
-      const pscore = String(d.pred).split('|').slice(1).join('|') || String(d.pred);
-      if (pscore === `${m.goal_home}-${m.goal_away}`) exactos++;
-    }
+    const ss = d && d.pred ? predSignScore(d.pred) : null;
+    if (ss && ss.score === `${m.goal_home}-${m.goal_away}`) exactos++;
   });
 
-  const clasInfo = CLAS_BY_NAME[playerDetailSel] || {};
+  const clasInfo = CLAS_BY_NAME[player] || {};
 
-  // Resumen de estadísticas
   const summary = document.createElement('div');
   summary.className = 'pd-summary';
   summary.innerHTML = `
     <div class="pd-stat"><div class="pd-stat-val green">${total}</div><div class="pd-stat-lbl">Puntos (partidos)</div></div>
     <div class="pd-stat"><div class="pd-stat-val">${clasInfo.pos ? '#' + clasInfo.pos : '—'}</div><div class="pd-stat-lbl">Posición general</div></div>
-    <div class="pd-stat"><div class="pd-stat-val">${rows.length}</div><div class="pd-stat-lbl">Partidos jugados</div></div>
+    <div class="pd-stat"><div class="pd-stat-val">${played.length}</div><div class="pd-stat-lbl">Partidos jugados</div></div>
     <div class="pd-stat"><div class="pd-stat-val">${conPuntos}</div><div class="pd-stat-lbl">Con puntos</div></div>
     <div class="pd-stat"><div class="pd-stat-val">${exactos}</div><div class="pd-stat-lbl">Marcador exacto</div></div>`;
   el.appendChild(summary);
 
-  if (!rows.length) {
+  // Tabla de partidos jugados
+  if (played.length) {
+    const wrap = document.createElement('div');
+    wrap.className = 'table-wrap';
+    const t = document.createElement('table');
+    t.className = 'fixture-table pd-table';
+    t.innerHTML = `<thead><tr>
+      <th>Fecha (UTC-4)</th><th class="left">Partido</th>
+      <th>Resultado Real</th><th>Tu Pronóstico</th><th>Puntos</th>
+    </tr></thead>`;
+    const tbody = document.createElement('tbody');
+    played.forEach(m => {
+      const d = store[m.home + '-' + m.away];
+      const pts = d ? d.pts : 0;
+      const realScore = `${m.goal_home}-${m.goal_away}`;
+      const realSign = signFromGoals(m.goal_home, m.goal_away);
+      const ss = d && d.pred ? predSignScore(d.pred) : null;
+      const predHtml = ss
+        ? `<span class="score-pred">${ss.sign ? signBadge(ss.sign) : ''}${h(ss.score)}</span>`
+        : `<span class="pred-null">Sin pronóstico</span>`;
+      const tr = document.createElement('tr');
+      if (pts > 0) tr.classList.add('hit');
+      tr.innerHTML = `
+        <td style="white-space:nowrap;font-size:.75rem">${fmtDate(m.date)}</td>
+        <td class="team left">${h(m.home)} <span style="color:var(--muted);font-weight:400">vs</span> ${h(m.away)}</td>
+        <td class="score"><span class="score-real">${signBadge(realSign)}${realScore}</span></td>
+        <td class="score">${predHtml}</td>
+        <td class="pd-pts ${pts > 0 ? 'pos' : 'zero'}">${pts}</td>`;
+      tbody.appendChild(tr);
+    });
+    t.appendChild(tbody);
+    const tfoot = document.createElement('tfoot');
+    tfoot.innerHTML = `<tr><td colspan="4" class="left">TOTAL hasta el momento</td><td class="pd-total-val">${total}</td></tr>`;
+    t.appendChild(tfoot);
+    wrap.appendChild(t);
+    el.appendChild(wrap);
+  } else {
     el.insertAdjacentHTML('beforeend', emptyState('Aún no hay partidos con resultado cargado.', '🗓️'));
-    return;
   }
 
-  const wrap = document.createElement('div');
-  wrap.className = 'table-wrap';
-  const t = document.createElement('table');
-  t.className = 'fixture-table pd-table';
-  t.innerHTML = `<thead><tr>
-    <th>Fecha (UTC-4)</th>
-    <th class="left">Partido</th>
-    <th>Resultado Real</th>
-    <th>Tu Pronóstico</th>
-    <th>Puntos</th>
-  </tr></thead>`;
-  const tbody = document.createElement('tbody');
+  // Cruces eliminatorios confirmados, pendientes de jugarse (solo quienes acertaron el cruce)
+  if (pendKo.length) {
+    el.insertAdjacentHTML('beforeend',
+      `<div class="ko-section" style="border-top:none">Cruces eliminatorios confirmados (pendientes)</div>
+       <div class="pd-note">Estos cruces ya están confirmados y tú acertaste el enfrentamiento. Los puntos del resultado se cargarán cuando se juegue el partido.</div>`);
+    const wrap = document.createElement('div');
+    wrap.className = 'table-wrap';
+    const t = document.createElement('table');
+    t.className = 'fixture-table pd-table';
+    t.innerHTML = `<thead><tr>
+      <th>Fecha (UTC-4)</th><th class="left">Partido</th><th>Fase</th>
+      <th>Tu Pronóstico</th><th>Puntos</th>
+    </tr></thead>`;
+    const tbody = document.createElement('tbody');
+    pendKo.forEach(m => {
+      const d = store[m.home + '-' + m.away];
+      const ss = d && d.pred ? predSignScore(d.pred) : null;
+      const predHtml = ss
+        ? `<span class="score-pred">${ss.sign ? signBadge(ss.sign) : ''}${h(ss.score)}</span>`
+        : `<span class="pred-null">—</span>`;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="white-space:nowrap;font-size:.75rem">${fmtDate(m.date)}</td>
+        <td class="team left">${h(m.home)} <span style="color:var(--muted);font-weight:400">vs</span> ${h(m.away)}</td>
+        <td style="font-size:.72rem;color:var(--muted)">${h(m.phase_label)}</td>
+        <td class="score">${predHtml}</td>
+        <td class="pd-pts zero">⏳</td>`;
+      tbody.appendChild(tr);
+    });
+    t.appendChild(tbody);
+    wrap.appendChild(t);
+    el.appendChild(wrap);
+  }
+}
 
-  rows.forEach(m => {
-    const d = store[m.home + '-' + m.away];
-    const pts = d ? d.pts : 0;
-    const realScore = `${m.goal_home}-${m.goal_away}`;
-    const realSign = signFromGoals(m.goal_home, m.goal_away);
+// ── Vista 2: Posición Grupos (pronóstico vs real, por grupo) ────────────────────
+function renderPDPositions(el, player) {
+  const byGrp = PLAYER_POS_DATA[player] || {};
+  const groups = Object.keys(byGrp).sort();
+  el.insertAdjacentHTML('beforeend',
+    `<div class="pd-note">Posición que pronosticaste en cada grupo vs. la posición real del fixture. Verde = acertaste esa posición.</div>`);
+  if (!groups.length) { el.insertAdjacentHTML('beforeend', emptyState('Este jugador no tiene pronóstico de posiciones de grupo.', '📊')); return; }
 
-    let predHtml;
-    if (d && d.pred) {
-      const parts = String(d.pred).split('|');
-      const psign = parts.length > 1 ? parts[0] : '';
-      const pscore = parts.length > 1 ? parts.slice(1).join('|') : parts[0];
-      predHtml = `<span class="score-pred">${psign ? signBadge(psign) : ''}${h(pscore)}</span>`;
-    } else {
-      predHtml = `<span class="pred-null">Sin pronóstico</span>`;
-    }
+  let totalPts = 0;
+  groups.forEach(g => (byGrp[g] || []).forEach(p => totalPts += (p.pts || 0)));
+  el.insertAdjacentHTML('beforeend',
+    `<div class="pd-summary"><div class="pd-stat"><div class="pd-stat-val green">${totalPts}</div><div class="pd-stat-lbl">Puntos posición grupos</div></div></div>`);
 
-    const tr = document.createElement('tr');
-    if (pts > 0) tr.classList.add('hit');
-    tr.innerHTML = `
-      <td style="white-space:nowrap;font-size:.75rem">${fmtDate(m.date)}</td>
-      <td class="team left">${h(m.home)} <span style="color:var(--muted);font-weight:400">vs</span> ${h(m.away)}</td>
-      <td class="score"><span class="score-real">${signBadge(realSign)}${realScore}</span></td>
-      <td class="score">${predHtml}</td>
-      <td class="pd-pts ${pts > 0 ? 'pos' : 'zero'}">${pts}</td>`;
-    tbody.appendChild(tr);
+  const grid = document.createElement('div');
+  grid.className = 'pd-grid';
+  groups.forEach(g => {
+    const preds = (byGrp[g] || []).slice().sort((a, b) => a.pos - b.pos);
+    const real = GROUPS_BY_NAME['Grupo ' + g] || [];
+    const sub = preds.reduce((s, p) => s + (p.pts || 0), 0);
+    const card = document.createElement('div');
+    card.className = 'pred-card';
+    let html = `<div class="pred-card-head">Grupo ${h(g)}</div>
+      <div class="pred-card-sub">${sub} pts</div>
+      <table class="pos-table"><thead><tr><th>#</th><th>Tu pronóstico</th><th>Real</th><th></th></tr></thead><tbody>`;
+    preds.forEach(p => {
+      const realTeam = real[p.pos - 1] ? real[p.pos - 1].team : '—';
+      const hit = (p.pts || 0) > 0;
+      html += `<tr class="${hit ? 'hit' : ''}">
+        <td class="pos-n">${p.pos}°</td>
+        <td class="pos-pred">${h(p.predTeam || '—')}</td>
+        <td class="pos-real">${h(realTeam)}</td>
+        <td class="pos-pts">${p.pts || 0}</td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+    card.innerHTML = html;
+    grid.appendChild(card);
   });
+  el.appendChild(grid);
+}
 
-  t.appendChild(tbody);
-  const tfoot = document.createElement('tfoot');
-  tfoot.innerHTML = `<tr>
-    <td colspan="4" class="left">TOTAL hasta el momento</td>
-    <td class="pd-total-val">${total}</td>
-  </tr>`;
-  t.appendChild(tfoot);
-  wrap.appendChild(t);
-  el.appendChild(wrap);
+// ── Vista 3: Equipos Clasificados por ronda (el Cuadro de Honor va en su vista) ──
+function renderPDQualified(el, player) {
+  const bySeg = PLAYER_QUAL_DATA[player] || {};
+  const segs = Object.values(bySeg).filter(s => s.key !== 'honor').sort((a, b) => a.order - b.order);
+  el.insertAdjacentHTML('beforeend',
+    `<div class="pd-note">Equipos que pronosticaste por ronda. Sumas si el equipo llega a esa ronda, sin importar la llave que pusiste. Verde = ya clasificó y sumó.</div>`);
+  if (!segs.length) { el.insertAdjacentHTML('beforeend', emptyState('Este jugador no tiene pronóstico de equipos clasificados.', '🏅')); return; }
+
+  let grandTotal = 0;
+  segs.forEach(s => s.items.forEach(it => grandTotal += (it.pts || 0)));
+  el.insertAdjacentHTML('beforeend',
+    `<div class="pd-summary"><div class="pd-stat"><div class="pd-stat-val green">${grandTotal}</div><div class="pd-stat-lbl">Puntos equipos clasificados</div></div></div>`);
+
+  const grid = document.createElement('div');
+  grid.className = 'pd-grid';
+  segs.forEach(s => {
+    const sub = s.items.reduce((a, it) => a + (it.pts || 0), 0);
+    const hits = s.items.filter(it => (it.pts || 0) > 0).length;
+    const card = document.createElement('div');
+    card.className = 'pred-card';
+    let html = `<div class="pred-card-head">${h(s.name)}</div>
+      <div class="pred-card-sub">${hits}/${s.items.length} aciertos · ${sub} pts</div>`;
+    // Final y 3er/4to puesto -> filas rol→equipo (rótulos heterogéneos).
+    // Rondas de avance (1/16…semis) -> chips de equipos.
+    const ROLE_SEGS = { rfinal: 1, r34: 1 };
+    if (ROLE_SEGS[s.key]) {
+      s.items.forEach(it => {
+        const hit = (it.pts || 0) > 0;
+        html += `<div class="qual-role ${hit ? 'hit' : ''}">
+          <span class="qr-lbl">${h(honorLabel(it.label))}</span>
+          <span class="qr-team">${h(it.predTeam || '—')}</span>
+          <span class="qr-pts">${it.pts || 0}</span>
+        </div>`;
+      });
+    } else {
+      html += `<div class="qual-grid">` + s.items.map(it => {
+        const hit = (it.pts || 0) > 0;
+        return `<span class="qual-chip ${hit ? 'hit' : 'miss'}">${h(it.predTeam || '—')}${hit ? `<span class="qp">+${it.pts}</span>` : ''}</span>`;
+      }).join('') + `</div>`;
+    }
+    card.innerHTML = html;
+    grid.appendChild(card);
+  });
+  el.appendChild(grid);
+}
+
+// ── Vista 4: Cuadro de Honor (podio + botas + balones) ──────────────────────────
+function renderPDHonor(el, player) {
+  const seg = (PLAYER_QUAL_DATA[player] || {}).honor;
+  el.insertAdjacentHTML('beforeend',
+    `<div class="pd-note">Podio final y premios individuales. Verde = acertado. Los puntos se cargan cuando se define cada premio.</div>`);
+  if (!seg || !seg.items.length) { el.insertAdjacentHTML('beforeend', emptyState('Este jugador no tiene pronóstico de Cuadro de Honor.', '🏆')); return; }
+
+  const total = seg.items.reduce((a, it) => a + (it.pts || 0), 0);
+  el.insertAdjacentHTML('beforeend',
+    `<div class="pd-summary"><div class="pd-stat"><div class="pd-stat-val green">${total}</div><div class="pd-stat-lbl">Puntos Cuadro de Honor</div></div></div>`);
+
+  // Agrupa en Podio / Bota de Oro / Balón de Oro (como las cards de Posición Grupos)
+  const buckets = [
+    { name: '🏆 Podio final',  test: it => !/Bota|Bal[oó]n/i.test(it.label), items: [] },
+    { name: '👟 Bota de Oro',  test: it => /Bota/i.test(it.label),          items: [] },
+    { name: '⚽ Balón de Oro', test: it => /Bal[oó]n/i.test(it.label),       items: [] },
+  ];
+  seg.items.forEach(it => { (buckets.find(b => b.test(it)) || buckets[0]).items.push(it); });
+
+  const grid = document.createElement('div');
+  grid.className = 'pd-grid';
+  buckets.forEach(b => {
+    if (!b.items.length) return;
+    const sub = b.items.reduce((a, it) => a + (it.pts || 0), 0);
+    const card = document.createElement('div');
+    card.className = 'pred-card';
+    let html = `<div class="pred-card-head">${h(b.name)}</div><div class="pred-card-sub">${sub} pts</div>`;
+    b.items.forEach(it => {
+      const hit = (it.pts || 0) > 0;
+      html += `<div class="qual-role ${hit ? 'hit' : ''}">
+        <span class="qr-lbl">${h(honorLabel(it.label))}</span>
+        <span class="qr-team">${h(it.predTeam || '—')}</span>
+        <span class="qr-pts">${it.pts || 0}</span>
+      </div>`;
+    });
+    card.innerHTML = html;
+    grid.appendChild(card);
+  });
+  el.appendChild(grid);
+}
+
+// Limpia el rótulo de una columna del Cuadro de Honor (quita emojis y sufijos "-N").
+function honorLabel(label) {
+  return String(label)
+    .replace(/^[^0-9A-Za-zÁÉÍÓÚÑáéíóúñ]+/, '')
+    .replace(/-\d+$/, '')
+    .trim();
 }
 
 // ── Load & render ─────────────────────────────────────────────────────────────
@@ -1328,16 +1866,23 @@ async function load() {
     } else {
       GROUPS_BY_NAME = computeGroupStandings(data.fixture || []);
     }
+    // Índices que dependen del fixture: detalle jugador y cruces eliminatorios.
+    // Deben construirse antes de elegir el día por defecto y de renderizar.
+    buildPlayerDetailIndex(data);   // define FIXTURE_ALL / FIXTURE_BY_NAME
+    buildKnockoutIndex(data);       // define KO_PRED_BY_MATCH (usa FIXTURE_BY_NAME)
+    buildPredResDays();             // une días de grupos + eliminatorias (usa FIXTURE_ALL)
+
     // Default the selectors to today's day if it exists, else the first day.
     const todayIso = venezuelaTodayIso();
     const todayIdx = DAILY_DAYS.findIndex(d => d.date === todayIso);
-    dailyPredIdx = dailyClasIdx = predResIdx = (todayIdx >= 0 ? todayIdx : 0);
+    dailyPredIdx = dailyClasIdx = (todayIdx >= 0 ? todayIdx : 0);
+    const todayPrIdx = PRED_RES_DAYS.findIndex(d => d.iso === todayIso);
+    predResIdx = (todayPrIdx >= 0 ? todayPrIdx : 0);
     const todayFixIdx = FIXTURE_DAYS.findIndex(d => d.iso === todayIso);
     partidosDiaIdx = (todayFixIdx >= 0 ? todayFixIdx : 0);
 
     renderClas(data);
     setupClasSearch();
-    buildPlayerDetailIndex(data);
     renderPlayerDetail();
     renderFixture(data.fixture || []);
     renderPartidosDia();
