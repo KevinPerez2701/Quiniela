@@ -43,7 +43,9 @@ Vacío (`''`) = función apagada (el sitio funciona igual, sin marcador en vivo)
 ## Probar
 
 ```bash
-curl -s https://wc-scores.<tu-sub>.workers.dev | head -c 400
+curl -s https://dark-tooth-2a90.kevinperez9a.workers.dev/ | head -c 
+
+
 # { "resultSet": {...}, "matches": [ { "utcDate": "...", "status": "TIMED",
 #   "home": "Panama", "away": "England", "hs": null, "as": null }, ... ] }
 ```

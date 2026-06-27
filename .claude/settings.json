@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.thestatsapi.com)",
+      "WebFetch(domain:www.api-football.com)",
+      "WebFetch(domain:freeapihub.com)",
+      "Bash(gh run *)",
+      "Bash(python -c ' *)",
+      "Bash(curl -sS \"https://api.github.com/repos/KevinPerez2701/Quiniela/actions/runs?per_page=40\")",
+      "Bash(python C:/Users/kevin/AppData/Local/Temp/claude/c--Users-kevin-OneDrive-Documentos-GitHub-Quiniela/a79d3f41-c12a-4da8-92fb-c8584412f107/scratchpad/dur2.py C:/Users/kevin/AppData/Local/Temp/claude/c--Users-kevin-OneDrive-Documentos-GitHub-Quiniela/a79d3f41-c12a-4da8-92fb-c8584412f107/scratchpad/runs_api.json)",
+      "Bash(node --check worker/live-scores-worker.js)",
+      "Bash(python -m py_compile scripts/fetch_live_scores.py)",
+      "Bash(python -c \"import json; json.load\\(open\\('scripts/teams_es_en.json',encoding='utf-8'\\)\\); print\\('TEAM MAP JSON OK \\(48 keys:', len\\(json.load\\(open\\('scripts/teams_es_en.json',encoding='utf-8'\\)\\)\\)==48, '\\)'\\)\")",
+      "Bash(git fetch *)",
+      "Bash(echo '{ \"auto_enabled\": false }')",
+      "Bash(FOOTBALL_DATA_TOKEN=\"dummy\" timeout 20 python scripts/fetch_live_scores.py)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(echo '{ *)",
+      "Bash(rm -rf scripts/__pycache__)",
+      "Bash(git push *)",
+      "Bash(python -c \"import yaml,sys; yaml.safe_load\\(open\\('.github/workflows/auto-scores.yml',encoding='utf-8'\\)\\); print\\('auto-scores.yml: YAML OK'\\)\")",
+      "Bash(curl -sS -o /dev/null -w 'http_code=%{http_code}  ssl_verify=%{ssl_verify_result}  time=%{time_total}s\\\\n' https://dark-tooth-2a90.kevinperez9a.workers.dev)"
+    ]
+  }
+}
