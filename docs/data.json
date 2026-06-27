@@ -1,5 +1,5 @@
 {
-  "updated_at": "27/06/2026 00:51 (hora Venezuela)",
+  "updated_at": "27/06/2026 10:00 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -124,26 +124,6 @@
         "pos": 6
       },
       {
-        "jugador": "Dixon Torrealba",
-        "puntos": 237,
-        "f_grupos": 108,
-        "pos_grupos": 84,
-        "eq_16": 45,
-        "pt_16": 0,
-        "eq_8": 0,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 7
-      },
-      {
         "jugador": "Mariana Suarez (Samuel 2)",
         "puntos": 237,
         "f_grupos": 118,
@@ -168,6 +148,26 @@
         "puntos": 236,
         "f_grupos": 96,
         "pos_grupos": 95,
+        "eq_16": 45,
+        "pt_16": 0,
+        "eq_8": 0,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 8
+      },
+      {
+        "jugador": "Dixon Torrealba",
+        "puntos": 233,
+        "f_grupos": 104,
+        "pos_grupos": 84,
         "eq_16": 45,
         "pt_16": 0,
         "eq_8": 0,
@@ -1445,7 +1445,7 @@
       "home": "Nueva Zelanda",
       "away": "Bélgica",
       "goal_home": 1,
-      "goal_away": 4,
+      "goal_away": 5,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -2236,9 +2236,9 @@
           "g": 1,
           "e": 2,
           "p": 0,
-          "gf": 5,
+          "gf": 6,
           "gc": 2,
-          "dg": 3
+          "dg": 4
         },
         {
           "pos": 2,
@@ -2273,8 +2273,8 @@
           "e": 1,
           "p": 2,
           "gf": 4,
-          "gc": 9,
-          "dg": -5
+          "gc": 10,
+          "dg": -6
         }
       ]
     },
@@ -13210,31 +13210,6 @@
       ],
       "clas": [
         {
-          "jugador": "Dixon Torrealba",
-          "puntos_dia": 48,
-          "pts": [
-            2,
-            6,
-            2,
-            2,
-            2,
-            2,
-            6,
-            4,
-            2,
-            1,
-            6,
-            0,
-            0,
-            0,
-            6,
-            4,
-            2,
-            1
-          ],
-          "pos": 1
-        },
-        {
           "jugador": "Edicxon Mendoza",
           "puntos_dia": 46,
           "pts": [
@@ -13257,7 +13232,7 @@
             2,
             1
           ],
-          "pos": 2
+          "pos": 1
         },
         {
           "jugador": "RICARDO DEFENDINI",
@@ -13282,7 +13257,32 @@
             2,
             1
           ],
-          "pos": 2
+          "pos": 1
+        },
+        {
+          "jugador": "Dixon Torrealba",
+          "puntos_dia": 44,
+          "pts": [
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            6,
+            4,
+            2,
+            1,
+            6,
+            0,
+            0,
+            0,
+            6,
+            4,
+            2,
+            1
+          ],
+          "pos": 3
         },
         {
           "jugador": "Freddy Parra (2)",
@@ -13307,7 +13307,7 @@
             2,
             1
           ],
-          "pos": 4
+          "pos": 3
         },
         {
           "jugador": "Mariana Suarez (Samuel 2)",
