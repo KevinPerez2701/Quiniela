@@ -1,0 +1,87 @@
+name: Auto Scores (FINISHED)
+
+# Polls football-data.org and writes FINISHED World Cup results into scores.json.
+# Committing scores.json (with a PAT, see below) triggers the existing
+# "Update Scores" pipeline, which recalculates everyone's points — exactly as a
+# manual admin edit from admin.html would.
+#
+# Only FINISHED matches are written (never in-play), so the recalc runs once per
+# match, when it ends. The script fills only matches not already present in
+# scores.json (FILL_IF_EMPTY=1), so manual admin edits are never overwritten.
+#
+# Required repo secrets (Settings > Secrets and variables > Actions):
+#   FOOTBALL_DATA_TOKEN  your football-data.org API token.
+#   SCORES_PAT           a GitHub PAT with Contents: write (you can reuse the same
+#                        PAT you use in admin.html). REQUIRED: a push made with the
+#                        default GITHUB_TOKEN does NOT trigger the Update Scores
+#                        workflow, so without this PAT the points would not recalc.
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # every 5 min (GitHub's minimum; timing is best-effort)
+  workflow_dispatch:
+    inputs:
+      fill_if_empty:
+        description: "1 = only fill empty matches (safe); 0 = let API overwrite existing scores"
+        default: "1"
+
+permissions:
+  contents: write
+
+# Never let two auto-scores runs overlap (avoids push races with itself).
+concurrency:
+  group: auto-scores
+  cancel-in-progress: false
+
+jobs:
+  auto:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout with the PAT so the later push is authenticated as a user and
+      # therefore DOES trigger the Update Scores workflow.
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SCORES_PAT }}
+          persist-credentials: true
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Warn if PAT missing
+        env:
+          PAT: ${{ secrets.SCORES_PAT }}
+        run: |
+          if [ -z "$PAT" ]; then
+            echo "::warning::SCORES_PAT is empty — scores.json will be pushed with GITHUB_TOKEN and will NOT trigger Update Scores (points won't recalc). Add a PAT secret named SCORES_PAT."
+          fi
+
+      - name: Fetch FINISHED results into scores.json
+        env:
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+          FILL_IF_EMPTY: ${{ github.event.inputs.fill_if_empty || '1' }}
+        run: python scripts/fetch_live_scores.py
+
+      - name: Commit scores.json if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scores.json
+          if git diff --staged --quiet; then
+            echo "No new FINISHED results — nothing to commit."
+          else
+            # No [skip ci]: we WANT this to trigger the Update Scores pipeline.
+            git commit -m "chore: auto-apply FINISHED scores from football-data.org"
+            pushed=0
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:main; then pushed=1; break; fi
+              echo "main moved — rebasing and retrying ($i)…"
+              git fetch origin main
+              # -X ours keeps the UPSTREAM (e.g. a concurrent manual admin edit)
+              # on conflict, honoring manual priority over the auto value.
+              git rebase -X ours origin/main || { git rebase --abort || true; }
+              sleep $((i * 2))
+            done
+            [ "$pushed" = "1" ] || { echo "push failed after retries"; exit 1; }
+          fi

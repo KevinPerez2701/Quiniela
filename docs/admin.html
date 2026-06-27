@@ -164,6 +164,10 @@
       <select id="phase-filter" onchange="applyFilter()">
         <option value="">Todas las fases</option>
       </select>
+      <button class="btn btn-sm" id="auto-toggle" onclick="toggleAuto()"
+              title="ON: el sistema rellena solo los resultados FINALES al terminar cada partido. OFF: solo se aplica lo que guardes tú a mano (úsalo cuando estés pendiente del partido).">
+        Auto: …
+      </button>
       <button class="btn btn-sm" onclick="clearScores()" style="margin-left:auto;background:var(--navy2);color:var(--muted);border:1px solid #2c3e55">
         🔄 Recargar desde Excel
       </button>
@@ -201,6 +205,8 @@ let PAT = '';
 let fixtureData = [];   // from data.json
 let originalScores = {};  // from scores.json on GitHub
 let scoresSha = '';        // sha of scores.json on GitHub
+let autoEnabled = true;    // interruptor de actualización automática (auto_config.json)
+let autoCfgSha = '';       // sha de auto_config.json on GitHub
 
 // ── AUTH ──────────────────────────────────────────────────────────────────────
 function showAuthStatus(msg, ok) {
@@ -294,8 +300,65 @@ async function loadData() {
     scoresSha = '';
   }
 
+  await loadAutoConfig();
   renderTable(fixtureData);
   updateSaveCount();
+}
+
+// ── AUTO-UPDATE TOGGLE (auto_config.json) ─────────────────────────────────────
+async function loadAutoConfig() {
+  try {
+    const f = await ghGet('/contents/auto_config.json?ref=' + BRANCH);
+    autoCfgSha = f.sha;
+    const cfg = JSON.parse(decodeURIComponent(escape(atob((f.content || '').replace(/\n/g, '')))));
+    autoEnabled = cfg.auto_enabled !== false;
+  } catch (e) {
+    // Aún no existe: por defecto ON, sin sha (se crea al primer toggle).
+    autoEnabled = true;
+    autoCfgSha = '';
+  }
+  renderAutoToggle();
+}
+
+function renderAutoToggle() {
+  const b = document.getElementById('auto-toggle');
+  if (!b) return;
+  if (autoEnabled) {
+    b.textContent = '🟢 Auto: ON';
+    b.style.background = 'var(--green)';
+    b.style.color = '#fff';
+    b.style.border = 'none';
+  } else {
+    b.textContent = '⚪ Auto: OFF (manual)';
+    b.style.background = 'var(--navy2)';
+    b.style.color = 'var(--muted)';
+    b.style.border = '1px solid #2c3e55';
+  }
+}
+
+async function toggleAuto() {
+  const b = document.getElementById('auto-toggle');
+  const next = !autoEnabled;
+  b.disabled = true;
+  showStatus(next ? 'Activando actualización automática…' : 'Desactivando (modo manual)…', 'info');
+  try {
+    const body = {
+      message: next ? 'chore: enable auto score updates' : 'chore: disable auto score updates (manual mode)',
+      content: btoa(unescape(encodeURIComponent(JSON.stringify({ auto_enabled: next }, null, 2) + '\n'))),
+      branch: BRANCH,
+    };
+    if (autoCfgSha) body.sha = autoCfgSha;
+    const result = await ghPut('/contents/auto_config.json', body);
+    autoCfgSha = result.content.sha;
+    autoEnabled = next;
+    renderAutoToggle();
+    showStatus(next
+      ? '🟢 Automático ON — el sistema rellenará los resultados finales al terminar cada partido.'
+      : '⚪ Automático OFF — solo se aplican los resultados que guardes tú a mano.', 'ok');
+  } catch (e) {
+    showStatus('No se pudo cambiar el modo: ' + e.message, 'err');
+  }
+  b.disabled = false;
 }
 
 // ── RENDER TABLE ──────────────────────────────────────────────────────────────
@@ -357,33 +420,54 @@ async function saveScores() {
   btn.disabled = true;
   showStatus('Guardando…', 'info');
 
-  // Build complete scores object from ALL visible inputs + original scores
-  const scores = { ...originalScores };
-
-  document.querySelectorAll('#fixture-body input[type=number]').forEach(inp => {
-    const key = inp.dataset.num;
-    const side = inp.dataset.side;
-    if (!scores[key]) scores[key] = { goal_home: null, goal_away: null };
+  // Captura SOLO los partidos de filas modificadas. Así, ante un conflicto con el
+  // actualizador automático, podemos reaplicar tus cambios sobre la versión más
+  // reciente sin pisar resultados que el cron haya agregado mientras editabas.
+  const changed = {};
+  document.querySelectorAll('#fixture-body tr.changed input[type=number]').forEach(inp => {
+    const key = inp.dataset.num, side = inp.dataset.side;
+    if (!changed[key]) changed[key] = { goal_home: null, goal_away: null };
     const v = inp.value.trim();
-    scores[key][side === 'h' ? 'goal_home' : 'goal_away'] = v === '' ? null : parseInt(v, 10);
+    changed[key][side === 'h' ? 'goal_home' : 'goal_away'] = v === '' ? null : parseInt(v, 10);
   });
 
-  // Remove entries where both goals are null
-  Object.keys(scores).forEach(k => {
-    if (scores[k].goal_home === null && scores[k].goal_away === null) delete scores[k];
-  });
+  const applyChanges = (base) => {
+    const out = { ...base };
+    Object.entries(changed).forEach(([k, v]) => { out[k] = v; });
+    Object.keys(out).forEach(k => {
+      if (out[k].goal_home === null && out[k].goal_away === null) delete out[k];
+    });
+    return out;
+  };
 
-  try {
+  const putScores = async (base, sha) => {
+    const merged = applyChanges(base);
     const body = {
       message: 'chore: update match scores via admin panel',
-      content: btoa(unescape(encodeURIComponent(JSON.stringify(scores, null, 2)))),
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(merged, null, 2)))),
       branch: BRANCH,
     };
-    if (scoresSha) body.sha = scoresSha;
-
+    if (sha) body.sha = sha;
     const result = await ghPut('/contents/scores.json', body);
-    scoresSha = result.content.sha;
-    originalScores = scores;
+    return { sha: result.content.sha, merged };
+  };
+
+  try {
+    let res;
+    try {
+      res = await putScores(originalScores, scoresSha);
+    } catch (e) {
+      if (!/\b409\b/.test(e.message)) throw e;
+      // Conflicto: el cron (u otra pestaña) actualizó scores.json mientras
+      // editabas. Traemos lo más reciente, reaplicamos SOLO tus cambios y
+      // reintentamos — tus valores ganan, sin perder lo que ya estaba.
+      showStatus('Hubo una actualización simultánea — fusionando tus cambios…', 'info');
+      const sf = await ghGet('/contents/scores.json?ref=' + BRANCH);
+      const remote = JSON.parse(decodeURIComponent(escape(atob((sf.content || '').replace(/\n/g, '')))));
+      res = await putScores(remote, sf.sha);
+    }
+    scoresSha = res.sha;
+    originalScores = res.merged;
 
     document.querySelectorAll('#fixture-body tr.changed').forEach(tr => tr.classList.remove('changed'));
     updateSaveCount();

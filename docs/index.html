@@ -164,6 +164,41 @@
     .fixture-table td.team { font-weight: 600; color: var(--navy); }
     .score-cell { font-weight: 800; font-size: .95rem; color: var(--green); }
     .score-cell.pending { color: var(--muted); font-weight: 400; font-size: .8rem; }
+    /* Live (API) score shown only until the admin enters the official result. */
+    .score-cell.live-now   { color: var(--gold); }
+    .score-cell.live-now::after { content: ' \25CF'; color: #e74c3c; font-size: .55rem; vertical-align: middle; }
+    .score-cell.live-final { color: var(--green); opacity: .8; }
+
+    /* ── FIXTURE phase sub-nav ── */
+    .phase-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 12px 14px;
+      background: var(--navy2);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .phase-nav::-webkit-scrollbar { display: none; }
+    .phase-pill {
+      padding: 7px 14px;
+      border: 1px solid rgba(245,197,24,.4);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #c0d4ff;
+      font-size: .76rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
+      white-space: nowrap;
+    }
+    .phase-pill:hover { background: rgba(255,255,255,.2); color: #fff; }
+    .phase-pill.active {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold2);
+    }
 
     /* ── DAILY PREDICTION / DAILY CLAS shared ── */
     .daily-header {
@@ -591,6 +626,8 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    // Marcador en vivo: poll solo mientras "Partidos del Día" esté abierto.
+    if (btn.dataset.tab === 'partidos-dia') startLivePolling(); else stopLivePolling();
   });
 });
 
@@ -809,39 +846,84 @@ function buildStandingsTable(teams) {
 }
 
 // ── FIXTURE ───────────────────────────────────────────────────────────────────
-function renderFixture(matches) {
-  const el = document.getElementById('fixture-content');
+const FIXTURE_PHASE_ORDER = ['grupos','dieciseisavos','octavos','cuartos','semis','tercero','final'];
+let FIXTURE_PHASES = [];   // [{ phase, label, list:[...] }, ...] sólo fases con partidos
+let fixturePhaseIdx = 0;   // índice de la fase seleccionada dentro de FIXTURE_PHASES
 
-  // Group by phase, then by group
-  const PHASE_ORDER = ['grupos','dieciseisavos','octavos','cuartos','semis','tercero','final'];
+// Construye una <div> con la sección de una fase (cabecera + tablas).
+function buildPhaseSection(phaseEntry) {
+  const { phase, label, list } = phaseEntry;
+  const phDiv = document.createElement('div');
+  phDiv.innerHTML = `<div class="phase-header">${h(label)}</div>`;
+
+  if (phase === 'grupos') {
+    // sub-group
+    const byGroup = {};
+    list.forEach(m => (byGroup[m.group || ''] = byGroup[m.group || ''] || []).push(m));
+    Object.entries(byGroup).sort(([a],[b]) => a.localeCompare(b)).forEach(([grp, ms]) => {
+      phDiv.innerHTML += `<div class="group-header">${h(grp)}</div>`;
+      const standings = GROUPS_BY_NAME[grp];
+      if (standings && standings.length) phDiv.appendChild(buildStandingsTable(standings));
+      phDiv.appendChild(buildMatchTable(ms));
+    });
+  } else {
+    phDiv.appendChild(buildMatchTable(list));
+  }
+  return phDiv;
+}
+
+// (Re)dibuja la barra de fases + la sección de la fase seleccionada.
+function renderFixturePhase() {
+  const el = document.getElementById('fixture-content');
+  el.innerHTML = '';
+  if (!FIXTURE_PHASES.length) return;
+
+  // Mantener el índice dentro de rango.
+  if (fixturePhaseIdx < 0 || fixturePhaseIdx >= FIXTURE_PHASES.length) fixturePhaseIdx = 0;
+
+  // Barra de pills, una por fase con partidos, en orden de torneo.
+  const nav = document.createElement('div');
+  nav.className = 'phase-nav';
+  FIXTURE_PHASES.forEach((ph, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'phase-pill' + (i === fixturePhaseIdx ? ' active' : '');
+    btn.textContent = ph.label;
+    btn.addEventListener('click', () => {
+      fixturePhaseIdx = i;
+      renderFixturePhase();
+    });
+    nav.appendChild(btn);
+  });
+  el.appendChild(nav);
+
+  // Sección de la fase seleccionada.
+  el.appendChild(buildPhaseSection(FIXTURE_PHASES[fixturePhaseIdx]));
+}
+
+function renderFixture(matches) {
+  // Group by phase
   const byPhase = {};
   matches.forEach(m => {
     (byPhase[m.phase] = byPhase[m.phase] || []).push(m);
   });
 
-  PHASE_ORDER.forEach(phase => {
-    const list = byPhase[phase];
-    if (!list || !list.length) return;
+  // Sólo fases que realmente tienen partidos, en orden de torneo.
+  FIXTURE_PHASES = FIXTURE_PHASE_ORDER
+    .filter(phase => byPhase[phase] && byPhase[phase].length)
+    .map(phase => ({
+      phase,
+      label: byPhase[phase][0].phase_label,
+      list: byPhase[phase],
+    }));
 
-    const phDiv = document.createElement('div');
-    phDiv.innerHTML = `<div class="phase-header">${h(list[0].phase_label)}</div>`;
+  // Fase por defecto: la que contiene partidos de hoy; si no hay, la primera.
+  const todayIso = venezuelaTodayIso();
+  const todayPhaseIdx = FIXTURE_PHASES.findIndex(
+    ph => ph.list.some(m => (m.date || '').slice(0, 10) === todayIso)
+  );
+  fixturePhaseIdx = (todayPhaseIdx >= 0 ? todayPhaseIdx : 0);
 
-    if (phase === 'grupos') {
-      // sub-group
-      const byGroup = {};
-      list.forEach(m => (byGroup[m.group || ''] = byGroup[m.group || ''] || []).push(m));
-      Object.entries(byGroup).sort(([a],[b]) => a.localeCompare(b)).forEach(([grp, ms]) => {
-        phDiv.innerHTML += `<div class="group-header">${h(grp)}</div>`;
-        const standings = GROUPS_BY_NAME[grp];
-        if (standings && standings.length) phDiv.appendChild(buildStandingsTable(standings));
-        phDiv.appendChild(buildMatchTable(ms));
-      });
-    } else {
-      phDiv.appendChild(buildMatchTable(list));
-    }
-
-    el.appendChild(phDiv);
-  });
+  renderFixturePhase();
 }
 
 function buildMatchTable(matches) {
@@ -908,6 +990,101 @@ function buildFixtureDays(matches) {
   });
 }
 
+// ── LIVE SCORES (football-data.org vía Cloudflare Worker) ─────────────────────
+// SOLO visualización: muestra el marcador actual/último de la API para los
+// partidos de HOY que el admin aún no ha capturado. NUNCA escribe scores.json ni
+// afecta los puntos (de eso se encarga el Action auto-scores.yml al FINISHED).
+// Pega aquí la URL de tu Worker para encender la función ('' = apagada).
+const LIVE_SCORES_WORKER_URL = '';   // p. ej. 'https://wc-scores.tu-sub.workers.dev'
+const LIVE_POLL_MS = 45000;          // refresco del navegador (la API se cachea en el Worker)
+
+// Mapa nombre-en-fixture (ES) -> nombre football-data.org (EN). Copia canónica
+// en scripts/teams_es_en.json (úsalos en conjunto si agregas/renombras equipos).
+const LIVE_TEAM_MAP = {
+  'Alemania':'Germany','Arabia Saudita':'Saudi Arabia','Argelia':'Algeria','Argentina':'Argentina',
+  'Australia':'Australia','Austria':'Austria','Bosnia y Herzegovina':'Bosnia-Herzegovina','Brasil':'Brazil',
+  'Bélgica':'Belgium','Cabo Verde':'Cape Verde Islands','Canadá':'Canada','Catar':'Qatar','Colombia':'Colombia',
+  'Corea del Sur':'South Korea','Costa de Marfil':'Ivory Coast','Croacia':'Croatia','Curazao':'Curaçao',
+  'Ecuador':'Ecuador','Egipto':'Egypt','Escocia':'Scotland','España':'Spain','Estados Unidos':'United States',
+  'Francia':'France','Ghana':'Ghana','Haití':'Haiti','Inglaterra':'England','Irak':'Iraq','Irán':'Iran',
+  'Japón':'Japan','Jordania':'Jordan','Marruecos':'Morocco','México':'Mexico','Noruega':'Norway',
+  'Nueva Zelanda':'New Zealand','Panamá':'Panama','Paraguay':'Paraguay','Países Bajos':'Netherlands',
+  'Portugal':'Portugal','RD Congo':'Congo DR','República Checa':'Czechia','Senegal':'Senegal',
+  'Sudáfrica':'South Africa','Suecia':'Sweden','Suiza':'Switzerland','Turquía':'Turkey','Túnez':'Tunisia',
+  'Uruguay':'Uruguay','Uzbekistán':'Uzbekistan'
+};
+let LIVE_BY_PAIR = {};   // "Home|Away" (EN) -> { status, hs, as }
+let LIVE_TIMER = null;
+
+// Marcador en vivo de la API para un partido del fixture, o null si no aplica.
+function liveScoreFor(m) {
+  const eh = LIVE_TEAM_MAP[m.home], ea = LIVE_TEAM_MAP[m.away];
+  if (!eh || !ea) return null;
+  const api = LIVE_BY_PAIR[eh + '|' + ea];
+  if (!api || api.hs == null || api.as == null) return null;
+  if (api.status !== 'IN_PLAY' && api.status !== 'PAUSED' && api.status !== 'FINISHED') return null;
+  return api;
+}
+
+// HTML de la celda de resultado: oficial (admin) manda; si no hay, marcador de la
+// API (en vivo / final no confirmado); si tampoco, "vs".
+function partidoScoreHtml(m) {
+  if (m.goal_home !== null && m.goal_away !== null)
+    return `<span class="score-cell">${m.goal_home} - ${m.goal_away}</span>`;
+  const live = liveScoreFor(m);
+  if (live) {
+    const cls = live.status === 'FINISHED' ? 'live-final' : 'live-now';
+    const tip = live.status === 'FINISHED' ? 'Final (aún no confirmado por admin)' : 'En juego (no oficial)';
+    return `<span class="score-cell ${cls}" title="${tip}">${live.hs} - ${live.as}</span>`;
+  }
+  return `<span class="score-cell pending">vs</span>`;
+}
+
+async function fetchLiveScores() {
+  if (!LIVE_SCORES_WORKER_URL) return false;
+  try {
+    const r = await fetch(LIVE_SCORES_WORKER_URL, { cache: 'no-store' });
+    if (!r.ok) return false;
+    const data = await r.json();
+    const map = {};
+    (data.matches || []).forEach(x => { if (x.home && x.away) map[x.home + '|' + x.away] = x; });
+    LIVE_BY_PAIR = map;
+    return true;
+  } catch (e) { return false; }
+}
+
+// El polling solo corre si la pestaña está activa y el día elegido es HOY.
+function liveActiveNow() {
+  if (!LIVE_SCORES_WORKER_URL) return false;
+  const panel = document.getElementById('tab-partidos-dia');
+  if (!panel || !panel.classList.contains('active')) return false;
+  const day = FIXTURE_DAYS[partidosDiaIdx];
+  return !!day && day.iso === venezuelaTodayIso();
+}
+
+// Repinta solo las celdas de marcador (sin re-render completo, evita parpadeo).
+function repaintPartidosDiaScores() {
+  const day = FIXTURE_DAYS[partidosDiaIdx];
+  if (!day) return;
+  document.querySelectorAll('#partidos-dia-content tr[data-num]').forEach(tr => {
+    const m = day.matches.find(x => String(x.num) === tr.dataset.num);
+    const cell = tr.querySelector('.pd-result');
+    if (m && cell) cell.innerHTML = partidoScoreHtml(m);
+  });
+}
+
+function stopLivePolling() { if (LIVE_TIMER) { clearInterval(LIVE_TIMER); LIVE_TIMER = null; } }
+function startLivePolling() {
+  stopLivePolling();
+  if (!liveActiveNow()) return;
+  const tick = () => {
+    if (!liveActiveNow()) { stopLivePolling(); return; }
+    fetchLiveScores().then(ok => { if (ok) repaintPartidosDiaScores(); });
+  };
+  tick();                                   // primer refresco inmediato
+  LIVE_TIMER = setInterval(tick, LIVE_POLL_MS);
+}
+
 function renderPartidosDia() {
   const el = document.getElementById('partidos-dia-content');
   el.innerHTML = '';
@@ -943,17 +1120,14 @@ function renderPartidosDia() {
   </tr></thead>`;
   const tbody = document.createElement('tbody');
   day.matches.forEach(m => {
-    const played = m.goal_home !== null && m.goal_away !== null;
-    const score = played
-      ? `<span class="score-cell">${m.goal_home} - ${m.goal_away}</span>`
-      : `<span class="score-cell pending">vs</span>`;
     const fase = m.group ? `${h(m.phase_label)} · ${h(m.group)}` : h(m.phase_label);
     const tr = document.createElement('tr');
+    tr.dataset.num = m.num;
     tr.innerHTML = `
       <td style="white-space:nowrap;font-weight:700;color:var(--navy)">${fmtTime(m.date) || '—'}</td>
       <td style="font-size:.72rem;color:var(--muted)">${fase}</td>
       <td class="team left">${h(m.home)}</td>
-      <td>${score}</td>
+      <td class="pd-result">${partidoScoreHtml(m)}</td>
       <td class="team left">${h(m.away)}</td>
     `;
     tbody.appendChild(tr);
@@ -961,6 +1135,8 @@ function renderPartidosDia() {
   t.appendChild(tbody);
   wrap.appendChild(t);
   el.appendChild(wrap);
+
+  startLivePolling();   // refresca el marcador en vivo si el día elegido es hoy
 }
 
 // ── DAILY (all days, with a day selector) ─────────────────────────────────────
