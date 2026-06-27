@@ -1022,7 +1022,10 @@ function liveScoreFor(m) {
   if (!eh || !ea) return null;
   const api = LIVE_BY_PAIR[eh + '|' + ea];
   if (!api || api.hs == null || api.as == null) return null;
-  if (api.status !== 'IN_PLAY' && api.status !== 'PAUSED' && api.status !== 'FINISHED') return null;
+  // football-data marca los partidos en juego como 'IN_PLAY' o 'LIVE' (y 'PAUSED'
+  // en el descanso). Mostramos el marcador de cualquier partido ya iniciado; solo
+  // ocultamos los que aún no arrancan (sus goles son null de todas formas).
+  if (api.status === 'SCHEDULED' || api.status === 'TIMED') return null;
   return api;
 }
 
