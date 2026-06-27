@@ -262,5 +262,13 @@
   "66": {
     "goal_home": 0,
     "goal_away": 1
+  },
+  "67": {
+    "goal_home": 0,
+    "goal_away": 2
+  },
+  "68": {
+    "goal_home": 2,
+    "goal_away": 1
   }
 }
