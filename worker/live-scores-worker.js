@@ -22,6 +22,17 @@
 const UPSTREAM = "https://api.football-data.org/v4/competitions/WC/matches";
 const CACHE_SECONDS = 45;
 
+// ── Reliable auto-scores trigger ──────────────────────────────────────────────
+// GitHub throttles `*/5` scheduled workflows to ~30-90 min, so a finished match
+// can wait too long to be applied. This Worker's Cron Trigger (set in Cloudflare
+// to "*/5 * * * *") reliably pokes the auto-scores workflow via the GitHub API.
+// Requires the Worker secret GH_DISPATCH_PAT (fine-grained PAT, Actions: Read &
+// write on this repo). Set the Cron Trigger in: Worker > Settings > Triggers.
+const GH_OWNER = "KevinPerez2701";
+const GH_REPO = "Quiniela";
+const GH_WORKFLOW = "auto-scores.yml";
+const GH_REF = "main";
+
 const CORS = {
   "Access-Control-Allow-Origin": "*", // tighten to your Pages origin if you prefer
   "Access-Control-Allow-Methods": "GET, OPTIONS",
@@ -79,7 +90,36 @@ export default {
     ctx.waitUntil(cache.put(cacheKey, resp.clone()));
     return resp;
   },
+
+  // Cron Trigger: fires on the schedule configured in Cloudflare (set it to
+  // "*/5 * * * *"). Pokes the GitHub auto-scores workflow so FINISHED results
+  // get applied within minutes instead of waiting on GitHub's throttled cron.
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(dispatchAutoScores(env));
+  },
 };
+
+async function dispatchAutoScores(env) {
+  if (!env.GH_DISPATCH_PAT) {
+    console.log("GH_DISPATCH_PAT not set — skipping auto-scores dispatch.");
+    return;
+  }
+  const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/dispatches`;
+  const r = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.GH_DISPATCH_PAT}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      "User-Agent": "quiniela-live-scores-worker",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ ref: GH_REF }),
+  });
+  if (!r.ok) {
+    console.log(`auto-scores dispatch failed: ${r.status} ${await r.text()}`);
+  }
+}
 
 function withCors(response, cacheState) {
   const r = new Response(response.body, response);

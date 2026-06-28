@@ -51,6 +51,27 @@ curl -s https://dark-tooth-2a90.kevinperez9a.workers.dev/ | head -c
 ```
 El header `X-Cache: HIT|MISS` indica si vino del caché del Worker.
 
+## Disparador confiable de auto-puntos (Cron Trigger)
+
+GitHub estrangula los workflows programados (`*/5` corre en realidad cada ~30-90 min),
+así que un partido finalizado puede tardar demasiado en aplicarse. Para evitarlo, el
+Worker incluye un handler `scheduled()` que, en cada tic de su **Cron Trigger**, le da
+un "toque" (`workflow_dispatch`) al workflow `auto-scores.yml`. Cloudflare **sí** respeta
+el cada-5-min, así que el resultado FINAL se aplica en minutos.
+
+Configúralo una vez:
+1. **Secret del Worker** `GH_DISPATCH_PAT`: un **PAT de grano fino** de GitHub con
+   acceso solo a este repo y permiso **Actions: Read and write** (nada más).
+   Dashboard: *Worker → Settings → Variables and Secrets → Add → Secret*; o
+   `npx wrangler secret put GH_DISPATCH_PAT`.
+2. **Cron Trigger**: *Worker → Settings → Triggers → Cron Triggers → Add Cron Trigger*
+   → `*/5 * * * *`. (Con Wrangler: en `wrangler.toml` → `[triggers]` `crons = ["*/5 * * * *"]`.)
+3. **Deploy** de nuevo.
+
+El cron de GitHub en `auto-scores.yml` se queda como respaldo; el `concurrency` evita
+solapes. Si falta `GH_DISPATCH_PAT`, el handler simplemente no hace nada (el marcador
+en vivo sigue funcionando igual).
+
 ## Nota sobre el plan gratis
 
 En el plan **gratis** de football-data.org los marcadores en juego van con
