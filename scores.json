@@ -270,5 +270,13 @@
   "68": {
     "goal_home": 2,
     "goal_away": 1
+  },
+  "71": {
+    "goal_home": 0,
+    "goal_away": 0
+  },
+  "72": {
+    "goal_home": 3,
+    "goal_away": 1
   }
 }
