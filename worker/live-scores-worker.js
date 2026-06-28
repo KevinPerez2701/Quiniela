@@ -93,17 +93,60 @@ export default {
 
   // Cron Trigger: fires on the schedule configured in Cloudflare (set it to
   // "*/5 * * * *"). Pokes the GitHub auto-scores workflow so FINISHED results
-  // get applied within minutes instead of waiting on GitHub's throttled cron.
+  // get applied within minutes — but only when a match is actually live, about
+  // to start, or recently finished (see maybeDispatchAutoScores), to avoid
+  // dozens of no-op runs during the long stretches with no matches.
   async scheduled(event, env, ctx) {
-    ctx.waitUntil(dispatchAutoScores(env));
+    ctx.waitUntil(maybeDispatchAutoScores(env));
   },
 };
 
-async function dispatchAutoScores(env) {
+// Gate: dispatch only when a result could actually land soon. Avoids no-op
+// Actions runs without hardcoding match hours (which shift every day/phase).
+// On a fetch error we dispatch anyway (fail-safe — never miss a result).
+async function maybeDispatchAutoScores(env) {
   if (!env.GH_DISPATCH_PAT) {
     console.log("GH_DISPATCH_PAT not set — skipping auto-scores dispatch.");
     return;
   }
+  let matches = null;
+  try {
+    matches = await getRawMatches(env);
+  } catch (e) {
+    console.log("match fetch failed; dispatching anyway:", e);
+  }
+  if (matches && !anyMatchActive(matches)) {
+    console.log("No live/upcoming/recent WC match — skipping dispatch this tick.");
+    return;
+  }
+  await dispatchAutoScores(env);
+}
+
+async function getRawMatches(env) {
+  const r = await fetch(UPSTREAM, {
+    headers: { "X-Auth-Token": env.FOOTBALL_DATA_TOKEN },
+    cf: { cacheTtl: 30 },
+  });
+  if (!r.ok) throw new Error("upstream " + r.status);
+  const data = await r.json();
+  return data.matches || [];
+}
+
+function anyMatchActive(matches) {
+  const now = Date.now();
+  const MIN = 60 * 1000, HOUR = 3600 * 1000;
+  for (const m of matches) {
+    const s = m.status;
+    if (s === "IN_PLAY" || s === "PAUSED" || s === "LIVE") return true;
+    const ko = Date.parse(m.utcDate || "");
+    if (isNaN(ko)) continue;
+    if ((s === "TIMED" || s === "SCHEDULED") && ko - now > 0 && ko - now < 15 * MIN) return true;
+    if (s === "FINISHED" && now - ko < 4 * HOUR) return true; // buffer for free-tier delay
+  }
+  return false;
+}
+
+async function dispatchAutoScores(env) {
   const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/actions/workflows/${GH_WORKFLOW}/dispatches`;
   const r = await fetch(url, {
     method: "POST",

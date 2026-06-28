@@ -17,8 +17,11 @@ name: Auto Scores (FINISHED)
 #                        workflow, so without this PAT the points would not recalc.
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"   # every 5 min (GitHub's minimum; timing is best-effort)
+  # Driven by the Cloudflare Worker's Cron Trigger via workflow_dispatch, which
+  # only fires when a match is live / about to start / recently finished. The
+  # GitHub `schedule:` was removed to avoid 24/7 no-op runs (it was throttled to
+  # ~30-90 min anyway). Re-add a `schedule:` here if you ever want a fallback
+  # independent of Cloudflare.
   workflow_dispatch:
     inputs:
       fill_if_empty:
