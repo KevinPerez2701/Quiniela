@@ -297,6 +297,10 @@
     "pen_home": 5,
     "pen_away": 6
   },
+  "75": {
+    "goal_home": 1,
+    "goal_away": 1
+  },
   "76": {
     "goal_home": 2,
     "goal_away": 1
