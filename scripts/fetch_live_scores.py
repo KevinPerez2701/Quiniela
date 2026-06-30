@@ -136,8 +136,22 @@ def main():
 
         key = str(num)
         existing = scores.get(key)
+
         if FILL_IF_EMPTY and existing is not None:
+            # Already recorded — but still backfill LATE-arriving penalties. When a
+            # match first goes FINISHED the feed often has the 1-1 result before
+            # the shootout score, so the first run writes goals only. If the saved
+            # entry has goals but no penalties and the API now reports a valid
+            # (non-tie) shootout, add just the penalties — keeping existing goals
+            # and never overwriting penalties entered by hand.
+            if "pen_home" in entry and "pen_home" not in existing and "pen_away" not in existing:
+                merged = dict(existing)
+                merged["pen_home"] = entry["pen_home"]
+                merged["pen_away"] = entry["pen_away"]
+                changes.append((int(num), es_h, es_a, merged, existing))
+                scores[key] = merged
             continue
+
         if existing == entry:
             continue
 
