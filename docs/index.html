@@ -1038,8 +1038,10 @@ function liveScoreFor(m) {
 }
 
 // Anotación de penales "(p 5-6)" para eliminatorias definidas en la tanda.
+// Una tanda nunca termina empatada, así que ignoramos valores iguales (p. ej.
+// 4-4), que son data basura del feed simulado.
 function penNote(ph, pa) {
-  return (ph != null && pa != null)
+  return (ph != null && pa != null && ph !== pa)
     ? ` <span class="pen-note">(p ${ph}-${pa})</span>`
     : '';
 }

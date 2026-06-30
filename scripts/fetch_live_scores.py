@@ -126,9 +126,13 @@ def main():
             continue
 
         entry = {"goal_home": int(gh), "goal_away": int(ga)}
-        if dur == "PENALTY_SHOOTOUT" and pens.get("home") is not None and pens.get("away") is not None:
-            entry["pen_home"] = int(pens["home"])
-            entry["pen_away"] = int(pens["away"])
+        ph_, pa_ = pens.get("home"), pens.get("away")
+        # A finished shootout ALWAYS has a winner, so equal penalties (e.g. 4-4)
+        # are the simulated feed's garbage. Skip them and leave penalties for
+        # manual entry rather than writing an impossible/undecided result.
+        if dur == "PENALTY_SHOOTOUT" and ph_ is not None and pa_ is not None and ph_ != pa_:
+            entry["pen_home"] = int(ph_)
+            entry["pen_away"] = int(pa_)
 
         key = str(num)
         existing = scores.get(key)

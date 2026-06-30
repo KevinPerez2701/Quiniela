@@ -82,7 +82,9 @@ export default {
         hs = ft.home != null ? ft.home : null;
         as_ = ft.away != null ? ft.away : null;
       }
-      const shootout = s.duration === "PENALTY_SHOOTOUT" && pen.home != null && pen.away != null;
+      // A finished shootout always has a winner, so equal penalties (e.g. 4-4)
+      // are garbage from the simulated feed — don't surface them.
+      const shootout = s.duration === "PENALTY_SHOOTOUT" && pen.home != null && pen.away != null && pen.home !== pen.away;
       return {
         utcDate: m.utcDate,
         status: m.status,
