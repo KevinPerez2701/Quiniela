@@ -1,5 +1,5 @@
 {
-  "updated_at": "29/06/2026 19:36 (hora Venezuela)",
+  "updated_at": "29/06/2026 20:51 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -184,26 +184,6 @@
         "pos": 9
       },
       {
-        "jugador": "RICARDO RIVERO",
-        "puntos": 312,
-        "f_grupos": 116,
-        "pos_grupos": 100,
-        "eq_16": 81,
-        "pt_16": 3,
-        "eq_8": 12,
-        "pt_8": 0,
-        "eq_4": 0,
-        "pt_4": 0,
-        "eq_2": 0,
-        "pt_2": 0,
-        "eq_34": 0,
-        "eq_final": 0,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 10
-      },
-      {
         "jugador": "Fernando (Jessika)",
         "puntos": 312,
         "f_grupos": 96,
@@ -222,6 +202,26 @@
         "pt_final": 0,
         "honor": 0,
         "pos": 10
+      },
+      {
+        "jugador": "RICARDO RIVERO",
+        "puntos": 309,
+        "f_grupos": 116,
+        "pos_grupos": 100,
+        "eq_16": 81,
+        "pt_16": 0,
+        "eq_8": 12,
+        "pt_8": 0,
+        "eq_4": 0,
+        "pt_4": 0,
+        "eq_2": 0,
+        "pt_2": 0,
+        "eq_34": 0,
+        "eq_final": 0,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 0,
+        "pos": 11
       },
       {
         "jugador": "Luis Márquez",
@@ -666,6 +666,8 @@
       "away": "Sudáfrica",
       "goal_home": 2,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -678,6 +680,8 @@
       "away": "República Checa",
       "goal_home": 2,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -690,6 +694,8 @@
       "away": "Bosnia y Herzegovina",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -702,6 +708,8 @@
       "away": "Paraguay",
       "goal_home": 4,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -714,6 +722,8 @@
       "away": "Suiza",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -726,6 +736,8 @@
       "away": "Marruecos",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -738,6 +750,8 @@
       "away": "Escocia",
       "goal_home": 0,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -750,6 +764,8 @@
       "away": "Turquía",
       "goal_home": 2,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -762,6 +778,8 @@
       "away": "Curazao",
       "goal_home": 7,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -774,6 +792,8 @@
       "away": "Japón",
       "goal_home": 2,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -786,6 +806,8 @@
       "away": "Ecuador",
       "goal_home": 1,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -798,6 +820,8 @@
       "away": "Túnez",
       "goal_home": 5,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -810,6 +834,8 @@
       "away": "Cabo Verde",
       "goal_home": 0,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -822,6 +848,8 @@
       "away": "Egipto",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -834,6 +862,8 @@
       "away": "Uruguay",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -846,6 +876,8 @@
       "away": "Nueva Zelanda",
       "goal_home": 2,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -858,6 +890,8 @@
       "away": "Senegal",
       "goal_home": 3,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -870,6 +904,8 @@
       "away": "Noruega",
       "goal_home": 1,
       "goal_away": 4,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -882,6 +918,8 @@
       "away": "Argelia",
       "goal_home": 3,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -894,6 +932,8 @@
       "away": "Jordania",
       "goal_home": 3,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -906,6 +946,8 @@
       "away": "RD Congo",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -918,6 +960,8 @@
       "away": "Croacia",
       "goal_home": 4,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -930,6 +974,8 @@
       "away": "Panamá",
       "goal_home": 1,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -942,6 +988,8 @@
       "away": "Colombia",
       "goal_home": 1,
       "goal_away": 3,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -954,6 +1002,8 @@
       "away": "Sudáfrica",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -966,6 +1016,8 @@
       "away": "Bosnia y Herzegovina",
       "goal_home": 4,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -978,6 +1030,8 @@
       "away": "Catar",
       "goal_home": 6,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -990,6 +1044,8 @@
       "away": "Corea del Sur",
       "goal_home": 1,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1002,6 +1058,8 @@
       "away": "Australia",
       "goal_home": 2,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1014,6 +1072,8 @@
       "away": "Marruecos",
       "goal_home": 0,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1026,6 +1086,8 @@
       "away": "Haití",
       "goal_home": 3,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1038,6 +1100,8 @@
       "away": "Paraguay",
       "goal_home": 0,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1050,6 +1114,8 @@
       "away": "Suecia",
       "goal_home": 5,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1062,6 +1128,8 @@
       "away": "Costa de Marfil",
       "goal_home": 2,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1074,6 +1142,8 @@
       "away": "Curazao",
       "goal_home": 0,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1086,6 +1156,8 @@
       "away": "Japón",
       "goal_home": 0,
       "goal_away": 4,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1098,6 +1170,8 @@
       "away": "Arabia Saudita",
       "goal_home": 4,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1110,6 +1184,8 @@
       "away": "Irán",
       "goal_home": 0,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1122,6 +1198,8 @@
       "away": "Cabo Verde",
       "goal_home": 2,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1134,6 +1212,8 @@
       "away": "Egipto",
       "goal_home": 1,
       "goal_away": 3,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1146,6 +1226,8 @@
       "away": "Austria",
       "goal_home": 2,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1158,6 +1240,8 @@
       "away": "Irak",
       "goal_home": 3,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1170,6 +1254,8 @@
       "away": "Senegal",
       "goal_home": 3,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1182,6 +1268,8 @@
       "away": "Argelia",
       "goal_home": 1,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1194,6 +1282,8 @@
       "away": "Uzbekistán",
       "goal_home": 5,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1206,6 +1296,8 @@
       "away": "Ghana",
       "goal_home": 0,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1218,6 +1310,8 @@
       "away": "Croacia",
       "goal_home": 0,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1230,6 +1324,8 @@
       "away": "RD Congo",
       "goal_home": 1,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1242,6 +1338,8 @@
       "away": "Canadá",
       "goal_home": 2,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1254,6 +1352,8 @@
       "away": "Catar",
       "goal_home": 3,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1266,6 +1366,8 @@
       "away": "Brasil",
       "goal_home": 0,
       "goal_away": 3,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1278,6 +1380,8 @@
       "away": "Haití",
       "goal_home": 4,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1290,6 +1394,8 @@
       "away": "México",
       "goal_home": 0,
       "goal_away": 3,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1302,6 +1408,8 @@
       "away": "Corea del Sur",
       "goal_home": 1,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1314,6 +1422,8 @@
       "away": "Costa de Marfil",
       "goal_home": 0,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1326,6 +1436,8 @@
       "away": "Alemania",
       "goal_home": 2,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1338,6 +1450,8 @@
       "away": "Suecia",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1350,6 +1464,8 @@
       "away": "Países Bajos",
       "goal_home": 1,
       "goal_away": 3,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1362,6 +1478,8 @@
       "away": "Estados Unidos",
       "goal_home": 3,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1374,6 +1492,8 @@
       "away": "Australia",
       "goal_home": 0,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1386,6 +1506,8 @@
       "away": "Francia",
       "goal_home": 1,
       "goal_away": 4,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1398,6 +1520,8 @@
       "away": "Irak",
       "goal_home": 5,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1410,6 +1534,8 @@
       "away": "Arabia Saudita",
       "goal_home": 0,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1422,6 +1548,8 @@
       "away": "España",
       "goal_home": 0,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1434,6 +1562,8 @@
       "away": "Irán",
       "goal_home": 1,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1446,6 +1576,8 @@
       "away": "Bélgica",
       "goal_home": 1,
       "goal_away": 5,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1458,6 +1590,8 @@
       "away": "Inglaterra",
       "goal_home": 0,
       "goal_away": 2,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1470,6 +1604,8 @@
       "away": "Ghana",
       "goal_home": 2,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1482,6 +1618,8 @@
       "away": "Portugal",
       "goal_home": 0,
       "goal_away": 0,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1494,6 +1632,8 @@
       "away": "Uzbekistán",
       "goal_home": 3,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1506,6 +1646,8 @@
       "away": "Austria",
       "goal_home": 3,
       "goal_away": 3,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1518,6 +1660,8 @@
       "away": "Argentina",
       "goal_home": 1,
       "goal_away": 3,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "grupos",
       "phase_label": "Fase de Grupos"
     },
@@ -1530,6 +1674,8 @@
       "away": "Canadá",
       "goal_home": 0,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1542,6 +1688,8 @@
       "away": "Japón",
       "goal_home": 2,
       "goal_away": 1,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1552,8 +1700,10 @@
       "group": null,
       "home": "Alemania",
       "away": "Paraguay",
-      "goal_home": 5,
-      "goal_away": 6,
+      "goal_home": 1,
+      "goal_away": 1,
+      "pen_home": 5,
+      "pen_away": 6,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1566,6 +1716,8 @@
       "away": "Marruecos",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1578,6 +1730,8 @@
       "away": "Noruega",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1590,6 +1744,8 @@
       "away": "Suecia",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1602,6 +1758,8 @@
       "away": "Ecuador",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1614,6 +1772,8 @@
       "away": "RD Congo",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1626,6 +1786,8 @@
       "away": "Senegal",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1638,6 +1800,8 @@
       "away": "Bosnia y Herzegovina",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1650,6 +1814,8 @@
       "away": "Austria",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1662,6 +1828,8 @@
       "away": "Croacia",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1674,6 +1842,8 @@
       "away": "Argelia",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1686,6 +1856,8 @@
       "away": "Egipto",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1698,6 +1870,8 @@
       "away": "Cabo Verde",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1710,6 +1884,8 @@
       "away": "Ghana",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "dieciseisavos",
       "phase_label": "1/16 de Final"
     },
@@ -1722,6 +1898,8 @@
       "away": "W75",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -1734,6 +1912,8 @@
       "away": "W77",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -1746,6 +1926,8 @@
       "away": "W78",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -1758,6 +1940,8 @@
       "away": "W80",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -1770,6 +1954,8 @@
       "away": "W84",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -1782,6 +1968,8 @@
       "away": "W82",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -1794,6 +1982,8 @@
       "away": "W88",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -1806,6 +1996,8 @@
       "away": "W87",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -1818,6 +2010,8 @@
       "away": "W90",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "cuartos",
       "phase_label": "Cuartos de Final"
     },
@@ -1830,6 +2024,8 @@
       "away": "W94",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "cuartos",
       "phase_label": "Cuartos de Final"
     },
@@ -1842,6 +2038,8 @@
       "away": "W92",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "cuartos",
       "phase_label": "Cuartos de Final"
     },
@@ -1854,6 +2052,8 @@
       "away": "W96",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "cuartos",
       "phase_label": "Cuartos de Final"
     },
@@ -1866,6 +2066,8 @@
       "away": "W98",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "semis",
       "phase_label": "Semifinales"
     },
@@ -1878,6 +2080,8 @@
       "away": "W100",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "semis",
       "phase_label": "Semifinales"
     },
@@ -1890,6 +2094,8 @@
       "away": "L102",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "tercero",
       "phase_label": "Tercer Puesto"
     },
@@ -1902,6 +2108,8 @@
       "away": "W102",
       "goal_home": null,
       "goal_away": null,
+      "pen_home": null,
+      "pen_away": null,
       "phase": "final",
       "phase_label": "Final"
     }
@@ -18845,45 +19053,6 @@
           "pos": 8
         },
         {
-          "jugador": "RICARDO RIVERO",
-          "puntos_dia": 15,
-          "pts": [
-            0,
-            0,
-            3,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            4,
-            4,
-            4,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 8
-        },
-        {
           "jugador": "EDUARDO PINTO",
           "puntos_dia": 13,
           "pts": [
@@ -18905,6 +19074,45 @@
             0,
             0,
             0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 9
+        },
+        {
+          "jugador": "RICARDO RIVERO",
+          "puntos_dia": 12,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4,
+            4,
             4,
             0,
             0,
@@ -18959,7 +19167,7 @@
             4,
             0
           ],
-          "pos": 11
+          "pos": 10
         },
         {
           "jugador": "Kevin Perez",
