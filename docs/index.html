@@ -174,6 +174,8 @@
     .score-cell.live-now   { color: var(--gold); }
     .score-cell.live-now::after { content: ' \25CF'; color: #e74c3c; font-size: .55rem; vertical-align: middle; }
     .score-cell.live-final { color: var(--green); opacity: .8; }
+    /* Penalty-shootout annotation, e.g. "1 - 1 (p 5-6)". */
+    .pen-note { font-size: .68rem; font-weight: 600; color: var(--muted); }
 
     /* ── FIXTURE phase sub-nav ── */
     .phase-nav {
@@ -945,7 +947,7 @@ function buildMatchTable(matches) {
   matches.forEach(m => {
     const played = m.goal_home !== null && m.goal_away !== null;
     const score = played
-      ? `<span class="score-cell">${m.goal_home} - ${m.goal_away}</span>`
+      ? `<span class="score-cell">${m.goal_home} - ${m.goal_away}${penNote(m.pen_home, m.pen_away)}</span>`
       : `<span class="score-cell pending">vs</span>`;
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -1035,16 +1037,23 @@ function liveScoreFor(m) {
   return api;
 }
 
+// Anotación de penales "(p 5-6)" para eliminatorias definidas en la tanda.
+function penNote(ph, pa) {
+  return (ph != null && pa != null)
+    ? ` <span class="pen-note">(p ${ph}-${pa})</span>`
+    : '';
+}
+
 // HTML de la celda de resultado: oficial (admin) manda; si no hay, marcador de la
 // API (en vivo / final no confirmado); si tampoco, "vs".
 function partidoScoreHtml(m) {
   if (m.goal_home !== null && m.goal_away !== null)
-    return `<span class="score-cell">${m.goal_home} - ${m.goal_away}</span>`;
+    return `<span class="score-cell">${m.goal_home} - ${m.goal_away}${penNote(m.pen_home, m.pen_away)}</span>`;
   const live = liveScoreFor(m);
   if (live) {
     const cls = live.status === 'FINISHED' ? 'live-final' : 'live-now';
     const tip = live.status === 'FINISHED' ? 'Final (aún no confirmado por admin)' : 'En juego (no oficial)';
-    return `<span class="score-cell ${cls}" title="${tip}">${live.hs} - ${live.as}</span>`;
+    return `<span class="score-cell ${cls}" title="${tip}">${live.hs} - ${live.as}${penNote(live.ph, live.pa)}</span>`;
   }
   return `<span class="score-cell pending">vs</span>`;
 }

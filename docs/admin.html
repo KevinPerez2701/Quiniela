@@ -102,6 +102,10 @@
     .team-away { text-align: left;  min-width: 130px; }
     .score-sep { text-align: center; color: var(--muted); padding: 0 4px; font-weight: 700; }
     .score-cell { text-align: center; }
+    /* Penalty input shown under each goal box for knockout matches. */
+    .pen-line { display: flex; align-items: center; gap: 4px; justify-content: center; margin-top: 4px; }
+    .pen-line span { font-size: .62rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+    .pen-line input[type=number] { width: 42px; padding: 3px 2px; font-size: .82rem; }
     .phase-badge {
       display: inline-block; font-size: .7rem; padding: 2px 8px;
       border-radius: 12px; background: var(--navy2); color: var(--gold);
@@ -372,6 +376,15 @@ function renderTable(matches) {
     const gh = saved.goal_home !== undefined ? saved.goal_home : null;
     const ga = saved.goal_away !== undefined ? saved.goal_away : null;
 
+    // Knockout matches can be decided on penalties: show 2 extra penalty inputs.
+    const isKO = m.phase && m.phase !== 'grupos';
+    const ph = (saved.pen_home !== undefined && saved.pen_home !== null) ? saved.pen_home : '';
+    const pa = (saved.pen_away !== undefined && saved.pen_away !== null) ? saved.pen_away : '';
+    const penInput = (side, val) => isKO
+      ? `<div class="pen-line"><span>pen</span><input type="number" min="0" max="99" value="${val}"
+               oninput="markChanged(this)" data-side="${side}" data-num="${key}" /></div>`
+      : '';
+
     const dateStr = m.date ? m.date.split(' ')[0] : '—';
 
     const tr = document.createElement('tr');
@@ -384,11 +397,13 @@ function renderTable(matches) {
       <td class="score-cell">
         <input type="number" min="0" max="99" value="${gh !== null && gh !== undefined ? gh : ''}"
                oninput="markChanged(this)" data-side="h" data-num="${key}" />
+        ${penInput('ph', ph)}
       </td>
       <td class="score-sep">–</td>
       <td class="score-cell">
         <input type="number" min="0" max="99" value="${ga !== null && ga !== undefined ? ga : ''}"
                oninput="markChanged(this)" data-side="a" data-num="${key}" />
+        ${penInput('pa', pa)}
       </td>
       <td class="team-away team-name">${h(m.away)}</td>
     `;
@@ -424,16 +439,24 @@ async function saveScores() {
   // actualizador automático, podemos reaplicar tus cambios sobre la versión más
   // reciente sin pisar resultados que el cron haya agregado mientras editabas.
   const changed = {};
+  const SIDE = { h: 'goal_home', a: 'goal_away', ph: 'pen_home', pa: 'pen_away' };
   document.querySelectorAll('#fixture-body tr.changed input[type=number]').forEach(inp => {
-    const key = inp.dataset.num, side = inp.dataset.side;
+    const key = inp.dataset.num, field = SIDE[inp.dataset.side];
+    if (!field) return;
     if (!changed[key]) changed[key] = { goal_home: null, goal_away: null };
     const v = inp.value.trim();
-    changed[key][side === 'h' ? 'goal_home' : 'goal_away'] = v === '' ? null : parseInt(v, 10);
+    changed[key][field] = v === '' ? null : parseInt(v, 10);
   });
 
   const applyChanges = (base) => {
     const out = { ...base };
-    Object.entries(changed).forEach(([k, v]) => { out[k] = v; });
+    Object.entries(changed).forEach(([k, v]) => {
+      const e = { ...v };
+      // Penalties only belong on a match that actually went to a shootout; drop
+      // empty pen fields so non-penalty matches stay clean in scores.json.
+      if (e.pen_home == null && e.pen_away == null) { delete e.pen_home; delete e.pen_away; }
+      out[k] = e;
+    });
     Object.keys(out).forEach(k => {
       if (out[k].goal_home === null && out[k].goal_away === null) delete out[k];
     });

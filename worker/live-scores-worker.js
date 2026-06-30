@@ -69,14 +69,31 @@ export default {
     }
 
     const data = await upstream.json();
-    const matches = (data.matches || []).map((m) => ({
-      utcDate: m.utcDate,
-      status: m.status,
-      home: m.homeTeam && m.homeTeam.name,
-      away: m.awayTeam && m.awayTeam.name,
-      hs: m.score && m.score.fullTime ? m.score.fullTime.home : null,
-      as: m.score && m.score.fullTime ? m.score.fullTime.away : null,
-    }));
+    const matches = (data.matches || []).map((m) => {
+      const s = m.score || {};
+      const reg = s.regularTime || {}, et = s.extraTime || {}, ft = s.fullTime || {}, pen = s.penalties || {};
+      // Game result = regulation + extra time (NOT fullTime, which mixes in the
+      // shootout on knockout matches). Plain matches only carry fullTime.
+      let hs, as_;
+      if (reg.home != null && reg.away != null) {
+        hs = (reg.home || 0) + (et.home || 0);
+        as_ = (reg.away || 0) + (et.away || 0);
+      } else {
+        hs = ft.home != null ? ft.home : null;
+        as_ = ft.away != null ? ft.away : null;
+      }
+      const shootout = s.duration === "PENALTY_SHOOTOUT" && pen.home != null && pen.away != null;
+      return {
+        utcDate: m.utcDate,
+        status: m.status,
+        home: m.homeTeam && m.homeTeam.name,
+        away: m.awayTeam && m.awayTeam.name,
+        hs,
+        as: as_,
+        ph: shootout ? pen.home : null,
+        pa: shootout ? pen.away : null,
+      };
+    });
 
     const body = JSON.stringify({ resultSet: data.resultSet || null, matches });
     const resp = new Response(body, {

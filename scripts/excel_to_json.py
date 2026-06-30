@@ -189,6 +189,10 @@ def extract_fixture(ws):
         phase  = get_phase(num)
         goal_h = row[28]
         goal_a = row[29]
+        # Penalty cells AB (home) / AE (away) only hold values on knockout rows;
+        # on group rows those columns carry helper formulas, so ignore them there.
+        pen_h = row[27] if phase != "grupos" else None
+        pen_a = row[30] if phase != "grupos" else None
         matches.append({
             "num":         num,
             "date":        fmt_date(date),
@@ -198,6 +202,8 @@ def extract_fixture(ws):
             "away":        str(away),
             "goal_home":   int(goal_h) if isinstance(goal_h, (int, float)) else None,
             "goal_away":   int(goal_a) if isinstance(goal_a, (int, float)) else None,
+            "pen_home":    int(pen_h) if isinstance(pen_h, (int, float)) else None,
+            "pen_away":    int(pen_a) if isinstance(pen_a, (int, float)) else None,
             "phase":       phase,
             "phase_label": PHASE_LABELS.get(phase, phase),
         })

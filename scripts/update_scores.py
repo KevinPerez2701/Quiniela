@@ -28,6 +28,9 @@ SCORES_PATH = os.path.join(REPO_ROOT, "scores.json")
 
 # WORLDCUP sheet columns (Excel letters): match number, home goals, away goals.
 COL_NUM, COL_GH, COL_GA = "AH", "AC", "AD"
+# Penalty-shootout cells (knockout rows only): home penalties, away penalties.
+# These are the two "X" cells the sheet enables for decisive phases.
+COL_PH, COL_PA = "AB", "AE"
 
 R_NS = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
 M_NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
@@ -69,7 +72,12 @@ def patch_sheet_xml(xml_text, scores):
         if row is None:
             print(f"  ! match {num} not found in WORLDCUP — skipped")
             continue
-        for col, goal in ((COL_GH, entry.get("goal_home")), (COL_GA, entry.get("goal_away"))):
+        cells = [(COL_GH, entry.get("goal_home")), (COL_GA, entry.get("goal_away"))]
+        # Only touch the penalty cells when this entry actually carries penalties,
+        # so a knockout result entered by hand in the Excel is never wiped.
+        if "pen_home" in entry or "pen_away" in entry:
+            cells += [(COL_PH, entry.get("pen_home")), (COL_PA, entry.get("pen_away"))]
+        for col, goal in cells:
             ref = f"{col}{row}"
             pat = re.compile(r'<c r="%s"[^>]*?(?:/>|>.*?</c>)' % ref, re.S)
             m = pat.search(xml_text)

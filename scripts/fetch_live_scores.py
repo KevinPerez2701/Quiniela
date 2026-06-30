@@ -106,20 +106,39 @@ def main():
         if not num:
             skipped_unmapped.append(f"{es_h} vs {es_a} (not in fixture)")
             continue
-        ft = (mt.get("score") or {}).get("fullTime") or {}
-        gh, ga = ft.get("home"), ft.get("away")
+        sc = mt.get("score") or {}
+        dur = sc.get("duration")
+        reg = sc.get("regularTime") or {}
+        et = sc.get("extraTime") or {}
+        ft = sc.get("fullTime") or {}
+        pens = sc.get("penalties") or {}
+
+        # Game result = regulation + extra time (the score BEFORE any shootout).
+        # Knockout matches expose regularTime/extraTime; plain matches only carry
+        # fullTime, so fall back to it. (fullTime mixes in the shootout on knockout
+        # matches, which is exactly the bug we're fixing — never use it for those.)
+        if reg.get("home") is not None and reg.get("away") is not None:
+            gh = (reg.get("home") or 0) + (et.get("home") or 0)
+            ga = (reg.get("away") or 0) + (et.get("away") or 0)
+        else:
+            gh, ga = ft.get("home"), ft.get("away")
         if gh is None or ga is None:
             continue
+
+        entry = {"goal_home": int(gh), "goal_away": int(ga)}
+        if dur == "PENALTY_SHOOTOUT" and pens.get("home") is not None and pens.get("away") is not None:
+            entry["pen_home"] = int(pens["home"])
+            entry["pen_away"] = int(pens["away"])
 
         key = str(num)
         existing = scores.get(key)
         if FILL_IF_EMPTY and existing is not None:
             continue
-        if existing and existing.get("goal_home") == gh and existing.get("goal_away") == ga:
+        if existing == entry:
             continue
 
-        changes.append((int(num), es_h, es_a, int(gh), int(ga), existing))
-        scores[key] = {"goal_home": int(gh), "goal_away": int(ga)}
+        changes.append((int(num), es_h, es_a, entry, existing))
+        scores[key] = entry
 
     if skipped_unmapped:
         print(f"Skipped {len(skipped_unmapped)} unmapped/placeholder match(es): "
@@ -129,10 +148,16 @@ def main():
         print("No new FINISHED results to apply — scores.json unchanged.")
         return
 
+    def fmt(e):
+        s = f"{e['goal_home']}-{e['goal_away']}"
+        if "pen_home" in e:
+            s += f" (pen {e['pen_home']}-{e['pen_away']})"
+        return s
+
     print(f"{len(changes)} FINISHED match(es) to apply:")
-    for num, h, a, gh, ga, existing in sorted(changes):
-        was = f"  (was {existing['goal_home']}-{existing['goal_away']})" if existing else ""
-        print(f"  #{num:>3}: {h} {gh}-{ga} {a}{was}")
+    for num, h, a, entry, existing in sorted(changes, key=lambda c: c[0]):
+        was = f"  (was {fmt(existing)})" if existing else ""
+        print(f"  #{num:>3}: {h} {fmt(entry)} {a}{was}")
 
     if DRY_RUN:
         print("DRY_RUN set — scores.json NOT written.")
