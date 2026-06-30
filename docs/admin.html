@@ -292,7 +292,14 @@ async function loadData() {
   originalScores = {};
   fixtureData.forEach(m => {
     if (m.goal_home !== null && m.goal_away !== null) {
-      originalScores[String(m.num)] = { goal_home: m.goal_home, goal_away: m.goal_away };
+      const entry = { goal_home: m.goal_home, goal_away: m.goal_away };
+      // Carry penalties through too, so the knockout PEN inputs reflect what's
+      // already saved (otherwise they'd always render empty).
+      if (m.pen_home != null && m.pen_away != null) {
+        entry.pen_home = m.pen_home;
+        entry.pen_away = m.pen_away;
+      }
+      originalScores[String(m.num)] = entry;
     }
   });
 
