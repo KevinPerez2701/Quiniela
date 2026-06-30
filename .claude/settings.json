@@ -19,7 +19,25 @@
       "Bash(rm -rf scripts/__pycache__)",
       "Bash(git push *)",
       "Bash(python -c \"import yaml,sys; yaml.safe_load\\(open\\('.github/workflows/auto-scores.yml',encoding='utf-8'\\)\\); print\\('auto-scores.yml: YAML OK'\\)\")",
-      "Bash(curl -sS -o /dev/null -w 'http_code=%{http_code}  ssl_verify=%{ssl_verify_result}  time=%{time_total}s\\\\n' https://dark-tooth-2a90.kevinperez9a.workers.dev)"
+      "Bash(curl -sS -o /dev/null -w 'http_code=%{http_code}  ssl_verify=%{ssl_verify_result}  time=%{time_total}s\\\\n' https://dark-tooth-2a90.kevinperez9a.workers.dev)",
+      "Bash(echo \"=== headers \\(X-Cache, Cache-Control\\) ===\")",
+      "Bash(curl -sS -D - -o C:/Users/kevin/AppData/Local/Temp/claude/c--Users-kevin-OneDrive-Documentos-GitHub-Quiniela/a79d3f41-c12a-4da8-92fb-c8584412f107/scratchpad/live_now.json https://dark-tooth-2a90.kevinperez9a.workers.dev)",
+      "Bash(node --check __TRACKED_VAR__/idx.js)",
+      "Bash(python -c \"import json;s=json.load\\(open\\('scores.json',encoding='utf-8'\\)\\);ks=sorted\\(int\\(k\\) for k in s\\);print\\('total:',len\\(ks\\),'| rango:',ks[0],'..',ks[-1],'| huecos:',[n for n in range\\(ks[0],ks[-1]+1\\) if str\\(n\\) not in s]\\)\")",
+      "Bash(curl -sS \"https://api.github.com/repos/KevinPerez2701/Quiniela/actions/workflows\")",
+      "Bash(python - C:/Users/kevin/AppData/Local/Temp/claude/c--Users-kevin-OneDrive-Documentos-GitHub-Quiniela/a79d3f41-c12a-4da8-92fb-c8584412f107/scratchpad)",
+      "Bash(curl -sS -H \"Cache-Control: no-cache\" \"https://api.github.com/repos/KevinPerez2701/Quiniela/actions/runs?event=workflow_dispatch&per_page=10&_=$\\(date +%s\\)\")",
+      "Bash(curl -sS \"https://api.github.com/repos/KevinPerez2701/Quiniela/actions/runs?event=workflow_dispatch&per_page=10&_=$\\(date +%s\\)\")",
+      "Bash(python -c \"import yaml; yaml.safe_load\\(open\\('.github/workflows/auto-scores.yml',encoding='utf-8'\\)\\); print\\('YAML OK'\\)\")",
+      "Bash(curl -sS https://dark-tooth-2a90.kevinperez9a.workers.dev)",
+      "Bash(curl -sS \"https://api.github.com/repos/KevinPerez2701/Quiniela/actions/workflows/auto-scores.yml/runs?per_page=3&_=$\\(date +%s\\)\")",
+      "Bash(tail -1)",
+      "Bash(date -u '+%Y-%m-%d %H:%M:%S')",
+      "Bash(echo \"Hora actual UTC: $\\(date -u '+%Y-%m-%d %H:%M:%S'\\)\")",
+      "Bash(echo \"\")",
+      "Bash(echo \"=== 1\\) Status REAL del #73 en la API \\(vía Worker\\) ===\")",
+      "Bash(curl -sS \"https://api.github.com/repos/KevinPerez2701/Quiniela/actions/workflows/auto-scores.yml/runs?per_page=5&_=$\\(date +%s\\)\")",
+      "Bash(curl -sS \"https://api.github.com/repos/KevinPerez2701/Quiniela/actions/runs?per_page=20&_=$\\(date +%s\\)\")"
     ]
   }
 }
