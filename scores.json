@@ -314,5 +314,9 @@
   "78": {
     "goal_home": 1,
     "goal_away": 2
+  },
+  "79": {
+    "goal_home": 2,
+    "goal_away": 0
   }
 }
