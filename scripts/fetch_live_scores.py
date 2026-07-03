@@ -29,6 +29,7 @@ placeholders (unresolved knockout slots) are skipped until both teams are real.
 import json
 import os
 import sys
+import time
 import urllib.request
 import urllib.error
 
@@ -45,10 +46,32 @@ FILL_IF_EMPTY = os.environ.get("FILL_IF_EMPTY", "1") != "0"
 DRY_RUN       = os.environ.get("DRY_RUN") == "1"
 
 
-def fetch_finished():
-    req = urllib.request.Request(API_URL, headers={"X-Auth-Token": TOKEN})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r).get("matches", [])
+class TransientAPIError(Exception):
+    """A temporary upstream problem (network blip, 429, 5xx). Safe to skip this
+    tick — the workflow runs again in ~5 minutes and will pick the data up."""
+
+
+def fetch_finished(retries=3, backoff=5):
+    last = None
+    for attempt in range(1, retries + 1):
+        try:
+            req = urllib.request.Request(API_URL, headers={"X-Auth-Token": TOKEN})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.load(r).get("matches", [])
+        except urllib.error.HTTPError as e:
+            # 429/5xx are transient; 4xx like 401/403/404 mean bad config — fail loud.
+            if e.code == 429 or e.code >= 500:
+                last = f"HTTP {e.code}"
+            else:
+                sys.exit(f"football-data.org HTTP {e.code}: "
+                         f"{e.read().decode('utf-8', 'replace')[:200]}")
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+            last = repr(e)
+        if attempt < retries:
+            print(f"  transient API error ({last}) — retry {attempt}/{retries - 1} "
+                  f"in {backoff}s…")
+            time.sleep(backoff)
+    raise TransientAPIError(last)
 
 
 def auto_enabled():
@@ -88,8 +111,12 @@ def main():
 
     try:
         matches = fetch_finished()
-    except urllib.error.HTTPError as e:
-        sys.exit(f"football-data.org HTTP {e.code}: {e.read().decode('utf-8', 'replace')[:200]}")
+    except TransientAPIError as e:
+        # Don't fail the workflow on a temporary upstream blip: the next 5-min
+        # tick will retry. Real config errors (401/403/404) still exit non-zero.
+        print(f"football-data.org unavailable after retries ({e}) — "
+              f"skipping this tick; next run will retry.")
+        return
 
     changes = []
     skipped_unmapped = []
