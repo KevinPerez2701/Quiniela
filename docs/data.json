@@ -1,5 +1,5 @@
 {
-  "updated_at": "02/07/2026 17:06 (hora Venezuela)",
+  "updated_at": "02/07/2026 21:16 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -1826,8 +1826,8 @@
       "group": null,
       "home": "Portugal",
       "away": "Croacia",
-      "goal_home": null,
-      "goal_away": null,
+      "goal_home": 2,
+      "goal_away": 2,
       "pen_home": null,
       "pen_away": null,
       "phase": "dieciseisavos",
