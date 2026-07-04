@@ -1168,6 +1168,7 @@ let dailyPredFilter = '';     // texto del buscador en Predicción del Día
 let dailyClasFilter = '';     // texto del buscador en Clas. del Día
 let PRED_RES_DAYS = [];       // días unificados (grupos + eliminatorias) para Predicción Resultados
 let KO_PRED_BY_MATCH = {};    // "Local-Visitante" -> [{jugador, parsed}] de fases eliminatorias
+let KO_PRED_BY_PHASE = {};    // fase KO ('dieciseisavos', ...) -> [{jugador, parsed}] de TODA la ronda
 
 // ── DETALLE JUGADOR ───────────────────────────────────────────────────────────
 let FIXTURE_ALL = [];         // lista completa de partidos del fixture
@@ -1313,13 +1314,20 @@ function isoToLabel(iso) {
 // son columnas de "equipos que avanzan" y se ignoran).
 function buildKnockoutIndex(data) {
   KO_PRED_BY_MATCH = {};
+  KO_PRED_BY_PHASE = {};
   (data.daily || []).forEach(day => {
     if (day.date) return;
     (day.matches || []).forEach((label, col) => {
       if (!(label in FIXTURE_BY_NAME)) return;
+      const phase = FIXTURE_BY_NAME[label].phase;
       const arr = KO_PRED_BY_MATCH[label] || (KO_PRED_BY_MATCH[label] = []);
+      const phArr = KO_PRED_BY_PHASE[phase] || (KO_PRED_BY_PHASE[phase] = []);
       (day.predictions || []).forEach(pr => {
-        arr.push({ jugador: pr.jugador, parsed: parseKoPred((pr.preds || [])[col]) });
+        const item = { jugador: pr.jugador, parsed: parseKoPred((pr.preds || [])[col]) };
+        arr.push(item);
+        // Índice por RONDA completa: permite validar un cruce dondequiera que el
+        // jugador lo haya puesto en su llave (igual que premia el Excel).
+        phArr.push(item);
       });
     });
   });
@@ -1500,8 +1508,9 @@ function renderPredResKo(el, entry) {
   note.className = 'pred-res-note';
   note.innerHTML = `Cruces de <strong>${h(entry.phaseLabel)}</strong>. Cuando el cruce ya está
     confirmado se listan los jugadores que <strong>acertaron el enfrentamiento</strong> y, entre ellos,
-    el desglose por resultado. Si el cruce aún no está definido, se muestra la distribución de cruces
-    pronosticados. El cruce cuenta sin importar quién va de local o visitante.`;
+    el desglose por resultado. Con un solo rival definido, la distribución se filtra a los cruces que
+    lo incluyen; sin rivales definidos se muestra la distribución completa. El cruce cuenta sin importar
+    quién va de local o visitante <strong>ni la posición de la llave</strong> (igual que el Excel).`;
   el.appendChild(note);
 
   const grid = document.createElement('div');
@@ -1509,19 +1518,37 @@ function renderPredResKo(el, entry) {
 
   entry.matches.forEach(m => {
     const label = m.home + '-' + m.away;
-    const validos = (KO_PRED_BY_MATCH[label] || []).filter(p => p.parsed && p.parsed.home && p.parsed.away);
-    const total = validos.length;
+    const slotPreds = (KO_PRED_BY_MATCH[label] || []).filter(p => p.parsed && p.parsed.home && p.parsed.away);
+    // Pronósticos de TODA la ronda: valida el cruce dondequiera que esté en la llave.
+    const phasePreds = (KO_PRED_BY_PHASE[m.phase] || []).filter(p => p.parsed && p.parsed.home && p.parsed.away);
     const titleHtml = `${h(m.home)} <span class="ko-vs">vs</span> ${h(m.away)}`;
-    const confirmed = !isPlaceholderTeam(m.home) && !isPlaceholderTeam(m.away);
+    const homeReal = !isPlaceholderTeam(m.home);
+    const awayReal = !isPlaceholderTeam(m.away);
+    const confirmed = homeReal && awayReal;
     const played = m.goal_home !== null && m.goal_away !== null;
+
+    // Dedupe por jugador (cada jugador tiene a lo sumo un cruce igual por ronda).
+    const uniqByPlayer = arr => {
+      const seen = new Set();
+      return arr.filter(p => !seen.has(p.jugador) && seen.add(p.jugador));
+    };
 
     let card;
     if (confirmed) {
-      // Quiénes acertaron el cruce (sin orden) y desglose por resultado entre ellos
+      // Quiénes acertaron el cruce (sin orden) en CUALQUIER posición de su llave
       const wantKey = cruceKey(m.home, m.away);
-      const aciertan = validos.filter(p => cruceKey(p.parsed.home, p.parsed.away) === wantKey);
+      const aciertan = uniqByPlayer(phasePreds.filter(p => cruceKey(p.parsed.home, p.parsed.away) === wantKey));
+      const totalPlayers = new Set(phasePreds.map(p => p.jugador)).size;
+      // Desglose normalizado a la orientación del partido real (quien puso el
+      // cruce invertido cuenta igual, con su signo/marcador volteados al mostrarse).
+      const normRes = p => {
+        if (p.parsed.home !== m.away) return p.parsed.res;
+        const sign = p.parsed.sign === '1' ? '2' : p.parsed.sign === '2' ? '1' : p.parsed.sign;
+        const sc = String(p.parsed.score).split('-');
+        return sign + '|' + (sc.length === 2 ? `${sc[1]}-${sc[0]}` : p.parsed.score);
+      };
       const byRes = {};
-      aciertan.forEach(p => { (byRes[p.parsed.res] = byRes[p.parsed.res] || []).push(p.jugador); });
+      aciertan.forEach(p => { const res = normRes(p); (byRes[res] = byRes[res] || []).push(p.jugador); });
       const rows = Object.entries(byRes).map(([res, names]) => {
         const [sign, score] = res.split('|');
         return { sign, label: score || '—', count: names.length, names };
@@ -1529,17 +1556,21 @@ function renderPredResKo(el, entry) {
       const realTxt = played ? ` · Real: ${m.goal_home}-${m.goal_away}` : '';
       card = buildKoCard({
         titleHtml,
-        subHtml: `<span class="ko-confirm">✓ Cruce confirmado</span> · ${aciertan.length}/${total} acertaron${realTxt}`,
+        subHtml: `<span class="ko-confirm">✓ Cruce confirmado</span> · ${aciertan.length}/${totalPlayers} acertaron${realTxt}`,
         chipsTitle: 'Acertaron el cruce',
         chips: aciertan.map(p => p.jugador),
         rowsTitle: 'Desglose por resultado',
         rows,
         emptyMsg: 'Nadie acertó el cruce',
       });
-    } else {
-      // Cruce aún sin definir: distribución de los cruces pronosticados
+    } else if (homeReal || awayReal) {
+      // Un rival ya definido: la distribución de la ronda se reduce a los cruces
+      // que incluyen a ese equipo (en cualquier posición de la llave).
+      const known = homeReal ? m.home : m.away;
+      const conRival = uniqByPlayer(phasePreds.filter(p =>
+        p.parsed.home === known || p.parsed.away === known));
       const byCruce = {};
-      validos.forEach(p => {
+      conRival.forEach(p => {
         const key = cruceKey(p.parsed.home, p.parsed.away);
         (byCruce[key] = byCruce[key] || []).push(p.jugador);
       });
@@ -1549,7 +1580,25 @@ function renderPredResKo(el, entry) {
       })).sort((a, b) => b.count - a.count);
       card = buildKoCard({
         titleHtml,
-        subHtml: `<span class="ko-pending">⏳ Cruce no confirmado</span> · ${total} pronóstico(s)`,
+        subHtml: `<span class="ko-pending">⏳ Rival definido: ${h(known)}</span> · ${conRival.length} pronóstico(s) lo incluyen`,
+        rowsTitle: `Cruces pronosticados con ${h(known)}`,
+        rows,
+        emptyMsg: `Nadie pronosticó un cruce con ${h(known)}`,
+      });
+    } else {
+      // Cruce aún sin definir: distribución de los cruces pronosticados en el slot
+      const byCruce = {};
+      slotPreds.forEach(p => {
+        const key = cruceKey(p.parsed.home, p.parsed.away);
+        (byCruce[key] = byCruce[key] || []).push(p.jugador);
+      });
+      const rows = Object.entries(byCruce).map(([key, names]) => ({
+        label: key.split(' ∧ ').join(' vs '),
+        count: names.length, names,
+      })).sort((a, b) => b.count - a.count);
+      card = buildKoCard({
+        titleHtml,
+        subHtml: `<span class="ko-pending">⏳ Cruce no confirmado</span> · ${slotPreds.length} pronóstico(s)`,
         rowsTitle: 'Distribución de cruces pronosticados',
         rows,
         emptyMsg: 'Sin pronósticos',
@@ -1896,8 +1945,9 @@ function renderPDKnockout(el, player) {
 
   el.insertAdjacentHTML('beforeend',
     `<div class="pd-note">Tus cruces pronosticados en cada ronda, el cruce real y los puntos que sumaste.
-     Un cruce suma <strong>si ese enfrentamiento ocurre en la ronda, sin importar la posición de la llave</strong>
-     (igual que el Excel). "No se dio": el cruce no ocurrió; "Por definirse": la ronda aún no tiene todos sus cruces.</div>`);
+     Tu cruce cuenta <strong>si ese enfrentamiento ocurre en la ronda, sin importar la posición de la llave</strong>
+     (igual que el Excel), y puntúa según el resultado: <strong>marcador exacto = 9, signo acertado = 3</strong>,
+     resultado errado = 0. "No se dio": el cruce no ocurrió; "Por definirse": la ronda aún no tiene todos sus cruces.</div>`);
 
   // Primera pasada: resolver cada fila contra el fixture y acumular métricas.
   let grand = 0, aciertos = 0, pendientes = 0;
@@ -1954,9 +2004,15 @@ function renderPDKnockout(el, player) {
         : `<span class="pred-null">—</span>`;
       let realHtml;
       if (r.real && r.real.goal_home !== null) {
-        const sign = signFromGoals(r.real.goal_home, r.real.goal_away);
-        realHtml = `<span class="score-real">${signBadge(sign)}${r.real.goal_home}-${r.real.goal_away}</span>` +
-                   penNote(r.real.pen_home, r.real.pen_away);
+        // Mostrar el resultado real en LA MISMA orientación del cruce del jugador:
+        // si puso "Japón-Brasil" y el partido fue "Brasil-Japón" 2-1, aquí se ve 1-2.
+        const flip = p && p.home === r.real.away;
+        const gh = flip ? r.real.goal_away : r.real.goal_home;
+        const ga = flip ? r.real.goal_home : r.real.goal_away;
+        const sign = signFromGoals(gh, ga);
+        realHtml = `<span class="score-real">${signBadge(sign)}${gh}-${ga}</span>` +
+                   penNote(flip ? r.real.pen_away : r.real.pen_home,
+                           flip ? r.real.pen_home : r.real.pen_away);
       } else if (r.real) {
         realHtml = `<span style="color:var(--gold);font-size:.78rem">⏳ Pendiente</span>`;
       } else if (r.defined) {
