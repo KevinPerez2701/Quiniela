@@ -1,5 +1,5 @@
 {
-  "updated_at": "07/07/2026 18:11 (hora Venezuela)",
+  "updated_at": "07/07/2026 18:52 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -1996,8 +1996,8 @@
       "away": "Colombia",
       "goal_home": 0,
       "goal_away": 0,
-      "pen_home": null,
-      "pen_away": null,
+      "pen_home": 4,
+      "pen_away": 3,
       "phase": "octavos",
       "phase_label": "1/8 de Final"
     },
@@ -2049,7 +2049,7 @@
       "matchday": "100",
       "group": null,
       "home": "Argentina",
-      "away": "W96",
+      "away": "Suiza",
       "goal_home": null,
       "goal_away": null,
       "pen_home": null,
@@ -21101,7 +21101,7 @@
         "Francia-Marruecos",
         "España-Bélgica",
         "Noruega-Inglaterra",
-        "Argentina-W96",
+        "Argentina-Suiza",
         "Semifinalista-1",
         "Semifinalista-2",
         "Semifinalista-3",
