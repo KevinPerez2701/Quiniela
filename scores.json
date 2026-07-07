@@ -387,6 +387,8 @@
   },
   "96": {
     "goal_home": 0,
-    "goal_away": 0
+    "goal_away": 0,
+    "pen_home": 4,
+    "pen_away": 3
   }
 }
