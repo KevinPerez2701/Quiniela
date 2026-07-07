@@ -1,5 +1,5 @@
 {
-  "updated_at": "07/07/2026 14:06 (hora Venezuela)",
+  "updated_at": "07/07/2026 18:11 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -1994,8 +1994,8 @@
       "group": null,
       "home": "Suiza",
       "away": "Colombia",
-      "goal_home": null,
-      "goal_away": null,
+      "goal_home": 0,
+      "goal_away": 0,
       "pen_home": null,
       "pen_away": null,
       "phase": "octavos",
