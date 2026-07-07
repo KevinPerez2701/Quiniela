@@ -535,6 +535,78 @@
     }
     .pd-table tfoot td.pd-total-val { font-size: 1.05rem; }
 
+    /* ── RECTA FINAL (proyección de escenarios) ── */
+    .esc-wrap { padding: 14px; }
+    .esc-note {
+      background: #f7f9ff; border: 1px solid var(--border); border-radius: 10px;
+      padding: 10px 14px; font-size: .8rem; color: var(--text); margin-bottom: 14px;
+    }
+    .esc-note strong { color: var(--navy); }
+    .esc-tiles { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+    .esc-tile {
+      flex: 1 1 120px; min-width: 110px; text-align: center;
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .esc-tile .v { font-size: 1.4rem; font-weight: 800; color: var(--navy); font-variant-numeric: tabular-nums; }
+    .esc-tile .l { font-size: .64rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; }
+    .esc-h2 { color: var(--navy); font-size: 1rem; font-weight: 800; margin: 20px 0 4px; }
+    .esc-hint { font-size: .76rem; color: var(--muted); margin-bottom: 10px; }
+    .esc-callout {
+      border: 1px solid var(--border); border-left: 5px solid #c0392b; border-radius: 10px;
+      background: #fdf3f2; padding: 10px 14px; margin-bottom: 6px;
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .esc-chip {
+      display: inline-block; background: var(--light); border-radius: 6px;
+      padding: 2px 9px; font-size: .78rem; white-space: nowrap;
+    }
+    .esc-chip small { color: var(--muted); }
+    .esc-chip.dead { text-decoration: line-through; color: #55627e; background: transparent; border: 1px dashed var(--border); }
+    .esc-chip.dead.nostrike { text-decoration: none; }
+    .esc-pill {
+      display: inline-block; font-size: .66rem; font-weight: 800; letter-spacing: .04em;
+      border-radius: 999px; padding: 2px 9px; white-space: nowrap;
+    }
+    .esc-pill.ok  { color: #0d6a34; background: #e0f5e8; }
+    .esc-pill.out { color: #c0392b; background: #fbe4e1; }
+    .esc-bar { position: relative; background: #e8edf8; border-radius: 5px; height: 16px; min-width: 120px; }
+    .esc-bar-fill { background: var(--green); height: 100%; border-radius: 5px; }
+    .esc-bar-num {
+      position: absolute; right: 5px; top: 0; font-size: .68rem; line-height: 16px;
+      color: var(--muted); font-variant-numeric: tabular-nums;
+    }
+    /* Cuando el relleno alcanza el número, texto blanco para que siga legible */
+    .esc-bar-num.onfill { color: #fff; font-weight: 700; }
+    details.esc-player {
+      background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+      margin: 6px 0;
+    }
+    details.esc-player[open] { box-shadow: 0 2px 10px rgba(26,46,90,.12); }
+    details.esc-player.out { opacity: .75; }
+    details.esc-player summary {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      cursor: pointer; padding: 9px 12px; list-style: none;
+    }
+    details.esc-player summary::-webkit-details-marker { display: none; }
+    details.esc-player summary::after { content: '▾'; color: var(--muted); font-size: .8rem; transition: transform .15s; }
+    details.esc-player[open] summary::after { transform: rotate(180deg); }
+    .esc-pnum { color: var(--muted); font-size: .78rem; min-width: 2ch; font-variant-numeric: tabular-nums; }
+    .esc-pname { font-weight: 700; color: var(--navy); flex: 1 1 150px; font-size: .85rem; }
+    .esc-pstats { display: flex; gap: 12px; font-size: .78rem; font-variant-numeric: tabular-nums; }
+    .esc-pstats .pt { color: var(--muted); }
+    .esc-pbody { padding: 4px 14px 14px; border-top: 1px solid #e2e8f4; font-size: .8rem; }
+    .esc-pbody h4 {
+      font-size: .68rem; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--muted); margin: 12px 0 5px;
+    }
+    .esc-need { background: #fdf8e3; border-radius: 8px; padding: 8px 11px; margin-top: 10px; font-size: .78rem; }
+    .esc-need.out { background: #fbe4e1; }
+    .esc-kv { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0; border-bottom: 1px dashed #e2e8f4; flex-wrap: wrap; }
+    .esc-kv > span:first-child { color: var(--muted); }
+    .esc-foot { font-size: .72rem; color: var(--muted); margin-top: 16px; line-height: 1.5; }
+    .esc-foot li { margin: 3px 0 3px 16px; }
+
     /* ── Ajustes táctiles / móvil ── */
     @media (max-width: 640px) {
       th, td { padding: 8px 7px; }
@@ -567,6 +639,7 @@
     <button class="tab-btn" data-tab="daily-pred">⚽ Predicción del Día</button>
     <button class="tab-btn" data-tab="pred-res">🎯 Predicción Resultados</button>
     <button class="tab-btn" data-tab="daily-clas">📊 Clas. del Día</button>
+    <button class="tab-btn" data-tab="escenarios">🔮 Recta Final</button>
   </div>
 
   <div class="card">
@@ -622,6 +695,11 @@
       <div id="daily-clas-content"></div>
     </div>
 
+    <!-- RECTA FINAL (proyección de escenarios sobre los partidos pendientes) -->
+    <div class="tab-panel" id="tab-escenarios">
+      <div id="escenarios-content"></div>
+    </div>
+
     <div class="footer" id="footer"></div>
   </div>
 </div>
@@ -636,6 +714,8 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
     // Marcador en vivo: poll solo mientras "Partidos del Día" esté abierto.
     if (btn.dataset.tab === 'partidos-dia') startLivePolling(); else stopLivePolling();
+    // Recta Final: la proyección se calcula la primera vez que se abre la pestaña.
+    if (btn.dataset.tab === 'escenarios') ensureEscenarios();
   });
 });
 
@@ -2176,6 +2256,489 @@ function honorLabel(label) {
     .trim();
 }
 
+// ── RECTA FINAL: proyección de escenarios sobre los partidos KO pendientes ────
+// Enumera todas las combinaciones de ganadores de los partidos pendientes del
+// fixture (con Suiza-Colombia + cuartos + semis + 3º + final son 2^9 = 512) y
+// calcula por jugador: piso (solo equipos clasificados + cuadro de honor de
+// equipos), proyección con aciertos de signo, techo (todo exacto) y si sigue
+// vivo matemáticamente. Se recalcula solo con cada actualización de data.json:
+// al jugarse un partido deja de ser pendiente y los escenarios se reducen.
+//
+// Reglas (validadas contra el Excel y contra los pagos reales de 16avos/8vos):
+//   cruce: vale si el par ocurre en la ronda (sin importar llave ni orden);
+//   empate+penales => signo X (predecir al que avanza con 1/2 da 0);
+//   botas y balones NO se proyectan (premios individuales, no de resultados).
+const ESC_SIGN  = { dieciseisavos: 3, octavos: 4, cuartos: 5, semis: 6, tercero: 6, final: 7 };
+const ESC_EXACT = { dieciseisavos: 9, octavos: 12, cuartos: 15, semis: 18, tercero: 18, final: 21 };
+// Los PARTICIPANTES de un partido de fase X son "clasificados a X":
+const ESC_SEG_OF_PHASE = { dieciseisavos: 'r32', octavos: 'r16', cuartos: 'r8', semis: 'r4', tercero: 'r34', final: 'rfinal' };
+const ESC_EQ_PTS = { r32: 3, r16: 4, r8: 5, r4: 7, r34: 5, rfinal: 10 };
+const ESC_HONOR = { camp: 20, sub: 10, ter: 5 };
+const ESC_SEG_LABEL = { r8: 'Cuartofinalistas pendientes', r4: 'Semifinalistas', r34: 'Juegan el 3er puesto', rfinal: 'Finalistas' };
+let ESC_STATE = null;
+
+function ensureEscenarios() {
+  const el = document.getElementById('escenarios-content');
+  if (!el || ESC_STATE) return;
+  if (!FIXTURE_ALL.length) { el.innerHTML = emptyState('Cargando datos…', '⏳'); return; }
+  el.innerHTML = '<div style="text-align:center;padding:60px;color:var(--muted)"><div class="spinner"></div>Calculando escenarios…</div>';
+  setTimeout(() => {
+    try { ESC_STATE = escCompute(); renderEscenarios(); }
+    catch (e) { el.innerHTML = emptyState('No se pudo calcular la proyección: ' + e.message, '⚠️'); }
+  }, 30);
+}
+
+// Ganador de un partido ya jugado (empate => define el ganador por penales).
+function escWinnerOf(m) {
+  if (m.goal_home == null || m.goal_away == null) return null;
+  if (m.goal_home !== m.goal_away) return m.goal_home > m.goal_away ? m.home : m.away;
+  if (m.pen_home != null && m.pen_away != null && m.pen_home !== m.pen_away)
+    return m.pen_home > m.pen_away ? m.home : m.away;
+  return null;
+}
+
+function escCompute() {
+  const norm = s => (s == null ? '' : String(s).trim());
+  const byNum = {};
+  FIXTURE_ALL.forEach(m => { if (m.num != null) byNum[m.num] = m; });
+  const pending = FIXTURE_ALL
+    .filter(m => m.phase !== 'grupos' && (m.goal_home == null || m.goal_away == null))
+    .sort((a, b) => (a.num || 0) - (b.num || 0));
+  if (!pending.length) return { done: true };
+  if (pending.length > 12) throw new Error('hay demasiados partidos pendientes para enumerar escenarios');
+
+  // 'W97' / 'L101' -> equipo real, usando resultados jugados o el escenario en curso
+  function resolveTeam(t, parts, winners) {
+    const mm = /^([WL])(\d+)$/.exec(norm(t));
+    if (!mm) return norm(t);
+    const ref = +mm[2], isW = mm[1] === 'W';
+    if (winners[ref] != null) {
+      const w = winners[ref], pr = parts[ref];
+      return isW ? w : (pr[0] === w ? pr[1] : pr[0]);
+    }
+    const m = byNum[ref];
+    if (m) {
+      const w = escWinnerOf(m);
+      if (w) return isW ? w : (w === m.home ? m.away : m.home);
+    }
+    return null;
+  }
+
+  // ── Enumeración de escenarios (ganador de cada partido pendiente) ──
+  const scenarios = [];
+  (function rec(i, parts, winners) {
+    if (i === pending.length) {
+      scenarios.push({ parts: Object.assign({}, parts), winners: Object.assign({}, winners) });
+      return;
+    }
+    const m = pending[i];
+    const A = resolveTeam(m.home, parts, winners);
+    const B = resolveTeam(m.away, parts, winners);
+    if (!A || !B) throw new Error('no se pudo definir ' + m.home + '-' + m.away +
+      ' — probablemente falta cargar los penales de un empate; la vista se corregirá sola al completarse el resultado');
+    parts[m.num] = [A, B];
+    [A, B].forEach(w => { winners[m.num] = w; rec(i + 1, parts, winners); });
+    delete winners[m.num]; delete parts[m.num];
+  })(0, {}, {});
+  const N = scenarios.length;
+
+  // ── Datos por jugador: picks sin pagar, honor y pool de cruces por fase ──
+  const prep = ALL_PLAYERS.map(name => {
+    const clas = CLAS_BY_NAME[name] || {};
+    const qd = PLAYER_QUAL_DATA[name] || {};
+    const qual = {};
+    Object.keys(ESC_EQ_PTS).forEach(seg => {
+      qual[seg] = (((qd[seg] || {}).items) || [])
+        .filter(it => (it.pts || 0) === 0 && it.predTeam)
+        .map(it => norm(it.predTeam));
+    });
+    const honor = { camp: null, sub: null, ter: null };
+    ((((qd.honor || {}).items) || [])).forEach(it => {
+      if ((it.pts || 0) > 0 || !it.predTeam) return;
+      const lbl = String(it.label);
+      if (/Bota|Bal/i.test(lbl)) return;                     // premios individuales: fuera
+      if (/Subcampe/i.test(lbl)) honor.sub = norm(it.predTeam);
+      else if (/Campe/i.test(lbl)) honor.camp = norm(it.predTeam);
+      else if (/puesto/i.test(lbl)) honor.ter = norm(it.predTeam);
+    });
+    const cruces = {};
+    Object.keys(KO_PRED_BY_PHASE).forEach(ph => {
+      (KO_PRED_BY_PHASE[ph] || []).forEach(it => {
+        if (norm(it.jugador) !== name || !it.parsed || !it.parsed.away) return;
+        const sc = /^(\d+)-(\d+)$/.exec(norm(it.parsed.score));
+        (cruces[ph] = cruces[ph] || []).push({
+          key: cruceKey(it.parsed.home, it.parsed.away),
+          home: norm(it.parsed.home), away: norm(it.parsed.away),
+          sign: norm(it.parsed.sign),
+          gh: sc ? +sc[1] : null, ga: sc ? +sc[2] : null,
+          raw: it.parsed.home + '-' + it.parsed.away + ' · ' + it.parsed.sign + ' | ' + it.parsed.score,
+        });
+      });
+    });
+    return { name, current: clas.puntos || 0, pos: clas.pos || 0, qual, honor, cruces };
+  });
+  const P = prep.length;
+
+  // ── Evaluación por (jugador, escenario) ──
+  const finalM = pending.find(m => m.phase === 'final') || null;
+  const tercM  = pending.find(m => m.phase === 'tercero') || null;
+  function findCruce(p, phase, key) {
+    const list = p.cruces[phase];
+    if (!list) return null;
+    for (const c of list) if (c.key === key) return c;
+    return null;
+  }
+  function predWinner(c) { return c.sign === '1' ? c.home : c.sign === '2' ? c.away : null; }
+
+  const floors = [], mids = [], maxs = [];
+  for (let pi = 0; pi < P; pi++) { floors.push(new Array(N)); mids.push(new Array(N)); maxs.push(new Array(N)); }
+  for (let si = 0; si < N; si++) {
+    const sc = scenarios[si];
+    for (let pi = 0; pi < P; pi++) {
+      const p = prep[pi];
+      let eqh = 0, sign = 0, exact = 0;
+      for (const m of pending) {
+        const parts = sc.parts[m.num], w = sc.winners[m.num];
+        const seg = ESC_SEG_OF_PHASE[m.phase];
+        // equipos clasificados: solo cupos que venían de placeholder (los cupos
+        // con equipo ya conocido en el fixture ya fueron pagados por el Excel)
+        if (seg && p.qual[seg] && p.qual[seg].length) {
+          if (isPlaceholderTeam(m.home) && p.qual[seg].indexOf(parts[0]) >= 0) eqh += ESC_EQ_PTS[seg];
+          if (isPlaceholderTeam(m.away) && p.qual[seg].indexOf(parts[1]) >= 0) eqh += ESC_EQ_PTS[seg];
+        }
+        if (m.phase === 'final') {
+          const loser = parts[0] === w ? parts[1] : parts[0];
+          if (p.honor.camp === w) eqh += ESC_HONOR.camp;
+          if (p.honor.sub === loser) eqh += ESC_HONOR.sub;
+        } else if (m.phase === 'tercero') {
+          if (p.honor.ter === w) eqh += ESC_HONOR.ter;
+        }
+        const c = findCruce(p, m.phase, cruceKey(parts[0], parts[1]));
+        if (c) {
+          const pw = predWinner(c);
+          // El exacto solo es alcanzable si el marcador predicho existe y es
+          // coherente con el signo (un X con marcador no empatado nunca paga exacto).
+          if (pw === w) {
+            sign += ESC_SIGN[m.phase];
+            exact += (c.gh != null ? ESC_EXACT : ESC_SIGN)[m.phase];
+          } else if (pw === null) {
+            exact += (c.gh != null && c.gh === c.ga ? ESC_EXACT : ESC_SIGN)[m.phase]; // X: empate+penales
+          }
+        }
+      }
+      floors[pi][si] = p.current + eqh;
+      mids[pi][si]   = p.current + eqh + sign;
+      maxs[pi][si]   = p.current + eqh + exact;
+    }
+  }
+
+  // ── Líderes por escenario (nivel signo) ──
+  const leadShared = new Array(P).fill(0), leadStrict = new Array(P).fill(0);
+  const leadersByScenario = [];
+  for (let si = 0; si < N; si++) {
+    let best = -Infinity;
+    for (let pi = 0; pi < P; pi++) if (mids[pi][si] > best) best = mids[pi][si];
+    const leaders = [];
+    for (let pi = 0; pi < P; pi++) if (mids[pi][si] === best) leaders.push(pi);
+    leadersByScenario.push(leaders);
+    leaders.forEach(pi => leadShared[pi]++);
+    if (leaders.length === 1) leadStrict[leaders[0]]++;
+  }
+
+  // ── Vivo/eliminado: test de factibilidad con marcadores consistentes ──
+  // El candidato fija sus cruces consistentes en exacto (eso puede FORZAR
+  // puntos a rivales con el mismo cruce); en los partidos libres se prueba,
+  // por partido, marcador raro sin empate vs empate raro con penales.
+  function escFeasible(pi, si) {
+    const p = prep[pi], sc = scenarios[si];
+    const fixed = [], free = [];
+    let tx = floors[pi][si];
+    pending.forEach(m => {
+      const parts = sc.parts[m.num], w = sc.winners[m.num];
+      const key = cruceKey(parts[0], parts[1]);
+      const c = findCruce(p, m.phase, key);
+      const pw = c ? predWinner(c) : undefined;
+      // Solo se fija el marcador si el exacto es alcanzable (marcador presente y
+      // coherente con el signo); si no, el partido queda libre (conservador).
+      const exactable = c && (pw === w ? c.gh != null
+        : (pw === null && c.gh != null && c.gh === c.ga));
+      if (exactable) {
+        tx += ESC_EXACT[m.phase];
+        fixed.push({ m, key, w, draw: pw === null, s: c.gh,
+                     wg: pw === c.home ? c.gh : c.ga, lg: pw === c.home ? c.ga : c.gh });
+      } else free.push({ m, key, w });
+    });
+    const base = new Array(P).fill(0);
+    for (let y = 0; y < P; y++) {
+      if (y === pi) continue;
+      let b = floors[y][si];
+      for (const f of fixed) {
+        const cy = findCruce(prep[y], f.m.phase, f.key);
+        if (!cy) continue;
+        const pwy = predWinner(cy);
+        if (f.draw) {
+          if (pwy === null) b += (cy.gh != null && cy.gh === cy.ga && cy.gh === f.s)
+            ? ESC_EXACT[f.m.phase] : ESC_SIGN[f.m.phase];
+        } else if (pwy === f.w) {
+          const wg = pwy === cy.home ? cy.gh : cy.ga, lg = pwy === cy.home ? cy.ga : cy.gh;
+          b += (wg === f.wg && lg === f.lg) ? ESC_EXACT[f.m.phase] : ESC_SIGN[f.m.phase];
+        }
+      }
+      base[y] = b;
+    }
+    const opts = [];
+    for (const fr of free) {
+      const ca = {}, cb = {};
+      let any = false;
+      for (let y = 0; y < P; y++) {
+        if (y === pi) continue;
+        const cy = findCruce(prep[y], fr.m.phase, fr.key);
+        if (!cy) continue;
+        const pwy = predWinner(cy);
+        const av = pwy === fr.w ? ESC_SIGN[fr.m.phase] : 0;
+        const bv = pwy === null ? ESC_SIGN[fr.m.phase] : 0;
+        if (av || bv) { ca[y] = av; cb[y] = bv; any = true; }
+      }
+      if (any) opts.push([ca, cb]);
+    }
+    if (opts.length > 12) return true; // salvaguarda (no debería ocurrir)
+    for (let mask = 0; mask < (1 << opts.length); mask++) {
+      let ok = true;
+      for (let y = 0; y < P && ok; y++) {
+        if (y === pi) continue;
+        let t = base[y];
+        for (let k = 0; k < opts.length; k++) {
+          const src = ((mask >> k) & 1) ? opts[k][1] : opts[k][0];
+          if (src[y]) t += src[y];
+        }
+        if (t > tx) ok = false;
+      }
+      if (ok) return true;
+    }
+    return false;
+  }
+
+  const alive = new Array(P).fill(false);
+  const example = new Array(P).fill(null);
+  for (let pi = 0; pi < P; pi++) {
+    for (let si = 0; si < N; si++) {
+      let rivalFloor = -Infinity;
+      for (let y = 0; y < P; y++) if (y !== pi && floors[y][si] > rivalFloor) rivalFloor = floors[y][si];
+      if (maxs[pi][si] < rivalFloor) continue;         // ni en el mejor caso alcanza
+      if (escFeasible(pi, si)) { alive[pi] = true; example[pi] = scenarios[si]; break; }
+    }
+  }
+
+  // ── Qué sigue posible (para marcar picks/cruces vivos) ──
+  const possibleBySeg = {}, possiblePairs = {};
+  let campSet = {}, subSet = {}, terSet = {};
+  scenarios.forEach(sc => {
+    pending.forEach(m => {
+      const parts = sc.parts[m.num], w = sc.winners[m.num];
+      const seg = ESC_SEG_OF_PHASE[m.phase];
+      if (seg) {
+        const set = possibleBySeg[seg] = possibleBySeg[seg] || {};
+        if (isPlaceholderTeam(m.home)) set[parts[0]] = true;
+        if (isPlaceholderTeam(m.away)) set[parts[1]] = true;
+      }
+      (possiblePairs[m.phase] = possiblePairs[m.phase] || {})[cruceKey(parts[0], parts[1])] = true;
+      if (m.phase === 'final') { campSet[w] = true; subSet[parts[0] === w ? parts[1] : parts[0]] = true; }
+      if (m.phase === 'tercero') terSet[w] = true;
+    });
+  });
+
+  // ── Condiciones de los escenarios donde lidera ──
+  const conds = new Array(P).fill(null);
+  for (let pi = 0; pi < P; pi++) {
+    const idxs = [];
+    for (let si = 0; si < N; si++) if (leadersByScenario[si].indexOf(pi) >= 0) idxs.push(si);
+    if (!idxs.length) continue;
+    const fixedW = [];
+    pending.forEach(m => {
+      const vals = {};
+      idxs.forEach(si => { vals[scenarios[si].winners[m.num]] = true; });
+      const keys = Object.keys(vals);
+      if (keys.length === 1) fixedW.push({ m, team: keys[0] });
+    });
+    const champDist = {};
+    if (finalM) idxs.forEach(si => {
+      const c = scenarios[si].winners[finalM.num];
+      champDist[c] = (champDist[c] || 0) + 1;
+    });
+    conds[pi] = { n: idxs.length, fixedW, champDist };
+  }
+
+  // ── Tabla "si el campeón es…" ──
+  let champTable = null;
+  if (finalM) {
+    champTable = {};
+    for (let si = 0; si < N; si++) {
+      const c = scenarios[si].winners[finalM.num];
+      const t = champTable[c] = champTable[c] || { total: 0, leaders: {} };
+      t.total++;
+      leadersByScenario[si].forEach(pi => { t.leaders[prep[pi].name] = (t.leaders[prep[pi].name] || 0) + 1; });
+    }
+  }
+
+  const players = prep.map((p, pi) => ({
+    name: p.name, current: p.current, pos: p.pos,
+    piso: Math.min.apply(null, floors[pi]),
+    techo: Math.max.apply(null, maxs[pi]),
+    leadShared: leadShared[pi], leadStrict: leadStrict[pi],
+    vivo: alive[pi], example: example[pi], cond: conds[pi],
+    qual: p.qual, honor: p.honor,
+    crucesVivos: Object.keys(p.cruces).reduce((acc, ph) => {
+      const alivePairs = possiblePairs[ph] || {};
+      const seen = {};
+      acc[ph] = p.cruces[ph].filter(c => alivePairs[c.key] && !seen[c.key] && (seen[c.key] = true));
+      return acc;
+    }, {}),
+  })).sort((a, b) => b.current - a.current || a.name.localeCompare(b.name, 'es'));
+
+  const phaseLabel = {};
+  pending.forEach(m => { phaseLabel[m.phase] = m.phase_label || m.phase; });
+
+  return {
+    done: false, N, pending, players, champTable,
+    possibleBySeg, campSet, subSet, terSet, phaseLabel,
+  };
+}
+
+function escPhaseName(m) { return m.phase_label || m.phase; }
+
+function renderEscenarios() {
+  const el = document.getElementById('escenarios-content');
+  const S = ESC_STATE;
+  if (!S) return;
+  if (S.done) {
+    el.innerHTML = emptyState('El mundial ya terminó: no quedan partidos por jugar. La clasificación es definitiva.', '🏆');
+    return;
+  }
+  const vivos = S.players.filter(p => p.vivo);
+  const elims = S.players.filter(p => !p.vivo);
+  const maxLead = Math.max.apply(null, S.players.map(p => p.leadShared).concat([1]));
+
+  let html = '<div class="esc-wrap">';
+  html += `<div class="esc-note">Con <strong>${S.pending.length} partido(s) pendiente(s)</strong> hay
+    <strong>${S.N} escenarios</strong> posibles de ganadores. Esta vista recorre todos y proyecta, por jugador,
+    su <strong>techo</strong> (acierta todo lo que le queda con marcador exacto), en cuántos escenarios queda de
+    <strong>líder</strong> (acertando solo el signo) y si sigue <strong>vivo matemáticamente</strong>.
+    Se actualiza sola con cada resultado. Botas y balones no se proyectan (premios individuales);
+    del cuadro de honor se cuentan Campeón (20), Subcampeón (10) y 3er puesto (5).</div>`;
+
+  html += '<div class="esc-tiles">'
+    + `<div class="esc-tile"><div class="v">${S.pending.length}</div><div class="l">Por jugar</div></div>`
+    + `<div class="esc-tile"><div class="v">${S.N}</div><div class="l">Escenarios</div></div>`
+    + `<div class="esc-tile"><div class="v">${vivos.length}</div><div class="l">Siguen vivos</div></div>`
+    + `<div class="esc-tile"><div class="v">${elims.length}</div><div class="l">Eliminados</div></div>`
+    + '</div>';
+
+  if (elims.length) {
+    html += '<div class="esc-h2">❌ Ya no pueden ganar la quiniela</div>'
+      + '<div class="esc-hint">Eliminación matemática: ni acertando todo lo que les queda (con marcador exacto) '
+      + 'alcanzan al rival que quedaría arriba en ese mismo escenario.</div>'
+      + '<div class="esc-callout">'
+      + elims.map(p => `<span class="esc-chip dead nostrike">${h(p.name)} <small>${p.current} pts · techo ${p.techo}</small></span>`).join('')
+      + '</div>';
+  }
+
+  html += '<div class="esc-h2">Tabla con proyecciones</div>'
+    + '<div class="esc-hint">«Lidera» cuenta escenarios donde termina de primero o empatado en la cima, '
+    + 'acertando solo signos (sin bonos de exacto y asumiendo que ningún partido termina en empate; '
+    + 'un empate real paga el signo X): mide cobertura de escenarios, no probabilidad.</div>'
+    + '<div class="table-wrap"><table><thead><tr class="colrow">'
+    + '<th>#</th><th class="left">Jugador</th><th>Puntos</th><th>Techo</th>'
+    + `<th>Lidera (de ${S.N})</th><th>Estado</th></tr></thead><tbody>`;
+  S.players.forEach(p => {
+    const w = Math.round(1000 * p.leadShared / maxLead) / 10;
+    html += `<tr><td>${p.pos}</td><td class="left player-name">${h(p.name)}</td>`
+      + `<td><strong>${p.current}</strong></td><td>${p.techo}</td>`
+      + `<td class="left"><div class="esc-bar"><div class="esc-bar-fill" style="width:${w}%"></div>`
+      + `<span class="esc-bar-num${w > 55 ? ' onfill' : ''}">${p.leadShared}</span></div></td>`
+      + `<td>${p.vivo ? '<span class="esc-pill ok">VIVO</span>' : '<span class="esc-pill out">ELIMINADO</span>'}</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+
+  if (S.champTable) {
+    html += '<div class="esc-h2">🏆 Si el campeón es… ¿quién gana la quiniela?</div>'
+      + '<div class="esc-hint">Por cada posible campeón, quién lidera más escenarios (a nivel de signo).</div>'
+      + '<div class="table-wrap"><table><thead><tr class="colrow">'
+      + '<th class="left">Campeón</th><th>Escenarios</th><th class="left">Líderes más frecuentes</th></tr></thead><tbody>';
+    Object.keys(S.champTable).sort((a, b) => S.champTable[b].total - S.champTable[a].total || a.localeCompare(b, 'es'))
+      .forEach(c => {
+        const t = S.champTable[c];
+        const tops = Object.keys(t.leaders).sort((x, y) => t.leaders[y] - t.leaders[x]).slice(0, 3)
+          .map(nm => `<span class="esc-chip">${h(nm)} <small>${t.leaders[nm]}/${t.total}</small></span>`).join(' ');
+        html += `<tr><td class="left player-name">${h(c)}</td><td>${t.total}</td><td class="left">${tops || '—'}</td></tr>`;
+      });
+    html += '</tbody></table></div>';
+  }
+
+  html += '<div class="esc-h2">Jugador por jugador</div>'
+    + '<div class="esc-hint">Toca un jugador para ver qué le queda vivo y qué necesita.</div>';
+  S.players.forEach(p => { html += escPlayerCard(p, S); });
+
+  html += '<ul class="esc-foot">'
+    + '<li>El cruce pronosticado vale si ese enfrentamiento ocurre en la ronda, sin importar la posición de la llave ni el orden (así premia el Excel).</li>'
+    + '<li>Empate + penales cuenta como signo X: predecir con 1/2 al equipo que avanza por penales da 0 en ese partido.</li>'
+    + '<li>Los escenarios se tratan como igualmente posibles: los conteos miden cobertura, no probabilidad futbolística.</li>'
+    + '<li>Si se contaran botas y balones (hasta 36 pts extra), algún veredicto de eliminación podría cambiar.</li>'
+    + '</ul>';
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function escPlayerCard(p, S) {
+  const chips = (teams, aliveSet) => teams.length
+    ? teams.map(t => `<span class="esc-chip${aliveSet[t] ? '' : ' dead'}">${h(t)}</span>`).join(' ')
+    : '<span style="color:var(--muted)">—</span>';
+  const segRows = ['r8', 'r4', 'r34', 'rfinal']
+    .filter(seg => (p.qual[seg] || []).length)
+    .map(seg => `<div class="esc-kv"><span>${ESC_SEG_LABEL[seg]} <small>(+${ESC_EQ_PTS[seg]} c/u)</small></span>`
+      + `<span>${chips(p.qual[seg], S.possibleBySeg[seg] || {})}</span></div>`).join('');
+  const honorChips = [
+    p.honor.camp ? `<span class="esc-chip${S.campSet[p.honor.camp] ? '' : ' dead'}">🏆 ${h(p.honor.camp)}</span>` : '',
+    p.honor.sub ? `<span class="esc-chip${S.subSet[p.honor.sub] ? '' : ' dead'}">🥈 ${h(p.honor.sub)}</span>` : '',
+    p.honor.ter ? `<span class="esc-chip${S.terSet[p.honor.ter] ? '' : ' dead'}">🥉 ${h(p.honor.ter)}</span>` : '',
+  ].filter(Boolean).join(' ') || '<span style="color:var(--muted)">— (ya pagado o sin pick)</span>';
+  const honorRow = `<div class="esc-kv"><span>Cuadro de honor</span><span>${honorChips}</span></div>`;
+  const crucesRows = Object.keys(p.crucesVivos)
+    .filter(ph => p.crucesVivos[ph].length)
+    .map(ph => `<div class="esc-kv"><span>Cruce ${h(S.phaseLabel[ph] || ph)} <small>(${ESC_SIGN[ph]}/${ESC_EXACT[ph]})</small></span>`
+      + `<span>${p.crucesVivos[ph].map(c => `<span class="esc-chip">${h(c.raw)}</span>`).join(' ')}</span></div>`)
+    .join('') || '<div class="esc-kv"><span>Cruces pendientes que aún pueden ocurrir</span><span style="color:var(--muted)">ninguno</span></div>';
+
+  let need;
+  if (!p.vivo) {
+    need = `<div class="esc-need out">Eliminado: incluso acertando todo lo que le queda (techo ${p.techo}), siempre hay un rival por encima.</div>`;
+  } else if (p.cond) {
+    const fixed = p.cond.fixedW.map(f => `<strong>${h(f.team)}</strong> gana ${h(escPhaseName(f.m)).toLowerCase()}`).join(' · ');
+    const champs = Object.keys(p.cond.champDist || {})
+      .sort((a, b) => p.cond.champDist[b] - p.cond.champDist[a]).slice(0, 4)
+      .map(c => `${h(c)} (${p.cond.champDist[c]})`).join(', ');
+    need = `<div class="esc-need">Lidera en <strong>${p.cond.n} de ${S.N}</strong> escenarios (a nivel de signo).`
+      + (fixed ? ` En todos ellos: ${fixed}.` : ' Tiene varios caminos: no depende de un solo resultado.')
+      + (champs ? ` Campeones que más le sirven: ${champs}.` : '') + '</div>';
+  } else {
+    let ej = '';
+    if (p.example && S.champTable) {
+      const fm = S.pending.find(m => m.phase === 'final');
+      if (fm) ej = ` Un camino posible: campeón <strong>${h(p.example.winners[fm.num])}</strong>.`;
+    }
+    need = `<div class="esc-need">Sigue vivo, pero no lidera en ningún escenario a nivel de solo signo: `
+      + `necesita marcadores exactos o empates a su favor, y que los punteros fallen.${ej}</div>`;
+  }
+
+  return `<details class="esc-player${p.vivo ? '' : ' out'}">
+    <summary><span class="esc-pnum">${p.pos}</span><span class="esc-pname">${h(p.name)}</span>
+    <span class="esc-pstats"><span><strong>${p.current}</strong> pts</span><span class="pt">techo ${p.techo}</span></span>
+    ${p.vivo ? '<span class="esc-pill ok">VIVO</span>' : '<span class="esc-pill out">ELIMINADO</span>'}</summary>
+    <div class="esc-pbody">${need}
+    <h4>Picks pendientes (tachado = ya imposible)</h4>${segRows || ''}${honorRow}
+    <h4>Cruces pronosticados que aún pueden ocurrir (signo/exacto)</h4>${crucesRows}
+    </div></details>`;
+}
+
 // ── Load & render ─────────────────────────────────────────────────────────────
 async function load() {
   try {
@@ -2203,6 +2766,10 @@ async function load() {
     buildPlayerDetailIndex(data);   // define FIXTURE_ALL / FIXTURE_BY_NAME
     buildKnockoutIndex(data);       // define KO_PRED_BY_MATCH (usa FIXTURE_BY_NAME)
     buildPredResDays();             // une días de grupos + eliminatorias (usa FIXTURE_ALL)
+    // La proyección de la Recta Final depende de los índices anteriores: se
+    // invalida aquí y se recalcula la próxima vez que se abra esa pestaña.
+    ESC_STATE = null;
+    if (document.querySelector('.tab-btn[data-tab="escenarios"].active')) ensureEscenarios();
 
     // Default the selectors to today's day if it exists, else the first day.
     const todayIso = venezuelaTodayIso();
