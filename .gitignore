@@ -7,3 +7,6 @@ AGENTS.md
 
 # Preview/borrador local del meme (no se publica; docs/meme.html sí va al repo)
 preview-meme.html
+
+# Bytecode de Python (se regenera al importar scripts/)
+__pycache__/

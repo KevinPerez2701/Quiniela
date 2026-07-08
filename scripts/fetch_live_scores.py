@@ -208,10 +208,16 @@ def main():
         print("DRY_RUN set — scores.json NOT written.")
         return
 
-    ordered = dict(sorted(scores.items(), key=lambda kv: int(kv[0])))
+    # Claves no numéricas (p. ej. "honor", escrita desde el panel admin) se
+    # preservan y van al final; ordenar con int() a secas las rompería.
+    def _order(kv):
+        k = kv[0]
+        return (0, int(k)) if (k.isascii() and k.isdigit()) else (1, k)
+    ordered = dict(sorted(scores.items(), key=_order))
     with open(SCORES_PATH, "w", encoding="utf-8") as f:
         json.dump(ordered, f, ensure_ascii=False, indent=2)
-    print(f"scores.json updated ({len(ordered)} total match(es)).")
+    n_matches = sum(1 for k in ordered if k.isascii() and k.isdigit())
+    print(f"scores.json updated ({n_matches} total match(es)).")
 
 
 if __name__ == "__main__":

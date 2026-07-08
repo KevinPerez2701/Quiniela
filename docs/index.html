@@ -606,6 +606,24 @@
     .esc-kv > span:first-child { color: var(--muted); }
     .esc-foot { font-size: .72rem; color: var(--muted); margin-top: 16px; line-height: 1.5; }
     .esc-foot li { margin: 3px 0 3px 16px; }
+    .esc-bonus { color: #a67c00; font-weight: 800; }
+    .esc-awards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px 16px; background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 14px; margin-bottom: 8px;
+    }
+    .esc-award span { display: block; font-size: .74rem; color: var(--muted); margin-bottom: 3px; }
+    .esc-award select {
+      width: 100%; padding: 6px 8px; border: 1px solid var(--border);
+      border-radius: 8px; font-size: .82rem; background: #f7f9ff; color: var(--text);
+    }
+    .esc-award-btn {
+      align-self: end; border: 1px solid var(--border); background: #f7f9ff;
+      color: var(--navy); border-radius: 8px; padding: 7px 10px; font-size: .8rem;
+      font-weight: 600; cursor: pointer;
+    }
+    .esc-award-btn:hover { background: #dbe6ff; }
+    .esc-chip.award-hit { background: #f5efdd; border: 1px solid var(--gold2); font-weight: 600; }
 
     /* ── Ajustes táctiles / móvil ── */
     @media (max-width: 640px) {
@@ -2275,6 +2293,17 @@ const ESC_SEG_OF_PHASE = { dieciseisavos: 'r32', octavos: 'r16', cuartos: 'r8', 
 const ESC_EQ_PTS = { r32: 3, r16: 4, r8: 5, r4: 7, r34: 5, rfinal: 10 };
 const ESC_HONOR = { camp: 20, sub: 10, ter: 5 };
 const ESC_SEG_LABEL = { r8: 'Cuartofinalistas pendientes', r4: 'Semifinalistas', r34: 'Juegan el 3er puesto', rfinal: 'Finalistas' };
+// Premios individuales (hipótesis): por defecto no se proyectan; el usuario
+// puede elegir ganadores de botas/balones y se recalcula todo incluyéndolos.
+const ESC_AWARD_DEFS = [
+  { k: 'bota_oro',     icon: '👟🥇', label: 'Bota de Oro',     pts: 10, re: /^Bota de Oro/i },
+  { k: 'bota_plata',   icon: '👟🥈', label: 'Bota de Plata',   pts: 5,  re: /^Bota de Plata/i },
+  { k: 'bota_bronce',  icon: '👟🥉', label: 'Bota de Bronce',  pts: 3,  re: /^Bota de Bronce/i },
+  { k: 'balon_oro',    icon: '🏅🥇', label: 'Balón de Oro',    pts: 10, re: /^Bal[oó]n de Oro/i },
+  { k: 'balon_plata',  icon: '🏅🥈', label: 'Balón de Plata',  pts: 5,  re: /^Bal[oó]n de Plata/i },
+  { k: 'balon_bronce', icon: '🏅🥉', label: 'Balón de Bronce', pts: 3,  re: /^Bal[oó]n de Bronce/i },
+];
+const ESC_AWARD_SEL = { bota_oro: '', bota_plata: '', bota_bronce: '', balon_oro: '', balon_plata: '', balon_bronce: '' };
 let ESC_STATE = null;
 
 function ensureEscenarios() {
@@ -2343,6 +2372,10 @@ function escCompute() {
   const N = scenarios.length;
 
   // ── Datos por jugador: picks sin pagar, honor y pool de cruces por fase ──
+  // Un premio con algún pick ya pagado (pts>0) está RESUELTO: sale del
+  // selector de hipótesis y no reparte bono (los picks perdedores quedan
+  // con pts=0 pero ya no pueden cobrar).
+  const paidAwards = {};
   const prep = ALL_PLAYERS.map(name => {
     const clas = CLAS_BY_NAME[name] || {};
     const qd = PLAYER_QUAL_DATA[name] || {};
@@ -2353,10 +2386,13 @@ function escCompute() {
         .map(it => norm(it.predTeam));
     });
     const honor = { camp: null, sub: null, ter: null };
+    const awards = {};
     ((((qd.honor || {}).items) || [])).forEach(it => {
+      const lbl = String(it.label).replace(/\s+/g, ' ').trim();
+      const def = ESC_AWARD_DEFS.find(d => d.re.test(lbl));
+      if (def && (it.pts || 0) > 0) paidAwards[def.k] = true;
       if ((it.pts || 0) > 0 || !it.predTeam) return;
-      const lbl = String(it.label);
-      if (/Bota|Bal/i.test(lbl)) return;                     // premios individuales: fuera
+      if (def) { awards[def.k] = norm(it.predTeam); return; } // botas/balones
       if (/Subcampe/i.test(lbl)) honor.sub = norm(it.predTeam);
       else if (/Campe/i.test(lbl)) honor.camp = norm(it.predTeam);
       else if (/puesto/i.test(lbl)) honor.ter = norm(it.predTeam);
@@ -2375,7 +2411,18 @@ function escCompute() {
         });
       });
     });
-    return { name, current: clas.puntos || 0, pos: clas.pos || 0, qual, honor, cruces };
+    return { name, current: clas.puntos || 0, base: clas.puntos || 0,
+             bonus: 0, pos: clas.pos || 0, qual, honor, awards, cruces };
+  });
+  // Bono fijo de la hipótesis activa (segunda pasada: paidAwards ya completo;
+  // un premio resuelto nunca reparte bono).
+  prep.forEach(p => {
+    let bonus = 0;
+    ESC_AWARD_DEFS.forEach(d => {
+      if (!paidAwards[d.k] && ESC_AWARD_SEL[d.k] && p.awards[d.k] === ESC_AWARD_SEL[d.k]) bonus += d.pts;
+    });
+    p.bonus = bonus;
+    p.current = p.base + bonus;
   });
   const P = prep.length;
 
@@ -2581,26 +2628,37 @@ function escCompute() {
   }
 
   const players = prep.map((p, pi) => ({
-    name: p.name, current: p.current, pos: p.pos,
+    name: p.name, current: p.base, bonus: p.bonus, pos: p.pos,
     piso: Math.min.apply(null, floors[pi]),
     techo: Math.max.apply(null, maxs[pi]),
     leadShared: leadShared[pi], leadStrict: leadStrict[pi],
     vivo: alive[pi], example: example[pi], cond: conds[pi],
-    qual: p.qual, honor: p.honor,
+    qual: p.qual, honor: p.honor, awards: p.awards,
     crucesVivos: Object.keys(p.cruces).reduce((acc, ph) => {
       const alivePairs = possiblePairs[ph] || {};
       const seen = {};
       acc[ph] = p.cruces[ph].filter(c => alivePairs[c.key] && !seen[c.key] && (seen[c.key] = true));
       return acc;
     }, {}),
-  })).sort((a, b) => b.current - a.current || a.name.localeCompare(b.name, 'es'));
+  })).sort((a, b) => (b.current + b.bonus) - (a.current + a.bonus) ||
+                     a.name.localeCompare(b.name, 'es'));
 
   const phaseLabel = {};
   pending.forEach(m => { phaseLabel[m.phase] = m.phase_label || m.phase; });
 
+  // Opciones del selector de premios: nombres elegidos por algún jugador para
+  // ese premio (un ganador que nadie eligió equivale a "ninguno").
+  const awardOptions = {};
+  ESC_AWARD_DEFS.forEach(d => {
+    if (paidAwards[d.k]) { awardOptions[d.k] = []; return; }  // premio ya resuelto
+    const set = {};
+    prep.forEach(p => { if (p.awards[d.k]) set[p.awards[d.k]] = true; });
+    awardOptions[d.k] = Object.keys(set).sort((a, b) => a.localeCompare(b, 'es'));
+  });
+
   return {
     done: false, N, pending, players, champTable,
-    possibleBySeg, campSet, subSet, terSet, phaseLabel,
+    possibleBySeg, campSet, subSet, terSet, phaseLabel, awardOptions,
   };
 }
 
@@ -2623,8 +2681,8 @@ function renderEscenarios() {
     <strong>${S.N} escenarios</strong> posibles de ganadores. Esta vista recorre todos y proyecta, por jugador,
     su <strong>techo</strong> (acierta todo lo que le queda con marcador exacto), en cuántos escenarios queda de
     <strong>líder</strong> (acertando solo el signo) y si sigue <strong>vivo matemáticamente</strong>.
-    Se actualiza sola con cada resultado. Botas y balones no se proyectan (premios individuales);
-    del cuadro de honor se cuentan Campeón (20), Subcampeón (10) y 3er puesto (5).</div>`;
+    Se actualiza sola con cada resultado. Del cuadro de honor se cuentan Campeón (20), Subcampeón (10)
+    y 3er puesto (5); botas y balones solo si activas una hipótesis abajo.</div>`;
 
   html += '<div class="esc-tiles">'
     + `<div class="esc-tile"><div class="v">${S.pending.length}</div><div class="l">Por jugar</div></div>`
@@ -2633,12 +2691,39 @@ function renderEscenarios() {
     + `<div class="esc-tile"><div class="v">${elims.length}</div><div class="l">Eliminados</div></div>`
     + '</div>';
 
+  // Selector de hipótesis de premios individuales (botas y balones)
+  const anyAwardOpts = ESC_AWARD_DEFS.some(d => (S.awardOptions[d.k] || []).length);
+  const hipActiva = ESC_AWARD_DEFS.some(d => ESC_AWARD_SEL[d.k] && (S.awardOptions[d.k] || []).length);
+  if (anyAwardOpts) {
+    html += '<div class="esc-h2">🏅 Premios individuales (hipótesis)</div>'
+      + '<div class="esc-hint">Botas y balones no se proyectan por defecto. Elige aquí ganadores '
+      + 'hipotéticos y toda la proyección (puntos, techo, líderes, vivos/eliminados) se recalcula '
+      + 'incluyéndolos: Oro +10, Plata +5, Bronce +3 a quien lo haya pronosticado. '
+      + 'Las opciones son los nombres que los jugadores eligieron para cada premio.</div>'
+      + '<div class="esc-awards">';
+    const hAttr = s => h(s).replace(/"/g, '&quot;');
+    ESC_AWARD_DEFS.forEach(d => {
+      const opts = S.awardOptions[d.k] || [];
+      if (!opts.length) return;
+      html += `<label class="esc-award"><span>${d.icon} ${h(d.label)} <small>+${d.pts}</small></span>`
+        + `<select class="esc-award-sel" data-k="${d.k}"><option value="">— ninguno / otro</option>`
+        + opts.map(o => `<option value="${hAttr(o)}"${ESC_AWARD_SEL[d.k] === o ? ' selected' : ''}>${h(o)}</option>`).join('')
+        + '</select></label>';
+    });
+    html += hipActiva
+      ? '<button id="esc-award-reset" class="esc-award-btn">✕ Quitar hipótesis</button>'
+      : '';
+    html += '</div>';
+  }
+
   if (elims.length) {
-    html += '<div class="esc-h2">❌ Ya no pueden ganar la quiniela</div>'
+    html += '<div class="esc-h2">❌ Ya no pueden ganar la quiniela'
+      + (hipActiva ? ' <small style="color:var(--muted)">(con la hipótesis de premios activa)</small>' : '')
+      + '</div>'
       + '<div class="esc-hint">Eliminación matemática: ni acertando todo lo que les queda (con marcador exacto) '
       + 'alcanzan al rival que quedaría arriba en ese mismo escenario.</div>'
       + '<div class="esc-callout">'
-      + elims.map(p => `<span class="esc-chip dead nostrike">${h(p.name)} <small>${p.current} pts · techo ${p.techo}</small></span>`).join('')
+      + elims.map(p => `<span class="esc-chip dead nostrike">${h(p.name)} <small>${p.current}${p.bonus ? `+${p.bonus}` : ''} pts · techo ${p.techo}</small></span>`).join('')
       + '</div>';
   }
 
@@ -2649,10 +2734,13 @@ function renderEscenarios() {
     + '<div class="table-wrap"><table><thead><tr class="colrow">'
     + '<th>#</th><th class="left">Jugador</th><th>Puntos</th><th>Techo</th>'
     + `<th>Lidera (de ${S.N})</th><th>Estado</th></tr></thead><tbody>`;
-  S.players.forEach(p => {
+  S.players.forEach((p, idx) => {
     const w = Math.round(1000 * p.leadShared / maxLead) / 10;
-    html += `<tr><td>${p.pos}</td><td class="left player-name">${h(p.name)}</td>`
-      + `<td><strong>${p.current}</strong></td><td>${p.techo}</td>`
+    // Con hipótesis activa el orden es por puntos+bono: se renumera para que
+    // la columna # no se vea "desordenada" respecto de la posición real.
+    const shownPos = hipActiva ? idx + 1 : p.pos;
+    html += `<tr><td>${shownPos}</td><td class="left player-name">${h(p.name)}</td>`
+      + `<td><strong>${p.current}</strong>${p.bonus ? ` <small class="esc-bonus">+${p.bonus}</small>` : ''}</td><td>${p.techo}</td>`
       + `<td class="left"><div class="esc-bar"><div class="esc-bar-fill" style="width:${w}%"></div>`
       + `<span class="esc-bar-num${w > 55 ? ' onfill' : ''}">${p.leadShared}</span></div></td>`
       + `<td>${p.vivo ? '<span class="esc-pill ok">VIVO</span>' : '<span class="esc-pill out">ELIMINADO</span>'}</td></tr>`;
@@ -2682,10 +2770,35 @@ function renderEscenarios() {
     + '<li>El cruce pronosticado vale si ese enfrentamiento ocurre en la ronda, sin importar la posición de la llave ni el orden (así premia el Excel).</li>'
     + '<li>Empate + penales cuenta como signo X: predecir con 1/2 al equipo que avanza por penales da 0 en ese partido.</li>'
     + '<li>Los escenarios se tratan como igualmente posibles: los conteos miden cobertura, no probabilidad futbolística.</li>'
-    + '<li>Si se contaran botas y balones (hasta 36 pts extra), algún veredicto de eliminación podría cambiar.</li>'
+    + '<li>Botas y balones (hasta 36 pts extra) solo se cuentan si activas una hipótesis arriba: los veredictos de eliminación pueden cambiar con ellos.</li>'
     + '</ul>';
   html += '</div>';
   el.innerHTML = html;
+
+  // Selector de premios: recalcular la proyección al cambiar una hipótesis.
+  el.querySelectorAll('.esc-award-sel').forEach(sel => {
+    sel.addEventListener('change', () => {
+      ESC_AWARD_SEL[sel.dataset.k] = sel.value;
+      escRecompute();
+    });
+  });
+  const rst = el.querySelector('#esc-award-reset');
+  if (rst) rst.addEventListener('click', () => {
+    ESC_AWARD_DEFS.forEach(d => { ESC_AWARD_SEL[d.k] = ''; });
+    escRecompute();
+  });
+}
+
+// Recalcula la proyección con el mismo patrón spinner + try/catch de
+// ensureEscenarios (el cómputo puede tardar segundos con muchos pendientes).
+function escRecompute() {
+  const el = document.getElementById('escenarios-content');
+  if (!el) return;
+  el.innerHTML = '<div style="text-align:center;padding:60px;color:var(--muted)"><div class="spinner"></div>Recalculando…</div>';
+  setTimeout(() => {
+    try { ESC_STATE = escCompute(); renderEscenarios(); }
+    catch (e) { el.innerHTML = emptyState('No se pudo recalcular la proyección: ' + e.message, '⚠️'); }
+  }, 30);
 }
 
 function escPlayerCard(p, S) {
@@ -2702,6 +2815,14 @@ function escPlayerCard(p, S) {
     p.honor.ter ? `<span class="esc-chip${S.terSet[p.honor.ter] ? '' : ' dead'}">🥉 ${h(p.honor.ter)}</span>` : '',
   ].filter(Boolean).join(' ') || '<span style="color:var(--muted)">— (ya pagado o sin pick)</span>';
   const honorRow = `<div class="esc-kv"><span>Cuadro de honor</span><span>${honorChips}</span></div>`;
+  const awardChips = ESC_AWARD_DEFS.map(d => {
+    const pick = p.awards[d.k];
+    if (!pick) return '';
+    const hit = ESC_AWARD_SEL[d.k] && ESC_AWARD_SEL[d.k] === pick;
+    return `<span class="esc-chip${hit ? ' award-hit' : ''}">${d.icon} ${h(pick)}${hit ? ` <small>+${d.pts}</small>` : ''}</span>`;
+  }).filter(Boolean).join(' ');
+  const awardsRow = awardChips
+    ? `<div class="esc-kv"><span>Botas y balones</span><span>${awardChips}</span></div>` : '';
   const crucesRows = Object.keys(p.crucesVivos)
     .filter(ph => p.crucesVivos[ph].length)
     .map(ph => `<div class="esc-kv"><span>Cruce ${h(S.phaseLabel[ph] || ph)} <small>(${ESC_SIGN[ph]}/${ESC_EXACT[ph]})</small></span>`
@@ -2731,10 +2852,10 @@ function escPlayerCard(p, S) {
 
   return `<details class="esc-player${p.vivo ? '' : ' out'}">
     <summary><span class="esc-pnum">${p.pos}</span><span class="esc-pname">${h(p.name)}</span>
-    <span class="esc-pstats"><span><strong>${p.current}</strong> pts</span><span class="pt">techo ${p.techo}</span></span>
+    <span class="esc-pstats"><span><strong>${p.current}</strong>${p.bonus ? `<span class="esc-bonus">+${p.bonus}</span>` : ''} pts</span><span class="pt">techo ${p.techo}</span></span>
     ${p.vivo ? '<span class="esc-pill ok">VIVO</span>' : '<span class="esc-pill out">ELIMINADO</span>'}</summary>
     <div class="esc-pbody">${need}
-    <h4>Picks pendientes (tachado = ya imposible)</h4>${segRows || ''}${honorRow}
+    <h4>Picks pendientes (tachado = ya imposible)</h4>${segRows || ''}${honorRow}${awardsRow}
     <h4>Cruces pronosticados que aún pueden ocurrir (signo/exacto)</h4>${crucesRows}
     </div></details>`;
 }

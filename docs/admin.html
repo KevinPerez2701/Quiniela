@@ -44,7 +44,7 @@
     .auth-card a  { color: var(--gold2); }
 
     label { display: block; font-size: .82rem; color: var(--muted); margin-bottom: 5px; margin-top: 14px; }
-    input[type=password], input[type=number], select {
+    input[type=password], input[type=number], input[type=text], select {
       width: 100%;
       background: var(--navy2);
       border: 1px solid #2c3e55;
@@ -55,7 +55,7 @@
       outline: none;
     }
     input[type=number] { width: 62px; text-align: center; padding: 6px 4px; }
-    input[type=password]:focus, select:focus { border-color: var(--gold); }
+    input[type=password]:focus, input[type=text]:focus, input[type=number]:focus, select:focus { border-color: var(--gold); }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -122,6 +122,25 @@
       display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
     }
     #save-count { color: var(--muted); font-size: .88rem; }
+
+    /* ── CUADRO DE HONOR (botas y balones) ── */
+    .honor-card {
+      background: var(--card);
+      border: 1px solid var(--navy2);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 22px;
+    }
+    .honor-card h3 { color: var(--gold); font-size: 1rem; }
+    .honor-card p  { color: var(--muted); font-size: .82rem; margin-top: 6px; line-height: 1.5; }
+    .honor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 4px 18px;
+      margin-top: 8px;
+    }
+    .honor-grid label { margin-top: 10px; }
+    .honor-grid input.h-changed { border-color: var(--gold); }
   </style>
 </head>
 <body>
@@ -192,6 +211,41 @@
         <tbody id="fixture-body"></tbody>
       </table>
     </div>
+
+    <!-- CUADRO DE HONOR: ganadores reales de botas y balones -->
+    <div class="honor-card">
+      <h3>🏅 Cuadro de honor — botas y balones</h3>
+      <p>
+        Escribe aquí los ganadores reales al terminar el mundial y guarda con el mismo botón de abajo.
+        Los nombres se normalizan solos (da igual escribir «mbappe» o «Kylian Mbappé») y se escriben
+        en el Excel, que recalcula los puntos de todos.
+        <strong>Campeón, Subcampeón y 3º puesto no se escriben aquí:</strong> salen automáticamente
+        de los resultados de la final y del 3er puesto.
+        Para <strong>anular</strong> un premio ya guardado por error, escribe un guion («-») y guarda:
+        vaciar el campo solo lo quita de esta lista, no revierte lo escrito en el Excel.
+      </p>
+      <div class="honor-grid">
+        <label>👟🥇 Bota de Oro (máximo goleador)
+          <input type="text" id="honor-bota_oro" list="players-datalist" autocomplete="off"
+                 oninput="markHonorChanged(this)" placeholder="—"></label>
+        <label>👟🥈 Bota de Plata (2º máximo goleador)
+          <input type="text" id="honor-bota_plata" list="players-datalist" autocomplete="off"
+                 oninput="markHonorChanged(this)" placeholder="—"></label>
+        <label>👟🥉 Bota de Bronce (3º máximo goleador)
+          <input type="text" id="honor-bota_bronce" list="players-datalist" autocomplete="off"
+                 oninput="markHonorChanged(this)" placeholder="—"></label>
+        <label>🏅🥇 Balón de Oro (mejor jugador)
+          <input type="text" id="honor-balon_oro" list="players-datalist" autocomplete="off"
+                 oninput="markHonorChanged(this)" placeholder="—"></label>
+        <label>🏅🥈 Balón de Plata (2º mejor jugador)
+          <input type="text" id="honor-balon_plata" list="players-datalist" autocomplete="off"
+                 oninput="markHonorChanged(this)" placeholder="—"></label>
+        <label>🏅🥉 Balón de Bronce (3º mejor jugador)
+          <input type="text" id="honor-balon_bronce" list="players-datalist" autocomplete="off"
+                 oninput="markHonorChanged(this)" placeholder="—"></label>
+      </div>
+      <datalist id="players-datalist"></datalist>
+    </div>
   </div>
 
   <div class="footer-bar">
@@ -211,6 +265,9 @@ let originalScores = {};  // from scores.json on GitHub
 let scoresSha = '';        // sha of scores.json on GitHub
 let autoEnabled = true;    // interruptor de actualización automática (auto_config.json)
 let autoCfgSha = '';       // sha de auto_config.json on GitHub
+// Cuadro de honor (botas y balones): campos que van en scores.json bajo "honor".
+const HONOR_FIELDS = ['bota_oro', 'bota_plata', 'bota_bronce', 'balon_oro', 'balon_plata', 'balon_bronce'];
+let honorTouched = false;  // el usuario editó algún campo de honor sin guardar
 
 // ── AUTH ──────────────────────────────────────────────────────────────────────
 function showAuthStatus(msg, ok) {
@@ -303,17 +360,79 @@ async function loadData() {
     }
   });
 
-  // Fetch scores.json only for its SHA (required for the PUT save)
+  // Fetch scores.json for its SHA (required for the PUT save) and for the
+  // honor block, which does not exist in data.json.
   try {
     const sf = await ghGet('/contents/scores.json?ref=' + BRANCH);
     scoresSha = sf.sha;
+    // El parse del honor NUNCA debe resetear el sha ya obtenido: un scores.json
+    // ilegible se repara guardando encima, y para eso hace falta el sha.
+    try {
+      const remote = JSON.parse(decodeURIComponent(escape(atob((sf.content || '').replace(/\n/g, '')))));
+      // El honor guardado viaja dentro de originalScores para que applyChanges
+      // lo conserve en cada guardado aunque no se toque.
+      if (remote && remote.honor) originalScores.honor = remote.honor;
+    } catch (e) { /* contenido ilegible: sin prefill, el sha sigue siendo válido */ }
   } catch (e) {
     scoresSha = '';
   }
 
+  buildPlayersDatalist(dj);
+  renderHonorInputs();
   await loadAutoConfig();
   renderTable(fixtureData);
   updateSaveCount();
+}
+
+// ── CUADRO DE HONOR (botas y balones) ────────────────────────────────────────
+// Sugerencias: todos los nombres (ya normalizados) que los jugadores pusieron
+// en los 6 slots de premios del bloque diario "3-4 & Final".
+function buildPlayersDatalist(dj) {
+  const names = new Set();
+  const AWARD_RE = /^(Bota|Bal[oó]n) de (Oro|Plata|Bronce)/i;
+  (dj.daily || []).forEach(day => {
+    if (day.date) return;
+    (day.matches || []).forEach((mn, i) => {
+      if (!AWARD_RE.test(String(mn).replace(/\s+/g, ' ').trim())) return;
+      (day.predictions || []).forEach(pr => {
+        const v = (pr.preds || [])[i];
+        if (v) names.add(String(v).trim());
+      });
+    });
+  });
+  const dl = document.getElementById('players-datalist');
+  dl.innerHTML = '';
+  [...names].sort((a, b) => a.localeCompare(b, 'es')).forEach(n => {
+    const o = document.createElement('option');
+    o.value = n;
+    dl.appendChild(o);
+  });
+}
+
+function renderHonorInputs() {
+  const hon = originalScores.honor || {};
+  HONOR_FIELDS.forEach(f => {
+    const inp = document.getElementById('honor-' + f);
+    if (inp) { inp.value = hon[f] || ''; inp.classList.remove('h-changed'); }
+  });
+  honorTouched = false;
+}
+
+function markHonorChanged(inp) {
+  honorTouched = true;
+  inp.classList.add('h-changed');
+  updateSaveCount();
+}
+
+// Solo los campos que el usuario editó (clase h-changed): así el merge tras un
+// conflicto 409 no pisa campos de honor que otra sesión haya cambiado.
+function collectHonorChanges() {
+  const ch = {};
+  HONOR_FIELDS.forEach(f => {
+    const inp = document.getElementById('honor-' + f);
+    if (inp && inp.classList.contains('h-changed')) ch[f] = inp.value.trim();
+  });
+  return ch;
 }
 
 // ── AUTO-UPDATE TOGGLE (auto_config.json) ─────────────────────────────────────
@@ -432,14 +551,21 @@ function markChanged(input) {
 
 function updateSaveCount() {
   const changed = document.querySelectorAll('#fixture-body tr.changed').length;
+  const parts = [];
+  if (changed) parts.push(`${changed} fila(s) modificada(s)`);
+  if (honorTouched) parts.push('cuadro de honor editado');
   document.getElementById('save-count').textContent =
-    changed ? `${changed} fila(s) modificada(s) sin guardar` : '';
+    parts.length ? parts.join(' · ') + ' sin guardar' : '';
 }
 
 // ── SAVE ─────────────────────────────────────────────────────────────────────
 async function saveScores() {
   const btn = document.getElementById('save-btn');
   btn.disabled = true;
+  // Bloquear los inputs de honor durante el guardado: lo tecleado en vuelo se
+  // perdería al re-renderizarlos con lo guardado.
+  const honInputs = HONOR_FIELDS.map(f => document.getElementById('honor-' + f)).filter(Boolean);
+  honInputs.forEach(i => { i.disabled = true; });
   showStatus('Guardando…', 'info');
 
   // Captura SOLO los partidos de filas modificadas. Así, ante un conflicto con el
@@ -464,7 +590,18 @@ async function saveScores() {
       if (e.pen_home == null && e.pen_away == null) { delete e.pen_home; delete e.pen_away; }
       out[k] = e;
     });
+    // Cuadro de honor: se parte del honor de base y solo se aplican los campos
+    // que el usuario editó (vacío = quitarlo de scores.json; OJO: eso no
+    // revierte el Excel — para anular un premio ya escrito se guarda "-").
+    if (honorTouched) {
+      const hon = { ...(base.honor || {}) };
+      Object.entries(collectHonorChanges()).forEach(([f, v]) => {
+        if (v) hon[f] = v; else delete hon[f];
+      });
+      if (Object.keys(hon).length) out.honor = hon; else delete out.honor;
+    }
     Object.keys(out).forEach(k => {
+      if (k === 'honor') return;
       if (out[k].goal_home === null && out[k].goal_away === null) delete out[k];
     });
     return out;
@@ -500,6 +637,7 @@ async function saveScores() {
     originalScores = res.merged;
 
     document.querySelectorAll('#fixture-body tr.changed').forEach(tr => tr.classList.remove('changed'));
+    renderHonorInputs();
     updateSaveCount();
     showStatus('✅ scores.json guardado. GitHub Actions está recalculando los valores y actualizando la página…', 'ok');
   } catch (e) {
@@ -507,6 +645,7 @@ async function saveScores() {
   }
 
   btn.disabled = false;
+  honInputs.forEach(i => { i.disabled = false; });
 }
 
 async function clearScores() {
