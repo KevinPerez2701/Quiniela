@@ -1,5 +1,5 @@
 {
-  "updated_at": "15/07/2026 16:57 (hora Venezuela)",
+  "updated_at": "18/07/2026 19:11 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
@@ -124,6 +124,26 @@
         "pos": 5
       },
       {
+        "jugador": "RICARDO RIVERO",
+        "puntos": 439,
+        "f_grupos": 116,
+        "pos_grupos": 100,
+        "eq_16": 81,
+        "pt_16": 6,
+        "eq_8": 52,
+        "pt_8": 20,
+        "eq_4": 25,
+        "pt_4": 5,
+        "eq_2": 14,
+        "pt_2": 0,
+        "eq_34": 5,
+        "eq_final": 10,
+        "pt_34": 0,
+        "pt_final": 0,
+        "honor": 5,
+        "pos": 7
+      },
+      {
         "jugador": "Jorge Rojas",
         "puntos": 438,
         "f_grupos": 146,
@@ -141,7 +161,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 7
+        "pos": 8
       },
       {
         "jugador": "Alvaro Urdaneta",
@@ -161,7 +181,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 7
+        "pos": 8
       },
       {
         "jugador": "Carlos Gimenez",
@@ -181,27 +201,7 @@
         "pt_34": 0,
         "pt_final": 0,
         "honor": 0,
-        "pos": 7
-      },
-      {
-        "jugador": "RICARDO RIVERO",
-        "puntos": 434,
-        "f_grupos": 116,
-        "pos_grupos": 100,
-        "eq_16": 81,
-        "pt_16": 6,
-        "eq_8": 52,
-        "pt_8": 20,
-        "eq_4": 25,
-        "pt_4": 5,
-        "eq_2": 14,
-        "pt_2": 0,
-        "eq_34": 5,
-        "eq_final": 10,
-        "pt_34": 0,
-        "pt_final": 0,
-        "honor": 0,
-        "pos": 10
+        "pos": 8
       },
       {
         "jugador": "Fernando (Jessika)",
@@ -2092,8 +2092,8 @@
       "group": null,
       "home": "Francia",
       "away": "Inglaterra",
-      "goal_home": null,
-      "goal_away": null,
+      "goal_home": 4,
+      "goal_away": 6,
       "pen_home": null,
       "pen_away": null,
       "phase": "tercero",
@@ -23054,6 +23054,24 @@
       ],
       "clas": [
         {
+          "jugador": "RICARDO RIVERO",
+          "puntos_dia": 5,
+          "pts": [
+            0,
+            0,
+            0,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
           "jugador": "Kevin Perez",
           "puntos_dia": 0,
           "pts": [
@@ -23069,7 +23087,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Ylich",
@@ -23087,25 +23105,7 @@
             0,
             0
           ],
-          "pos": 1
-        },
-        {
-          "jugador": "RICARDO RIVERO",
-          "puntos_dia": 0,
-          "pts": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Simon Melendez",
@@ -23123,7 +23123,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "EDUARDO PINTO",
@@ -23141,7 +23141,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Edicxon Mendoza",
@@ -23159,7 +23159,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "RICARDO DEFENDINI",
@@ -23177,7 +23177,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Rafael Aguilar",
@@ -23195,7 +23195,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Luis Pinto",
@@ -23213,7 +23213,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Dixon Torrealba",
@@ -23231,7 +23231,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "jaidali",
@@ -23249,7 +23249,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Jorge Rojas",
@@ -23267,7 +23267,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Freddy Parra (1)",
@@ -23285,7 +23285,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Freddy Parra (2)",
@@ -23303,7 +23303,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Mariana Suarez (Samuel 2)",
@@ -23321,7 +23321,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Samuel Montes",
@@ -23339,7 +23339,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Andres Fermin",
@@ -23357,7 +23357,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Luis Márquez",
@@ -23375,7 +23375,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Alvaro Urdaneta",
@@ -23393,7 +23393,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Fernando (Jessika)",
@@ -23411,7 +23411,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Ricardo Ortega",
@@ -23429,7 +23429,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Xavier (Kevin 2)",
@@ -23447,7 +23447,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Jared Oropeza",
@@ -23465,7 +23465,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Juan Dorante",
@@ -23483,7 +23483,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Carlos Gimenez",
@@ -23501,7 +23501,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Andres Alvarez",
@@ -23519,7 +23519,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Erika",
@@ -23537,7 +23537,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Maria Delgado",
@@ -23555,7 +23555,7 @@
             0,
             0
           ],
-          "pos": 1
+          "pos": 2
         }
       ]
     }
