@@ -1,11 +1,11 @@
 {
-  "updated_at": "19/07/2026 18:11 (hora Venezuela)",
+  "updated_at": "19/07/2026 18:35 (hora Venezuela)",
   "clas": {
     "title": "CLASIFICACIÓN MUNDIAL 2026 Inter",
     "players": [
       {
         "jugador": "Dixon Torrealba",
-        "puntos": 513,
+        "puntos": 523,
         "f_grupos": 110,
         "pos_grupos": 104,
         "eq_16": 81,
@@ -20,7 +20,7 @@
         "eq_final": 20,
         "pt_34": 0,
         "pt_final": 7,
-        "honor": 40,
+        "honor": 50,
         "pos": 1
       },
       {
@@ -465,7 +465,7 @@
       },
       {
         "jugador": "Simon Melendez",
-        "puntos": 340,
+        "puntos": 350,
         "f_grupos": 78,
         "pos_grupos": 57,
         "eq_16": 78,
@@ -480,7 +480,7 @@
         "eq_final": 10,
         "pt_34": 0,
         "pt_final": 0,
-        "honor": 20,
+        "honor": 30,
         "pos": 24
       },
       {
@@ -23054,6 +23054,24 @@
       ],
       "clas": [
         {
+          "jugador": "Dixon Torrealba",
+          "puntos_dia": 57,
+          "pts": [
+            0,
+            7,
+            20,
+            10,
+            0,
+            10,
+            0,
+            0,
+            10,
+            0,
+            0
+          ],
+          "pos": 1
+        },
+        {
           "jugador": "RICARDO DEFENDINI",
           "puntos_dia": 47,
           "pts": [
@@ -23069,25 +23087,7 @@
             0,
             0
           ],
-          "pos": 1
-        },
-        {
-          "jugador": "Dixon Torrealba",
-          "puntos_dia": 47,
-          "pts": [
-            0,
-            7,
-            20,
-            10,
-            0,
-            10,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "pos": 1
+          "pos": 2
         },
         {
           "jugador": "Kevin Perez",
@@ -23102,6 +23102,24 @@
             0,
             0,
             0,
+            0,
+            0
+          ],
+          "pos": 3
+        },
+        {
+          "jugador": "Simon Melendez",
+          "puntos_dia": 30,
+          "pts": [
+            0,
+            0,
+            20,
+            0,
+            0,
+            0,
+            0,
+            0,
+            10,
             0,
             0
           ],
@@ -23141,24 +23159,6 @@
             0,
             0
           ],
-          "pos": 5
-        },
-        {
-          "jugador": "Simon Melendez",
-          "puntos_dia": 20,
-          "pts": [
-            0,
-            0,
-            20,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
           "pos": 6
         },
         {
@@ -23177,7 +23177,7 @@
             0,
             0
           ],
-          "pos": 6
+          "pos": 7
         },
         {
           "jugador": "Andres Fermin",
