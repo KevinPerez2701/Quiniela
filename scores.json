@@ -422,5 +422,10 @@
   "104": {
     "goal_home": 1,
     "goal_away": 0
+  },
+  "honor": {
+    "bota_oro": "Kylian Mbappé",
+    "bota_plata": "Lionel Messi",
+    "bota_bronce": "Jude Bellingham"
   }
 }
