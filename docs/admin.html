@@ -191,9 +191,13 @@
               title="ON: el sistema rellena solo los resultados FINALES al terminar cada partido. OFF: solo se aplica lo que guardes tú a mano (úsalo cuando estés pendiente del partido).">
         Auto: …
       </button>
-      <button class="btn btn-sm" id="prank-toggle" onclick="togglePrank()"
+      <button class="btn btn-sm" id="prank-toggle" onclick="togglePrank('perfect_player')"
               title="Broma: muestra a Kevin Perez con puntuación PERFECTA en el dashboard (solo visual, el Excel y los puntos reales no se tocan). Al desactivar vuelve la clasificación real.">
         👑 …
+      </button>
+      <button class="btn btn-sm" id="prank-fake-toggle" onclick="togglePrank('fake_player')"
+              title="Broma: agrega un jugador inventado 'Nicolas Maduro' con puntuación PERFECTA a la clasificación (solo visual). Al desactivar desaparece.">
+        🎖️ …
       </button>
       <button class="btn btn-sm" onclick="clearScores()" style="margin-left:auto;background:var(--navy2);color:var(--muted);border:1px solid #2c3e55">
         🔄 Recargar desde Excel
@@ -269,11 +273,15 @@ let originalScores = {};  // from scores.json on GitHub
 let scoresSha = '';        // sha of scores.json on GitHub
 let autoEnabled = true;    // interruptor de actualización automática (auto_config.json)
 let autoCfgSha = '';       // sha de auto_config.json on GitHub
-// Broma "jugador perfecto" (ui_config.json): el dashboard muestra a este
-// jugador con la puntuación máxima posible — SOLO visual.
-const PRANK_PLAYER = 'Kevin Perez';
-let prankOn = false;
-let prankSha = '';
+// Bromas "jugador perfecto" (ui_config.json) — SOLO visuales:
+//   perfect_player: jugador REAL mostrado con la puntuación máxima posible.
+//   fake_player: jugador INVENTADO agregado a la clasificación, perfecto.
+const PRANKS = {
+  perfect_player: { name: 'Kevin Perez', btn: 'prank-toggle', icon: '👑', label: 'Kevin perfecto' },
+  fake_player: { name: 'Nicolas Maduro', btn: 'prank-fake-toggle', icon: '🎖️', label: 'Nicolás perfecto' },
+};
+let uiCfg = { perfect_player: null, fake_player: null };
+let uiCfgSha = '';
 // Cuadro de honor (botas y balones): campos que van en scores.json bajo "honor".
 const HONOR_FIELDS = ['bota_oro', 'bota_plata', 'bota_bronce', 'balon_oro', 'balon_plata', 'balon_bronce'];
 let honorTouched = false;  // el usuario editó algún campo de honor sin guardar
@@ -394,57 +402,62 @@ async function loadData() {
   updateSaveCount();
 }
 
-// ── BROMA "JUGADOR PERFECTO" (ui_config.json) ────────────────────────────────
+// ── BROMAS "JUGADOR PERFECTO" (ui_config.json) ───────────────────────────────
 async function loadPrankConfig() {
   try {
     const f = await ghGet('/contents/ui_config.json?ref=' + BRANCH);
-    prankSha = f.sha;
+    uiCfgSha = f.sha;
     const cfg = JSON.parse(decodeURIComponent(escape(atob((f.content || '').replace(/\n/g, '')))));
-    prankOn = !!(cfg && cfg.perfect_player);
+    uiCfg.perfect_player = (cfg && cfg.perfect_player) || null;
+    uiCfg.fake_player = (cfg && cfg.fake_player) || null;
   } catch (e) {
-    // Aún no existe: broma apagada, sin sha (se crea al primer toggle).
-    prankOn = false;
-    prankSha = '';
+    // Aún no existe: bromas apagadas, sin sha (se crea al primer toggle).
+    uiCfg = { perfect_player: null, fake_player: null };
+    uiCfgSha = '';
   }
-  renderPrankToggle();
+  renderPrankToggles();
 }
 
-function renderPrankToggle() {
-  const b = document.getElementById('prank-toggle');
-  if (!b) return;
-  if (prankOn) {
-    b.textContent = '👑 Kevin perfecto: ON';
-    b.style.background = 'var(--gold)';
-    b.style.color = 'var(--navy)';
-    b.style.border = 'none';
-  } else {
-    b.textContent = '👑 Kevin perfecto: OFF';
-    b.style.background = 'var(--navy2)';
-    b.style.color = 'var(--muted)';
-    b.style.border = '1px solid #2c3e55';
-  }
+function renderPrankToggles() {
+  Object.entries(PRANKS).forEach(([key, p]) => {
+    const b = document.getElementById(p.btn);
+    if (!b) return;
+    if (uiCfg[key]) {
+      b.textContent = `${p.icon} ${p.label}: ON`;
+      b.style.background = 'var(--gold)';
+      b.style.color = 'var(--navy)';
+      b.style.border = 'none';
+    } else {
+      b.textContent = `${p.icon} ${p.label}: OFF`;
+      b.style.background = 'var(--navy2)';
+      b.style.color = 'var(--muted)';
+      b.style.border = '1px solid #2c3e55';
+    }
+  });
 }
 
-async function togglePrank() {
-  const b = document.getElementById('prank-toggle');
-  const next = !prankOn;
+async function togglePrank(key) {
+  const p = PRANKS[key];
+  if (!p) return;
+  const b = document.getElementById(p.btn);
+  const next = uiCfg[key] ? null : p.name;
   b.disabled = true;
-  showStatus(next ? 'Coronando a Kevin…' : 'Restaurando la clasificación real…', 'info');
+  showStatus(next ? `Activando ${p.label}…` : `Desactivando ${p.label}…`, 'info');
   try {
+    const cfg = { ...uiCfg, [key]: next };
     const body = {
       message: 'chore: update ui config',
-      content: btoa(unescape(encodeURIComponent(JSON.stringify(
-        { perfect_player: next ? PRANK_PLAYER : null }, null, 2) + '\n'))),
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(cfg, null, 2) + '\n'))),
       branch: BRANCH,
     };
-    if (prankSha) body.sha = prankSha;
+    if (uiCfgSha) body.sha = uiCfgSha;
     const result = await ghPut('/contents/ui_config.json', body);
-    prankSha = result.content.sha;
-    prankOn = next;
-    renderPrankToggle();
+    uiCfgSha = result.content.sha;
+    uiCfg = cfg;
+    renderPrankToggles();
     showStatus(next
-      ? `👑 ${PRANK_PLAYER} ahora aparece con puntuación PERFECTA en el dashboard (solo visual; puede tardar 1-2 min en propagarse por el caché de GitHub Pages).`
-      : '⚪ Broma desactivada — el dashboard vuelve a mostrar la clasificación real.', 'ok');
+      ? `${p.icon} ${p.name} ahora aparece con puntuación PERFECTA en el dashboard (solo visual; puede tardar 1-2 min en propagarse por el caché de GitHub Pages).`
+      : `⚪ ${p.label} desactivado — el dashboard vuelve a mostrar la clasificación real.`, 'ok');
   } catch (e) {
     showStatus('No se pudo cambiar la broma: ' + e.message, 'err');
   }

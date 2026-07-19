@@ -813,11 +813,21 @@ function fmtDate(str) {
 // ── CLAS ─────────────────────────────────────────────────────────────────────
 const SCORE_COLS = ['f_grupos','pos_grupos','eq_16','pt_16','eq_8','pt_8','eq_4','pt_4','eq_2','pt_2','eq_34','eq_final','pt_34','pt_final','honor'];
 
-// ── Modo "jugador perfecto" (broma, solo visual) ──────────────────────────────
-// ui_config.json puede pedir que un jugador se muestre con la puntuación
-// máxima posible en TODO el dashboard. Los datos reales del Excel/data.json
+// ── Modo "jugador perfecto" (bromas, solo visual) ─────────────────────────────
+// ui_config.json puede pedir que un jugador real se muestre con la puntuación
+// máxima posible (perfect_player) y/o AGREGAR un jugador inventado perfecto
+// (fake_player, p. ej. "Nicolas Maduro"). Los datos reales del Excel/data.json
 // no se tocan: al desactivarlo desde el admin vuelve la clasificación real.
-let PERFECT_PLAYER = null;
+let PERFECT_PLAYERS = [];
+
+function rankClasPlayers(players) {
+  players.sort((a, b) => (b.puntos || 0) - (a.puntos || 0));
+  let pos = 1;
+  players.forEach((x, i) => {
+    if (i > 0 && (x.puntos || 0) < (players[i - 1].puntos || 0)) pos = i + 1;
+    x.pos = pos;
+  });
+}
 
 function applyPerfectPlayer(data, name) {
   const players = data.clas?.players || [];
@@ -829,13 +839,28 @@ function applyPerfectPlayer(data, name) {
     if (k in target) { target[k] = v; total += v; }
   });
   target.puntos = total;
-  players.sort((a, b) => (b.puntos || 0) - (a.puntos || 0));
-  let pos = 1;
-  players.forEach((x, i) => {
-    if (i > 0 && (x.puntos || 0) < (players[i - 1].puntos || 0)) pos = i + 1;
-    x.pos = pos;
-  });
-  PERFECT_PLAYER = name.trim();
+  rankClasPlayers(players);
+  PERFECT_PLAYERS.push(name.trim());
+}
+
+// Inserta un jugador FICTICIO con todas las columnas al máximo. No existe en
+// los datos diarios, así que solo aparece en la clasificación (y liderando la
+// Recta Final): en las demás vistas simplemente no tiene pronósticos.
+function addFakePerfectPlayer(data, name) {
+  const players = data.clas?.players || [];
+  if (players.some(x => String(x.jugador || '').trim() === name.trim())) {
+    applyPerfectPlayer(data, name);  // ya existe uno real con ese nombre
+    return;
+  }
+  const mv = data.max_values || {};
+  const fake = { jugador: name.trim() };
+  let total = 0;
+  Object.entries(mv).forEach(([k, v]) => { fake[k] = v; total += v; });
+  fake.puntos = total;
+  fake.pos = 1;
+  players.push(fake);
+  rankClasPlayers(players);
+  PERFECT_PLAYERS.push(name.trim());
 }
 
 function renderClas(data) {
@@ -869,7 +894,7 @@ function renderClas(data) {
         td.innerHTML = posBadge(p.pos);
       } else if (key === 'jugador') {
         td.className = 'left';
-        const crown = (PERFECT_PLAYER && String(p.jugador).trim() === PERFECT_PLAYER) ? ' 👑' : '';
+        const crown = PERFECT_PLAYERS.includes(String(p.jugador).trim()) ? ' 👑' : '';
         td.innerHTML = `<span class="player-name">${h(p.jugador)}</span>${crown}`;
       } else if (key === 'puntos') {
         td.className = 'pts-cell';
@@ -2897,14 +2922,15 @@ async function load() {
     document.getElementById('updated-at').textContent = 'Actualizado: ' + (data.updated_at || '');
     document.getElementById('loading').style.display = 'none';
 
-    // Modo "jugador perfecto" (broma, solo visual) — debe aplicarse ANTES de
+    // Modo "jugador perfecto" (bromas, solo visual) — debe aplicarse ANTES de
     // construir índices y renderizar para que toda vista lo refleje.
-    PERFECT_PLAYER = null;
+    PERFECT_PLAYERS = [];
     try {
       const cfgRes = await fetch('ui_config.json?v=' + Date.now(), { cache: 'no-store' });
       if (cfgRes.ok) {
         const cfg = await cfgRes.json();
         if (cfg && cfg.perfect_player) applyPerfectPlayer(data, String(cfg.perfect_player));
+        if (cfg && cfg.fake_player) addFakePerfectPlayer(data, String(cfg.fake_player));
       }
     } catch (e) { /* sin ui_config.json: modo normal */ }
 
