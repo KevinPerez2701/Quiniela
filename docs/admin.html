@@ -405,7 +405,9 @@ async function loadData() {
 // ── BROMAS "JUGADOR PERFECTO" (ui_config.json) ───────────────────────────────
 async function loadPrankConfig() {
   try {
-    const f = await ghGet('/contents/ui_config.json?ref=' + BRANCH);
+    // OJO: en docs/ — GitHub Pages sirve esa carpeta como raíz del sitio, y el
+    // dashboard lee el archivo con un fetch relativo ('ui_config.json').
+    const f = await ghGet('/contents/docs/ui_config.json?ref=' + BRANCH);
     uiCfgSha = f.sha;
     const cfg = JSON.parse(decodeURIComponent(escape(atob((f.content || '').replace(/\n/g, '')))));
     uiCfg.perfect_player = (cfg && cfg.perfect_player) || null;
@@ -451,7 +453,7 @@ async function togglePrank(key) {
       branch: BRANCH,
     };
     if (uiCfgSha) body.sha = uiCfgSha;
-    const result = await ghPut('/contents/ui_config.json', body);
+    const result = await ghPut('/contents/docs/ui_config.json', body);
     uiCfgSha = result.content.sha;
     uiCfg = cfg;
     renderPrankToggles();
